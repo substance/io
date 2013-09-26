@@ -38,12 +38,12 @@
     {
       "repository": "https://github.com/substance/article.git",
       "folder": "node_modules/substance-article",
-      "branch": "0.1.x"
+      "branch": "extended_nodeset"
     },
     {
       "repository": "https://github.com/substance/nodes.git",
       "folder": "node_modules/substance-nodes",
-      "branch": "0.1.x"
+      "branch": "extended_nodeset"
     },
     {
       "repository": "https://github.com/elifesciences/lens-manual.git",

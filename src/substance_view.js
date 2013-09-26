@@ -65,6 +65,8 @@ SubstanceView.Prototype = function() {
       this.$('.toggle-view.about').addClass('active')
     } else if (hash.match(/submit/)) {
       this.$('.toggle-view.submit').addClass('active');
+    } else if (hash.match(/blog/)) {
+      this.$('.toggle-view.blog').addClass('active');
     } else {
       this.$('.toggle-view.explore').addClass('active');
     }

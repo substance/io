@@ -112,6 +112,7 @@ app.get('/:collection/:doc/content.json', function(req, res) {
 
 
 
+
 // Dynamically generate library based on `docs` directory structure.
 // -----------
 
@@ -131,32 +132,40 @@ app.get('/library.json', function(req, res) {
     var cStat = fs.statSync(__dirname + "/docs/"+ c);
     if (cStat.isFile()) return; // only consider directories
 
+    var meta = JSON.parse(fs.readFileSync(__dirname + "/docs/"+c+"/index.json", "utf8"));
+    console.log('COLLECTION', meta);
+
+
     library.nodes[c] = {
       "id": c,
-      "name": c,
+      "name": meta.name,
+      "descr": meta.descr,
       "type": "collection",
       "records": []
     };
 
-    library.nodes.library.collections.push(c);
+    if (meta.published) {
+      library.nodes.library.collections.push(c);  
+    }
+    
 
     var documents = fs.readdirSync(__dirname + "/docs/"+c);
-
     _.each(documents, function(d) {
-      if (d === ".DS_Store") return;
+      if (d === ".DS_Store" || d === "index.json") return;
 
       // TODO: Read index.json for meta information
       var meta = JSON.parse(fs.readFileSync(__dirname + "/docs/"+c+"/"+d+"/index.json", "utf8"));
-      console.log('META', meta);
 
       library.nodes[d] = {
         "id": d,
         "url": c+"/"+d+"/content.json",
         "authors": _.pluck(meta.authors, 'name'),
-        "title": "XX"+ meta.title
+        "title": meta.title
       };
 
-      library.nodes[c].records.push(d);
+      if (meta.published) {
+        library.nodes[c].records.push(d);  
+      }
     });
   });
 
