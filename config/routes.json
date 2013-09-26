@@ -1,0 +1,60 @@
+// The Lens Router
+// --------
+
+[
+  {
+    "route": ":collection/:document/:context/:node/:resource/:fullscreen",
+    "name": "document-resource",
+    "command": "openReader"
+  },
+  {
+    "route": ":collection/:document/:context/:node/:resource",
+    "name": "document-resource",
+    "command": "openReader"
+  },
+  {
+    "route": ":collection/:document/:context/:node/:resource",
+    "name": "document-resource",
+    "command": "openReader"
+  },
+  {
+    "route": ":collection/:document/:context/:node",
+    "name": "document-node", 
+    "command": "openReader"
+  },
+  {
+    "route": ":collection/:document/:context",
+    "name": "document-context",
+    "command": "openReader"
+  },
+  {
+    "route": ":collection/:document", 
+    "name": "document",
+    "command": "openReader"
+  },
+  {
+    "route": ":collection",
+    "name": "collection",
+    "command": "openCollection"
+  },
+  {
+    "route": "collections/:collection",
+    "name": "collection",
+    "command": "openCollection"
+  },
+  {
+    "route": "about",
+    "name": "about",
+    "command": "openAbout"
+  },
+  {
+    "route": "submit",
+    "name": "submit",
+    "command": "openSubmission"
+  },
+  {
+    "route": "",
+    "name": "library",
+    "command": "openLibrary"
+  }
+]

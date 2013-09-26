@@ -1,0 +1,11 @@
+{
+  "title": "Great news",
+  "authors": [
+    {
+      "name": "Michael Aufreiter",
+      "email": "ma@zive.at",
+      "company": "Quasipartikel",
+      "image": "michael.png"
+    }
+  ]
+}
