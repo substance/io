@@ -25,7 +25,7 @@ Clone the io repo.
 
 Run the update command, which pulls in all the sub-modules and dependencies.
 
-    $ cd lens
+    $ cd io
     $ substance --update
 
 Finally start the server and point your browser to `http://localhost:5000`.
