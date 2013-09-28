@@ -127,7 +127,7 @@
     "styles/substance.css":  "styles/substance.css",
     "styles/toc.css": "node_modules/substance-toc/toc.css",
     "styles/surface.css": "node_modules/substance-surface/styles/surface.css",
-    "styles/lens-article.css": "node_modules/lens-article/article.css",
+    "styles/lens-reader.css": "node_modules/lens-reader/reader.css",
     "styles/library.css": "node_modules/substance-library/library.css",
     "styles/testcenter.css": "node_modules/substance-test/testcenter.css",
     "styles/nodes/cover.css": "node_modules/substance-article/nodes/cover/cover.css",
