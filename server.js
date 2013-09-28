@@ -28,7 +28,7 @@ var commonJSServer = new CommonJSServer(__dirname);
 
 commonJSServer.boot({alias: "substance", source: "./src/substance.js"});
 
-var port = process.env.PORT || 4002;
+var port = process.env.PORT || 5000;
 app.use(express.cookieParser());
 app.use(express.bodyParser());
 app.use(express.methodOverride());
@@ -101,6 +101,10 @@ app.get('/:collection/:doc/content.json', function(req, res) {
       output.nodes.document.guid = docId;
 
       if (err) return res.send(500, err);
+
+      console.log('writing file to "/docs/'+collection+'/'+docId+'/content.json"');
+      fs.writeFileSync(__dirname + "/docs/"+collection+"/"+docId+"/content.json", JSON.stringify(output, null, '  '));
+
       res.send(output);
     });
   } catch (err) {
@@ -135,11 +139,10 @@ app.get('/library.json', function(req, res) {
     var meta = JSON.parse(fs.readFileSync(__dirname + "/docs/"+c+"/index.json", "utf8"));
     console.log('COLLECTION', meta);
 
-
     library.nodes[c] = {
       "id": c,
       "name": meta.name,
-      "descr": meta.descr,
+      "description": meta.description,
       "type": "collection",
       "records": []
     };
@@ -147,7 +150,6 @@ app.get('/library.json', function(req, res) {
     if (meta.published) {
       library.nodes.library.collections.push(c);  
     }
-    
 
     var documents = fs.readdirSync(__dirname + "/docs/"+c);
     _.each(documents, function(d) {
@@ -158,7 +160,7 @@ app.get('/library.json', function(req, res) {
 
       library.nodes[d] = {
         "id": d,
-        "url": c+"/"+d+"/content.json",
+        "url": meta.url ? meta.url : c+"/"+d+"/content.json",
         "authors": _.pluck(meta.authors, 'name'),
         "title": meta.title
       };

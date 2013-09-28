@@ -31,14 +31,14 @@
       "branch": "0.1.x"
     },
     {
-      "repository": "https://github.com/elifesciences/lens-article.git",
-      "folder": "node_modules/lens-article",
-      "branch": "0.1.x"
-    },
-    {
       "repository": "https://github.com/substance/article.git",
       "folder": "node_modules/substance-article",
       "branch": "extended_nodeset"
+    },
+    {
+      "repository": "https://github.com/elifesciences/lens-article.git",
+      "folder": "node_modules/lens-article",
+      "branch": "0.1.x"
     },
     {
       "repository": "https://github.com/substance/nodes.git",
@@ -96,19 +96,14 @@
       "branch": "0.3.x"
     },
     {
-      "repository": "https://github.com/substance/test.git",
-      "folder": "node_modules/substance-test",
-      "branch": "0.2.x"
-    },
-    {
       "repository": "https://github.com/substance/util.git",
       "folder": "node_modules/substance-util",
       "branch": "0.2.x"
     },
     {
-      "repository": "https://github.com/elifesciences/lens-sandbox.git",
+      "repository": "https://github.com/substance/io.git",
       "folder": ".",
-      "branch": "0.2.x"
+      "branch": "master"
     }
   ],
   "node_modules": {
@@ -125,22 +120,35 @@
   },
   "styles": {
     "styles/substance.css":  "styles/substance.css",
-    "styles/toc.css": "node_modules/substance-toc/toc.css",
     "styles/surface.css": "node_modules/substance-surface/styles/surface.css",
-    "styles/lens-reader.css": "node_modules/lens-reader/reader.css",
-    "styles/library.css": "node_modules/substance-library/library.css",
-    "styles/testcenter.css": "node_modules/substance-test/testcenter.css",
-    "styles/nodes/cover.css": "node_modules/substance-article/nodes/cover/cover.css",
-    "styles/nodes/node.css": "node_modules/substance-article/nodes/node/node.css",
+
     "styles/nodes/text.css": "node_modules/substance-article/nodes/text/text.css",
     "styles/nodes/paragraph.css": "node_modules/substance-article/nodes/paragraph/paragraph.css",
     "styles/nodes/heading.css": "node_modules/substance-article/nodes/heading/heading.css",
     "styles/nodes/list.css": "node_modules/substance-article/nodes/list/list.css",
+    "styles/nodes/image.css": "node_modules/substance-article/nodes/image/image.css",
     "styles/nodes/formula.css": "node_modules/substance-article/nodes/formula/formula.css",
     "styles/nodes/codeblock.css": "node_modules/substance-article/nodes/codeblock/codeblock.css",
-    "styles/nodes/figure.css": "node_modules/substance-article/nodes/figure/figure.css",
-    "styles/nodes/image.css": "node_modules/substance-article/nodes/image/image.css",
+
     "styles/nodes/table.css": "node_modules/substance-article/nodes/table/table.css",
+    "styles/nodes/figure.css": "node_modules/substance-article/nodes/figure/figure.css",
+    "styles/nodes/citation.css": "node_modules/substance-article/nodes/citation/citation.css",
+    "styles/nodes/cover.css": "node_modules/substance-article/nodes/cover/cover.css",
+
+    "styles/nodes/lens-cover.css": "node_modules/lens-article/nodes/cover/cover.css",
+    "styles/nodes/lens-supplement.css": "node_modules/lens-article/nodes/supplement/supplement.css",
+    "styles/nodes/lens-box.css": "node_modules/lens-article/nodes/box/box.css",
+    "styles/nodes/lens-citation.css": "node_modules/lens-article/nodes/citation/citation.css",
+    "styles/nodes/lens-figure.css": "node_modules/lens-article/nodes/figure/figure.css",
+    "styles/nodes/lens-table.css": "node_modules/lens-article/nodes/table/table.css",
+    "styles/nodes/lens-video.css": "node_modules/lens-article/nodes/video/video.css",
+    "styles/nodes/lens-caption.css": "node_modules/lens-article/nodes/caption/caption.css",
+    "styles/nodes/lens-person.css": "node_modules/lens-article/nodes/person/person.css",
+    "styles/nodes/lens-publication_info.css": "node_modules/lens-article/nodes/publication_info/publication_info.css",
+
+    "styles/library.css": "node_modules/substance-library/library.css",
+    "styles/toc.css": "node_modules/substance-toc/toc.css",
+    "styles/reader.css": "node_modules/lens-reader/reader.css",
     "styles/lens-outline.css": "node_modules/lens-outline/outline.css"
   },
   "assets": {

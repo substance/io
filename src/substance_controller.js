@@ -4,11 +4,9 @@ var _ = require("underscore");
 var util = require("substance-util");
 var Controller = require("substance-application").Controller;
 var SubstanceView = require("./substance_view");
-var Test = require("substance-test");
 var Library = require("substance-library");
 var LibraryController = Library.Controller;
-var CollectionController = Library.Collection.Controller; // require("./collection_controller");
-var SubmissionController = require("./submission_controller");
+var CollectionController = Library.Collection.Controller;
 var LensArticle = require("lens-article");
 var Article = require("substance-article");
 var ReaderController = require("lens-reader").Controller;
@@ -126,13 +124,13 @@ SubstanceController.Prototype = function() {
     var record = this.__library.get(documentId);
     var match = _LOCALSTORE_MATCHER.exec(record.url);
 
-    if (match) {
-      var docId = match[1];
+    // if (match) {
+    //   var docId = match[1];
 
-      var docData = JSON.parse(localStorage.getItem("localdoc"));
-      var doc = LensArticle.fromSnapshot(docData, {});
-      _onDocumentLoad(null, doc);
-    } else {
+    //   var docData = JSON.parse(localStorage.getItem("localdoc"));
+    //   var doc = LensArticle.fromSnapshot(docData, {});
+    //   _onDocumentLoad(null, doc);
+    // } else {
       $.get(record.url)
       .done(function(data) {
           var doc, err;
@@ -155,7 +153,7 @@ SubstanceController.Prototype = function() {
             if (data.schema && data.schema[0] === "lens-article") {
               doc = LensArticle.fromSnapshot(data);
             } else {
-              doc = Article.fromSnapshot(data);
+            doc = Article.fromSnapshot(data);
             }
             
           }
@@ -164,7 +162,7 @@ SubstanceController.Prototype = function() {
       .fail(function(err) {
         console.error(err);
       });
-    }
+    // }
   };
 
   this.openAbout = function() {
@@ -187,9 +185,9 @@ SubstanceController.Prototype = function() {
       document: documentId,
     };
 
-    if (collectionId === "lens" && documentId === "lens_article") {
-      return this.openLensArticle(state);
-    }
+    // if (collectionId === "lens" && documentId === "lens_article") {
+    //   return this.openLensArticle(state);
+    // }
 
     // Ensure the library is loaded
     this.loadLibrary(this.config.library_url, _open.bind(this, state, documentId));
@@ -242,12 +240,13 @@ SubstanceController.Prototype = function() {
 
 
   this.openSubmission = function() {
-    var state = {
-      context: 'submission'
-    };
+    console.log('NOT YET IMPLEMENTED');
+    // var state = {
+    //   context: 'submission'
+    // };
 
-    this.submission = new SubmissionController(state);
-    this.modifyState(state);
+    // this.submission = new SubmissionController(state);
+    // this.modifyState(state);
   };
 
 
