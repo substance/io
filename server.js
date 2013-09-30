@@ -114,8 +114,8 @@ app.get('/:collection/:doc/content.json', function(req, res) {
 
       if (err) return res.send(500, err);
 
-      console.log('writing file to "/docs/'+collection+'/'+docId+'/content.json"');
-      fs.writeFileSync(__dirname + "/docs/"+collection+"/"+docId+"/content.json", JSON.stringify(output, null, '  '));
+      // console.log('writing file to "/docs/'+collection+'/'+docId+'/content.json"');
+      // fs.writeFileSync(__dirname + "/docs/"+collection+"/"+docId+"/content.json", JSON.stringify(output, null, '  '));
 
       res.send(output);
     });

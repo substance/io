@@ -1,32 +1,132 @@
-This documentation is a work-in-progress. However, it reflects the latest state of Lens development and provides documentation for the new [0.2.x](https://github.com/elifesciences/lens/tree/0.2.x) series of Lens. You can contribute to this manual by making changes to the source [markdown file](https://github.com/elifesciences/lens-manual/blob/master/manual.md).
+*This documentation is a work-in-progress. However, it reflects the latest state of Substance development and provides information about most modules. You can contribute to this manual by making changes to the source [markdown file](https://github.com/substance/io/blob/master/docs/substance/manual/content.md).*
 
 # Introduction
 
-[eLife Lens](http://elifesciences.org/lens) provides a novel way of looking at content on the web. It is designed to make life easier for researchers, reviewers, authors and readers. For example, have you tried to look at a figure in an online article, while at the same time trying to see what the author says about the figure, jumping all around the article, losing track of what you were looking for in the first place? The reason for this is that most online research articles are published in a fixed digital version of the original paper. With eLife Lens, we take full advantage of the Internet’s flexibility.
+With Substance, we would like to contribute an extensive content creation and annotation framework built on web infrastructure. It is designed to be customized and integrated into existing workflows.
 
-## The Big Picture
+Since 2010, the Substance platform has managed to solve many of the core problems associated with web-based editing tools.
 
-Lens has a pretty simple architecture. It is a stand-alone web component that 
-can be embedded into any web page. Lens can display any NLM XML document and alternatively the Lens-native JSON representation. What's important to note is that Lens doesn't dictate a specific architecture for content hosting. Anyone (even authors) can host their own documents and customized Lens instances.
+Its features include:
 
-## The Lens Article Format
+- A JSON-based document model, that can be customized (Substance.Document)
+- Support for incremental changes (Substance.Operator)
+- Versioning (Substance.Chronicle)
+- A building block for displaying and editing documents (Substance.Surface)
+- A plugin system for customized content types (Substance.Nodes)
 
-The Lens Article Format is an implementation of the [Substance Document Model](http://github.com/substance/document) dedicated to scientific content. It features basic content types such as paragraphs, headings, as well as figure types such as images, tables and videos complete with captions and cross-references.
 
-The document definitions can easily be extended. You can either create your own flavour or contribute to the Lens Article Format directly. We have auto-generated documentation for the latest [Lens Article spec](#lens/lens_article).
 
-Do we really need another spec for scientific documents?  
+# Modules
 
-We believe so for the following reasons:
+Modules can be used independenly. You can install them using NPM, or use the Substance Screwdriver.
 
-- XML-based formats such as NLM are hard to consume by web clients.
-- Strict separation of content and style is important. Existing formats target print, and thus contain style information which makes them hard to process by computer programs.
-- The greatest advantage of Lens Articles is that any of them can be viewed in Lens, a modern web-based interface for consuming science content.
+    npm install <module-name>
+
+In your Javascript files, you can simply require your modules.
+
+    var Data = require('substance-data');
+
+
+## Substance.Data
+
+### Design Goals
+
+With Substance.Data you can model your domain data using a simple graph-based object model that can be serialized to JSON. It's easy to manipulate and query data on the client (browser) or on the server (Node.js) by using exactly the same API.
+
+### Usage
+
+First, start define a schema.
+
+    var schema = {
+      "person": {
+        "type": "person",
+        "name": "Person",
+        "properties": {
+          "name": "string",
+          "origin": "location"
+        }
+      },
+      "location": {
+        "type": "location",
+        "name": "Location",
+        "properties": {
+          "name": "string",
+          "citizens": ["array", "person"]
+        }
+      }
+    };
+
+Create a new `Data.Graph`.
+
+    var graph = new Data.Graph(schema);
+    
+
+Add some objects.
+
+    graph.create({
+      id: "bart",
+      type: "person",
+      name: "Bart Simpson"
+    });
+
+    graph.set({
+      id: "springfield",
+      name: "Springfield",
+      type: "location",
+      citizens: ["bart"]
+    });
+
+Set properties.
+
+    graph.set(["bart", "origin"], "springfield");
+
+
+Querying is easy too. With `get` you can either look up a node by id or specify a path that is used to traverse the graph.
+
+    // Return a node
+    graph.get('bart');
+    // => {
+      id: "bart",
+      type: "person",
+      name: "Bart Simpson",
+      "location": "springfield"
+    }
+    
+    // Return a property
+    graph.get(["springfield", "citizens"]);
+    // => ["springfield"]
+    
+You can even do smart querying and have the correct objects returned instead of ids.
+
+    // Return a property
+    graph.query(["springfield", "citizens"]);
+    // => [{id: "springfield", type: "location", citizens: ["bart"]}]
+
+To get an overview of the full API please have a look at our commented [testsuite](https://github.com/substance/data/tree/master/tests).
+
+
+
+## Substance.Document
+
+**Substance Document** is an open standard for manipulating structured digital documents. It helps with the creation and transformation of digital documents. It ensures consistency, separates content from presentation and provides an easy to use API. It depicts the heart of the Substance platform and serves as an interface for custom document models.
+
+A Substance Document can range from loosly structured content involving headings and text, such as reports or articles to more complex things that you wouldn’t consider a traditional document anymore. The format is designed to be extensible, so you can create your own flavors of documents. We put a lot of thought into the design of this module. It is the result of three years of research and development.
+
+
+### Design Goals
+
+- A document consists of a sequence of content nodes of different types (e.g. heading, text, image)
+- A document is manipulated through atomic operations
+- The history is tracked, so users reconstruct previous document states at any time
+- Support for incremental text updates, using a protocol similar to Google Wave
+- Support for text annotations that are not part of the content, but stored as an overlay
+- Support for comments to have dicussions that can stick on content elements or annotations.
+
 
 
 ### Nodes
 
-Lens articles are data-centric representations of digital content. Each content element lives as a node in a flat address space, identified by a unique id. Think of it as a database of independent content fragments.
+Substance documents are data-centric representations of digital content. Each content element lives as a node in a flat address space, identified by a unique id. Think of it as a database of independent content fragments.
 
 The following graphic shows a sample document containing a heading (`h1`), paragraph (`p1`), and formula (`f1`). It also has an image (`i1`) and a table (`t1`) as well as two citations (`c1` and `c2`).
 
@@ -39,29 +139,118 @@ Now these building blocks of a document are organized using views. The main body
 
 ![](http://f.cl.ly/items/0J3m3D3Z2u3E292A1j3T/lens-document-views.png)
 
-## The Lens Converter
 
-Lens can natively read the [JATS](http://jats.nlm.nih.gov/) (formerly NLM)  format, thanks to its built-in [converter](http://github.com/elifesciences/lens-converter). 
+## Substance.Article
 
-![](http://f.cl.ly/items/1S1p1L3s2d0a0T372I0v/Screen%20Shot%202013-09-12%20at%2012.56.21%20AM.png)
-
-Conversion is done on the client side using the browser-native [DOM Parser](http://www.w3.org/TR/2003/WD-DOM-Level-3-LS-20030619/load-save.html#LS-DOMParser). Using it is simle:
-
-    var importer = new LensImporter();
-    var doc = importer.import(xmlData);
+The Substance.Article is our reference implementation of the Substance Document model. It features basic content types such as paragraphs, headings, images and code blocks. Use this as a starting point for rolling your own Substance based document-format. We've created a different flavor for scientific content, the [Lens.Article](http://lens.substance.io/#lens/lens_article).
 
 
-The converter can handle any NLM-compatible file. Some portions are publisher-specific, like resolving the url's for figures and videos. This is done in configurations. We have implemented configurations for [eLife](https://github.com/elifesciences/lens-converter/blob/0.1.x/src/configurations/elife.js), [Landes Bioscience](https://github.com/elifesciences/lens-converter/blob/0.1.x/src/configurations/landes.js) and [PLOS](https://github.com/elifesciences/lens-converter/blob/0.1.x/src/configurations/plos.js).
+### Usage
+
+This section is intended to be a step to step guide on how to use the module to programmatically create and transform digital documents of any kind.
+
+Start tracking a new document.
+
+    var doc = new Substance.Article({ id: "my_doc" });
+
+Add a first heading to the document.
+
+    doc.create({
+      "id": "h1",
+      "type": "heading",
+      "content": "Heading 1"
+    });
+
+Now let's add another node, this time a text node.
+
+This operation is pretty similar to the previous one, except this time we specify `text` as the content type.
+
+    doc.create({
+      "id": "t1",
+      "type": "text",
+      "content": "Text 1"
+    });
+
+Nodes can be shown in different views. 
+  
+    var opC = [
+      "position", "content", {"nodes": ["h1", "t1"], "target": 0}
+    ];
+
+    doc.show("content", ["h1", "t1"], 0);
+
+Update an existing node
+
+There's a special API for incrementally updating existing nodes. This works by specifying a delta operation describing only what's changed in the text.
+
+  
+    doc.update(["h1", "content"], [4, "ING", -3]);
+    doc.get('h1').content; // => "HeadING 1"
+
+Inspect the document state
+
+Now after executing a bunch of operations, it is a good time to inspect the current state of the document.
+
+    doc.toJSON();
+    
+This is how the JSON serialization looks like:
+
+    {
+      "id": "my_document",
+      "schema": ["substance-article", "0.1.0"],
+      "nodes": {
+        "document": {
+          "title": "",
+          "views": ["content"]
+        },
+        "h1": {
+          "content": "HeadING 1",
+          "id": "h1",
+          "type": "heading"
+        },
+        "t1": {
+          "content": "Hey there.",
+          "id": "t1",
+          "type": "text"
+        },
+        "content": {
+          "nodes": ["h1", "t1"]
+        }
+      }
+    }
+
+As you can see there are two nodes registered, which can be directly accessed by their `id`. In order to reflect the order of our nodes we keep a view node `content` that has a `nodes` property reflecting the node order in the document.
+
+
+### Annotations
+
+So far, we have a bare-metal digital document, containing two different types of content nodes. Now we'd also like to store additional contextual information, relevant to a particular portion of text within the document.
+
+Unlike in other systems with Substance annotations are not part of the content itself. They're completely separated from the text. Most text editors offer the ability to emphasize portions of text using markup. E.g. in HTML it looks like this.
+
+    <em>Emphasized term</em> in a text body.
+
+In Substance however, we keep annotations external and remember the position of the first character, as well as an offset (how many characters are effected). An annotation emphasizing the "Hey" in "Hey there." looks like so:
+
+
+Here's how you create an annotation.
+    
+    doc.create({
+      "id": "a1",
+      "type": "emphasis",
+      "path": ["t1", "content"],
+      "range": {start: [0,1], end: [0, 5]}
+    });
 
 
 # Installation
 
-It's fairly easy to install and run the latest Lens development version locally.
+It's fairly easy to install and run the latest Substance development version locally.
 
 ## Prerequisites
 
-- Node.js >=0.8.x
-- [Pandoc](http://johnmacfarlane.net/pandoc/installing.html) >= 1.10.x (for on-the-fly generation of the Lens manual from Markdown)
+- Node.js >=0.10.x
+- [Pandoc](http://johnmacfarlane.net/pandoc/installing.html) >= 1.12.x (for on-the-fly generation of documents using Markdown as an input)
 
 Node.js is just used as a development environment. You'll soon be able to create self-contained packages of individual modules or the main app itself.
 
@@ -73,24 +262,22 @@ First install the Substance Screwdriver command line utility. It's just a little
     $ cd screwdriver
     $ sudo python setup.py install
 
-Clone the Lens Mothership
+Clone the Substance Mothership
 
-    $ git clone https://github.com/elifesciences/lens.git
+    $ git clone https://github.com/substance/substance.git
   
 Run the update command, which pulls in all the sub-modules and dependencies
 
-    $ cd lens
+    $ cd substance
     $ substance --update
   
-Finally start the server
+Finally start the server and navigate to `http://localhost:3000`.
 
     $ substance
-
-You can have a look at the example document, by pointing your browser to `http://localhost:4000/#lens/lorem_ipsum`, view the autogenerated Lens.Article documentation here `http://localhost:4000/#lens/lens_article` or the manual `http://localhost:4000/#lens/manual`.
    
 ## Keep your local version in sync
 
-You may want to pull in updates every now and then, which is simple. In the Lens project root dir do:
+You may want to pull in updates every now and then, which is simple. In the Substance project root dir do:
 
     $ substance --update
    
@@ -98,22 +285,17 @@ And start the dev environment again.
 
     $ substance
 
-## Configuration
-
-By default your local Lens installations serves a bunch of example documents plus Lens related documents. However you can easily configure Lens so it fetches content from a different source by adapting `config/config.json` to your needs.
-
-
 # Contributing
 
 I'm assuming here that you have push access to the repositories, because as a start I'd like to get the Lens core dev team up and running. I'll provide documentation on how to work with a forked version of a module and submit a pull request soon.
 
 
-Say you've made changes to the Lens.Article module. In order to commit them you simply have to navigate to `node_modules/lens-article` and do:
+Say you've made changes to the Substance.Article module. In order to commit them you simply have to navigate to `node_modules/substance-article` and do:
 
     $ git add <YOUR STUFF>
     $ git commit -m "Fixed X"
     $ git push
-   
+
 Alternatively, if you are working on breaking changes you can switch to a different branch, and submit a pull request using the Github interface. Here's how:
 
     $ git checkout -b my_feature_branch
@@ -122,172 +304,3 @@ Alternatively, if you are working on breaking changes you can switch to a differ
     $ git push
 
 Then go to [Github](http://github.com) and submit a pull request.
-
-
-Another hint: To pull in upstream changes from master for the entire project do this:
-
-    $ substance --git -- pull origin master:<feature_branch_name>
-
-
-## Adjusting styles
-
-Most customization can be done using CSS without interfering with the Lens codebase. You only override styles on the application level.
-
-Say you'd like to like to color citation cards red.
-
-    #my_app .article .citations .resource-header {
-      background: red;
-    }
-
-You've got the basic idea, now it's on you. It should be easy to pull in changes from the official Lens modules, without breaking your customized app.
-
-## Implement a new node type
-
-It doesn't take much to implement a new node type for Lens. However, make sure there isn't an existing node type that covers your needs. We would prefer that you adjust existing types and contribute back. If we'd all figure out a way to find common ground in our scientific language that would be awesome. :)
-
-Anyway, let's create a new node type now. For the purpose of demonstration only, let's create a `cat` node type that you can reference in the main body of the document. The first thing to do is create a new folder in the `lens-article` repository  `/nodes/cat`. The structure of that folder will be like this:
-
-    index.js
-    cat.js
-    cat_view.js
-    cat.css
-
-Let's start by specifying the type definitions in `cat.js`. 
-
-    var _ = require('underscore');
-    var Node = require('substance-document').Node;
-
-    var Cat = function(node, doc) {
-      Node.call(this, node, doc);
-    };
-
-    // Type definition
-    // -----------------
-    //
-
-    Cat.type = {
-      "id": "cat",
-      "parent": "figure",
-      "properties": {
-        "name": "string",
-        "speed": "string",
-        "abilities": ["array", "string"],
-      }
-    };
-
-    Cat.prototype = Node.prototype
-    Cat.prototype.constructor = Cat;
-
-
-    // Auto-generate property getters based on the type definition 
-    // --------
-
-    var getters = {};
-
-    _.each(Cat.type.properties, function(prop, key) {
-      getters[key] = {
-        get: function() {
-          return this.properties[key];
-        }
-      };
-    });
-
-
-    Object.defineProperties(Cat.prototype, _.extend(getters, {
-      caption: {
-        // Used for 
-        heading: function() {
-          return this.properties.
-        }
-      }
-    }));
-
-    module.exports = Cat;
-
-
-That was easy. Now we need to implement a view for the `Cat` model we just defined. Here is `cat_view.js`.
-
-    var NodeView = require("../node").View;
-
-    var CatView = function(node) {
-      NodeView.call(this, node);
-
-      this.$el.attr({id: node.id});
-      this.$el.addClass("content-node cat");
-    };
-
-    CatView.Prototype = function() {
-
-      this.render = function() {
-        NodeView.prototype.render.call(this);
-        var node = this.node;
-
-        var html = [
-          '<div class="name">'+this.cat+'</div>'
-          '<div class="speed">'+this.speed+'</div>'
-          '<div class="abilities">'+this.abilities.join(', ')+'</div>'
-        ].join('\n');
-
-        this.content.innerHTML = html;
-
-        return this;
-      }
-    };
-
-    // CatView inherits from NodeView
-    CatView.Prototype.prototype = NodeView.prototype;
-    CatView.prototype = new CatView.Prototype();
-
-    module.exports = CatView;
-
-Add some styles in `cat.css`:
-
-    .content-node.cat .name {
-      font-size: 20px;
-      color: green;
-    }
-
-By convention, there needs to be an `index.js` file in the repo.
-
-    module.exports = {
-      Model: require('./cat'),
-      View: require('./cat_view')
-    };
-
-Finally you have to register your new node type in `nodes/index.js`.
-
-    module.exports = {
-      ...
-      "cat": require("./cat"),
-      ...
-    };
-
-
-Now in your actual document, you can specify and reference `cat` resources. It looks like so:
-
-    {
-      id: "example_doc",
-      "nodes": {
-        ...
-        "oliver": {
-          "id": "oliver"
-          "type": "cat",
-          "name": "Oliver",
-          "abilities": ["jump high", "eat much", "bite", "hunt mice"],
-        },
-        "paragraph_1": {
-          "id": "paragraph_1",
-          "type": "paragraph",
-          "content": "Last sunday I had much fun with Oliver the cat."
-        },
-        "figure_reference_oliver": {
-          "id":"figure_reference_oliver",
-          "type":"figure_reference",
-          "path": ["paragraph_3", "content"],
-          "target": "oliver",
-          "range":[31,37]
-        },
-        ...
-      }
-    }
-    
