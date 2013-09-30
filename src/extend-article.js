@@ -1,5 +1,7 @@
 
 var _ = require("underscore");
+var Figure = require("substance-nodes/src/figure/figure");
+var Table = require("substance-nodes/src/table/table");
 
 var extendArticle = function(article, resources) {
 
@@ -17,7 +19,7 @@ var extendArticle = function(article, resources) {
   });
   article.nodes.document.views.push("figures");
   article.nodes.document.views.push("citations");
-  var Figure = require("substance-nodes/src/figure/figure");
+
   var nodes;
 
   var resourceMap = {};
@@ -34,16 +36,22 @@ var extendArticle = function(article, resources) {
   });
 
   // tables
-  // _.each(resources.tables, function(figData) {
-
-  // });
+  _.each(resources.tables, function(tableData) {
+    nodes = Table.create(tableData);
+    _.each(nodes, function(node) {
+      article.create(node);
+    });
+    var tableId = tableData.id;
+    article.show("figures", tableId);
+    resourceMap[tableId] = article.get(tableId);
+  });
 
   // citations
   // _.each(resources.tables, function(figData) {
 
   // });
 
-  // replace links which reference a resource with the specific reference nodes
+  // replace links which reference a resource
   var linksIndex = article.addIndex( "links", {
     types: ["link"]
   });
@@ -57,21 +65,35 @@ var extendArticle = function(article, resources) {
   };
 
   _.each(links, function(link) {
-    console.log("...converting reference link", link);
-    var url = link.url;
-    var resource = resourceMap[url];
+    var target = link.url;
+    var resource = resourceMap[target];
+
+    var refType;
     if (resource) {
-      var refType = resource.type+"_reference";
-      var referenceNode = {
-        id: nextId(refType),
-        type: refType,
-        path: link.path,
-        range: link.range,
-        target: url
-      };
-      article.create(referenceNode);
-      article.delete(link.id);
+      switch(resource.type) {
+      case "figure":
+      case "table":
+        refType = "figure_reference";
+        break;
+      }
+    } else if (article.get(target)) {
+      refType = "cross_reference";
     }
+
+    if (!refType) {
+      // not an internal ref
+      return;
+    }
+
+    var referenceNode = {
+      id: nextId(refType),
+      type: refType,
+      path: link.path,
+      range: link.range,
+      target: target
+    };
+    article.create(referenceNode);
+    article.delete(link.id);
   });
 
   return article;
