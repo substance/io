@@ -18,7 +18,7 @@ Its features include:
 
 # Modules
 
-Modules can be used independenly. You can install them using NPM, or use the Substance Screwdriver.
+Substance modules can be used independenly. You can install them using NPM, or use the Substance Screwdriver.
 
     npm install <module-name>
 
