@@ -6,6 +6,6 @@
 4. Commit your changes
 5. Submit a Pull Request on Github
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum vel dui sed lobortis. Praesent vitae commodo felis. Maecenas faucibus pellentesque sapien nec ullamcorper. In mattis risus vitae nulla fermentum elementum. Nulla at sagittis urna, vel tincidunt felis. Nunc a semper tortor. Vivamus faucibus gravida eros sed luctus. Sed vulputate mauris nec augue dignissim varius.
+Lorem ipsum dolor sit amet ([Figure 1](figure_1)), consectetur adipiscing elit. Donec bibendum vel dui sed lobortis. Praesent vitae commodo felis. Maecenas faucibus pellentesque sapien nec ullamcorper. In mattis risus vitae nulla fermentum elementum. Nulla at sagittis urna, vel tincidunt felis. Nunc a semper tortor. Vivamus faucibus gravida eros sed luctus ([Table 1](table_1)). Sed vulputate mauris nec augue dignissim varius.
 
 Fusce mattis ultricies mauris et rhoncus. Vestibulum auctor arcu turpis, eu sagittis dolor dapibus non. Mauris hendrerit eros eget arcu accumsan imperdiet. Aenean orci mauris, pulvinar non arcu vel, posuere vestibulum purus. Praesent ut ligula neque. Nullam ac leo augue. Fusce rutrum ligula est, egestas adipiscing libero faucibus in.
