@@ -210,12 +210,6 @@
       "source_id": null,
       "content": "The following graphic shows a sample document containing a heading (h1), paragraph (p1), and formula (f1). It also has an image (i1) and a table (t1) as well as two citations (c1 and c2)."
     },
-    "image_1": {
-      "type": "image",
-      "id": "image_1",
-      "source_id": "",
-      "url": "http://f.cl.ly/items/060x2w1f2r1A3y3D3z2w/lens-document-nodes.png"
-    },
     "text_13": {
       "type": "text",
       "id": "text_13",
@@ -225,7 +219,7 @@
     "figure_1": {
       "type": "figure",
       "id": "figure_1",
-      "image": "image_1",
+      "url": "http://f.cl.ly/items/060x2w1f2r1A3y3D3z2w/lens-document-nodes.png",
       "caption": "text_13"
     },
     "header_5": {
@@ -241,12 +235,6 @@
       "source_id": null,
       "content": "Now these building blocks of a document are organized using views. The main body of the document is referenced in the content view. Figures (like images and tables) are kept in the figures view while citations live in citations respectively."
     },
-    "image_2": {
-      "type": "image",
-      "id": "image_2",
-      "source_id": "",
-      "url": "http://f.cl.ly/items/0J3m3D3Z2u3E292A1j3T/lens-document-views.png"
-    },
     "text_15": {
       "type": "text",
       "id": "text_15",
@@ -256,7 +244,7 @@
     "figure_2": {
       "type": "figure",
       "id": "figure_2",
-      "image": "image_2",
+      "url": "http://f.cl.ly/items/0J3m3D3Z2u3E292A1j3T/lens-document-views.png",
       "caption": "text_15"
     },
     "header_6": {
@@ -272,12 +260,6 @@
       "source_id": null,
       "content": "Lens can natively read the JATS (formerly NLM) format, thanks to its built-in converter."
     },
-    "image_3": {
-      "type": "image",
-      "id": "image_3",
-      "source_id": "",
-      "url": "http://f.cl.ly/items/1S1p1L3s2d0a0T372I0v/Screen%20Shot%202013-09-12%20at%2012.56.21%20AM.png"
-    },
     "text_17": {
       "type": "text",
       "id": "text_17",
@@ -287,7 +269,7 @@
     "figure_3": {
       "type": "figure",
       "id": "figure_3",
-      "image": "image_3",
+      "url": "http://f.cl.ly/items/1S1p1L3s2d0a0T372I0v/Screen%20Shot%202013-09-12%20at%2012.56.21%20AM.png",
       "caption": "text_17"
     },
     "text_18": {
