@@ -18,7 +18,7 @@ Its features include:
 
 # Modules
 
-Modules can be used independenly. You can install them using NPM, or use the Substance Screwdriver.
+Substance modules can be used independenly. You can install them using NPM, or use the Substance Screwdriver.
 
     npm install <module-name>
 
@@ -241,6 +241,122 @@ Here's how you create an annotation.
       "path": ["t1", "content"],
       "range": {start: [0,1], end: [0, 5]}
     });
+
+## Substance.Operator
+
+Substance.Operator provides Operational Transformations for strings, arrays and objects. Operations can be inverted and transformed.
+Particularly we use Operations extensively in Substance.Chronicle for versioning changes.
+
+### Usage
+
+Strings can be modified via incremental insertions and deletions.
+
+    var text = "Sun";
+    var op1 = Operator.TextOperation.Delete(2, "n");
+    var op2 = Operator.TextOperation.Insert(2, "bstance");
+    text = op2.apply(op1.apply(text));
+    console.log(text);
+    > Substance
+
+Arrays can be modified via insertions, deletions, and moves.
+
+    var arr = [1,3];
+    var op1 = Operator.ArrayOperation.Insert(1, 2);
+    var op2 = Operator.ArrayOperation.Move(0, 2);
+    var op3 = Operator.ArrayOperation.Delete(1, 3);
+    op3.apply(op2.apply(op1.apply(arr)));
+    console.log(arr)
+    > [2, 1]
+
+With ObjectOperations you can create, delete, set, and update object properties.
+
+Updates are done using Text-, Array-, or ObjectOperations.
+Properties are specified by a path which is an array of strings.
+
+    var obj = { bla: "blupp", foo: { bar: [] } };
+    var op1 = Operator.ObjectOperation.Create(["a"], "b");
+    var op2 = Operator.ObjectOperation.Delete(["bla"], "blupp");
+    var op3 = Operator.ObjectOperation.Set(["foo", "bar"], [1,3]);
+    var op4 = Operator.ObjectOperation.Update(["foo", "bar"], Operator.ArrayOperation.Insert(1, 2));
+    op4.apply(op3.apply(op2.apply(op1.apply(obj))));
+    console.log(obj);
+    > { a: "b", foo: { bar: [1, 2, 3] } }
+      
+ Compounds allow to pack several Operations of the same type into a single one.
+ 
+    var compound = Operator.ObjectOperation.Compound([op1, op2, op3, op4]);
+    compound.apply(obj);
+ 
+Find more examples in the [testsuite](https://github.com/substance/operator/tree/master/tests).
+
+## Substance.Chronicle
+
+Substance.Chronicle is a git-inspired versioning API based on [Operational Transformations](http://interior.substance.io/modules/operator.html). The actual content to be versioned or a persistence mechanism is not addressed in this module. Instead one would create an adapter which is implementing an OT interface.
+
+### Getting Started
+
+Consider a simple collaborative editing session of John and Jane.
+
+John starts writing a text (Commit `John - 1`).
+
+    Hsta la vista.
+
+Jane receives the update and instantly fixes John's typo (Commit `Jane`).
+
+    Hasta la vista.
+    
+In the very same moment John continues writing (Commits `John - 2` and `John - 3`).
+
+    Hsta la vista, baby!
+
+This leads to a situation with concurrent changes which are merged into a common result (Commit `Merge`).
+
+    Hasta la vista, baby!
+
+Substance.Chronicle allows to view versions and resolve more complex version deviations via merging.
+
+### Getting Really Started
+
+Substance.Chronicle can be considered a low-level API. Some integration and glueing is necessary to get things moving.
+
+Installation is easy.
+
+  $ npm install substance-chronicle
+    
+In your Node.js script:
+
+  var Chronicle = require('substance-chronicle');
+
+Basically it is necessary to define some kind of `Change` type and an adapter that can deal with that:
+
+    function YourVersioningAdapter() {
+    
+      // applies the change to your data
+      this.apply = function(change) {};
+
+      // inverts a change
+          this.invert = function(change) {};
+
+      // transforms changes according to operational transformation
+          this.transform = function(a, b, options) {}
+
+      // resets your document
+      this.reset = function() {}
+  };
+
+The difficult part is to specify `Change` types that are invertible and transformable. Here, Substance.Operator comes in providing basic operations for text, arrays, and objects.
+
+Having your adapter you can begin chronicling using
+
+    var chronicle = Chronicle.create();
+    chronicle.manage(yourAdapter);
+    
+To get things recorded you need to tell the Chronicle to do so:
+
+    chronicle.record(someChange);
+
+For more sophisticated examples see the [testsuite](https://github.com/substance/chronicle/tree/master/tests).
+
 
 
 # Installation
