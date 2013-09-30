@@ -5,6 +5,8 @@ var CommonJSServer = require("substance-application/commonjs");
 var ConverterServer = require("substance-converter/src/server");
 var _ = require("underscore");
 
+var extendArticle = require("./src/extend-article");
+
 // Useful general purpose helpers
 // --------
 //
@@ -87,6 +89,7 @@ app.get("/scripts*",
 var converter = new ConverterServer(app);
 // converter.serve();
 
+
 app.get('/:collection/:doc/content.json', function(req, res) {
   var collection = req.params.collection;
   var docId = req.params.doc;
@@ -95,8 +98,17 @@ app.get('/:collection/:doc/content.json', function(req, res) {
     var filename = __dirname + "/docs/"+collection+"/"+docId+"/content.md";
     var inputData = fs.readFileSync(filename, 'utf8');
 
-    converter.convert(inputData, 'markdown', 'substance', function(err, output) {
-      output = output.toJSON();
+    var resourcesFile = __dirname + "/docs/"+collection+"/"+docId+"/resources.json";
+    var resources = null;
+    if (fs.existsSync(resourcesFile)) {
+      var resourcesData = fs.readFileSync(resourcesFile, 'utf8');
+      resources = JSON.parse(resourcesData);
+    };
+
+    converter.convert(inputData, 'markdown', 'substance', function(err, doc) {
+      doc = extendArticle(doc, resources);
+
+      var output = doc.toJSON();
       output.id = docId;
       output.nodes.document.guid = docId;
 
@@ -115,8 +127,6 @@ app.get('/:collection/:doc/content.json', function(req, res) {
 });
 
 
-
-
 // Dynamically generate library based on `docs` directory structure.
 // -----------
 
@@ -131,7 +141,7 @@ app.get('/library.json', function(req, res) {
   };
 
   var collections = fs.readdirSync(__dirname + "/docs");
-  
+
   _.each(collections, function(c) {
     var cStat = fs.statSync(__dirname + "/docs/"+ c);
     if (cStat.isFile()) return; // only consider directories
@@ -148,7 +158,7 @@ app.get('/library.json', function(req, res) {
     };
 
     if (meta.published) {
-      library.nodes.library.collections.push(c);  
+      library.nodes.library.collections.push(c);
     }
 
     var documents = fs.readdirSync(__dirname + "/docs/"+c);
@@ -166,7 +176,7 @@ app.get('/library.json', function(req, res) {
       };
 
       if (meta.published) {
-        library.nodes[c].records.push(d);  
+        library.nodes[c].records.push(d);
       }
     });
   });
