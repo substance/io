@@ -57,6 +57,15 @@ var extendArticle = function(article, resources) {
   });
   var links = linksIndex.get();
 
+  var anchorsIndex = article.addIndex( "headings", {
+    types: ["heading"]
+  });
+  var crossRefAnchors = {};
+  _.each(anchorsIndex.get(), function(n) {
+    crossRefAnchors[n.properties.source_id] = n;
+  });
+  console.log("##### ANCHORS", crossRefAnchors);
+
   var ids = {};
   var nextId = function(type) {
     ids[type] = ids[type] || 0;
@@ -76,7 +85,9 @@ var extendArticle = function(article, resources) {
         refType = "figure_reference";
         break;
       }
-    } else if (article.get(target)) {
+    } else if (crossRefAnchors[target]) {
+      var anchor = crossRefAnchors[target];
+      target = anchor.id;
       refType = "cross_reference";
     }
 
