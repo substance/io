@@ -28,7 +28,7 @@ General Layout
   /*margin: 0 auto;*/
   max-width: 1400px; /* 988px / 16px = 61.75em */
   height: 100%;
-  margin-left: 200px;
+  margin-left: 120px;
 }
 
 #container .browser-not-supported {
@@ -204,29 +204,32 @@ a.testsuite {
   left: 0px;
   top: 0px;
   bottom: 0px;
-  width: 200px;
+  width: 120px;
   /*background: #4A4A4A;*/
   padding: 20px;
   /*background: #fff;*/
 }
 
 #menu .site-title {
+  display: none;
   color: rgba(0,0,0,0.8);
   font-family: 'Avenir LT W01 85 Heavy', 'Montserrat', 'Source Sans Pro';
   font-size: 22px;
 }
 
 #menu .site-subtitle {
+  display: none;
   color: rgba(0,0,0,0.5);
   font-size: 14px;
 }
 
 #menu .views {
-  padding-top: 50px;
+  /*padding-top: 50px;*/
   /*text-align: right;*/
 }
 
 #menu .views a.toggle-view {
+
   border: none;
   display: block;
   color: rgba(0,0,0, 0.4);
@@ -284,6 +287,10 @@ a.testsuite {
 }
 
 #container .article .resources .info .content-node.active .resource-header {
+  background: #4A4A4A;
+}
+
+#container .lens-outline .node.cover {
   background: #4A4A4A;
 }
 

@@ -121,6 +121,7 @@
   "styles": {
     "styles/substance.css":  "styles/substance.css",
     "styles/surface.css": "node_modules/substance-surface/styles/surface.css",
+    "styles/lens-outline.css": "node_modules/lens-outline/outline.css",
 
     "styles/nodes/text.css": "node_modules/substance-article/nodes/text/text.css",
     "styles/nodes/paragraph.css": "node_modules/substance-article/nodes/paragraph/paragraph.css",
@@ -129,10 +130,10 @@
     "styles/nodes/image.css": "node_modules/substance-article/nodes/image/image.css",
     "styles/nodes/formula.css": "node_modules/substance-article/nodes/formula/formula.css",
     "styles/nodes/codeblock.css": "node_modules/substance-article/nodes/codeblock/codeblock.css",
+    "styles/nodes/collaborator.css": "node_modules/substance-article/nodes/collaborator/collaborator.css",
 
     "styles/nodes/table.css": "node_modules/substance-article/nodes/table/table.css",
     "styles/nodes/figure.css": "node_modules/substance-article/nodes/figure/figure.css",
-    "styles/nodes/citation.css": "node_modules/substance-article/nodes/citation/citation.css",
     "styles/nodes/cover.css": "node_modules/substance-article/nodes/cover/cover.css",
 
     "styles/nodes/lens-cover.css": "node_modules/lens-article/nodes/cover/cover.css",
@@ -148,8 +149,8 @@
 
     "styles/library.css": "node_modules/substance-library/library.css",
     "styles/toc.css": "node_modules/substance-toc/toc.css",
-    "styles/reader.css": "node_modules/lens-reader/reader.css",
-    "styles/lens-outline.css": "node_modules/lens-outline/outline.css"
+    "styles/reader.css": "node_modules/lens-reader/reader.css"
+    
   },
   "assets": {
     "lib/jquery-2.0.3.min.js": "lib/jquery-2.0.3.min.js",

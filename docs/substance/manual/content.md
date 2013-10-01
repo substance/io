@@ -342,7 +342,7 @@ Basically it is necessary to define some kind of `Change` type and an adapter th
 
       // resets your document
       this.reset = function() {}
-  };
+    };
 
 The difficult part is to specify `Change` types that are invertible and transformable. Here, Substance.Operator comes in providing basic operations for text, arrays, and objects.
 

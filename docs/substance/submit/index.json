@@ -8,6 +8,7 @@
       "name": "Michael Aufreiter",
       "email": "ma@zive.at",
       "organization": "Quasipartikel",
+      "contribution": "Did some styling.",
       "image": "https://2.gravatar.com/avatar/d5a959d7e57daa5433fcb9f8da40be4b?d=https%3A%2F%2Fidenticons.github.com%2F86c4ad52768c511046fea7b2d42b300c.png&s=420"
     },
     {
@@ -15,7 +16,8 @@
       "name": "Oliver Buchtala",
       "email": "ma@zive.at",
       "organization": "Quasipartikel",
-      "image": "oliver.png"
+      "contribution": "Did some coding.",
+      "image": "http://interior.substance.io/assets/images/team/oliver.png"
     }
   ]
 }
