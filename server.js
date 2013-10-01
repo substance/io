@@ -106,13 +106,16 @@ app.get('/:collection/:doc/content.json', function(req, res) {
     };
 
     converter.convert(inputData, 'markdown', 'substance', function(err, doc) {
+      if (err) {
+        console.error(err);
+        return res.send(500, err);
+      }
+
       extendArticle(doc, resources);
 
       var output = doc.toJSON();
       output.id = docId;
       output.nodes.document.guid = docId;
-
-      if (err) return res.send(500, err);
 
       // console.log('writing file to "/docs/'+collection+'/'+docId+'/content.json"');
       // fs.writeFileSync(__dirname + "/docs/"+collection+"/"+docId+"/content.json", JSON.stringify(output, null, '  '));
