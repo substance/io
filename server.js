@@ -106,7 +106,7 @@ app.get('/:collection/:doc/content.json', function(req, res) {
     };
 
     converter.convert(inputData, 'markdown', 'substance', function(err, doc) {
-      doc = extendArticle(doc, resources);
+      extendArticle(doc, resources);
 
       var output = doc.toJSON();
       output.id = docId;

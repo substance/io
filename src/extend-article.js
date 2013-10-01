@@ -3,27 +3,9 @@ var _ = require("underscore");
 var Figure = require("substance-nodes/src/figure/figure");
 var Table = require("substance-nodes/src/table/table");
 
-var extendArticle = function(article, resources) {
-
-  if (!resources) return article;
-
-  article.create({
-    id: "figures",
-    type: "view",
-    nodes: []
-  });
-  article.create({
-    id: "citations",
-    type: "view",
-    nodes: []
-  });
-  article.nodes.document.views.push("figures");
-  article.nodes.document.views.push("citations");
-
+function loadResources(article, resources) {
   var nodes;
-
   var resourceMap = {};
-
   // figures
   _.each(resources.figures, function(figData) {
     nodes = Figure.create(figData);
@@ -47,16 +29,19 @@ var extendArticle = function(article, resources) {
   });
 
   // citations
-  // _.each(resources.tables, function(figData) {
+  _.each(resources.citations, function(citationData) {
 
-  // });
+  });
 
-  // replace links which reference a resource
+  return resourceMap;
+}
+
+function replaceReferencedLinks(article, resourceMap) {
+  // replace links which reference a resource or a labeled heading
   var linksIndex = article.addIndex( "links", {
     types: ["link"]
   });
   var links = linksIndex.get();
-
   var anchorsIndex = article.addIndex( "headings", {
     types: ["heading"]
   });
@@ -64,7 +49,6 @@ var extendArticle = function(article, resources) {
   _.each(anchorsIndex.get(), function(n) {
     crossRefAnchors[n.properties.source_id] = n;
   });
-  console.log("##### ANCHORS", crossRefAnchors);
 
   var ids = {};
   var nextId = function(type) {
@@ -90,12 +74,10 @@ var extendArticle = function(article, resources) {
       target = anchor.id;
       refType = "cross_reference";
     }
-
     if (!refType) {
       // not an internal ref
       return;
     }
-
     var referenceNode = {
       id: nextId(refType),
       type: refType,
@@ -106,8 +88,31 @@ var extendArticle = function(article, resources) {
     article.create(referenceNode);
     article.delete(link.id);
   });
+}
 
-  return article;
+var extendArticle = function(article, resources) {
+  if (!resources) return;
+
+  // create views for figures/tables and citations
+  article.create({
+    id: "figures",
+    type: "view",
+    nodes: []
+  });
+  article.create({
+    id: "citations",
+    type: "view",
+    nodes: []
+  });
+  article.nodes.document.views.push("figures");
+  article.nodes.document.views.push("citations");
+
+  // create nodes for the given resources
+  var resourceMap = loadResources(article, resources);
+
+  // replace all links that reference a resource or a heading node (using source_id)
+  replaceReferencedLinks(article, resourceMap);
+
 };
 
 module.exports = extendArticle;
