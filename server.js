@@ -98,6 +98,14 @@ app.get('/:collection/:doc/content.json', function(req, res) {
     var filename = __dirname + "/docs/"+collection+"/"+docId+"/content.md";
     var inputData = fs.readFileSync(filename, 'utf8');
 
+    var metaFile = __dirname + "/docs/"+collection+"/"+docId+"/index.json";
+    var meta = null;
+
+    if (fs.existsSync(metaFile)) {
+      var metaData = fs.readFileSync(metaFile, 'utf8');
+      meta = JSON.parse(metaData);
+    }
+
     var resourcesFile = __dirname + "/docs/"+collection+"/"+docId+"/resources.json";
     var resources = null;
     if (fs.existsSync(resourcesFile)) {
@@ -111,7 +119,7 @@ app.get('/:collection/:doc/content.json', function(req, res) {
         return res.send(500, err);
       }
 
-      extendArticle(doc, resources);
+      extendArticle(doc, resources, meta);
 
       var output = doc.toJSON();
       output.id = docId;

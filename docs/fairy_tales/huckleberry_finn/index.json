@@ -1,8 +1,9 @@
 {
   "title": "Huckleberry Finn",
   "published": true,
-  "authors": [
+  "contributors": [
     {
+      "role": "author",
       "name": "Mark Twain"
     }
   ]

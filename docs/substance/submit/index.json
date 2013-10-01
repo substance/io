@@ -1,17 +1,20 @@
 {
   "title": "Submit a publication",
   "published": true,
-  "authors": [
+  "published_on": "2013-10-01",
+  "collaborators": [
     {
+      "role": "author",
       "name": "Michael Aufreiter",
       "email": "ma@zive.at",
-      "company": "Quasipartikel",
-      "image": "michael.png"
+      "organization": "Quasipartikel",
+      "image": "https://2.gravatar.com/avatar/d5a959d7e57daa5433fcb9f8da40be4b?d=https%3A%2F%2Fidenticons.github.com%2F86c4ad52768c511046fea7b2d42b300c.png&s=420"
     },
     {
+      "role": "author",
       "name": "Oliver Buchtala",
       "email": "ma@zive.at",
-      "company": "Quasipartikel",
+      "organization": "Quasipartikel",
       "image": "oliver.png"
     }
   ]

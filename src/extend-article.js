@@ -2,6 +2,7 @@
 var _ = require("underscore");
 var Figure = require("substance-nodes/src/figure/figure");
 var Table = require("substance-nodes/src/table/table");
+var Collaborator = require("substance-nodes/src/collaborator/collaborator");
 
 function loadResources(article, resources) {
   var nodes;
@@ -90,28 +91,67 @@ function replaceReferencedLinks(article, resourceMap) {
   });
 }
 
-var extendArticle = function(article, resources) {
-  if (!resources) return;
 
-  // create views for figures/tables and citations
-  article.create({
-    id: "figures",
-    type: "view",
-    nodes: []
+
+function loadMeta(article, meta) {
+  var nodes;
+
+  // Set document title
+  article.title = meta.title;
+
+  // var resourceMap = {};
+  // collaborators
+  var idcount = 0;
+  _.each(meta.collaborators, function(c) {
+    c.id = "collaborator_" + (++idcount);
+    c.type = "collaborator";
+
+    article.create(c);
+    article.show("info", c.id);
   });
-  article.create({
-    id: "citations",
-    type: "view",
-    nodes: []
-  });
-  article.nodes.document.views.push("figures");
-  article.nodes.document.views.push("citations");
 
-  // create nodes for the given resources
-  var resourceMap = loadResources(article, resources);
+  // return resourceMap;
+}
 
-  // replace all links that reference a resource or a heading node (using source_id)
-  replaceReferencedLinks(article, resourceMap);
+var extendArticle = function(article, resources, meta) {
+  // if (!resources) return;
+
+  if (resources) {
+    // create views for figures/tables and citations
+    article.create({
+      id: "figures",
+      type: "view",
+      nodes: []
+    });
+
+    article.create({
+      id: "info",
+      type: "view",
+      nodes: []
+    });
+
+    // article.create({
+    //   id: "citations",
+    //   type: "view",
+    //   nodes: []
+    // });
+
+    article.nodes.document.views.push("figures");
+    // article.nodes.document.views.push("citations");
+    article.nodes.document.views.push("info");
+
+    // create nodes for the given resources
+    var resourceMap = loadResources(article, resources);
+
+    // replace all links that reference a resource or a heading node (using source_id)
+    replaceReferencedLinks(article, resourceMap);
+  }
+
+  if (meta) {
+    // enhance article with meta information, such as collaborator, title, publish-date etc.
+    loadMeta(article, meta);
+  }
+
 
 };
 

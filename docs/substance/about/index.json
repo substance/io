@@ -1,17 +1,19 @@
 {
   "title": "About Substance",
   "published": true,
-  "authors": [
+  "collaborators": [
     {
+      "role": "author",
       "name": "Michael Aufreiter",
       "email": "ma@zive.at",
-      "company": "Quasipartikel",
+      "organization": "Quasipartikel",
       "image": "michael.png"
     },
     {
+      "role": "author",
       "name": "Oliver Buchtala",
       "email": "ma@zive.at",
-      "company": "Quasipartikel",
+      "organization": "Quasipartikel",
       "image": "oliver.png"
     }
   ]

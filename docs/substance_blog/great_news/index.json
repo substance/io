@@ -3,6 +3,7 @@
   "published": true,
   "authors": [
     {
+      "role": "author",
       "name": "Michael Aufreiter",
       "email": "ma@zive.at",
       "company": "Quasipartikel",
