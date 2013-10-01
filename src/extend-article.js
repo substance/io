@@ -2,7 +2,7 @@
 var _ = require("underscore");
 var Figure = require("substance-nodes/src/figure/figure");
 var Table = require("substance-nodes/src/table/table");
-var Collaborator = require("substance-nodes/src/collaborator/collaborator");
+var Index = require("substance-data").Graph.Index;
 
 function loadResources(article, resources) {
   var nodes;
@@ -27,11 +27,6 @@ function loadResources(article, resources) {
     var tableId = tableData.id;
     article.show("figures", tableId);
     resourceMap[tableId] = article.get(tableId);
-  });
-
-  // citations
-  _.each(resources.citations, function(citationData) {
-
   });
 
   return resourceMap;
@@ -91,11 +86,40 @@ function replaceReferencedLinks(article, resourceMap) {
   });
 }
 
+var addCoverNode = function(article) {
+  var coverNode = {
+    id: "cover",
+    type: "cover",
+    authors: []
+  };
 
+  // HACK: we link the authors in the cover node to the collaborator card
+  // via an artificial person_reference
+  // TODO: rethink
+  var collaboratorsIndex = new Index(article, {types: ["collaborator"]});
+  var collaborators = collaboratorsIndex.get();
+  var idx = 0;
+  _.each(collaborators, function(collaborator) {
+    if (collaborator.role !== "author") {
+      return;
+    }
+    idx++;
+    var personRefNode = {
+      id: "collaborator_reference_"+idx,
+      type: "person_reference",
+      path: ["cover", "authors", ""+idx],
+      range: [0, collaborator.name.length],
+      target: collaborator.id
+    };
+    article.create(personRefNode);
+    coverNode.authors.push(personRefNode.id);
+  });
+
+  article.create(coverNode);
+  article.show("content", coverNode.id, 0);
+};
 
 function loadMeta(article, meta) {
-  var nodes;
-
   // Set document title
   article.title = meta.title;
 
@@ -114,45 +138,42 @@ function loadMeta(article, meta) {
 }
 
 var extendArticle = function(article, resources, meta) {
-  // if (!resources) return;
+  // create views for figures/tables and citations
+  article.create({
+    id: "figures",
+    type: "view",
+    nodes: []
+  });
 
-  if (resources) {
-    // create views for figures/tables and citations
-    article.create({
-      id: "figures",
-      type: "view",
-      nodes: []
-    });
+  article.create({
+    id: "info",
+    type: "view",
+    nodes: []
+  });
 
-    article.create({
-      id: "info",
-      type: "view",
-      nodes: []
-    });
+  // article.create({
+  //   id: "citations",
+  //   type: "view",
+  //   nodes: []
+  // });
 
-    // article.create({
-    //   id: "citations",
-    //   type: "view",
-    //   nodes: []
-    // });
-
-    article.nodes.document.views.push("figures");
-    // article.nodes.document.views.push("citations");
-    article.nodes.document.views.push("info");
-
-    // create nodes for the given resources
-    var resourceMap = loadResources(article, resources);
-
-    // replace all links that reference a resource or a heading node (using source_id)
-    replaceReferencedLinks(article, resourceMap);
-  }
+  article.nodes.document.views.push("figures");
+  // article.nodes.document.views.push("citations");
+  article.nodes.document.views.push("info");
 
   if (meta) {
     // enhance article with meta information, such as collaborator, title, publish-date etc.
     loadMeta(article, meta);
   }
 
+  addCoverNode(article);
 
+  if (resources) {
+    // create nodes for the given resources
+    var resourceMap = loadResources(article, resources);
+    // replace all links that reference a resource or a heading node (using source_id)
+    replaceReferencedLinks(article, resourceMap);
+  }
 };
 
 module.exports = extendArticle;
