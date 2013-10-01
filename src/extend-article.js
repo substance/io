@@ -86,11 +86,12 @@ function replaceReferencedLinks(article, resourceMap) {
   });
 }
 
-var addCoverNode = function(article) {
+var addCoverNode = function(article, meta) {
   var coverNode = {
     id: "cover",
     type: "cover",
-    authors: []
+    authors: [],
+    image: meta["cover_image"]
   };
 
   // HACK: we link the authors in the cover node to the collaborator card
@@ -166,7 +167,7 @@ var extendArticle = function(article, resources, meta) {
     loadMeta(article, meta);
   }
 
-  addCoverNode(article);
+  addCoverNode(article, meta);
 
   if (resources) {
     // create nodes for the given resources
