@@ -1,20 +1,23 @@
 {
   "title": "Substance Manual - A system guide dedicated to developers",
   "published": true,
+  "cover_image": "http://f.cl.ly/items/060C3x2K0w0o1T0R050o/leafdetail_large.jpg",
   "collaborators": [
     {
       "role": "author",
       "name": "Michael Aufreiter",
       "email": "ma@zive.at",
       "organization": "Quasipartikel",
-      "image": "michael.png"
+      "contribution": "Initial version of the manual.",
+      "image": "https://2.gravatar.com/avatar/d5a959d7e57daa5433fcb9f8da40be4b?d=https%3A%2F%2Fidenticons.github.com%2F86c4ad52768c511046fea7b2d42b300c.png&s=420"
     },
     {
       "role": "author",
       "name": "Oliver Buchtala",
-      "email": "ma@zive.at",
+      "email": "oliver.buchtala@gmail.com",
       "organization": "Quasipartikel",
-      "image": "oliver.png"
+      "contribution": "Documentation for Operator / Chronicle / Data.",
+      "image": "http://interior.substance.io/assets/images/team/oliver.png"
     }
   ]
 }
