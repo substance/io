@@ -1,5 +1,6 @@
 {
   "name": "Substance",
   "published": true,
-  "description": "All Substance-related articles."
+  "image": "http://substance-assets.s3.amazonaws.com/7c/4436e919d5804906218a033b83cf63/substance-network.png",
+  "description": "All Substance-related articles. Learn more about the Substance project and find information on how to get started with development."
 }

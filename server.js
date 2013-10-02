@@ -164,6 +164,7 @@ app.get('/library.json', function(req, res) {
       "id": c,
       "name": meta.name,
       "description": meta.description,
+      "image": meta.image,
       "type": "collection",
       "records": []
     };

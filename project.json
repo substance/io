@@ -119,7 +119,6 @@
     }
   },
   "styles": {
-    "styles/substance.css":  "styles/substance.css",
     "styles/surface.css": "node_modules/substance-surface/styles/surface.css",
     "styles/lens-outline.css": "node_modules/lens-outline/outline.css",
 
@@ -146,11 +145,11 @@
     "styles/nodes/lens-caption.css": "node_modules/lens-article/nodes/caption/caption.css",
     "styles/nodes/lens-person.css": "node_modules/lens-article/nodes/person/person.css",
     "styles/nodes/lens-publication_info.css": "node_modules/lens-article/nodes/publication_info/publication_info.css",
-
+    
     "styles/library.css": "node_modules/substance-library/library.css",
     "styles/toc.css": "node_modules/substance-toc/toc.css",
-    "styles/reader.css": "node_modules/lens-reader/reader.css"
-    
+    "styles/reader.css": "node_modules/lens-reader/reader.css",
+    "styles/substance.css":  "styles/substance.css"
   },
   "assets": {
     "lib/jquery-2.0.3.min.js": "lib/jquery-2.0.3.min.js",

@@ -96,6 +96,9 @@ SubstanceView.Prototype = function() {
 
     var view = this.controller.reader.createView();
     this.replaceMainView('reader', view);
+
+    // Update browser title
+    document.title = this.controller.reader.__document.title;
   };
 
   // Open the reader view
