@@ -1,0 +1,13 @@
+{
+  "title": "Porting VVVV Nodes to VVVV.js",
+  "published": true,
+  "collaborators": [
+    {
+      "role": "author",
+      "name": "Matthias Zauner",
+      "email": "sagishi@zive.at",
+      "organization": "Quasipartikel",
+      "image": "https://2.gravatar.com/avatar/d5a959d7e57daa5433fcb9f8da40be4b?d=https%3A%2F%2Fidenticons.github.com%2F86c4ad52768c511046fea7b2d42b300c.png&s=420"
+    }
+  ]
+}

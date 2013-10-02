@@ -69,4 +69,3 @@ Our most recent work was backed by a [Shuttleworth](http://www.shuttleworthfound
 
 We'd also like to thank anyone who supported our Pledgie campaign. The bad news is we didn't reach our funding goal. The good news is we got the proposed release ready anyway. We were working hard on the past 6 months and reimplemented Substance from scratch. A solid foundation is now ready, paving the way for exciting use-cases and applications.
 
-
