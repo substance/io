@@ -165,6 +165,7 @@ app.get('/library.json', function(req, res) {
       "name": meta.name,
       "description": meta.description,
       "image": meta.image,
+      "updated_at": meta.updated_at,
       "type": "collection",
       "records": []
     };
@@ -184,10 +185,9 @@ app.get('/library.json', function(req, res) {
         "id": d,
         "url": meta.url ? meta.url : c+"/"+d+"/content.json",
         "authors": _.pluck(meta.collaborators, 'name'),
-        "title": meta.title
+        "title": meta.title,
+        "published_on": meta.published_on
       };
-
-      console.log('meta', meta);
 
       if (meta.published) {
         library.nodes[c].records.push(d);

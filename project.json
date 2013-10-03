@@ -155,13 +155,13 @@
     "lib/jquery-2.0.3.min.js": "lib/jquery-2.0.3.min.js",
     "styles/font-awesome.css": "styles/font-awesome.css",
     "styles/fonts": "styles/fonts",
-    "data/lens_library.json": "data/lens_library.json",
-    "data/manual.json": "data/manual.json",
-    "data/lorem_ipsum.xml": "node_modules/lens-converter/data/lorem_ipsum.xml",
-    "docs": "docs"
+    "docs": "docs",
+    "src": "src",
+    "project.json": "project.json",
+    "server.js": "server.js"
   },
   "bundle": {
-    "name": "lens",
+    "name": "substance",
     "folder": "./dist",
     "source": "./boot.js",
     "index": "./index.html"
