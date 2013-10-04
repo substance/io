@@ -1,0 +1,247 @@
+<?xml version="1.0"?>
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:bib="http://bibtexml.sf.net/" xmlns:q="http://cnx.rice.edu/qml/1.0" xmlns:md1="http://cnx.rice.edu/mdml" id="id62148" module-id="m12345" cnxml-version="0.7">
+  <title>Classification of matter: Mixtures, compounds and elements (Grade 10) [NCS]</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml"
+          mdml-version="0.5">
+  <!-- WARNING! The 'metadata' section is read only. Do not edit below.
+       Changes to the metadata section in the source will not be saved. -->
+  <md:repository>http://siyavula.cnx.org/content</md:repository>
+  <md:content-url>http://siyavula.cnx.org/content/m39993/latest/</md:content-url>
+  <md:content-id>m39993</md:content-id>
+  <md:title>Classification of matter: Mixtures, compounds and elements (Grade 10) [NCS]</md:title>
+  <md:version>1.1</md:version>
+  <md:created>2011/08/05 07:53:17.955 GMT-5</md:created>
+  <md:revised>2011/08/05 08:00:58.590 GMT-5</md:revised>
+  <md:actors>
+    <md:organization userid="fhsst">
+      <md:shortname>FHSST</md:shortname>
+      <md:fullname>Free High School Science Texts Project</md:fullname>
+      <md:email>mark@fhsst.org</md:email>
+    </md:organization>
+  </md:actors>
+  <md:roles>
+    <md:role type="author">fhsst</md:role>
+    <md:role type="maintainer">fhsst</md:role>
+    <md:role type="licensor">fhsst</md:role>
+  </md:roles>
+  <md:license url="http://creativecommons.org/licenses/by/3.0/" />
+  <!-- For information on license requirements for use or modification, see license url in the
+       above <md:license> element.
+       For information on formatting required attribution, see the URL:
+         CONTENT_URL/content_info#cnx_cite_header
+       where CONTENT_URL is the value provided above in the <md:content-url> element.
+  -->
+  <md:keywordlist>
+    <md:keyword>chemistry</md:keyword>
+    <md:keyword>classification of matter</md:keyword>
+    <md:keyword>compounds</md:keyword>
+    <md:keyword>elements</md:keyword>
+    <md:keyword>grade 10</md:keyword>
+    <md:keyword>mixture</md:keyword>
+    <md:keyword>science</md:keyword>
+    <md:keyword>South Africa</md:keyword>
+  </md:keywordlist>
+  <md:subjectlist>
+    <md:subject>Science and Technology</md:subject>
+  </md:subjectlist>
+  <md:abstract></md:abstract>
+  <md:language>en</md:language>
+  <!-- WARNING! The 'metadata' section is read only. Do not edit above.
+       Changes to the metadata section in the source will not be saved. -->
+</metadata>
+
+<content>
+    <section id="cid1">
+
+<title>Introduction</title><figure id="slidesharefigure">
+ <media id="slidesharemedia" alt="Slide show introducing the ideas behind Connexions.">
+  <flash id="slideshareflash" height="355" width="425" mime-type="application/x-shockwave-flash" src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=classificationofsubstances-100511050657-phpapp02&amp;stripped_title=classification-of-substances-4047520&amp;userName=kwarne">
+   <param name="allowScriptAccess" value="always"/>
+   <param name="allowFullScreen" value="true"/>
+  </flash>
+ </media>
+</figure>
+
+      <para id="id62175">All the objects that we see in the world around us, are made of <emphasis effect="bold">matter</emphasis>. Matter makes up the air we breathe, the ground we walk on, the food we eat and the animals and plants that live around us. Even our own human bodies are made of matter!</para>
+      <para id="id62185">Different objects can be made of different types of matter, or <emphasis effect="bold">materials</emphasis>. For example, a cupboard (an <emphasis effect="italics">object</emphasis>) is made of wood, nails and hinges (the <emphasis effect="italics">materials</emphasis>). The <emphasis effect="bold">properties</emphasis> of the materials will affect the properties of the object. In the example of the cupboard, the strength of the wood and metals make the cupboard strong and durable. In the same way, the raincoats that you wear during bad weather, are made of a material that is waterproof. The electrical wires in your home are made of metal because metals are a type of material that is able to conduct electricity. It is very important to understand the properties of materials, so that we can use them in our homes, in industry and in other applications. In this chapter, we will be looking at different types of materials and their properties.</para>
+      <para id="id62556">The diagram below shows one way in which matter can be classified (grouped) according to its different properties. As you read further in this chapter, you will see that there are also other ways of classifying materials, for example according to whether or not they are good electrical conductors.</para>
+      <figure id="uid1">
+        <media id="uid1_media" alt="">
+          <image mime-type="image/png" src="CG10C1_001.png" id="uid1_onlineimage" width="308"><!-- NOTE: attribute width changes image size online (pixels). original width is 308. --></image>
+          <image mime-type="application/postscript" for="pdf" src="CG10C1_001.eps" id="uid1_printimage"/>
+        </media>
+        <caption>The classification of matter</caption>
+      </figure>
+    </section>
+    <section id="cid2">
+      <title>Mixtures</title>
+      <para id="id62584">We see mixtures all the time in our everyday lives. A stew, for example, is a mixture of different foods such as meat and vegetables; sea water is a mixture of water, salt and other substances, and air is a mixture of gases such as carbon dioxide, oxygen and nitrogen.</para>
+<definition id="fhsst_id69"><term id="termfhsst_id69"> Mixture </term> <meaning id="meaningfhsst_id69">
+      <para id="id62595">A <emphasis effect="bold">mixture</emphasis> is a combination of two or more substances, where these substances are not bonded (or joined) to each other. </para>
+      </meaning></definition>
+      <para id="id62612">In a mixture, the substances that make up the mixture:</para>
+      <list id="id62615" display="block" list-type="bulleted">
+        <item id="uid2"><emphasis effect="italics">are not in a fixed ratio</emphasis>
+Imagine, for example, that you have a 250 ml beaker of water. It doesn't matter whether you add 20 g, 40 g, 100 g or any other mass of sand to the water; it will still be called a mixture of sand and water.
+</item>
+        <item id="uid3"><emphasis effect="italics">keep their physical properties</emphasis>
+In the example we used of the sand and water, neither of these substances has changed in any way when they are mixed together. Even though the sand is in water, it still has the same properties as when it was out of the water.
+</item>
+        <item id="uid4"><emphasis effect="italics">can be separated by mechanical means</emphasis>
+To separate something by 'mechanical means', means that there is no chemical process involved. In our sand and water example, it is possible to separate the mixture by simply pouring the water through a filter. Something <emphasis effect="italics">physical</emphasis> is done to the mixture, rather than something <emphasis effect="italics">chemical</emphasis>.
+</item>
+      </list>
+      <para id="id62689">Some other examples of mixtures include blood (a mixture of blood cells, platelets and plasma), steel (a mixture of iron and other materials) and the gold that is used to make jewellery. The gold in jewellery is not pure gold but is a mixture of metals. The amount of gold in the jewellery is measured in <emphasis effect="italics">karats</emphasis> (24 karat would be pure gold, while 18 karat is only 75% gold).</para>
+      <para id="id62700">We can group mixtures further by dividing them into those that are heterogeneous and those that are homogeneous.</para>
+      <section id="uid5">
+        <title>Heterogeneous mixtures</title>
+        <para id="id62715">A <emphasis effect="bold">heterogeneous</emphasis> mixture does not have a definite composition. Think of a pizza, that has a topping of cheese, tomato, mushrooms and peppers (the topping is a mixture). Each slice will probably be slightly different from the next because the toppings (the tomato, cheese, mushrooms and peppers) are not evenly distributed. Another example would be granite, a type of rock. Granite is made up of lots of different mineral substances including quartz and feldspar. But these minerals are not spread evenly through the rock and so some parts of the rock may have more quartz than others. Another example is a mixture of oil and water. Although you may add one substance to the other, they will stay separate in the mixture. We say that these heterogeneous mixtures are <emphasis effect="italics">non-uniform</emphasis>, in other words they are not exactly the same throughout.</para>
+<definition id="fhsst_id89"><term id="termfhsst_id89"> Heterogeneous mixture </term> <meaning id="meaningfhsst_id89">
+        <para id="id62741">A heterogeneous mixture is one that is non-uniform and the different components of the mixture can be seen. </para>
+        </meaning></definition>
+      </section>
+      <section id="uid6">
+        <title>Homogeneous mixtures</title>
+        <para id="id62762">A <emphasis effect="bold">homogeneous</emphasis> mixture has a definite composition, and specific properties. In a homogeneous mixture, the different parts cannot be seen. A solution of salt dissolved in water is an example of a homogeneous mixture. When the salt dissolves, it will spread evenly through the water so that all parts of the solution are the same, and you can no longer see the salt as being separate from the water. Think also of a powdered drink that you mix with water. Provided you give the container a good shake after you have added the powder to the water, the drink will have the same sweet taste for anyone who drinks it, it won't matter whether they take a sip from the top or from the bottom. The air we breathe is another example of a homogeneous mixture since it is made up of different gases which are in a constant ratio, and which can't be distinguished from each other.</para>
+<definition id="fhsst_id96"><term id="termfhsst_id96"> Homogeneous mixture </term> <meaning id="meaningfhsst_id96">
+        <para id="id62784">A homogeneous mixture is one that is uniform, and where the different components of the mixture cannot be seen. </para>
+        </meaning></definition>
+        <para id="id62795">An <emphasis effect="bold">alloy</emphasis> is a homogeneous mixture of two or more elements, at least one of which is a metal, where the resulting material has metallic properties. Alloys are usually made to improve the properties of the elements that make them up. For example steel is much stronger than iron (which is the main component of steel).</para>
+      </section>
+      <section id="uid7">
+        <title>Separating mixtures</title>
+        <para id="id62816">Sometimes it is important to be able to separate a mixture. There are lots of different ways to do this. These are some examples:</para>
+        <list id="id62820" display="block" list-type="bulleted"><item id="uid8"><emphasis effect="italics">Filtration</emphasis>
+A piece of filter paper in a funnel can be used to separate a mixture of sand and water.
+</item>
+          <item id="uid9"><emphasis effect="italics">Heating / evaporation</emphasis>
+Heating a solution causes the liquid (normally water) to evaporate, leaving the other (solid) part of the mixture behind. You can try this using a salt solution.
+</item>
+          <item id="uid10"><emphasis effect="italics">Centrifugation</emphasis>
+This is a laboratory process which uses the centrifugal force of spinning objects to separate out the heavier substances from a mixture. This process is used to separate the cells and plasma in blood. When the test tubes that hold the blood are spun round in the machine, the heavier cells sink to the bottom of the test tube. Can you think of a reason why it might be important to have a way of separating blood in this way?
+</item>
+          <item id="uid11"><emphasis effect="italics">Dialysis</emphasis>
+This is an interesting way of separating a mixture because it can be used in some important applications. Dialysis works using a process called <emphasis effect="italics">diffusion</emphasis>. Diffusion takes place when one substance in a mixture moves from an area where it has a high concentration to an area where its concentration is lower. When this movement takes place across a semi-permeable membrane it is called osmosis. A semi-permeable membrane is a barrier that lets some things move across it, but not others. This process is very important for people whose kidneys are not functioning properly, an illness called <emphasis effect="italics">renal failure</emphasis>.
+</item>
+        </list>
+<note id="notfhsst_id118"><title> Interesting Fact </title> Normally, healthy kidneys remove waste products from the blood. When a person has renal failure, their kidneys cannot do this any more, and this can be life-threatening. Using dialysis, the blood of the patient flows on one side of a semi-permeable membrane. On the other side there will be a fluid that has no waste products but lots of other important substances such as potassium ions (K<sup>+</sup>) that the person will need. Waste products from the blood diffuse from where their concentration is high (i.e. in the person's blood) into the 'clean' fluid on the other side of the membrane. The potassium ions will move in the opposite direction from the fluid into the blood. Through this process, waste products are taken out of the blood so that the person stays healthy.</note>
+<section id="secfhsst_id119"><title>Investigation : The separation of a salt solution
+        </title>
+        <para id="id62955">
+          <emphasis effect="bold">Aim:</emphasis>
+        </para>
+        <para id="id62963">To demonstrate that a homogeneous salt solution can be separated using physical methods.</para>
+        <para id="id62969">
+          <emphasis effect="bold">Apparatus:</emphasis>
+        </para>
+        <para id="id62978">glass beaker, salt, water, retort stand, bunsen burner.</para>
+        <para id="id62983">
+          <emphasis effect="bold">Method:</emphasis>
+        </para>
+        <list id="id62992" display="block" list-type="enumerated">
+          <item id="uid12">Pour a small amount of water (about 20 ml) into a beaker.
+</item>
+          <item id="uid13">Measure a teaspoon of salt and pour this into the water.
+</item>
+          <item id="uid14">Stir until the salt dissolves completely. This is now called a <emphasis effect="italics">salt solution</emphasis>. This salt solution is a homogeneous mixture.
+</item>
+          <item id="uid15">Place the beaker on a retort stand over a bunsen burner and heat gently. You should increase the heat until the water almost boils.
+</item>
+          <item id="uid16">Watch the beaker until all the water has evaporated. What do you see in the beaker?
+</item>
+        </list>
+        <para id="id63062">
+          <figure id="id63065">
+            <media id="id63065_media" alt="">
+              <image mime-type="image/png" src="CG10C1_002.png" id="id63065_onlineimage" width="277"><!-- NOTE: attribute width changes image size online (pixels). original width is 277. --></image>
+              <image mime-type="application/postscript" for="pdf" src="CG10C1_002.eps" id="id63065_printimage"/>
+            </media>
+          </figure>
+        </para>
+        <para id="id63071">
+          <emphasis effect="bold">Results:</emphasis>
+        </para>
+        <para id="id63078">The water evaporates from the beaker and tiny grains of salt remain at the bottom. (You may also observe grains of salt on the walls of the beaker.)</para>
+        <para id="id63084">
+          <emphasis effect="bold">Conclusion:</emphasis>
+        </para>
+        <para id="id63092">The salt solution, which is a homogeneous mixture of salt and water, has been separated using heating and evaporation.</para>
+
+</section>
+<section id="secfhsst_id162"><title> Discussion : Separating mixtures
+        </title>
+        <para id="id63119">
+          <emphasis effect="italics">Work in groups of 3-4</emphasis>
+        </para>
+        <para id="id63127">Imagine that you have been given a container which holds a mixture of sand, iron filings (small pieces of iron metal), salt and small stones of different sizes. Is this a homogeneous or a heterogeneous mixture? In your group, discuss how you would go about separating this mixture into the four materials that it contains. </para>
+</section>
+<section id="secfhsst_id169"><title> Mixtures
+        </title>
+        <list id="id63150" display="block" list-type="enumerated"><item id="uid17">Which of the following substances are <emphasis effect="italics">mixtures</emphasis>?
+<list id="id63170" display="block" list-type="enumerated" number-style="lower-alpha"><item id="uid18">tap water
+</item><item id="uid19">brass (an alloy of copper and zinc)
+</item><item id="uid20">concrete
+</item><item id="uid21">aluminium
+</item><item id="uid22">Coca cola
+</item><item id="uid23">distilled water
+</item></list></item>
+          <item id="uid24">In each of the examples above, say whether the mixture is homogeneous or heterogeneous
+</item>
+        </list>
+<para id="uid785">
+<link window="new" class="fullmarks" resource="http://www.fhsst.org/llm">Click here for the solution</link>
+</para>
+</section>
+      </section>
+    </section>
+    <section id="cid3">
+      <title>Pure Substances: Elements and Compounds</title>
+      <para id="id63273">Any material that is not a mixture, is called a <emphasis effect="bold">pure substance</emphasis>. Pure substances include <emphasis effect="bold">elements</emphasis> and <emphasis effect="bold">compounds</emphasis>. It is much more difficult to break down pure substances into their parts, and complex chemical methods are needed to do this.</para>
+      <section id="uid25">
+        <title>Elements</title>
+        <para id="id63302">An <emphasis effect="bold">element</emphasis> is a chemical substance that can't be divided or changed into other chemical substances by any ordinary chemical means. The smallest unit of an element is the <emphasis effect="bold">atom</emphasis>.</para>
+<definition id="fhsst_id193"><term id="termfhsst_id193"> Element </term> <meaning id="meaningfhsst_id193">
+        <para id="id63323">An element is a substance that cannot be broken down into other substances through chemical means. </para>
+        </meaning></definition>
+        <para id="id63334">There are 112 officially named elements and about 118 known elements. Most of these are natural, but some are man-made. The elements we know are represented in the <emphasis effect="bold">Periodic Table of the Elements</emphasis>, where each element is abbreviated to a <emphasis effect="bold">chemical symbol</emphasis>. Examples of elements are magnesium (Mg), hydrogen (H), oxygen (O) and carbon (C). On the Periodic Table you will notice that some of the abbreviations do not seem to match the elements they represent. The element iron, for example, has the chemical formula Fe. This is because the elements were originally given Latin names. Iron has the abbreviation Fe because its Latin name is 'ferrum'. In the same way, sodium's Latin name is 'natrium' (Na) and gold's is 'aurum' (Au).</para>
+      </section>
+      <section id="uid26">
+        <title>Compounds</title>
+        <para id="id63363">A <emphasis effect="bold">compound</emphasis> is a chemical substance that forms when two or more elements combine in a fixed ratio. Water (H<sub>2</sub>O), for example, is a compound that is made up of two hydrogen atoms for every one oxygen atom. Sodium chloride (NaCl) is a compound made up of one sodium atom for every chlorine atom. An important characteristic of a compound is that it has a <emphasis effect="bold">chemical formula</emphasis>, which describes the ratio in which the atoms of each element in the compound occur.</para>
+<definition id="fhsst_id201"><term id="termfhsst_id201"> Compound </term> <meaning id="meaningfhsst_id201">
+        <para id="id63399">A substance made up of two or more elements that are joined together in a fixed ratio. </para>
+        </meaning></definition>
+        <para id="id63410"><link target-id="uid27"/> might help you to understand the difference between the terms <emphasis effect="italics">element</emphasis>, <emphasis effect="italics">mixture</emphasis> and <emphasis effect="italics">compound</emphasis>. Iron (Fe) and sulphur (S) are two elements. When they are added together, they form a <emphasis effect="italics">mixture</emphasis> of iron and sulphur. The iron and sulphur are not joined together. However, if the mixture is heated, a new <emphasis effect="italics">compound</emphasis> is formed, which is called iron sulphide (FeS). In this compound, the iron and sulphur are joined to each other in a ratio of 1:1. In other words, one atom of iron is joined to one atom of sulphur in the compound iron sulphide.</para>
+        <figure id="uid27">
+          <media id="uid27_media" alt="">
+            <image mime-type="image/png" src="CG10C1_003.png" id="uid27_onlineimage" width="313"><!-- NOTE: attribute width changes image size online (pixels). original width is 313. --></image>
+            <image mime-type="application/postscript" for="pdf" src="CG10C1_003.eps" id="uid27_printimage"/>
+          </media>
+          <caption>Understanding the difference between a mixture and a compound</caption>
+        </figure>
+<section id="secfhsst_id212"><title> Elements, mixtures and compounds
+        </title>
+        <list id="id63472" display="block" list-type="enumerated">
+          <item id="uid28">In the following table, tick whether each of the substances listed is a <emphasis effect="italics">mixture</emphasis> or a <emphasis effect="italics">pure substance</emphasis>. If it is a mixture, also say whether it is a homogeneous or heterogeneous mixture.
+
+<table id="id63499" summary=""><tgroup cols="3"><tbody><row><entry><emphasis effect="bold">Substance</emphasis></entry><entry><emphasis effect="bold">Mixture or pure</emphasis></entry><entry><emphasis effect="bold">Homogeneous or heterogeneous mixture</emphasis></entry></row><row><entry>fizzy colddrink</entry><entry/><entry/></row><row><entry>steel</entry><entry/><entry/></row><row><entry>oxygen</entry><entry/><entry/></row><row><entry>iron filings</entry><entry/><entry/></row><row><entry>smoke</entry><entry/><entry/></row><row><entry>limestone (CaCO<sub>3</sub>)</entry><entry/><entry/></row></tbody></tgroup></table>
+<para id="uid887">
+<link window="new" class="fullmarks" resource="http://www.fhsst.org/lly">Click here for the solution</link>
+</para>
+</item>
+
+          <item id="uid29">In each of the following cases, say whether the substance is an element, a mixture or a compound.
+<list id="id63912" display="block" list-type="enumerated" number-style="lower-alpha"><item id="uid30">Cu
+</item><item id="uid31">iron and sulphur
+</item><item id="uid32">Al
+</item><item id="uid33">H<sub>2</sub>SO<sub>4</sub></item><item id="uid34">SO<sub>3</sub></item></list></item>
+        </list>
+<para id="uid897">
+<link window="new" class="fullmarks" resource="http://www.fhsst.org/llV">Click here for the solution</link>
+</para>
+</section>
+      </section>
+    </section>
+
+  </content>
+</document>
