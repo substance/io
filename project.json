@@ -33,7 +33,7 @@
     {
       "repository": "https://github.com/substance/article.git",
       "folder": "node_modules/substance-article",
-      "branch": "0.1.x"
+      "branch": "cnx"
     },
     {
       "repository": "https://github.com/elifesciences/lens-article.git",
@@ -68,7 +68,7 @@
     {
       "repository": "https://github.com/substance/converter.git",
       "folder": "node_modules/substance-converter",
-      "branch": "0.1.x"
+      "branch": "cnx"
     },
     {
       "repository": "https://github.com/elifesciences/lens-converter.git",
@@ -103,7 +103,7 @@
     {
       "repository": "https://github.com/substance/io.git",
       "folder": ".",
-      "branch": "master"
+      "branch": "cnx"
     }
   ],
   "node_modules": {
@@ -145,7 +145,7 @@
     "styles/nodes/lens-caption.css": "node_modules/lens-article/nodes/caption/caption.css",
     "styles/nodes/lens-person.css": "node_modules/lens-article/nodes/person/person.css",
     "styles/nodes/lens-publication_info.css": "node_modules/lens-article/nodes/publication_info/publication_info.css",
-    
+
     "styles/library.css": "node_modules/substance-library/library.css",
     "styles/toc.css": "node_modules/substance-toc/toc.css",
     "styles/reader.css": "node_modules/lens-reader/reader.css",
@@ -167,3 +167,4 @@
     "index": "./index.html"
   }
 }
+
