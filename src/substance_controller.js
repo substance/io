@@ -10,7 +10,9 @@ var CollectionController = Library.Collection.Controller;
 var LensArticle = require("lens-article");
 var Article = require("substance-article");
 var ReaderController = require("lens-reader").Controller;
-var Converter = require("lens-converter");
+var Converter = require("substance-converter");
+var LensConverter = require("lens-converter");
+var CNXImporter = Converter.CNXImporter;
 
 // Substance.Controller
 // -----------------
@@ -59,7 +61,7 @@ SubstanceController.Prototype = function() {
 
   // Update Hash fragment
   // --------
-  // 
+  //
 
   this.updatePath = function(state) {
     var path = [this.state.collection, this.state.document];
@@ -89,7 +91,9 @@ SubstanceController.Prototype = function() {
   // Transitions
   // ===================================
 
-  var _LOCALSTORE_MATCHER = new RegExp("^localstore://(.*)");
+//  var _LOCALSTORE_MATCHER = new RegExp("^localstore://(.*)");
+  var _HTTP_MATCHER = new RegExp("^http.*");
+  var _XMLDATA_MATCHER = new RegExp("\\s*[<][?]xml");
 
   var _open = function(state, documentId) {
 
@@ -122,52 +126,64 @@ SubstanceController.Prototype = function() {
     // prefering option2 as it is simpler to achieve...
 
     var record = this.__library.get(documentId);
-    var match = _LOCALSTORE_MATCHER.exec(record.url);
+    //var match = _LOCALSTORE_MATCHER.exec(record.url);
 
-    // if (match) {
-    //   var docId = match[1];
+    var url = record.url;
 
-    //   var docData = JSON.parse(localStorage.getItem("localdoc"));
-    //   var doc = LensArticle.fromSnapshot(docData, {});
-    //   _onDocumentLoad(null, doc);
-    // } else {
-      $.get(record.url)
-      .done(function(data) {
-          var doc, err;
+    // HACK:
+    if (!_HTTP_MATCHER.exec(url)) {
+      url = "./docs/"+url;
+    }
 
-          // Determine type of resource
-          var xml = $.isXMLDoc(data);
+    $.get(url)
+    .done(function(data) {
+        var doc, err;
 
-          // Process XML file
-          if(xml) {
-            var importer = new Converter.Importer();
-            doc = importer.import(data);
+        // Determine type of resource
+        var xml = $.isXMLDoc(data);
 
-            // Hotpatch the doc id, so it conforms to the id specified in the library file
-            doc.id = documentId;
-            console.log('ON THE FLY CONVERTED DOC', doc.toJSON());
+        if (!xml && _XMLDATA_MATCHER.test(data)) {
+          var parser = new DOMParser();
+          data = parser.parseFromString(data,"text/xml");
+          xml = true;
+        }
 
-          // Process JSON file
+        // Process XML file
+        if(xml) {
+          var importer;
+          if (url.search(".cnxml")) {
+            importer = new CNXImporter();
           } else {
-            if(typeof data == 'string') data = $.parseJSON(data);
-            if (data.schema && data.schema[0] === "lens-article") {
-              doc = LensArticle.fromSnapshot(data);
-            } else {
-            doc = Article.fromSnapshot(data);
-            }
-            
+            importer = new LensConverter.Importer();
           }
-          _onDocumentLoad(err, doc);  
-        })
-      .fail(function(err) {
-        console.error(err);
-      });
-    // }
+
+          doc = importer.import(data);
+
+          // Hotpatch the doc id, so it conforms to the id specified in the library file
+          doc.id = documentId;
+          console.log('ON THE FLY CONVERTED DOC', doc.toJSON());
+
+        // Process JSON file
+        } else {
+          if(typeof data == 'string') data = $.parseJSON(data);
+          if (data.schema && data.schema[0] === "lens-article") {
+            doc = LensArticle.fromSnapshot(data);
+          } else {
+          doc = Article.fromSnapshot(data);
+          }
+
+        }
+        _onDocumentLoad(err, doc);
+      })
+    .fail(function(err) {
+      console.error(err);
+    });
+
   };
 
   this.openAbout = function() {
     this.openReader("substance", "about", "toc");
-    app.router.navigate('substance/about', false);
+    window.app.router.navigate('substance/about', false);
   };
 
   this.openReader = function(collectionId, documentId, context, node, resource, fullscreen) {
