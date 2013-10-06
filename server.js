@@ -155,6 +155,7 @@ app.get('/library.json', function(req, res) {
 
   _.each(collections, function(c) {
     var cStat = fs.statSync(__dirname + "/docs/"+ c);
+    if (c === ".git") return; // Ignore .git folder
     if (cStat.isFile()) return; // only consider directories
 
     var meta = JSON.parse(fs.readFileSync(__dirname + "/docs/"+c+"/index.json", "utf8"));

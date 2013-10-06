@@ -11,6 +11,11 @@
       "branch": "0.2.x"
     },
     {
+      "repository": "https://github.com/substance/docs.git",
+      "folder": "docs",
+      "branch": "0.1.x"
+    },
+    {
       "repository": "https://github.com/substance/commander.git",
       "folder": "node_modules/substance-commander",
       "branch": "0.1.x"
