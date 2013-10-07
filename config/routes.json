@@ -48,6 +48,11 @@
     "command": "openAbout"
   },
   {
+    "route": "explore",
+    "name": "explore",
+    "command": "openLibrary"
+  },
+  {
     "route": "submit",
     "name": "submit",
     "command": "openSubmission"
@@ -55,6 +60,6 @@
   {
     "route": "",
     "name": "library",
-    "command": "openLibrary"
+    "command": "openAbout"
   }
 ]
