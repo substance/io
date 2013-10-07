@@ -63,8 +63,10 @@ SubstanceView.Prototype = function() {
     this.$('.toggle-view').removeClass('active');
     if (hash.match(/about/)) {
       this.$('.toggle-view.about').addClass('active')
-    } else if (hash.match(/submit/)) {
-      this.$('.toggle-view.submit').addClass('active');
+    } else if (hash.match(/manual/)) {
+      this.$('.toggle-view.manual').addClass('active');
+    } else if (hash.match(/tutorial/)) {
+      this.$('.toggle-view.tutorial').addClass('active');
     } else if (hash.match(/blog/)) {
       this.$('.toggle-view.blog').addClass('active');
     } else {
