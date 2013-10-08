@@ -1,0 +1,1605 @@
+{
+  "id": "manual",
+  "schema": [
+    "substance-article",
+    "0.1.0"
+  ],
+  "nodes": {
+    "document": {
+      "type": "document",
+      "id": "document",
+      "views": [
+        "content",
+        "figures",
+        "info"
+      ],
+      "guid": "manual",
+      "creator": "",
+      "title": "Substance Manual - A system guide dedicated to developers",
+      "abstract": "",
+      "published_on": "2013-10-08T12:47:04.847Z",
+      "meta": {}
+    },
+    "content": {
+      "type": "view",
+      "id": "content",
+      "nodes": [
+        "cover",
+        "text_1",
+        "header_1",
+        "text_2",
+        "text_3",
+        "text_4",
+        "list_1",
+        "text_10",
+        "header_2",
+        "text_11",
+        "codeblock_1",
+        "text_12",
+        "codeblock_2",
+        "header_3",
+        "header_4",
+        "text_13",
+        "header_5",
+        "text_14",
+        "codeblock_3",
+        "text_15",
+        "codeblock_4",
+        "text_16",
+        "codeblock_5",
+        "text_17",
+        "codeblock_6",
+        "text_18",
+        "codeblock_7",
+        "text_19",
+        "codeblock_8",
+        "text_20",
+        "header_6",
+        "text_21",
+        "text_22",
+        "header_7",
+        "list_2",
+        "header_8",
+        "text_29",
+        "text_30",
+        "figure_1",
+        "header_9",
+        "text_31",
+        "figure_2",
+        "header_10",
+        "text_32",
+        "header_11",
+        "text_33",
+        "text_34",
+        "codeblock_9",
+        "text_35",
+        "codeblock_10",
+        "text_36",
+        "text_37",
+        "codeblock_11",
+        "text_38",
+        "codeblock_12",
+        "text_39",
+        "text_40",
+        "codeblock_13",
+        "text_41",
+        "text_42",
+        "codeblock_14",
+        "text_43",
+        "codeblock_15",
+        "text_44",
+        "header_12",
+        "text_45",
+        "text_46",
+        "codeblock_16",
+        "text_47",
+        "text_48",
+        "codeblock_17",
+        "header_13",
+        "text_49",
+        "header_14",
+        "text_50",
+        "codeblock_18",
+        "text_51",
+        "codeblock_19",
+        "text_52",
+        "text_53",
+        "codeblock_20",
+        "text_54",
+        "codeblock_21",
+        "text_55",
+        "header_15",
+        "text_56",
+        "header_16",
+        "text_57",
+        "text_58",
+        "codeblock_22",
+        "text_59",
+        "codeblock_23",
+        "text_60",
+        "codeblock_24",
+        "text_61",
+        "codeblock_25",
+        "text_62",
+        "header_17",
+        "text_63",
+        "text_64",
+        "text_65",
+        "text_66",
+        "text_67",
+        "text_68",
+        "codeblock_26",
+        "text_69",
+        "text_70",
+        "codeblock_27",
+        "text_71",
+        "codeblock_28",
+        "text_72",
+        "header_18",
+        "text_73",
+        "header_19",
+        "list_3",
+        "text_76",
+        "header_20",
+        "text_77",
+        "codeblock_29",
+        "text_78",
+        "codeblock_30",
+        "text_79",
+        "codeblock_31",
+        "text_80",
+        "codeblock_32",
+        "header_21",
+        "text_81",
+        "codeblock_33",
+        "text_82",
+        "codeblock_34",
+        "header_22",
+        "text_83",
+        "text_84",
+        "codeblock_35",
+        "text_85",
+        "codeblock_36",
+        "text_86"
+      ]
+    },
+    "text_1": {
+      "type": "text",
+      "id": "text_1",
+      "source_id": null,
+      "content": "This documentation is a work-in-progress. However, it reflects the latest state of Substance development and provides information about most modules. You can contribute to this manual by making changes to the source markdown file."
+    },
+    "header_1": {
+      "type": "heading",
+      "id": "header_1",
+      "source_id": "introduction",
+      "content": "Introduction",
+      "level": 1
+    },
+    "text_2": {
+      "type": "text",
+      "id": "text_2",
+      "source_id": null,
+      "content": "With Substance, we would like to contribute an extensive content creation and annotation framework built on web infrastructure. It is designed to be customized and integrated into existing workflows."
+    },
+    "text_3": {
+      "type": "text",
+      "id": "text_3",
+      "source_id": null,
+      "content": "Since 2010, the Substance platform has managed to solve many of the core problems associated with web-based editing tools."
+    },
+    "text_4": {
+      "type": "text",
+      "id": "text_4",
+      "source_id": null,
+      "content": "Its features include:"
+    },
+    "text_5": {
+      "type": "text",
+      "id": "text_5",
+      "source_id": null,
+      "content": "A JSON-based document model, that can be customized (Substance.Document)"
+    },
+    "text_6": {
+      "type": "text",
+      "id": "text_6",
+      "source_id": null,
+      "content": "Support for incremental changes (Substance.Operator)"
+    },
+    "text_7": {
+      "type": "text",
+      "id": "text_7",
+      "source_id": null,
+      "content": "Versioning (Substance.Chronicle)"
+    },
+    "text_8": {
+      "type": "text",
+      "id": "text_8",
+      "source_id": null,
+      "content": "A building block for displaying and editing documents (Substance.Surface)"
+    },
+    "text_9": {
+      "type": "text",
+      "id": "text_9",
+      "source_id": null,
+      "content": "A plugin system for customized content types (Substance.Nodes)"
+    },
+    "list_1": {
+      "type": "list",
+      "id": "list_1",
+      "source_id": "",
+      "items": [
+        "text_5",
+        "text_6",
+        "text_7",
+        "text_8",
+        "text_9"
+      ],
+      "ordered": false
+    },
+    "text_10": {
+      "type": "text",
+      "id": "text_10",
+      "source_id": null,
+      "content": "Substance is a work-in-progress by design. We'd like avoid the lock-in phenomenon and design a system that can deal with the ever-changing needs of its users. We don't propose a one-size fits it all solution. Instead we'd like to encourage you to take the pieces you need and build your very own publishing system. We're glady reviewing your adaptions and include them in the core system when it makes sense."
+    },
+    "header_2": {
+      "type": "heading",
+      "id": "header_2",
+      "source_id": "modules",
+      "content": "Modules",
+      "level": 1
+    },
+    "text_11": {
+      "type": "text",
+      "id": "text_11",
+      "source_id": null,
+      "content": "Substance modules can be used independenly. You can install them using NPM, or use the Substance Screwdriver."
+    },
+    "codeblock_1": {
+      "type": "codeblock",
+      "id": "codeblock_1",
+      "source_id": "",
+      "content": "npm install <module-name>"
+    },
+    "text_12": {
+      "type": "text",
+      "id": "text_12",
+      "source_id": null,
+      "content": "In your Javascript files, you can simply require your modules."
+    },
+    "codeblock_2": {
+      "type": "codeblock",
+      "id": "codeblock_2",
+      "source_id": "",
+      "content": "var Data = require('substance-data');"
+    },
+    "header_3": {
+      "type": "heading",
+      "id": "header_3",
+      "source_id": "substance.data",
+      "content": "Substance.Data",
+      "level": 2
+    },
+    "header_4": {
+      "type": "heading",
+      "id": "header_4",
+      "source_id": "design-goals",
+      "content": "Design Goals",
+      "level": 3
+    },
+    "text_13": {
+      "type": "text",
+      "id": "text_13",
+      "source_id": null,
+      "content": "With Substance.Data you can model your domain data using a simple graph-based object model that can be serialized to JSON. It's easy to manipulate and query data on the client (browser) or on the server (Node.js) by using exactly the same API."
+    },
+    "header_5": {
+      "type": "heading",
+      "id": "header_5",
+      "source_id": "usage",
+      "content": "Usage",
+      "level": 3
+    },
+    "text_14": {
+      "type": "text",
+      "id": "text_14",
+      "source_id": null,
+      "content": "First, start define a schema."
+    },
+    "codeblock_3": {
+      "type": "codeblock",
+      "id": "codeblock_3",
+      "source_id": "",
+      "content": "var schema = {\n  \"person\": {\n    \"type\": \"person\",\n    \"name\": \"Person\",\n    \"properties\": {\n      \"name\": \"string\",\n      \"origin\": \"location\"\n    }\n  },\n  \"location\": {\n    \"type\": \"location\",\n    \"name\": \"Location\",\n    \"properties\": {\n      \"name\": \"string\",\n      \"citizens\": [\"array\", \"person\"]\n    }\n  }\n};"
+    },
+    "text_15": {
+      "type": "text",
+      "id": "text_15",
+      "source_id": null,
+      "content": "Create a new Data.Graph."
+    },
+    "codeblock_4": {
+      "type": "codeblock",
+      "id": "codeblock_4",
+      "source_id": "",
+      "content": "var graph = new Data.Graph(schema);"
+    },
+    "text_16": {
+      "type": "text",
+      "id": "text_16",
+      "source_id": null,
+      "content": "Add some objects."
+    },
+    "codeblock_5": {
+      "type": "codeblock",
+      "id": "codeblock_5",
+      "source_id": "",
+      "content": "graph.create({\n  id: \"bart\",\n  type: \"person\",\n  name: \"Bart Simpson\"\n});\n\ngraph.set({\n  id: \"springfield\",\n  name: \"Springfield\",\n  type: \"location\",\n  citizens: [\"bart\"]\n});"
+    },
+    "text_17": {
+      "type": "text",
+      "id": "text_17",
+      "source_id": null,
+      "content": "Set properties."
+    },
+    "codeblock_6": {
+      "type": "codeblock",
+      "id": "codeblock_6",
+      "source_id": "",
+      "content": "graph.set([\"bart\", \"origin\"], \"springfield\");"
+    },
+    "text_18": {
+      "type": "text",
+      "id": "text_18",
+      "source_id": null,
+      "content": "Querying is easy too. With get you can either look up a node by id or specify a path that is used to traverse the graph."
+    },
+    "codeblock_7": {
+      "type": "codeblock",
+      "id": "codeblock_7",
+      "source_id": "",
+      "content": "// Return a node\ngraph.get('bart');\n// => {\n  id: \"bart\",\n  type: \"person\",\n  name: \"Bart Simpson\",\n  \"location\": \"springfield\"\n}\n\n// Return a property\ngraph.get([\"springfield\", \"citizens\"]);\n// => [\"springfield\"]"
+    },
+    "text_19": {
+      "type": "text",
+      "id": "text_19",
+      "source_id": null,
+      "content": "You can even do smart querying and have the correct objects returned instead of ids."
+    },
+    "codeblock_8": {
+      "type": "codeblock",
+      "id": "codeblock_8",
+      "source_id": "",
+      "content": "// Return a property\ngraph.query([\"springfield\", \"citizens\"]);\n// => [{id: \"springfield\", type: \"location\", citizens: [\"bart\"]}]"
+    },
+    "text_20": {
+      "type": "text",
+      "id": "text_20",
+      "source_id": null,
+      "content": "To get an overview of the full API please have a look at our commented testsuite."
+    },
+    "header_6": {
+      "type": "heading",
+      "id": "header_6",
+      "source_id": "substance.document",
+      "content": "Substance.Document",
+      "level": 2
+    },
+    "text_21": {
+      "type": "text",
+      "id": "text_21",
+      "source_id": null,
+      "content": "Substance Document is an open standard for manipulating structured digital documents. It helps with the creation and transformation of digital documents. It ensures consistency, separates content from presentation and provides an easy to use API. It depicts the heart of the Substance platform and serves as an interface for custom document models."
+    },
+    "text_22": {
+      "type": "text",
+      "id": "text_22",
+      "source_id": null,
+      "content": "A Substance Document can range from loosly structured content involving headings and text, such as reports or articles to more complex things that you wouldn’t consider a traditional document anymore. The format is designed to be extensible, so you can create your own flavors of documents. We put a lot of thought into the design of this module. It is the result of three years of research and development."
+    },
+    "header_7": {
+      "type": "heading",
+      "id": "header_7",
+      "source_id": "design-goals-1",
+      "content": "Design Goals",
+      "level": 3
+    },
+    "text_23": {
+      "type": "text",
+      "id": "text_23",
+      "source_id": null,
+      "content": "A document consists of a sequence of content nodes of different types (e.g. heading, text, image)"
+    },
+    "text_24": {
+      "type": "text",
+      "id": "text_24",
+      "source_id": null,
+      "content": "A document is manipulated through atomic operations"
+    },
+    "text_25": {
+      "type": "text",
+      "id": "text_25",
+      "source_id": null,
+      "content": "The history is tracked, so users reconstruct previous document states at any time"
+    },
+    "text_26": {
+      "type": "text",
+      "id": "text_26",
+      "source_id": null,
+      "content": "Support for incremental text updates, using a protocol similar to Google Wave"
+    },
+    "text_27": {
+      "type": "text",
+      "id": "text_27",
+      "source_id": null,
+      "content": "Support for text annotations that are not part of the content, but stored as an overlay"
+    },
+    "text_28": {
+      "type": "text",
+      "id": "text_28",
+      "source_id": null,
+      "content": "Support for comments to have dicussions that can stick on content elements or annotations."
+    },
+    "list_2": {
+      "type": "list",
+      "id": "list_2",
+      "source_id": "",
+      "items": [
+        "text_23",
+        "text_24",
+        "text_25",
+        "text_26",
+        "text_27",
+        "text_28"
+      ],
+      "ordered": false
+    },
+    "header_8": {
+      "type": "heading",
+      "id": "header_8",
+      "source_id": "nodes",
+      "content": "Nodes",
+      "level": 3
+    },
+    "text_29": {
+      "type": "text",
+      "id": "text_29",
+      "source_id": null,
+      "content": "Substance documents are data-centric representations of digital content. Each content element lives as a node in a flat address space, identified by a unique id. Think of it as a database of independent content fragments."
+    },
+    "text_30": {
+      "type": "text",
+      "id": "text_30",
+      "source_id": null,
+      "content": "The following graphic shows a sample document containing a heading (h1), paragraph (p1), and formula (f1). It also has an image (i1) and a table (t1) as well as two citations (c1 and c2)."
+    },
+    "figure_1": {
+      "type": "figure",
+      "id": "figure_1",
+      "url": "http://f.cl.ly/items/060x2w1f2r1A3y3D3z2w/lens-document-nodes.png",
+      "label": "",
+      "caption": null
+    },
+    "header_9": {
+      "type": "heading",
+      "id": "header_9",
+      "source_id": "views",
+      "content": "Views",
+      "level": 3
+    },
+    "text_31": {
+      "type": "text",
+      "id": "text_31",
+      "source_id": null,
+      "content": "Now these building blocks of a document are organized using views. The main body of the document is referenced in the content view. Figures (like images and tables) are kept in the figures view while citations live in citations respectively."
+    },
+    "figure_2": {
+      "type": "figure",
+      "id": "figure_2",
+      "url": "http://f.cl.ly/items/0J3m3D3Z2u3E292A1j3T/lens-document-views.png",
+      "label": "",
+      "caption": null
+    },
+    "header_10": {
+      "type": "heading",
+      "id": "header_10",
+      "source_id": "substance.article",
+      "content": "Substance.Article",
+      "level": 2
+    },
+    "text_32": {
+      "type": "text",
+      "id": "text_32",
+      "source_id": null,
+      "content": "The Substance.Article is our reference implementation of the Substance Document model. It features basic content types such as paragraphs, headings, images and code blocks. Use this as a starting point for rolling your own Substance based document-format. We've created a different flavor for scientific content, the Lens.Article."
+    },
+    "header_11": {
+      "type": "heading",
+      "id": "header_11",
+      "source_id": "usage-1",
+      "content": "Usage",
+      "level": 3
+    },
+    "text_33": {
+      "type": "text",
+      "id": "text_33",
+      "source_id": null,
+      "content": "This section is intended to be a step to step guide on how to use the module to programmatically create and transform digital documents of any kind."
+    },
+    "text_34": {
+      "type": "text",
+      "id": "text_34",
+      "source_id": null,
+      "content": "Start tracking a new document."
+    },
+    "codeblock_9": {
+      "type": "codeblock",
+      "id": "codeblock_9",
+      "source_id": "",
+      "content": "var doc = new Substance.Article({ id: \"my_doc\" });"
+    },
+    "text_35": {
+      "type": "text",
+      "id": "text_35",
+      "source_id": null,
+      "content": "Add a first heading to the document."
+    },
+    "codeblock_10": {
+      "type": "codeblock",
+      "id": "codeblock_10",
+      "source_id": "",
+      "content": "doc.create({\n  \"id\": \"h1\",\n  \"type\": \"heading\",\n  \"content\": \"Heading 1\"\n});"
+    },
+    "text_36": {
+      "type": "text",
+      "id": "text_36",
+      "source_id": null,
+      "content": "Now let's add another node, this time a text node."
+    },
+    "text_37": {
+      "type": "text",
+      "id": "text_37",
+      "source_id": null,
+      "content": "This operation is pretty similar to the previous one, except this time we specify text as the content type."
+    },
+    "codeblock_11": {
+      "type": "codeblock",
+      "id": "codeblock_11",
+      "source_id": "",
+      "content": "doc.create({\n  \"id\": \"t1\",\n  \"type\": \"text\",\n  \"content\": \"Text 1\"\n});"
+    },
+    "text_38": {
+      "type": "text",
+      "id": "text_38",
+      "source_id": null,
+      "content": "Nodes can be shown in different views."
+    },
+    "codeblock_12": {
+      "type": "codeblock",
+      "id": "codeblock_12",
+      "source_id": "",
+      "content": "var opC = [\n  \"position\", \"content\", {\"nodes\": [\"h1\", \"t1\"], \"target\": 0}\n];\n\ndoc.show(\"content\", [\"h1\", \"t1\"], 0);"
+    },
+    "text_39": {
+      "type": "text",
+      "id": "text_39",
+      "source_id": null,
+      "content": "Update an existing node"
+    },
+    "text_40": {
+      "type": "text",
+      "id": "text_40",
+      "source_id": null,
+      "content": "There's a special API for incrementally updating existing nodes. This works by specifying a delta operation describing only what's changed in the text."
+    },
+    "codeblock_13": {
+      "type": "codeblock",
+      "id": "codeblock_13",
+      "source_id": "",
+      "content": "doc.update([\"h1\", \"content\"], [4, \"ING\", -3]);\ndoc.get('h1').content; // => \"HeadING 1\""
+    },
+    "text_41": {
+      "type": "text",
+      "id": "text_41",
+      "source_id": null,
+      "content": "Inspect the document state"
+    },
+    "text_42": {
+      "type": "text",
+      "id": "text_42",
+      "source_id": null,
+      "content": "Now after executing a bunch of operations, it is a good time to inspect the current state of the document."
+    },
+    "codeblock_14": {
+      "type": "codeblock",
+      "id": "codeblock_14",
+      "source_id": "",
+      "content": "doc.toJSON();"
+    },
+    "text_43": {
+      "type": "text",
+      "id": "text_43",
+      "source_id": null,
+      "content": "This is how the JSON serialization looks like:"
+    },
+    "codeblock_15": {
+      "type": "codeblock",
+      "id": "codeblock_15",
+      "source_id": "",
+      "content": "{\n  \"id\": \"my_document\",\n  \"schema\": [\"substance-article\", \"0.1.0\"],\n  \"nodes\": {\n    \"document\": {\n      \"title\": \"\",\n      \"views\": [\"content\"]\n    },\n    \"h1\": {\n      \"content\": \"HeadING 1\",\n      \"id\": \"h1\",\n      \"type\": \"heading\"\n    },\n    \"t1\": {\n      \"content\": \"Hey there.\",\n      \"id\": \"t1\",\n      \"type\": \"text\"\n    },\n    \"content\": {\n      \"nodes\": [\"h1\", \"t1\"]\n    }\n  }\n}"
+    },
+    "text_44": {
+      "type": "text",
+      "id": "text_44",
+      "source_id": null,
+      "content": "As you can see there are two nodes registered, which can be directly accessed by their id. In order to reflect the order of our nodes we keep a view node content that has a nodes property reflecting the node order in the document."
+    },
+    "header_12": {
+      "type": "heading",
+      "id": "header_12",
+      "source_id": "annotations",
+      "content": "Annotations",
+      "level": 3
+    },
+    "text_45": {
+      "type": "text",
+      "id": "text_45",
+      "source_id": null,
+      "content": "So far, we have a bare-metal digital document, containing two different types of content nodes. Now we'd also like to store additional contextual information, relevant to a particular portion of text within the document."
+    },
+    "text_46": {
+      "type": "text",
+      "id": "text_46",
+      "source_id": null,
+      "content": "Unlike in other systems with Substance annotations are not part of the content itself. They're completely separated from the text. Most text editors offer the ability to emphasize portions of text using markup. E.g. in HTML it looks like this."
+    },
+    "codeblock_16": {
+      "type": "codeblock",
+      "id": "codeblock_16",
+      "source_id": "",
+      "content": "<em>Emphasized term</em> in a text body."
+    },
+    "text_47": {
+      "type": "text",
+      "id": "text_47",
+      "source_id": null,
+      "content": "In Substance however, we keep annotations external and remember the position of the first character, as well as an offset (how many characters are effected). An annotation emphasizing the \"Hey\" in \"Hey there.\" looks like so:"
+    },
+    "text_48": {
+      "type": "text",
+      "id": "text_48",
+      "source_id": null,
+      "content": "Here's how you create an annotation."
+    },
+    "codeblock_17": {
+      "type": "codeblock",
+      "id": "codeblock_17",
+      "source_id": "",
+      "content": "doc.create({\n  \"id\": \"a1\",\n  \"type\": \"emphasis\",\n  \"path\": [\"t1\", \"content\"],\n  \"range\": {start: [0,1], end: [0, 5]}\n});"
+    },
+    "header_13": {
+      "type": "heading",
+      "id": "header_13",
+      "source_id": "substance.operator",
+      "content": "Substance.Operator",
+      "level": 2
+    },
+    "text_49": {
+      "type": "text",
+      "id": "text_49",
+      "source_id": null,
+      "content": "Substance.Operator provides Operational Transformations for strings, arrays and objects. Operations can be inverted and transformed. Particularly we use Operations extensively in Substance.Chronicle for versioning changes."
+    },
+    "header_14": {
+      "type": "heading",
+      "id": "header_14",
+      "source_id": "usage-2",
+      "content": "Usage",
+      "level": 3
+    },
+    "text_50": {
+      "type": "text",
+      "id": "text_50",
+      "source_id": null,
+      "content": "Strings can be modified via incremental insertions and deletions."
+    },
+    "codeblock_18": {
+      "type": "codeblock",
+      "id": "codeblock_18",
+      "source_id": "",
+      "content": "var text = \"Sun\";\nvar op1 = Operator.TextOperation.Delete(2, \"n\");\nvar op2 = Operator.TextOperation.Insert(2, \"bstance\");\ntext = op2.apply(op1.apply(text));\nconsole.log(text);\n> Substance"
+    },
+    "text_51": {
+      "type": "text",
+      "id": "text_51",
+      "source_id": null,
+      "content": "Arrays can be modified via insertions, deletions, and moves."
+    },
+    "codeblock_19": {
+      "type": "codeblock",
+      "id": "codeblock_19",
+      "source_id": "",
+      "content": "var arr = [1,3];\nvar op1 = Operator.ArrayOperation.Insert(1, 2);\nvar op2 = Operator.ArrayOperation.Move(0, 2);\nvar op3 = Operator.ArrayOperation.Delete(1, 3);\nop3.apply(op2.apply(op1.apply(arr)));\nconsole.log(arr)\n> [2, 1]"
+    },
+    "text_52": {
+      "type": "text",
+      "id": "text_52",
+      "source_id": null,
+      "content": "With ObjectOperations you can create, delete, set, and update object properties."
+    },
+    "text_53": {
+      "type": "text",
+      "id": "text_53",
+      "source_id": null,
+      "content": "Updates are done using Text-, Array-, or ObjectOperations. Properties are specified by a path which is an array of strings."
+    },
+    "codeblock_20": {
+      "type": "codeblock",
+      "id": "codeblock_20",
+      "source_id": "",
+      "content": "var obj = { bla: \"blupp\", foo: { bar: [] } };\nvar op1 = Operator.ObjectOperation.Create([\"a\"], \"b\");\nvar op2 = Operator.ObjectOperation.Delete([\"bla\"], \"blupp\");\nvar op3 = Operator.ObjectOperation.Set([\"foo\", \"bar\"], [1,3]);\nvar op4 = Operator.ObjectOperation.Update([\"foo\", \"bar\"], Operator.ArrayOperation.Insert(1, 2));\nop4.apply(op3.apply(op2.apply(op1.apply(obj))));\nconsole.log(obj);\n> { a: \"b\", foo: { bar: [1, 2, 3] } }\n  "
+    },
+    "text_54": {
+      "type": "text",
+      "id": "text_54",
+      "source_id": null,
+      "content": "Compounds allow to pack several Operations of the same type into a single one."
+    },
+    "codeblock_21": {
+      "type": "codeblock",
+      "id": "codeblock_21",
+      "source_id": "",
+      "content": "var compound = Operator.ObjectOperation.Compound([op1, op2, op3, op4]);\ncompound.apply(obj);"
+    },
+    "text_55": {
+      "type": "text",
+      "id": "text_55",
+      "source_id": null,
+      "content": "Find more examples in the testsuite."
+    },
+    "header_15": {
+      "type": "heading",
+      "id": "header_15",
+      "source_id": "substance.chronicle",
+      "content": "Substance.Chronicle",
+      "level": 2
+    },
+    "text_56": {
+      "type": "text",
+      "id": "text_56",
+      "source_id": null,
+      "content": "Substance.Chronicle is a git-inspired versioning API based on Operational Transformations. The actual content to be versioned or a persistence mechanism is not addressed in this module. Instead one would create an adapter which is implementing an OT interface."
+    },
+    "header_16": {
+      "type": "heading",
+      "id": "header_16",
+      "source_id": "getting-started",
+      "content": "Getting Started",
+      "level": 3
+    },
+    "text_57": {
+      "type": "text",
+      "id": "text_57",
+      "source_id": null,
+      "content": "Consider a simple collaborative editing session of John and Jane."
+    },
+    "text_58": {
+      "type": "text",
+      "id": "text_58",
+      "source_id": null,
+      "content": "John starts writing a text (Commit John - 1)."
+    },
+    "codeblock_22": {
+      "type": "codeblock",
+      "id": "codeblock_22",
+      "source_id": "",
+      "content": "Hsta la vista."
+    },
+    "text_59": {
+      "type": "text",
+      "id": "text_59",
+      "source_id": null,
+      "content": "Jane receives the update and instantly fixes John's typo (Commit Jane)."
+    },
+    "codeblock_23": {
+      "type": "codeblock",
+      "id": "codeblock_23",
+      "source_id": "",
+      "content": "Hasta la vista."
+    },
+    "text_60": {
+      "type": "text",
+      "id": "text_60",
+      "source_id": null,
+      "content": "In the very same moment John continues writing (Commits John - 2 and John - 3)."
+    },
+    "codeblock_24": {
+      "type": "codeblock",
+      "id": "codeblock_24",
+      "source_id": "",
+      "content": "Hsta la vista, baby!"
+    },
+    "text_61": {
+      "type": "text",
+      "id": "text_61",
+      "source_id": null,
+      "content": "This leads to a situation with concurrent changes which are merged into a common result (Commit Merge)."
+    },
+    "codeblock_25": {
+      "type": "codeblock",
+      "id": "codeblock_25",
+      "source_id": "",
+      "content": "Hasta la vista, baby!"
+    },
+    "text_62": {
+      "type": "text",
+      "id": "text_62",
+      "source_id": null,
+      "content": "Substance.Chronicle allows to view versions and resolve more complex version deviations via merging."
+    },
+    "header_17": {
+      "type": "heading",
+      "id": "header_17",
+      "source_id": "getting-really-started",
+      "content": "Getting Really Started",
+      "level": 3
+    },
+    "text_63": {
+      "type": "text",
+      "id": "text_63",
+      "source_id": null,
+      "content": "Substance.Chronicle can be considered a low-level API. Some integration and glueing is necessary to get things moving."
+    },
+    "text_64": {
+      "type": "text",
+      "id": "text_64",
+      "source_id": null,
+      "content": "Installation is easy."
+    },
+    "text_65": {
+      "type": "text",
+      "id": "text_65",
+      "source_id": null,
+      "content": "$ npm install substance-chronicle"
+    },
+    "text_66": {
+      "type": "text",
+      "id": "text_66",
+      "source_id": null,
+      "content": "In your Node.js script:"
+    },
+    "text_67": {
+      "type": "text",
+      "id": "text_67",
+      "source_id": null,
+      "content": "var Chronicle = require('substance-chronicle');"
+    },
+    "text_68": {
+      "type": "text",
+      "id": "text_68",
+      "source_id": null,
+      "content": "Basically it is necessary to define some kind of Change type and an adapter that can deal with that:"
+    },
+    "codeblock_26": {
+      "type": "codeblock",
+      "id": "codeblock_26",
+      "source_id": "",
+      "content": "function YourVersioningAdapter() {\n\n  // applies the change to your data\n  this.apply = function(change) {};\n\n  // inverts a change\n      this.invert = function(change) {};\n\n  // transforms changes according to operational transformation\n      this.transform = function(a, b, options) {}\n\n  // resets your document\n  this.reset = function() {}\n};"
+    },
+    "text_69": {
+      "type": "text",
+      "id": "text_69",
+      "source_id": null,
+      "content": "The difficult part is to specify Change types that are invertible and transformable. Here, Substance.Operator comes in providing basic operations for text, arrays, and objects."
+    },
+    "text_70": {
+      "type": "text",
+      "id": "text_70",
+      "source_id": null,
+      "content": "Having your adapter you can begin chronicling using"
+    },
+    "codeblock_27": {
+      "type": "codeblock",
+      "id": "codeblock_27",
+      "source_id": "",
+      "content": "var chronicle = Chronicle.create();\nchronicle.manage(yourAdapter);"
+    },
+    "text_71": {
+      "type": "text",
+      "id": "text_71",
+      "source_id": null,
+      "content": "To get things recorded you need to tell the Chronicle to do so:"
+    },
+    "codeblock_28": {
+      "type": "codeblock",
+      "id": "codeblock_28",
+      "source_id": "",
+      "content": "chronicle.record(someChange);"
+    },
+    "text_72": {
+      "type": "text",
+      "id": "text_72",
+      "source_id": null,
+      "content": "For more sophisticated examples see the testsuite."
+    },
+    "header_18": {
+      "type": "heading",
+      "id": "header_18",
+      "source_id": "installation",
+      "content": "Installation",
+      "level": 1
+    },
+    "text_73": {
+      "type": "text",
+      "id": "text_73",
+      "source_id": null,
+      "content": "It's fairly easy to install and run the latest Substance development version locally."
+    },
+    "header_19": {
+      "type": "heading",
+      "id": "header_19",
+      "source_id": "prerequisites",
+      "content": "Prerequisites",
+      "level": 2
+    },
+    "text_74": {
+      "type": "text",
+      "id": "text_74",
+      "source_id": null,
+      "content": "Node.js >=0.10.x"
+    },
+    "text_75": {
+      "type": "text",
+      "id": "text_75",
+      "source_id": null,
+      "content": "Pandoc >= 1.12.x (for on-the-fly generation of documents using Markdown as an input)"
+    },
+    "list_3": {
+      "type": "list",
+      "id": "list_3",
+      "source_id": "",
+      "items": [
+        "text_74",
+        "text_75"
+      ],
+      "ordered": false
+    },
+    "text_76": {
+      "type": "text",
+      "id": "text_76",
+      "source_id": null,
+      "content": "Node.js is just used as a development environment. You'll soon be able to create self-contained packages of individual modules or the main app itself."
+    },
+    "header_20": {
+      "type": "heading",
+      "id": "header_20",
+      "source_id": "fresh-install",
+      "content": "Fresh install",
+      "level": 2
+    },
+    "text_77": {
+      "type": "text",
+      "id": "text_77",
+      "source_id": null,
+      "content": "First install the Substance Screwdriver command line utility. It's just a little helper that makes dealing with our many modules easier."
+    },
+    "codeblock_29": {
+      "type": "codeblock",
+      "id": "codeblock_29",
+      "source_id": "",
+      "content": "$ git clone https://github.com/substance/screwdriver.git\n$ cd screwdriver\n$ sudo python setup.py install"
+    },
+    "text_78": {
+      "type": "text",
+      "id": "text_78",
+      "source_id": null,
+      "content": "Clone the Substance Mothership"
+    },
+    "codeblock_30": {
+      "type": "codeblock",
+      "id": "codeblock_30",
+      "source_id": "",
+      "content": "$ git clone https://github.com/substance/substance.git"
+    },
+    "text_79": {
+      "type": "text",
+      "id": "text_79",
+      "source_id": null,
+      "content": "Run the update command, which pulls in all the sub-modules and dependencies"
+    },
+    "codeblock_31": {
+      "type": "codeblock",
+      "id": "codeblock_31",
+      "source_id": "",
+      "content": "$ cd substance\n$ substance --update"
+    },
+    "text_80": {
+      "type": "text",
+      "id": "text_80",
+      "source_id": null,
+      "content": "Finally start the server and navigate to http://localhost:3000."
+    },
+    "codeblock_32": {
+      "type": "codeblock",
+      "id": "codeblock_32",
+      "source_id": "",
+      "content": "$ substance"
+    },
+    "header_21": {
+      "type": "heading",
+      "id": "header_21",
+      "source_id": "keep-your-local-version-in-sync",
+      "content": "Keep your local version in sync",
+      "level": 2
+    },
+    "text_81": {
+      "type": "text",
+      "id": "text_81",
+      "source_id": null,
+      "content": "You may want to pull in updates every now and then, which is simple. In the Substance project root dir do:"
+    },
+    "codeblock_33": {
+      "type": "codeblock",
+      "id": "codeblock_33",
+      "source_id": "",
+      "content": "$ substance --update"
+    },
+    "text_82": {
+      "type": "text",
+      "id": "text_82",
+      "source_id": null,
+      "content": "And start the dev environment again."
+    },
+    "codeblock_34": {
+      "type": "codeblock",
+      "id": "codeblock_34",
+      "source_id": "",
+      "content": "$ substance"
+    },
+    "header_22": {
+      "type": "heading",
+      "id": "header_22",
+      "source_id": "contributing",
+      "content": "Contributing",
+      "level": 1
+    },
+    "text_83": {
+      "type": "text",
+      "id": "text_83",
+      "source_id": null,
+      "content": "I'm assuming here that you have push access to the repositories, because as a start I'd like to get the Lens core dev team up and running. I'll provide documentation on how to work with a forked version of a module and submit a pull request soon."
+    },
+    "text_84": {
+      "type": "text",
+      "id": "text_84",
+      "source_id": null,
+      "content": "Say you've made changes to the Substance.Article module. In order to commit them you simply have to navigate to node_modules/substance-article and do:"
+    },
+    "codeblock_35": {
+      "type": "codeblock",
+      "id": "codeblock_35",
+      "source_id": "",
+      "content": "$ git add <YOUR STUFF>\n$ git commit -m \"Fixed X\"\n$ git push"
+    },
+    "text_85": {
+      "type": "text",
+      "id": "text_85",
+      "source_id": null,
+      "content": "Alternatively, if you are working on breaking changes you can switch to a different branch, and submit a pull request using the Github interface. Here's how:"
+    },
+    "codeblock_36": {
+      "type": "codeblock",
+      "id": "codeblock_36",
+      "source_id": "",
+      "content": "$ git checkout -b my_feature_branch\n$ git add <YOUR STUFF>\n$ git commit -m \"Fixed X\"\n$ git push"
+    },
+    "text_86": {
+      "type": "text",
+      "id": "text_86",
+      "source_id": null,
+      "content": "Then go to Github and submit a pull request."
+    },
+    "link_1": {
+      "type": "link",
+      "id": "link_1",
+      "path": [
+        "text_1",
+        "content"
+      ],
+      "range": [
+        216,
+        229
+      ],
+      "url": "https://github.com/substance/io/blob/master/docs/substance/manual/content.md"
+    },
+    "emphasis_1": {
+      "type": "emphasis",
+      "id": "emphasis_1",
+      "path": [
+        "text_1",
+        "content"
+      ],
+      "range": [
+        0,
+        230
+      ]
+    },
+    "code_1": {
+      "type": "code",
+      "id": "code_1",
+      "path": [
+        "text_15",
+        "content"
+      ],
+      "range": [
+        13,
+        23
+      ]
+    },
+    "code_2": {
+      "type": "code",
+      "id": "code_2",
+      "path": [
+        "text_18",
+        "content"
+      ],
+      "range": [
+        27,
+        30
+      ]
+    },
+    "link_2": {
+      "type": "link",
+      "id": "link_2",
+      "path": [
+        "text_20",
+        "content"
+      ],
+      "range": [
+        71,
+        80
+      ],
+      "url": "https://github.com/substance/data/tree/master/tests"
+    },
+    "strong_1": {
+      "type": "strong",
+      "id": "strong_1",
+      "path": [
+        "text_21",
+        "content"
+      ],
+      "range": [
+        0,
+        18
+      ]
+    },
+    "code_3": {
+      "type": "code",
+      "id": "code_3",
+      "path": [
+        "text_30",
+        "content"
+      ],
+      "range": [
+        68,
+        70
+      ]
+    },
+    "code_4": {
+      "type": "code",
+      "id": "code_4",
+      "path": [
+        "text_30",
+        "content"
+      ],
+      "range": [
+        84,
+        86
+      ]
+    },
+    "code_5": {
+      "type": "code",
+      "id": "code_5",
+      "path": [
+        "text_30",
+        "content"
+      ],
+      "range": [
+        102,
+        104
+      ]
+    },
+    "code_6": {
+      "type": "code",
+      "id": "code_6",
+      "path": [
+        "text_30",
+        "content"
+      ],
+      "range": [
+        129,
+        131
+      ]
+    },
+    "code_7": {
+      "type": "code",
+      "id": "code_7",
+      "path": [
+        "text_30",
+        "content"
+      ],
+      "range": [
+        146,
+        148
+      ]
+    },
+    "code_8": {
+      "type": "code",
+      "id": "code_8",
+      "path": [
+        "text_30",
+        "content"
+      ],
+      "range": [
+        176,
+        178
+      ]
+    },
+    "code_9": {
+      "type": "code",
+      "id": "code_9",
+      "path": [
+        "text_30",
+        "content"
+      ],
+      "range": [
+        183,
+        185
+      ]
+    },
+    "code_10": {
+      "type": "code",
+      "id": "code_10",
+      "path": [
+        "text_31",
+        "content"
+      ],
+      "range": [
+        118,
+        125
+      ]
+    },
+    "code_11": {
+      "type": "code",
+      "id": "code_11",
+      "path": [
+        "text_31",
+        "content"
+      ],
+      "range": [
+        181,
+        188
+      ]
+    },
+    "code_12": {
+      "type": "code",
+      "id": "code_12",
+      "path": [
+        "text_31",
+        "content"
+      ],
+      "range": [
+        218,
+        227
+      ]
+    },
+    "link_3": {
+      "type": "link",
+      "id": "link_3",
+      "path": [
+        "text_32",
+        "content"
+      ],
+      "range": [
+        317,
+        329
+      ],
+      "url": "http://lens.substance.io/#lens/lens_article"
+    },
+    "code_13": {
+      "type": "code",
+      "id": "code_13",
+      "path": [
+        "text_37",
+        "content"
+      ],
+      "range": [
+        82,
+        86
+      ]
+    },
+    "code_14": {
+      "type": "code",
+      "id": "code_14",
+      "path": [
+        "text_44",
+        "content"
+      ],
+      "range": [
+        87,
+        89
+      ]
+    },
+    "code_15": {
+      "type": "code",
+      "id": "code_15",
+      "path": [
+        "text_44",
+        "content"
+      ],
+      "range": [
+        154,
+        161
+      ]
+    },
+    "code_16": {
+      "type": "code",
+      "id": "code_16",
+      "path": [
+        "text_44",
+        "content"
+      ],
+      "range": [
+        173,
+        178
+      ]
+    },
+    "link_4": {
+      "type": "link",
+      "id": "link_4",
+      "path": [
+        "text_55",
+        "content"
+      ],
+      "range": [
+        26,
+        35
+      ],
+      "url": "https://github.com/substance/operator/tree/master/tests"
+    },
+    "link_5": {
+      "type": "link",
+      "id": "link_5",
+      "path": [
+        "text_56",
+        "content"
+      ],
+      "range": [
+        62,
+        89
+      ],
+      "url": "http://interior.substance.io/modules/operator.html"
+    },
+    "code_17": {
+      "type": "code",
+      "id": "code_17",
+      "path": [
+        "text_58",
+        "content"
+      ],
+      "range": [
+        35,
+        43
+      ]
+    },
+    "code_18": {
+      "type": "code",
+      "id": "code_18",
+      "path": [
+        "text_59",
+        "content"
+      ],
+      "range": [
+        65,
+        69
+      ]
+    },
+    "code_19": {
+      "type": "code",
+      "id": "code_19",
+      "path": [
+        "text_60",
+        "content"
+      ],
+      "range": [
+        56,
+        64
+      ]
+    },
+    "code_20": {
+      "type": "code",
+      "id": "code_20",
+      "path": [
+        "text_60",
+        "content"
+      ],
+      "range": [
+        69,
+        77
+      ]
+    },
+    "code_21": {
+      "type": "code",
+      "id": "code_21",
+      "path": [
+        "text_61",
+        "content"
+      ],
+      "range": [
+        96,
+        101
+      ]
+    },
+    "code_22": {
+      "type": "code",
+      "id": "code_22",
+      "path": [
+        "text_68",
+        "content"
+      ],
+      "range": [
+        49,
+        55
+      ]
+    },
+    "code_23": {
+      "type": "code",
+      "id": "code_23",
+      "path": [
+        "text_69",
+        "content"
+      ],
+      "range": [
+        33,
+        39
+      ]
+    },
+    "link_6": {
+      "type": "link",
+      "id": "link_6",
+      "path": [
+        "text_72",
+        "content"
+      ],
+      "range": [
+        40,
+        49
+      ],
+      "url": "https://github.com/substance/chronicle/tree/master/tests"
+    },
+    "link_7": {
+      "type": "link",
+      "id": "link_7",
+      "path": [
+        "text_75",
+        "content"
+      ],
+      "range": [
+        0,
+        6
+      ],
+      "url": "http://johnmacfarlane.net/pandoc/installing.html"
+    },
+    "code_24": {
+      "type": "code",
+      "id": "code_24",
+      "path": [
+        "text_80",
+        "content"
+      ],
+      "range": [
+        41,
+        62
+      ]
+    },
+    "code_25": {
+      "type": "code",
+      "id": "code_25",
+      "path": [
+        "text_84",
+        "content"
+      ],
+      "range": [
+        112,
+        142
+      ]
+    },
+    "link_8": {
+      "type": "link",
+      "id": "link_8",
+      "path": [
+        "text_86",
+        "content"
+      ],
+      "range": [
+        11,
+        17
+      ],
+      "url": "http://github.com"
+    },
+    "figures": {
+      "type": "view",
+      "id": "figures",
+      "nodes": []
+    },
+    "info": {
+      "type": "view",
+      "id": "info",
+      "nodes": [
+        "collaborator_1",
+        "collaborator_2"
+      ]
+    },
+    "collaborator_1": {
+      "type": "collaborator",
+      "id": "collaborator_1",
+      "source_id": "",
+      "name": "Michael Aufreiter",
+      "role": "author",
+      "organization": "Quasipartikel",
+      "image": "https://2.gravatar.com/avatar/d5a959d7e57daa5433fcb9f8da40be4b?d=https%3A%2F%2Fidenticons.github.com%2F86c4ad52768c511046fea7b2d42b300c.png&s=420",
+      "email": "ma@zive.at",
+      "contribution": "Initial version of the manual."
+    },
+    "collaborator_2": {
+      "type": "collaborator",
+      "id": "collaborator_2",
+      "source_id": "",
+      "name": "Oliver Buchtala",
+      "role": "author",
+      "organization": "Quasipartikel",
+      "image": "http://interior.substance.io/assets/images/team/oliver.png",
+      "email": "oliver.buchtala@gmail.com",
+      "contribution": "Documentation for Operator / Chronicle / Data."
+    },
+    "collaborator_reference_1": {
+      "type": "person_reference",
+      "id": "collaborator_reference_1",
+      "path": [
+        "cover",
+        "authors",
+        "1"
+      ],
+      "range": [
+        0,
+        17
+      ],
+      "target": "collaborator_1"
+    },
+    "collaborator_reference_2": {
+      "type": "person_reference",
+      "id": "collaborator_reference_2",
+      "path": [
+        "cover",
+        "authors",
+        "2"
+      ],
+      "range": [
+        0,
+        15
+      ],
+      "target": "collaborator_2"
+    },
+    "cover": {
+      "type": "cover",
+      "id": "cover",
+      "source_id": "",
+      "authors": [
+        "collaborator_reference_1",
+        "collaborator_reference_2"
+      ],
+      "image": "http://f.cl.ly/items/060C3x2K0w0o1T0R050o/leafdetail_large.jpg"
+    }
+  }
+}

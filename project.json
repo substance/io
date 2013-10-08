@@ -113,9 +113,7 @@
   ],
   "node_modules": {
     "underscore": "1.5.x",
-    "express": "3.3.x",
-    "handlebars": "1.0.x",
-    "mocha": "1.12.x"
+    "express": "3.3.x"
   },
   "npm": {
     "engines": {
@@ -159,11 +157,7 @@
   "assets": {
     "lib/jquery-2.0.3.min.js": "lib/jquery-2.0.3.min.js",
     "styles/font-awesome.css": "styles/font-awesome.css",
-    "styles/fonts": "styles/fonts",
-    "docs": "docs",
-    "src": "src",
-    "project.json": "project.json",
-    "server.js": "server.js"
+    "styles/fonts": "styles/fonts"
   },
   "bundle": {
     "name": "substance",

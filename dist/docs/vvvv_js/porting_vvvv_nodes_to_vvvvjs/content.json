@@ -1,0 +1,1099 @@
+{
+  "id": "porting_vvvv_nodes_to_vvvvjs",
+  "schema": [
+    "substance-article",
+    "0.1.0"
+  ],
+  "nodes": {
+    "document": {
+      "type": "document",
+      "id": "document",
+      "views": [
+        "content",
+        "figures",
+        "info"
+      ],
+      "guid": "porting_vvvv_nodes_to_vvvvjs",
+      "creator": "",
+      "title": "Porting VVVV Nodes to VVVV.js",
+      "abstract": "",
+      "published_on": "2013-10-08T12:47:04.915Z",
+      "meta": {}
+    },
+    "content": {
+      "type": "view",
+      "id": "content",
+      "nodes": [
+        "cover",
+        "header_1",
+        "text_1",
+        "text_2",
+        "header_2",
+        "header_3",
+        "text_3",
+        "text_4",
+        "text_5",
+        "text_6",
+        "header_4",
+        "text_7",
+        "text_8",
+        "text_9",
+        "header_5",
+        "text_10",
+        "codeblock_1",
+        "text_11",
+        "header_6",
+        "text_12",
+        "codeblock_2",
+        "text_13",
+        "text_14",
+        "text_15",
+        "text_16",
+        "header_7",
+        "text_17",
+        "codeblock_3",
+        "text_18",
+        "header_8",
+        "text_19",
+        "codeblock_4",
+        "text_20",
+        "text_21",
+        "list_1",
+        "text_26",
+        "codeblock_5",
+        "text_27",
+        "text_28",
+        "header_9",
+        "text_29",
+        "header_10",
+        "text_30",
+        "header_11",
+        "text_31",
+        "codeblock_6",
+        "text_32",
+        "codeblock_7",
+        "text_33",
+        "text_34",
+        "codeblock_8",
+        "text_35",
+        "codeblock_9",
+        "text_36",
+        "codeblock_10",
+        "text_37",
+        "text_38",
+        "codeblock_11",
+        "text_39",
+        "codeblock_12",
+        "header_12",
+        "text_40",
+        "text_41"
+      ]
+    },
+    "header_1": {
+      "type": "heading",
+      "id": "header_1",
+      "source_id": "the-github-repository",
+      "content": "The Github Repository",
+      "level": 1
+    },
+    "text_1": {
+      "type": "text",
+      "id": "text_1",
+      "source_id": null,
+      "content": "The VVVV.js source code repository is hosted on Github at github.com/zauner/vvvv.js. When considering porting nodes, it's a good idea to fork the project, no matter if you're planning to push your code back into the main repo or decide to keep it for yourself."
+    },
+    "text_2": {
+      "type": "text",
+      "id": "text_2",
+      "source_id": null,
+      "content": "If you're new to Git and Github, there's some good advice in the Github Help Section."
+    },
+    "header_2": {
+      "type": "heading",
+      "id": "header_2",
+      "source_id": "get-your-hands-dirty",
+      "content": "Get your hands dirty",
+      "level": 1
+    },
+    "header_3": {
+      "type": "heading",
+      "id": "header_3",
+      "source_id": "diving-into-the-source-code",
+      "content": "Diving into the Source Code",
+      "level": 2
+    },
+    "text_3": {
+      "type": "text",
+      "id": "text_3",
+      "source_id": null,
+      "content": "Once you have cloned the repository to your machine, navigate to the project directory, where you will find a subdirectory called nodes. As you might have guessed, this is where all the nodes go. There is one JavaScript file per category (which might allow some kind of smart script loading someday ...). Open one file and make yourself comfortable. For example, have a look at the Add (Value) node in nodes/VVVV.Nodes.Value.js. Things might get clear really quick then."
+    },
+    "text_4": {
+      "type": "text",
+      "id": "text_4",
+      "source_id": null,
+      "content": "Once you have chosen a lucky node you want to introduce to VVVV.js, open the according category file. Only \"first level categories\" get own files, so e.g. IOBox (Value Advanced) goes into the same file as Add (Value) and Add (Value Spectral)."
+    },
+    "text_5": {
+      "type": "text",
+      "id": "text_5",
+      "source_id": null,
+      "content": "Note: if there is no file for your node's category yet, create one following the VVVV.Nodes.{Categoryname}.js pattern, and add it to the list of files invvvv_js/vvvv.js."
+    },
+    "text_6": {
+      "type": "text",
+      "id": "text_6",
+      "source_id": null,
+      "content": "After you have found a suitable place, you could either start coding right away, or use the Porting Wizard, which will be explained in the next section."
+    },
+    "header_4": {
+      "type": "heading",
+      "id": "header_4",
+      "source_id": "starting-off-with-the-wizard",
+      "content": "Starting off with the Wizard",
+      "level": 2
+    },
+    "text_7": {
+      "type": "text",
+      "id": "text_7",
+      "source_id": null,
+      "content": "Propably the quickest and most painless way to get your nodes ported is using the Porting Wizard at http://vvvvjs.quasipartikel.at/beta/porting_wizard. This little tool uses information about VVVV nodes from VVVV's nodelist.xml and prepares a template for the corresponding VVVV.js JavaScript code."
+    },
+    "text_8": {
+      "type": "text",
+      "id": "text_8",
+      "source_id": null,
+      "content": "Just choose a node, fill out some meta data and select the pins you are goint to implement. The generated source code will follow every single move."
+    },
+    "text_9": {
+      "type": "text",
+      "id": "text_9",
+      "source_id": null,
+      "content": "Copy the template to the JavaScript file you chose while reading Section 2.1, and you are ready to start coding."
+    },
+    "header_5": {
+      "type": "heading",
+      "id": "header_5",
+      "source_id": "the-vvvv.core.node-object",
+      "content": "The VVVV.Core.Node Object",
+      "level": 2
+    },
+    "text_10": {
+      "type": "text",
+      "id": "text_10",
+      "source_id": null,
+      "content": "Looking at you're template code, or the code of any other ported node, the last line always is like"
+    },
+    "codeblock_1": {
+      "type": "codeblock",
+      "id": "codeblock_1",
+      "source_id": "",
+      "content": "VVVV.Nodes.{YourNodesName}.prototype = new VVVV.Core.Node();"
+    },
+    "text_11": {
+      "type": "text",
+      "id": "text_11",
+      "source_id": null,
+      "content": "Object-oriented (and very simplified) speaking, this makes your node derive from VVVV.Core.Node. Every node object holds several VVVV.Core.Pin objects, being input pins, output pins, and invisible (config) pins. Learn more about those objects in the API Reference, or read on to get a more human readable overview."
+    },
+    "header_6": {
+      "type": "heading",
+      "id": "header_6",
+      "source_id": "node-setup",
+      "content": "Node Setup",
+      "level": 2
+    },
+    "text_12": {
+      "type": "text",
+      "id": "text_12",
+      "source_id": null,
+      "content": "Taking the wizard's template code for, let's say, UniformScale (Transform), have a look at the first lines:"
+    },
+    "codeblock_2": {
+      "type": "codeblock",
+      "id": "codeblock_2",
+      "source_id": "",
+      "content": "/*\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nNODE: UniformScale (Transform)\nAuthor(s): 'Your Name'\nOriginal Node Author(s): 'VVVV Group'\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n*/\nVVVV.Nodes.UniformScaleTransform = function(id, graph) {\n  this.constructor(id, \"UniformScale (Transform)\", graph);\n  this.meta = {\n    authors: ['Your Name'],\n    original_authors: ['VVVV Group'],\n    credits: [],\n    compatibility_issues: []\n  };\n  ...\n}"
+    },
+    "text_13": {
+      "type": "text",
+      "id": "text_13",
+      "source_id": null,
+      "content": "So the object we are creating is VVVV.Nodes.UniformScaleTransform. In Line 9, we are calling its \"base classe's\" constructor, providing the node name \"UniformScale (Transform)\"."
+    },
+    "text_14": {
+      "type": "text",
+      "id": "text_14",
+      "source_id": null,
+      "content": "The next few lines fill the object's meta hash. This is your name as the node author, the author(s) of the original VVVV node, and some credits, if you are using code or knowledge from some external resource."
+    },
+    "text_15": {
+      "type": "text",
+      "id": "text_15",
+      "source_id": null,
+      "content": "The compatibility issues attribute holds all the information you think there should be noted regarding differences to the original VVVV node, as e.g. not yet implemented nodes, or different behaviour."
+    },
+    "text_16": {
+      "type": "text",
+      "id": "text_16",
+      "source_id": null,
+      "content": "Note, that all the attributes are arrays,so multiple authors/credits/compatibility issues should go in multipe array elements."
+    },
+    "header_7": {
+      "type": "heading",
+      "id": "header_7",
+      "source_id": "auto-evaluation",
+      "content": "Auto-evaluation",
+      "level": 2
+    },
+    "text_17": {
+      "type": "text",
+      "id": "text_17",
+      "source_id": null,
+      "content": "The next line is"
+    },
+    "codeblock_3": {
+      "type": "codeblock",
+      "id": "codeblock_3",
+      "source_id": "",
+      "content": "this.auto_evaluate = false;"
+    },
+    "text_18": {
+      "type": "text",
+      "id": "text_18",
+      "source_id": null,
+      "content": "and determines, if the node should be evaluated every frame (true), or only if input pin values changed (false). In our case, UniformScale should only be evaluated if there have been changes at the input pins, so we are just leaving it to false."
+    },
+    "header_8": {
+      "type": "heading",
+      "id": "header_8",
+      "source_id": "pin-creation",
+      "content": "Pin Creation",
+      "level": 2
+    },
+    "text_19": {
+      "type": "text",
+      "id": "text_19",
+      "source_id": null,
+      "content": "The following listing shows the lines of code, which create the node's input and output pins"
+    },
+    "codeblock_4": {
+      "type": "codeblock",
+      "id": "codeblock_4",
+      "source_id": "",
+      "content": "// input pins\nvar transforminIn = this.addInputPin('Transform In', [], this);\nvar xyzIn = this.addInputPin('XYZ', [1], this);\n\n// output pins\nvar transformoutOut = this.addOutputPin('Transform Out', [], this); "
+    },
+    "text_20": {
+      "type": "text",
+      "id": "text_20",
+      "source_id": null,
+      "content": "We are creating the two input pins \"Transform In\" and \"XYZ\" using addInputPin(), and one output pin \"Transform Out\" using addOutputPin()."
+    },
+    "text_21": {
+      "type": "text",
+      "id": "text_21",
+      "source_id": null,
+      "content": "The arguments of those function calls are:"
+    },
+    "text_22": {
+      "type": "text",
+      "id": "text_22",
+      "source_id": null,
+      "content": "Pin name"
+    },
+    "text_23": {
+      "type": "text",
+      "id": "text_23",
+      "source_id": null,
+      "content": "Default Value: is the value, the pin has on node creation, or if no other values are specified by incoming links or inside the .v4p file. Note, that this is always an array, no matter if there is only one slice or multiple."
+    },
+    "text_24": {
+      "type": "text",
+      "id": "text_24",
+      "source_id": null,
+      "content": "Node: now that I am writing this, I have no idea, why one should pass the node object here. This should definitly vanish as soon as possible. Until then, just pass this here."
+    },
+    "text_25": {
+      "type": "text",
+      "id": "text_25",
+      "source_id": null,
+      "content": "Reset on Disconnect (optional, default: false): The fourth, optional argument lets you control, whether an input pin should reset to its default, if an incoming link gets disconnected. This is particularly true for \"non primitive\" VVVV types, e.g. Transform, EX9.Texture, EX9.Layer, etc."
+    },
+    "list_1": {
+      "type": "list",
+      "id": "list_1",
+      "source_id": "",
+      "items": [
+        "text_22",
+        "text_23",
+        "text_24",
+        "text_25"
+      ],
+      "ordered": true
+    },
+    "text_26": {
+      "type": "text",
+      "id": "text_26",
+      "source_id": null,
+      "content": "As mentioned in the descripton of the fourth argument, we should set the \"Reset on Disconnect\" argument of the \"Transform In\" pin to true, so it gets reset to [] after disconnecting incoming links. Doing this, we get"
+    },
+    "codeblock_5": {
+      "type": "codeblock",
+      "id": "codeblock_5",
+      "source_id": "",
+      "content": "// input pins\nvar transforminIn = this.addInputPin('Transform In', [], this, true);\nvar xyzIn = this.addInputPin('XYZ', [1], this);\n\n// output pins\nvar transformoutOut = this.addOutputPin('Transform Out', [], this); "
+    },
+    "text_27": {
+      "type": "text",
+      "id": "text_27",
+      "source_id": null,
+      "content": "We end up with three scope variables, transforminIn, xyzIn and transformoutOut, which we can use later on to access the pins."
+    },
+    "text_28": {
+      "type": "text",
+      "id": "text_28",
+      "source_id": null,
+      "content": "Note, that during node creation is not the only time you can add pins. If you feel like it, you can dynamically add pins at any point."
+    },
+    "header_9": {
+      "type": "heading",
+      "id": "header_9",
+      "source_id": "the-initialize-function",
+      "content": "The initialize() function",
+      "level": 2
+    },
+    "text_29": {
+      "type": "text",
+      "id": "text_29",
+      "source_id": null,
+      "content": "Each node has an initialize() function, which will be invoked immediatly after creating the node, before the first evaluation. Override this function, if you have some setup to do, e.g. dynamically creating pins. UniformScale (Value), however doesn't need any further initialization, so we just leave the function empty, or delete it."
+    },
+    "header_10": {
+      "type": "heading",
+      "id": "header_10",
+      "source_id": "the-evaluate-function",
+      "content": "The evaluate() function",
+      "level": 2
+    },
+    "text_30": {
+      "type": "text",
+      "id": "text_30",
+      "source_id": null,
+      "content": "The evaluate() function is the function which is invoked every frame, or everytime any input pins changed (depending on the auto_evaluate attribute). This is, where the node's actual logic goes."
+    },
+    "header_11": {
+      "type": "heading",
+      "id": "header_11",
+      "source_id": "accessing-pin-values",
+      "content": "Accessing Pin Values",
+      "level": 2
+    },
+    "text_31": {
+      "type": "text",
+      "id": "text_31",
+      "source_id": null,
+      "content": "The wizard already made a pretty good guess about what we are going to do in evaluate(). First thing is finding out maximum number of input slices, because in this case (and in many others too) this determines the number of output slices. We do so by calling"
+    },
+    "codeblock_6": {
+      "type": "codeblock",
+      "id": "codeblock_6",
+      "source_id": "",
+      "content": "var maxSize = this.getMaxInputSliceCount();"
+    },
+    "text_32": {
+      "type": "text",
+      "id": "text_32",
+      "source_id": null,
+      "content": "After that, we are looping through and retreiving input slices using VVVV.Core.Pin.getValue() on our input pin objects like this:"
+    },
+    "codeblock_7": {
+      "type": "codeblock",
+      "id": "codeblock_7",
+      "source_id": "",
+      "content": "for (var i=0; i<maxSize; i++) {\n  var transformin = transforminIn.getValue(i);\n  var xyz = xyzIn.getValue(i);\n  ...\n}"
+    },
+    "text_33": {
+      "type": "text",
+      "id": "text_33",
+      "source_id": null,
+      "content": "The nice thing here is, \"Transform In\" and \"XYZ In\" don't need to have the same number of slices. The getValue() function implicitly moduloes the indices for you. Read more about the beautiful concept of spreads and slices in VVVV Documentation: Of Spreads and Slices."
+    },
+    "text_34": {
+      "type": "text",
+      "id": "text_34",
+      "source_id": null,
+      "content": "Next thing to do is creating a new scale matrix and - if the \"Transform In\" pin has an upstream connection - multiply it."
+    },
+    "codeblock_8": {
+      "type": "codeblock",
+      "id": "codeblock_8",
+      "source_id": "",
+      "content": "for (var i=0; i<maxSize; i++) {\n  ...\n  var t = mat4.create();\n  mat4.identity(t);\n  mat4.scale(t, [xyz, xyz, xyz]);\n  \n  if (transforminIn.isConnected()) {\n    mat4.multiply(transformin, t, t);\n  }\n  ...\n}"
+    },
+    "text_35": {
+      "type": "text",
+      "id": "text_35",
+      "source_id": null,
+      "content": "Finally, we set the output pin like this:"
+    },
+    "codeblock_9": {
+      "type": "codeblock",
+      "id": "codeblock_9",
+      "source_id": "",
+      "content": "transformoutOut.setValue(i, t);"
+    },
+    "text_36": {
+      "type": "text",
+      "id": "text_36",
+      "source_id": null,
+      "content": "Before we leave evaluate() until next time, we set the output slice count of our output pin by calling"
+    },
+    "codeblock_10": {
+      "type": "codeblock",
+      "id": "codeblock_10",
+      "source_id": "",
+      "content": "transformoutOut.setSliceCount(maxSize);"
+    },
+    "text_37": {
+      "type": "text",
+      "id": "text_37",
+      "source_id": null,
+      "content": "This turns out to be very important, when input slice counts decrease dynamically during runtime. If you don't set the output slice count manually, it won't match the input slice count."
+    },
+    "text_38": {
+      "type": "text",
+      "id": "text_38",
+      "source_id": null,
+      "content": "Analogous to this, you can retreive the slice counts of individual pins by using"
+    },
+    "codeblock_11": {
+      "type": "codeblock",
+      "id": "codeblock_11",
+      "source_id": "",
+      "content": "var transformSliceCount = transforminIn.getSliceCount();"
+    },
+    "text_39": {
+      "type": "text",
+      "id": "text_39",
+      "source_id": null,
+      "content": "To wrap things up, here's the complete evaluate() code:"
+    },
+    "codeblock_12": {
+      "type": "codeblock",
+      "id": "codeblock_12",
+      "source_id": "",
+      "content": "this.evaluate = function() {\n  var maxSize = this.getMaxInputSliceCount();\n  \n  for (var i=0; i<maxSize; i++) {\n    var transformin = transforminIn.getValue(i);\n    var xyz = xyzIn.getValue(i);\n    \n    var t = mat4.create();\n    mat4.identity(t);\n    mat4.scale(t, [xyz, xyz, xyz]);\n          \n    if (transforminIn.isConnected()) {\n      mat4.multiply(transformin, t, t);\n    }\n    \n    transformoutOut.setValue(i, t);\n  }\n  transformoutOut.setSliceCount(maxSize);\n}"
+    },
+    "header_12": {
+      "type": "heading",
+      "id": "header_12",
+      "source_id": "creating-vvvv.js-only-nodes",
+      "content": "Creating VVVV.js-only Nodes",
+      "level": 1
+    },
+    "text_40": {
+      "type": "text",
+      "id": "text_40",
+      "source_id": null,
+      "content": "There might be some VVVV.js nodes, that don't exist in pure VVVV (for example the whole Canvas category). To be able to create those nodes in VVVV, we use (dummy) modules."
+    },
+    "text_41": {
+      "type": "text",
+      "id": "text_41",
+      "source_id": null,
+      "content": "If you write a node which doesn't have an original VVVV counterpart, create a module with the full nodename as filename (e.g. \"BezierCurve (Canvas VVVVjs).v4p\"), and place it into the vvvv_js_modulesdirectory, you created when installing the VVVV.js SDK (see Patching VVVV.js). Add the input and output pins, named just like in the javascript code. You can leave the module empty, or add some dummy behaviour. For example, the BezierCurve (Canvas VVVVjs) node, uses the original VVVV's BezierLine (GDI) node, to get at least some output for developing purposes."
+    },
+    "link_1": {
+      "type": "link",
+      "id": "link_1",
+      "path": [
+        "text_1",
+        "content"
+      ],
+      "range": [
+        58,
+        83
+      ],
+      "url": "http://github.com/zauner/vvvv.js"
+    },
+    "link_2": {
+      "type": "link",
+      "id": "link_2",
+      "path": [
+        "text_2",
+        "content"
+      ],
+      "range": [
+        65,
+        84
+      ],
+      "url": "http://help.github.com/"
+    },
+    "emphasis_1": {
+      "type": "emphasis",
+      "id": "emphasis_1",
+      "path": [
+        "text_3",
+        "content"
+      ],
+      "range": [
+        130,
+        135
+      ]
+    },
+    "code_1": {
+      "type": "code",
+      "id": "code_1",
+      "path": [
+        "text_3",
+        "content"
+      ],
+      "range": [
+        382,
+        393
+      ]
+    },
+    "emphasis_2": {
+      "type": "emphasis",
+      "id": "emphasis_2",
+      "path": [
+        "text_3",
+        "content"
+      ],
+      "range": [
+        402,
+        428
+      ]
+    },
+    "code_2": {
+      "type": "code",
+      "id": "code_2",
+      "path": [
+        "text_4",
+        "content"
+      ],
+      "range": [
+        155,
+        177
+      ]
+    },
+    "code_3": {
+      "type": "code",
+      "id": "code_3",
+      "path": [
+        "text_4",
+        "content"
+      ],
+      "range": [
+        205,
+        216
+      ]
+    },
+    "code_4": {
+      "type": "code",
+      "id": "code_4",
+      "path": [
+        "text_4",
+        "content"
+      ],
+      "range": [
+        221,
+        241
+      ]
+    },
+    "strong_1": {
+      "type": "strong",
+      "id": "strong_1",
+      "path": [
+        "text_5",
+        "content"
+      ],
+      "range": [
+        0,
+        5
+      ]
+    },
+    "emphasis_3": {
+      "type": "emphasis",
+      "id": "emphasis_3",
+      "path": [
+        "text_5",
+        "content"
+      ],
+      "range": [
+        81,
+        109
+      ]
+    },
+    "emphasis_4": {
+      "type": "emphasis",
+      "id": "emphasis_4",
+      "path": [
+        "text_5",
+        "content"
+      ],
+      "range": [
+        153,
+        168
+      ]
+    },
+    "link_3": {
+      "type": "link",
+      "id": "link_3",
+      "path": [
+        "text_7",
+        "content"
+      ],
+      "range": [
+        100,
+        150
+      ],
+      "url": "http://vvvvjs.quasipartikel.at/beta/porting_wizard"
+    },
+    "link_4": {
+      "type": "link",
+      "id": "link_4",
+      "path": [
+        "text_11",
+        "content"
+      ],
+      "range": [
+        250,
+        263
+      ],
+      "url": "http://substance.io/zauner/vvvvjs-api-reference"
+    },
+    "code_5": {
+      "type": "code",
+      "id": "code_5",
+      "path": [
+        "text_12",
+        "content"
+      ],
+      "range": [
+        50,
+        74
+      ]
+    },
+    "code_6": {
+      "type": "code",
+      "id": "code_6",
+      "path": [
+        "text_13",
+        "content"
+      ],
+      "range": [
+        33,
+        65
+      ]
+    },
+    "code_7": {
+      "type": "code",
+      "id": "code_7",
+      "path": [
+        "text_15",
+        "content"
+      ],
+      "range": [
+        4,
+        24
+      ]
+    },
+    "strong_2": {
+      "type": "strong",
+      "id": "strong_2",
+      "path": [
+        "text_16",
+        "content"
+      ],
+      "range": [
+        0,
+        41
+      ]
+    },
+    "emphasis_5": {
+      "type": "emphasis",
+      "id": "emphasis_5",
+      "path": [
+        "text_18",
+        "content"
+      ],
+      "range": [
+        61,
+        65
+      ]
+    },
+    "emphasis_6": {
+      "type": "emphasis",
+      "id": "emphasis_6",
+      "path": [
+        "text_18",
+        "content"
+      ],
+      "range": [
+        105,
+        110
+      ]
+    },
+    "emphasis_7": {
+      "type": "emphasis",
+      "id": "emphasis_7",
+      "path": [
+        "text_18",
+        "content"
+      ],
+      "range": [
+        239,
+        244
+      ]
+    },
+    "code_8": {
+      "type": "code",
+      "id": "code_8",
+      "path": [
+        "text_20",
+        "content"
+      ],
+      "range": [
+        66,
+        79
+      ]
+    },
+    "code_9": {
+      "type": "code",
+      "id": "code_9",
+      "path": [
+        "text_20",
+        "content"
+      ],
+      "range": [
+        122,
+        136
+      ]
+    },
+    "strong_3": {
+      "type": "strong",
+      "id": "strong_3",
+      "path": [
+        "text_22",
+        "content"
+      ],
+      "range": [
+        0,
+        8
+      ]
+    },
+    "strong_4": {
+      "type": "strong",
+      "id": "strong_4",
+      "path": [
+        "text_23",
+        "content"
+      ],
+      "range": [
+        0,
+        14
+      ]
+    },
+    "strong_5": {
+      "type": "strong",
+      "id": "strong_5",
+      "path": [
+        "text_24",
+        "content"
+      ],
+      "range": [
+        0,
+        5
+      ]
+    },
+    "code_10": {
+      "type": "code",
+      "id": "code_10",
+      "path": [
+        "text_24",
+        "content"
+      ],
+      "range": [
+        164,
+        168
+      ]
+    },
+    "strong_6": {
+      "type": "strong",
+      "id": "strong_6",
+      "path": [
+        "text_25",
+        "content"
+      ],
+      "range": [
+        0,
+        46
+      ]
+    },
+    "code_11": {
+      "type": "code",
+      "id": "code_11",
+      "path": [
+        "text_25",
+        "content"
+      ],
+      "range": [
+        248,
+        257
+      ]
+    },
+    "code_12": {
+      "type": "code",
+      "id": "code_12",
+      "path": [
+        "text_25",
+        "content"
+      ],
+      "range": [
+        259,
+        270
+      ]
+    },
+    "code_13": {
+      "type": "code",
+      "id": "code_13",
+      "path": [
+        "text_25",
+        "content"
+      ],
+      "range": [
+        272,
+        281
+      ]
+    },
+    "code_14": {
+      "type": "code",
+      "id": "code_14",
+      "path": [
+        "text_26",
+        "content"
+      ],
+      "range": [
+        159,
+        161
+      ]
+    },
+    "code_15": {
+      "type": "code",
+      "id": "code_15",
+      "path": [
+        "text_27",
+        "content"
+      ],
+      "range": [
+        38,
+        51
+      ]
+    },
+    "code_16": {
+      "type": "code",
+      "id": "code_16",
+      "path": [
+        "text_27",
+        "content"
+      ],
+      "range": [
+        53,
+        58
+      ]
+    },
+    "code_17": {
+      "type": "code",
+      "id": "code_17",
+      "path": [
+        "text_27",
+        "content"
+      ],
+      "range": [
+        63,
+        78
+      ]
+    },
+    "code_18": {
+      "type": "code",
+      "id": "code_18",
+      "path": [
+        "text_29",
+        "content"
+      ],
+      "range": [
+        17,
+        29
+      ]
+    },
+    "code_19": {
+      "type": "code",
+      "id": "code_19",
+      "path": [
+        "text_30",
+        "content"
+      ],
+      "range": [
+        4,
+        14
+      ]
+    },
+    "code_20": {
+      "type": "code",
+      "id": "code_20",
+      "path": [
+        "text_30",
+        "content"
+      ],
+      "range": [
+        124,
+        137
+      ]
+    },
+    "code_21": {
+      "type": "code",
+      "id": "code_21",
+      "path": [
+        "text_31",
+        "content"
+      ],
+      "range": [
+        77,
+        87
+      ]
+    },
+    "code_22": {
+      "type": "code",
+      "id": "code_22",
+      "path": [
+        "text_32",
+        "content"
+      ],
+      "range": [
+        69,
+        93
+      ]
+    },
+    "link_5": {
+      "type": "link",
+      "id": "link_5",
+      "path": [
+        "text_33",
+        "content"
+      ],
+      "range": [
+        226,
+        267
+      ],
+      "url": "http://vvvv.org/documentation/of-spreads-and-slices"
+    },
+    "code_23": {
+      "type": "code",
+      "id": "code_23",
+      "path": [
+        "text_36",
+        "content"
+      ],
+      "range": [
+        16,
+        26
+      ]
+    },
+    "code_24": {
+      "type": "code",
+      "id": "code_24",
+      "path": [
+        "text_39",
+        "content"
+      ],
+      "range": [
+        39,
+        49
+      ]
+    },
+    "emphasis_8": {
+      "type": "emphasis",
+      "id": "emphasis_8",
+      "path": [
+        "text_41",
+        "content"
+      ],
+      "range": [
+        184,
+        199
+      ]
+    },
+    "link_6": {
+      "type": "link",
+      "id": "link_6",
+      "path": [
+        "text_41",
+        "content"
+      ],
+      "range": [
+        259,
+        275
+      ],
+      "url": "http://substance.io/zauner/patching-vvvvjs"
+    },
+    "emphasis_9": {
+      "type": "emphasis",
+      "id": "emphasis_9",
+      "path": [
+        "text_41",
+        "content"
+      ],
+      "range": [
+        525,
+        529
+      ]
+    },
+    "figures": {
+      "type": "view",
+      "id": "figures",
+      "nodes": []
+    },
+    "info": {
+      "type": "view",
+      "id": "info",
+      "nodes": [
+        "collaborator_1"
+      ]
+    },
+    "collaborator_1": {
+      "type": "collaborator",
+      "id": "collaborator_1",
+      "source_id": "",
+      "name": "Matthias Zauner",
+      "role": "author",
+      "organization": "Quasipartikel",
+      "image": "https://2.gravatar.com/avatar/d5a959d7e57daa5433fcb9f8da40be4b?d=https%3A%2F%2Fidenticons.github.com%2F86c4ad52768c511046fea7b2d42b300c.png&s=420",
+      "email": "sagishi@zive.at",
+      "contribution": ""
+    },
+    "collaborator_reference_1": {
+      "type": "person_reference",
+      "id": "collaborator_reference_1",
+      "path": [
+        "cover",
+        "authors",
+        "1"
+      ],
+      "range": [
+        0,
+        15
+      ],
+      "target": "collaborator_1"
+    },
+    "cover": {
+      "type": "cover",
+      "id": "cover",
+      "source_id": "",
+      "authors": [
+        "collaborator_reference_1"
+      ],
+      "image": ""
+    }
+  }
+}

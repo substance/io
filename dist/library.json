@@ -1,0 +1,148 @@
+{
+  "nodes": {
+    "library": {
+      "collections": [
+        "lifesciences",
+        "substance",
+        "substance_blog",
+        "vvvv_js"
+      ],
+      "name": "Your documents"
+    },
+    "lifesciences": {
+      "id": "lifesciences",
+      "name": "Life Sciences",
+      "description": "Substance has support for most Open Access articles that are available in the JATS (formerly NLM) XML format. Here's just a selection of articles from different journals.",
+      "image": "http://substance-assets.s3.amazonaws.com/ee/cc52e29f6a1b90b8443ad296b00c8d/physics.png",
+      "updated_at": "2013-10-02",
+      "type": "collection",
+      "records": [
+        "00311",
+        "landes_23423"
+      ]
+    },
+    "00311": {
+      "id": "00311",
+      "url": "https://s3.amazonaws.com/elife-cdn/elife-articles/00311/elife00311.xml",
+      "authors": [
+        "B Tom Burnley",
+        "Pavel V Afonine",
+        "Paul D Adams",
+        "Piet Gros"
+      ],
+      "title": "Modelling dynamics in protein crystal structures by ensemble refinement"
+    },
+    "landes_23423": {
+      "id": "landes_23423",
+      "url": "https://www.landesbioscience.com/article/23423/full_text_xml/",
+      "authors": [
+        "Mynthia Cabrera",
+        "Ute Frevert"
+      ],
+      "title": "Novel in vivo imaging techniques for the liver microvasculature"
+    },
+    "substance": {
+      "id": "substance",
+      "name": "Substance",
+      "description": "All Substance-related articles. Learn more about the Substance platform and find information on how to get started with development.",
+      "image": "http://substance-assets.s3.amazonaws.com/7c/4436e919d5804906218a033b83cf63/substance-network.png",
+      "updated_at": "2013-10-31",
+      "type": "collection",
+      "records": [
+        "about",
+        "manual",
+        "submit",
+        "tutorial"
+      ]
+    },
+    "about": {
+      "id": "about",
+      "url": "docs/substance/about/content.json",
+      "authors": [
+        "Michael Aufreiter",
+        "Oliver Buchtala"
+      ],
+      "title": "Substance - Towards truly open digital publishing",
+      "published_on": "2013-09-25"
+    },
+    "manual": {
+      "id": "manual",
+      "url": "docs/substance/manual/content.json",
+      "authors": [
+        "Michael Aufreiter",
+        "Oliver Buchtala"
+      ],
+      "title": "Substance Manual - A system guide dedicated to developers",
+      "published_on": "2013-10-02"
+    },
+    "submit": {
+      "id": "submit",
+      "url": "docs/substance/submit/content.json",
+      "authors": [
+        "Michael Aufreiter",
+        "Oliver Buchtala"
+      ],
+      "title": "How to create Substance documents, and publish them",
+      "published_on": "2013-10-01"
+    },
+    "tutorial": {
+      "id": "tutorial",
+      "url": "docs/substance/tutorial/content.json",
+      "authors": [
+        "Michael Aufreiter",
+        "Oliver Buchtala"
+      ],
+      "title": "Substance Tutorial",
+      "published_on": "2013-10-01"
+    },
+    "substance_blog": {
+      "id": "substance_blog",
+      "name": "Substance Blog",
+      "description": "Timely pieces about the Substance platform and digital publishing in general.",
+      "image": "http://substance-assets.s3.amazonaws.com/c5/300ac4710e22ee0700d25a9ef6d9fa/computerscience.png",
+      "updated_at": "2013-10-30",
+      "type": "collection",
+      "records": [
+        "content_is_data",
+        "great_news"
+      ]
+    },
+    "content_is_data": {
+      "id": "content_is_data",
+      "url": "docs/substance_blog/content_is_data/content.json",
+      "authors": [
+        "Michael Aufreiter"
+      ],
+      "title": "Content as Data: Towards Open Digital Publishing with Substance",
+      "published_on": "2013-10-01"
+    },
+    "great_news": {
+      "id": "great_news",
+      "url": "docs/substance_blog/great_news/content.json",
+      "authors": [
+        "Michael Aufreiter"
+      ],
+      "title": "Substance got selected for the $ 5,000 Suttleworth Flash Grant",
+      "published_on": "2013-10-01"
+    },
+    "vvvv_js": {
+      "id": "vvvv_js",
+      "name": "VVVV.js",
+      "description": "An open project, which aims to bring the visual programming language VVVV to your web browser.",
+      "image": "http://substance-assets.s3.amazonaws.com/57/9b6bb915bab1ccf488fcdb13d54e57/vvvvjs_quasiteaser.png",
+      "updated_at": "2013-10-01",
+      "type": "collection",
+      "records": [
+        "porting_vvvv_nodes_to_vvvvjs"
+      ]
+    },
+    "porting_vvvv_nodes_to_vvvvjs": {
+      "id": "porting_vvvv_nodes_to_vvvvjs",
+      "url": "docs/vvvv_js/porting_vvvv_nodes_to_vvvvjs/content.json",
+      "authors": [
+        "Matthias Zauner"
+      ],
+      "title": "Porting VVVV Nodes to VVVV.js"
+    }
+  }
+}
