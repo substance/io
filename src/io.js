@@ -120,7 +120,7 @@ IO.compileDocument = function(collection, docId, cb) {
   } catch (err) {
     // Just record entries
     var filename = process.cwd() + "/docs/"+collection+"/"+docId+"/index.json";
-    var inputData = fs.readFileSync(filename, 'utf8');
+    var inputData = JSON.parse(fs.readFileSync(filename, 'utf8'));
     cb(null, inputData);
   }
 };
