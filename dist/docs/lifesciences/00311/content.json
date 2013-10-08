@@ -1,1 +1,19 @@
-"{\n  \"title\": \"Modelling dynamics in protein crystal structures by ensemble refinement\",\n  \"published\": true,\n  \"url\": \"https://s3.amazonaws.com/elife-cdn/elife-articles/00311/elife00311.xml\",\n  \"collaborators\": [\n    {\n      \"name\": \"B Tom Burnley\"\n    },\n    {\n      \"name\": \"Pavel V Afonine\"\n    },\n    {\n      \"name\": \"Paul D Adams\"\n    },\n    {\n      \"name\": \"Piet Gros\"\n    }\n  ]\n}"
+{
+  "title": "Modelling dynamics in protein crystal structures by ensemble refinement",
+  "published": true,
+  "url": "https://s3.amazonaws.com/elife-cdn/elife-articles/00311/elife00311.xml",
+  "collaborators": [
+    {
+      "name": "B Tom Burnley"
+    },
+    {
+      "name": "Pavel V Afonine"
+    },
+    {
+      "name": "Paul D Adams"
+    },
+    {
+      "name": "Piet Gros"
+    }
+  ]
+}
