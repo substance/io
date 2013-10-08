@@ -1,4 +1,4 @@
-# io
+# Substance IO
 
 A minimal publishing solution based on Pandoc Markdown and Substance.
 
@@ -8,8 +8,8 @@ It's fairly easy to install and run io locally.
 
 ### Prerequisites
 
-- Node.js >=0.8.x
-- Pandoc >= 1.12.x (for Markdown cross-compiling)
+- Node.js >=0.10.x
+- Pandoc >= 1.12.02 (for Markdown cross-compiling)
 
 ### Fresh install
 
