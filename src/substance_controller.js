@@ -198,9 +198,6 @@ SubstanceController.Prototype = function() {
   // --------
 
   this.openLibrary = function(collectionId) {
-
-    console.log('opening... library', collectionId);
-
     var that = this;
 
     function open() {
@@ -220,7 +217,6 @@ SubstanceController.Prototype = function() {
 
 
   this.openCollection = function(collectionId) {
-    console.log('opening...', collectionId);
     var that = this;
 
     function open() {
