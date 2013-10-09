@@ -17,7 +17,7 @@
       "creator": "",
       "title": "Substance - Towards open digital publishing",
       "abstract": "",
-      "published_on": "2013-10-09T21:43:10.143Z",
+      "published_on": "2013-10-09T21:49:17.266Z",
       "meta": {}
     },
     "content": {
@@ -56,12 +56,11 @@
         "header_10",
         "text_14",
         "text_15",
-        "text_16",
         "header_11",
+        "text_16",
         "text_17",
-        "text_18",
         "figure_7",
-        "text_19"
+        "text_18"
       ]
     },
     "header_1": {
@@ -266,12 +265,6 @@
       "source_id": null,
       "content": "You can report bugs and discuss features on GitHub, on Freenode in the #_substance IRC channel, or send tweets to @_substance. And if that's not enough, post to our mailing list."
     },
-    "text_16": {
-      "type": "text",
-      "id": "text_16",
-      "source_id": null,
-      "content": "We just realized the more concrete our goals get, the more we see the need to spend dedicated time on development, in order to come to the day when we can say \"It’s finally here!\". Please help us by supporting our campaign and spread the word about it."
-    },
     "header_11": {
       "type": "heading",
       "id": "header_11",
@@ -279,15 +272,15 @@
       "content": "Thanks",
       "level": 1
     },
-    "text_17": {
+    "text_16": {
       "type": "text",
-      "id": "text_17",
+      "id": "text_16",
       "source_id": null,
       "content": "We'd like to thank anybody who supported the project from the beginning. We've received code contributions from people all over the world. Among them (in chronological order) Samo Korosec, Tim Baumann, Victor Saiz and Daniel Beilinson. They all helped to shape the idea and implementation."
     },
-    "text_18": {
+    "text_17": {
       "type": "text",
-      "id": "text_18",
+      "id": "text_17",
       "source_id": null,
       "content": "Our most recent work was backed by a Shuttleworth Flash Grant that we received earlier this year."
     },
@@ -298,9 +291,9 @@
       "label": "",
       "caption": null
     },
-    "text_19": {
+    "text_18": {
       "type": "text",
-      "id": "text_19",
+      "id": "text_18",
       "source_id": null,
       "content": "We'd also like to thank anyone who supported our Pledgie campaign. The bad news is we didn't reach our funding goal. The good news is we got the proposed release ready anyway. We were working hard on the past 6 months and reimplemented Substance from scratch. A solid foundation is now ready, paving the way for exciting use-cases and applications."
     },
@@ -415,29 +408,16 @@
         "content"
       ],
       "range": [
-        214,
-        222
-      ],
-      "url": "http://www.pledgie.com/campaigns/18902"
-    },
-    "link_9": {
-      "type": "link",
-      "id": "link_9",
-      "path": [
-        "text_17",
-        "content"
-      ],
-      "range": [
         175,
         187
       ],
       "url": "http://dribbble.com/froodee"
     },
-    "link_10": {
+    "link_9": {
       "type": "link",
-      "id": "link_10",
+      "id": "link_9",
       "path": [
-        "text_17",
+        "text_16",
         "content"
       ],
       "range": [
@@ -446,11 +426,11 @@
       ],
       "url": "https://github.com/timjb"
     },
-    "link_11": {
+    "link_10": {
       "type": "link",
-      "id": "link_11",
+      "id": "link_10",
       "path": [
-        "text_17",
+        "text_16",
         "content"
       ],
       "range": [
@@ -458,6 +438,19 @@
         213
       ],
       "url": "https://github.com/vectorsize"
+    },
+    "link_11": {
+      "type": "link",
+      "id": "link_11",
+      "path": [
+        "text_16",
+        "content"
+      ],
+      "range": [
+        218,
+        234
+      ],
+      "url": "https://github.com/Integral"
     },
     "link_12": {
       "type": "link",
@@ -467,29 +460,16 @@
         "content"
       ],
       "range": [
-        218,
-        234
+        37,
+        49
       ],
-      "url": "https://github.com/Integral"
+      "url": "http://www.shuttleworthfoundation.org/"
     },
     "link_13": {
       "type": "link",
       "id": "link_13",
       "path": [
         "text_18",
-        "content"
-      ],
-      "range": [
-        37,
-        49
-      ],
-      "url": "http://www.shuttleworthfoundation.org/"
-    },
-    "link_14": {
-      "type": "link",
-      "id": "link_14",
-      "path": [
-        "text_19",
         "content"
       ],
       "range": [
