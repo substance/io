@@ -15,9 +15,9 @@
       ],
       "guid": "about",
       "creator": "",
-      "title": "Substance - Towards truly open digital publishing",
+      "title": "Substance - Towards open digital publishing",
       "abstract": "",
-      "published_on": "2013-10-08T16:27:49.423Z",
+      "published_on": "2013-10-09T15:25:05.630Z",
       "meta": {}
     },
     "content": {
@@ -80,7 +80,7 @@
       "type": "text",
       "id": "text_2",
       "source_id": null,
-      "content": "Substance is build around the following core ideas:"
+      "content": "Substance is built around the following core ideas:"
     },
     "header_2": {
       "type": "heading",
@@ -562,7 +562,7 @@
         "collaborator_reference_1",
         "collaborator_reference_2"
       ],
-      "image": "http://farm8.staticflickr.com/7092/7216399294_60183925aa_c.jpg"
+      "image": ""
     }
   }
 }

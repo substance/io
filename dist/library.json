@@ -51,7 +51,6 @@
       "records": [
         "about",
         "manual",
-        "submit",
         "tutorial"
       ]
     },
@@ -62,7 +61,7 @@
         "Michael Aufreiter",
         "Oliver Buchtala"
       ],
-      "title": "Substance - Towards truly open digital publishing",
+      "title": "Substance - Towards open digital publishing",
       "published_on": "2013-09-25"
     },
     "manual": {
@@ -74,16 +73,6 @@
       ],
       "title": "Substance Manual - A system guide dedicated to developers",
       "published_on": "2013-10-02"
-    },
-    "submit": {
-      "id": "submit",
-      "url": "docs/substance/submit/content.json",
-      "authors": [
-        "Michael Aufreiter",
-        "Oliver Buchtala"
-      ],
-      "title": "How to create Substance documents, and publish them",
-      "published_on": "2013-10-01"
     },
     "tutorial": {
       "id": "tutorial",
