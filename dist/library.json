@@ -2,7 +2,6 @@
   "nodes": {
     "library": {
       "collections": [
-        "lifesciences",
         "substance",
         "substance_blog",
         "vvvv_js"
@@ -12,14 +11,25 @@
     "lifesciences": {
       "id": "lifesciences",
       "name": "Life Sciences",
-      "description": "Substance has support for most Open Access articles that are available in the JATS (formerly NLM) XML format. Here's just a selection of articles from different journals.",
+      "description": "Substance has support for most Open Access articles that are available in the JATS (formerly NLM) XML format. Here's just a selection of Open Access articles from eLife.",
       "image": "http://substance-assets.s3.amazonaws.com/ee/cc52e29f6a1b90b8443ad296b00c8d/physics.png",
       "updated_at": "2013-10-02",
       "type": "collection",
       "records": [
-        "00311",
-        "landes_23423"
+        "00278",
+        "00311"
       ]
+    },
+    "00278": {
+      "id": "00278",
+      "url": "https://s3.amazonaws.com/elife-cdn/elife-articles/00278/elife00278.xml",
+      "authors": [
+        "Mark Hedglin",
+        "Senthil K Perumal",
+        "Zhenxin Hu",
+        "Stephen Benkovic"
+      ],
+      "title": "Stepwise assembly of the human replicative polymerase holoenzyme"
     },
     "00311": {
       "id": "00311",
@@ -93,7 +103,8 @@
       "type": "collection",
       "records": [
         "content_is_data",
-        "great_news"
+        "shuttleworth-grant",
+        "substance-io-relaunches"
       ]
     },
     "content_is_data": {
@@ -103,16 +114,25 @@
         "Michael Aufreiter"
       ],
       "title": "Content as Data: Towards Open Digital Publishing with Substance",
-      "published_on": "2013-10-01"
+      "published_on": "2013-01-15"
     },
-    "great_news": {
-      "id": "great_news",
-      "url": "docs/substance_blog/great_news/content.json",
+    "shuttleworth-grant": {
+      "id": "shuttleworth-grant",
+      "url": "docs/substance_blog/shuttleworth-grant/content.json",
       "authors": [
         "Michael Aufreiter"
       ],
-      "title": "Substance got selected for the $ 5,000 Suttleworth Flash Grant",
-      "published_on": "2013-10-01"
+      "title": "Substance got selected for the $ 5,000 Shuttleworth Flash Grant",
+      "published_on": "2013-06-05"
+    },
+    "substance-io-relaunches": {
+      "id": "substance-io-relaunches",
+      "url": "docs/substance_blog/substance-io-relaunches/content.json",
+      "authors": [
+        "Michael Aufreiter"
+      ],
+      "title": "Substance.io relaunches with a new backend, IO",
+      "published_on": "2013-10-09"
     },
     "vvvv_js": {
       "id": "vvvv_js",

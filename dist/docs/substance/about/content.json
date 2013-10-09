@@ -17,7 +17,7 @@
       "creator": "",
       "title": "Substance - Towards open digital publishing",
       "abstract": "",
-      "published_on": "2013-10-09T15:25:05.630Z",
+      "published_on": "2013-10-09T21:43:10.143Z",
       "meta": {}
     },
     "content": {
@@ -28,39 +28,40 @@
         "header_1",
         "text_1",
         "text_2",
+        "text_3",
         "header_2",
         "figure_1",
-        "text_3",
-        "header_3",
         "text_4",
-        "header_4",
+        "header_3",
         "text_5",
+        "header_4",
         "text_6",
-        "figure_2",
         "text_7",
-        "figure_3",
+        "figure_2",
         "text_8",
+        "figure_3",
+        "text_9",
         "figure_4",
         "header_5",
-        "text_9",
+        "text_10",
         "figure_5",
         "header_6",
-        "text_10",
+        "text_11",
         "header_7",
         "header_8",
-        "text_11",
+        "text_12",
         "figure_6",
         "header_9",
-        "text_12",
-        "header_10",
         "text_13",
+        "header_10",
         "text_14",
         "text_15",
-        "header_11",
         "text_16",
+        "header_11",
         "text_17",
+        "text_18",
         "figure_7",
-        "text_18"
+        "text_19"
       ]
     },
     "header_1": {
@@ -74,11 +75,17 @@
       "type": "text",
       "id": "text_1",
       "source_id": null,
-      "content": "Substance is a completely free and open technology stack motivated by the idea of taking a pure data-driven approach to working with digital documents. From content creation to publishing we believe that there should be better tools that address the problem from a fresh angle. To get started we recommend that you read through our Manual and follow the instructions in the official Tutorial."
+      "content": "Substance provides an extensive, customizable content creation and annotation framework that enables user-centric interfaces and automatic data processing via your web-browser. Thanks to its modular nature it creates an ideal environment for many integration scenarios. Substance is completely free and open source."
     },
     "text_2": {
       "type": "text",
       "id": "text_2",
+      "source_id": null,
+      "content": "To get started we recommend that you read through our Manual and follow the instructions in the official Tutorial."
+    },
+    "text_3": {
+      "type": "text",
+      "id": "text_3",
       "source_id": null,
       "content": "Substance is built around the following core ideas:"
     },
@@ -96,9 +103,9 @@
       "label": "",
       "caption": null
     },
-    "text_3": {
+    "text_4": {
       "type": "text",
-      "id": "text_3",
+      "id": "text_4",
       "source_id": null,
       "content": "Unlike traditional word-processors, Substance focusses on content, by leaving the layout part to the system not the user. Because of the abscence of formatting utilities, it suggests structured, content-oriented writing."
     },
@@ -109,9 +116,9 @@
       "content": "Content is data",
       "level": 2
     },
-    "text_4": {
+    "text_5": {
       "type": "text",
-      "id": "text_4",
+      "id": "text_5",
       "source_id": null,
       "content": "Substance considers content as data, which allows digital documents to be queried like a database. With little effort, you can take the Substance data format and display it the way you want."
     },
@@ -122,15 +129,15 @@
       "content": "Open Collaboration",
       "level": 2
     },
-    "text_5": {
-      "type": "text",
-      "id": "text_5",
-      "source_id": null,
-      "content": "Substance targets open collaboration. Everyone should be able to contribute to a document, without the hurdles."
-    },
     "text_6": {
       "type": "text",
       "id": "text_6",
+      "source_id": null,
+      "content": "Substance targets open collaboration. Everyone should be able to contribute to a document, without the hurdles."
+    },
+    "text_7": {
+      "type": "text",
+      "id": "text_7",
       "source_id": null,
       "content": "Consider the following document:"
     },
@@ -141,9 +148,9 @@
       "label": "",
       "caption": null
     },
-    "text_7": {
+    "text_8": {
       "type": "text",
-      "id": "text_7",
+      "id": "text_8",
       "source_id": null,
       "content": "Wouldn't it be nice to just express your feelings right away?"
     },
@@ -154,9 +161,9 @@
       "label": "",
       "caption": null
     },
-    "text_8": {
+    "text_9": {
       "type": "text",
-      "id": "text_8",
+      "id": "text_9",
       "source_id": null,
       "content": "Substance offers inline annotations (markers) as well as comments to allow exactly that."
     },
@@ -174,9 +181,9 @@
       "content": "Extensible",
       "level": 2
     },
-    "text_9": {
+    "text_10": {
       "type": "text",
-      "id": "text_9",
+      "id": "text_10",
       "source_id": null,
       "content": "There's no one size fits it all solution. Hence we defined a simple plugin system to make it easy for developers to create their own content types and share them with the Substance development community."
     },
@@ -194,9 +201,9 @@
       "content": "Open Source",
       "level": 2
     },
-    "text_10": {
+    "text_11": {
       "type": "text",
-      "id": "text_10",
+      "id": "text_11",
       "source_id": null,
       "content": "Behind the scenes the Substance is mainly composed by a stack of open source modules that will be publicly released under the Open Source MIT license."
     },
@@ -214,9 +221,9 @@
       "content": "eLife Lens",
       "level": 2
     },
-    "text_11": {
+    "text_12": {
       "type": "text",
-      "id": "text_11",
+      "id": "text_12",
       "source_id": null,
       "content": "We are collaborating with Open Access publishers and have implemented a new way to display scientific content, eLife Lens. This tool is built on top of the Substance technology stack and has been successfully integrated by eLife and Landes Bioscience."
     },
@@ -234,9 +241,9 @@
       "content": "Work with us",
       "level": 1
     },
-    "text_12": {
+    "text_13": {
       "type": "text",
-      "id": "text_12",
+      "id": "text_13",
       "source_id": null,
       "content": "Do you see Substance fit for your business use-case? Contact us at info@substance.io. We're happy to discuss options how Substance can be integrated with your application use-cases."
     },
@@ -247,21 +254,21 @@
       "content": "Contribute",
       "level": 1
     },
-    "text_13": {
-      "type": "text",
-      "id": "text_13",
-      "source_id": null,
-      "content": "We’ve been developing Substance for three years now without any funding, making this a project mainly built out of voluntary effort. Our goal is making Substance an open standard for interoperable digital publishing."
-    },
     "text_14": {
       "type": "text",
       "id": "text_14",
       "source_id": null,
-      "content": "You can report bugs and discuss features on GitHub, on Freenode in the #_substance IRC channel, or send tweets to @_substance. And if that's not enough, post to our mailing list."
+      "content": "We’ve been developing Substance for three years now without any funding, making this a project mainly built out of voluntary effort. Our goal is making Substance an open standard for interoperable digital publishing."
     },
     "text_15": {
       "type": "text",
       "id": "text_15",
+      "source_id": null,
+      "content": "You can report bugs and discuss features on GitHub, on Freenode in the #_substance IRC channel, or send tweets to @_substance. And if that's not enough, post to our mailing list."
+    },
+    "text_16": {
+      "type": "text",
+      "id": "text_16",
       "source_id": null,
       "content": "We just realized the more concrete our goals get, the more we see the need to spend dedicated time on development, in order to come to the day when we can say \"It’s finally here!\". Please help us by supporting our campaign and spread the word about it."
     },
@@ -272,15 +279,15 @@
       "content": "Thanks",
       "level": 1
     },
-    "text_16": {
-      "type": "text",
-      "id": "text_16",
-      "source_id": null,
-      "content": "We'd like to thank anybody who supported the project from the beginning. We've received code contributions from people all over the world. Among them (in chronological order) Samo Korosec, Tim Baumann, Victor Saiz and Daniel Beilinson. They all helped to shape the idea and implementation."
-    },
     "text_17": {
       "type": "text",
       "id": "text_17",
+      "source_id": null,
+      "content": "We'd like to thank anybody who supported the project from the beginning. We've received code contributions from people all over the world. Among them (in chronological order) Samo Korosec, Tim Baumann, Victor Saiz and Daniel Beilinson. They all helped to shape the idea and implementation."
+    },
+    "text_18": {
+      "type": "text",
+      "id": "text_18",
       "source_id": null,
       "content": "Our most recent work was backed by a Shuttleworth Flash Grant that we received earlier this year."
     },
@@ -291,9 +298,9 @@
       "label": "",
       "caption": null
     },
-    "text_18": {
+    "text_19": {
       "type": "text",
-      "id": "text_18",
+      "id": "text_19",
       "source_id": null,
       "content": "We'd also like to thank anyone who supported our Pledgie campaign. The bad news is we didn't reach our funding goal. The good news is we got the proposed release ready anyway. We were working hard on the past 6 months and reimplemented Substance from scratch. A solid foundation is now ready, paving the way for exciting use-cases and applications."
     },
@@ -305,8 +312,8 @@
         "content"
       ],
       "range": [
-        35,
-        39
+        303,
+        314
       ],
       "url": "http://github.com/substance"
     },
@@ -314,12 +321,12 @@
       "type": "link",
       "id": "link_2",
       "path": [
-        "text_1",
+        "text_2",
         "content"
       ],
       "range": [
-        332,
-        338
+        54,
+        60
       ],
       "url": "#substance/manual"
     },
@@ -327,12 +334,12 @@
       "type": "link",
       "id": "link_3",
       "path": [
-        "text_1",
+        "text_2",
         "content"
       ],
       "range": [
-        383,
-        391
+        105,
+        113
       ],
       "url": "#substance/tutorial"
     },
@@ -340,7 +347,7 @@
       "type": "link",
       "id": "link_4",
       "path": [
-        "text_12",
+        "text_13",
         "content"
       ],
       "range": [
@@ -353,7 +360,7 @@
       "type": "link",
       "id": "link_5",
       "path": [
-        "text_14",
+        "text_15",
         "content"
       ],
       "range": [
@@ -366,7 +373,7 @@
       "type": "code",
       "id": "code_1",
       "path": [
-        "text_14",
+        "text_15",
         "content"
       ],
       "range": [
@@ -378,7 +385,7 @@
       "type": "link",
       "id": "link_6",
       "path": [
-        "text_14",
+        "text_15",
         "content"
       ],
       "range": [
@@ -391,7 +398,7 @@
       "type": "link",
       "id": "link_7",
       "path": [
-        "text_14",
+        "text_15",
         "content"
       ],
       "range": [
@@ -404,7 +411,7 @@
       "type": "link",
       "id": "link_8",
       "path": [
-        "text_15",
+        "text_16",
         "content"
       ],
       "range": [
@@ -417,7 +424,7 @@
       "type": "link",
       "id": "link_9",
       "path": [
-        "text_16",
+        "text_17",
         "content"
       ],
       "range": [
@@ -430,7 +437,7 @@
       "type": "link",
       "id": "link_10",
       "path": [
-        "text_16",
+        "text_17",
         "content"
       ],
       "range": [
@@ -443,7 +450,7 @@
       "type": "link",
       "id": "link_11",
       "path": [
-        "text_16",
+        "text_17",
         "content"
       ],
       "range": [
@@ -456,7 +463,7 @@
       "type": "link",
       "id": "link_12",
       "path": [
-        "text_16",
+        "text_17",
         "content"
       ],
       "range": [
@@ -469,7 +476,7 @@
       "type": "link",
       "id": "link_13",
       "path": [
-        "text_17",
+        "text_18",
         "content"
       ],
       "range": [
@@ -482,7 +489,7 @@
       "type": "link",
       "id": "link_14",
       "path": [
-        "text_18",
+        "text_19",
         "content"
       ],
       "range": [

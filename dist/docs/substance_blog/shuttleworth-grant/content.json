@@ -1,5 +1,5 @@
 {
-  "id": "great_news",
+  "id": "shuttleworth-grant",
   "schema": [
     "substance-article",
     "0.1.0"
@@ -13,11 +13,11 @@
         "figures",
         "info"
       ],
-      "guid": "great_news",
+      "guid": "shuttleworth-grant",
       "creator": "",
-      "title": "Substance got selected for the $ 5,000 Suttleworth Flash Grant",
+      "title": "Substance got selected for the $ 5,000 Shuttleworth Flash Grant",
       "abstract": "",
-      "published_on": "2013-10-09T15:25:05.597Z",
+      "published_on": "2013-10-09T21:43:10.188Z",
       "meta": {}
     },
     "content": {

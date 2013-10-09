@@ -17,7 +17,7 @@
       "creator": "",
       "title": "Substance Tutorial",
       "abstract": "",
-      "published_on": "2013-10-09T15:25:05.676Z",
+      "published_on": "2013-10-09T21:43:10.347Z",
       "meta": {}
     },
     "content": {
@@ -538,7 +538,7 @@
       "type": "text",
       "id": "text_37",
       "source_id": null,
-      "content": "Substance.io is powered by our minimal publishing system, IO. It lets you write your article's in Markdown and define figures, tables etc. in a simple JSON syntax. All that input is compiled into a full-fledged Substance Article including the main content, meta information like the title and authors and figures you have specified. It works similarly to Jekyll, a static site generator written in Ruby. Compiled IO document repositories can be hosted on any webserver. It's only static files."
+      "content": "Substance.io is powered by our minimal publishing system, IO. It lets you write your articles in Markdown and define figures, tables etc. in a simple JSON syntax. All that input is compiled into a full-fledged Substance Article including the main content, meta information like the title and authors and figures you have specified. It works similarly to Jekyll, a static site generator written in Ruby. Compiled IO document repositories can be hosted on any webserver. It's only static files."
     },
     "header_12": {
       "type": "heading",
@@ -1119,8 +1119,8 @@
         "content"
       ],
       "range": [
-        355,
-        361
+        354,
+        360
       ],
       "url": "http://jekyllrb.com/"
     },
