@@ -86,11 +86,6 @@
       "branch": "master"
     },
     {
-      "repository": "https://github.com/substance/store.git",
-      "folder": "node_modules/substance-store",
-      "branch": "master"
-    },
-    {
       "repository": "https://github.com/substance/surface.git",
       "folder": "node_modules/substance-surface",
       "branch": "master"
