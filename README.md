@@ -2,21 +2,41 @@
 
 A minimal publishing solution based on Pandoc Markdown and Substance.
 
-## Installation
-
-### Prerequisites
+## Prerequisites
 
 - Node.js >=0.10.x
 - Pandoc >= 1.12.02 (for Markdown cross-compiling)
 
-### Install
+## Install
 
 Substance.IO comes as a ready-to-use NPM module:
 
     $ sudo npm install -g substance-io
 
+To view a document library (such as [Substance Documents](https://github.com/substance/docs)) you run the Substance.IO server by calling
 
-### Development Environment
+    $ io
+
+in the library folder.
+Or alternatively you can point to that folder using
+
+    $ io <path-to-library-folder>
+
+
+## Managing collections and documents
+
+Documents are managed by convention in a directory structure having folders for collections
+and subfolders for documents. For example:
+
+    mylibrary/substance                    # collection folder
+    mylibrary/substance/index.json         # collection metadata
+    mylibrary/substance/about              # document folder
+    mylibrary/substance/about/index.json   # document metadata
+    mylibrary/substance/about/content.md   # source markdown
+
+This would define a library with one collection with id `substance` having one document with id `about`.
+
+## Development Environment
 
 For development we use a setup based on our Screwdriver command line utility. It's just a little helper that makes dealing with our many modules easier.
 
@@ -36,18 +56,3 @@ Run the update command, which pulls in all the sub-modules and dependencies.
 Finally start the server and point your browser to `http://localhost:5000`.
 
     $ substance <path-to-library-folder>
-
-
-## Managing collections and documents
-
-Documents are managed by convention in a directory structure having folders for collections
-and subfolders for documents. For example:
-
-    mylibrary/substance                    # collection folder
-    mylibrary/substance/index.json         # collection metadata
-    mylibrary/substance/about              # document folder
-    mylibrary/substance/about/index.json   # document metadata
-    mylibrary/substance/about/content.md   # source markdown
-
-
-This would define a library with one collection with id `substance` having one document with id `about`.
