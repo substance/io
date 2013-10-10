@@ -38,7 +38,8 @@
     "lens-converter": "0.1.0"
   },
   "bin": {
-    "io": "./server.js"
+    "io": "./server.js",
+    "io-bundle": "./bundle.js"
   },
   "version": "0.1.0",
   "engines": {

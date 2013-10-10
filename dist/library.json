@@ -61,6 +61,7 @@
       "records": [
         "about",
         "manual",
+        "publish",
         "tutorial"
       ]
     },
@@ -84,6 +85,16 @@
       "title": "Substance Manual - A system guide dedicated to developers",
       "published_on": "2013-10-02"
     },
+    "publish": {
+      "id": "publish",
+      "url": "docs/substance/publish/content.json",
+      "authors": [
+        "Michael Aufreiter",
+        "Oliver Buchtala"
+      ],
+      "title": "Publish an article on Substance.io",
+      "published_on": "2013-10-10"
+    },
     "tutorial": {
       "id": "tutorial",
       "url": "docs/substance/tutorial/content.json",
@@ -92,7 +103,7 @@
         "Oliver Buchtala"
       ],
       "title": "Substance Tutorial",
-      "published_on": "2013-10-01"
+      "published_on": "2013-10-09"
     },
     "substance_blog": {
       "id": "substance_blog",
@@ -129,9 +140,10 @@
       "id": "substance-io-relaunches",
       "url": "docs/substance_blog/substance-io-relaunches/content.json",
       "authors": [
-        "Michael Aufreiter"
+        "Michael Aufreiter",
+        "Oliver Buchtala"
       ],
-      "title": "Substance.io relaunches with a new backend, IO",
+      "title": "Substance.io relaunches today powered by the all new Substance 0.5.0",
       "published_on": "2013-10-09"
     },
     "vvvv_js": {
