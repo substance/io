@@ -18,8 +18,7 @@ var IO = function() {
 
 };
 
-//var DOC_BASEDIR = process.cwd() + "/docs";
-var DOC_BASEDIR = process.cwd();
+IO.LIBRARY_BASEDIR = process.cwd();
 
 // From a document repository, extracts a library.json file
 // --------------------
@@ -35,14 +34,14 @@ IO.extractLibrary = function() {
     }
   };
 
-  var collections = fs.readdirSync(DOC_BASEDIR);
+  var collections = fs.readdirSync(IO.LIBRARY_BASEDIR);
 
   _.each(collections, function(c) {
-    var cStat = fs.statSync(DOC_BASEDIR+ "/"+ c);
+    var cStat = fs.statSync(IO.LIBRARY_BASEDIR+ "/"+ c);
     if (c === ".git") return; // Ignore .git folder
     if (cStat.isFile()) return; // only consider directories
 
-    var meta = JSON.parse(fs.readFileSync(DOC_BASEDIR +"/"+c+"/index.json", "utf8"));
+    var meta = JSON.parse(fs.readFileSync(IO.LIBRARY_BASEDIR +"/"+c+"/index.json", "utf8"));
 
     library.nodes[c] = {
       "id": c,
@@ -58,12 +57,12 @@ IO.extractLibrary = function() {
       library.nodes.library.collections.push(c);
     }
 
-    var documents = fs.readdirSync(DOC_BASEDIR+ "/"+c);
+    var documents = fs.readdirSync(IO.LIBRARY_BASEDIR+ "/"+c);
     _.each(documents, function(d) {
       if (d === ".DS_Store" || d === "index.json") return;
 
       // TODO: Read index.json for meta information
-      var meta = JSON.parse(fs.readFileSync(DOC_BASEDIR+ "/"+c+"/"+d+"/index.json", "utf8"));
+      var meta = JSON.parse(fs.readFileSync(IO.LIBRARY_BASEDIR+ "/"+c+"/"+d+"/index.json", "utf8"));
 
       library.nodes[d] = {
         "id": d,
@@ -89,10 +88,10 @@ IO.extractLibrary = function() {
 IO.compileDocument = function(collection, docId, cb) {
 
   try {
-    var filename = DOC_BASEDIR+"/"+collection+"/"+docId+"/content.md";
+    var filename = IO.LIBRARY_BASEDIR+"/"+collection+"/"+docId+"/content.md";
     var inputData = fs.readFileSync(filename, 'utf8');
 
-    var metaFile = DOC_BASEDIR+"/"+collection+"/"+docId+"/index.json";
+    var metaFile = IO.LIBRARY_BASEDIR+"/"+collection+"/"+docId+"/index.json";
     var meta = null;
 
     if (fs.existsSync(metaFile)) {
@@ -100,7 +99,7 @@ IO.compileDocument = function(collection, docId, cb) {
       meta = JSON.parse(metaData);
     }
 
-    var resourcesFile = DOC_BASEDIR+"/"+collection+"/"+docId+"/resources.json";
+    var resourcesFile = IO.LIBRARY_BASEDIR+"/"+collection+"/"+docId+"/resources.json";
     var resources = null;
 
     if (fs.existsSync(resourcesFile)) {
@@ -121,7 +120,7 @@ IO.compileDocument = function(collection, docId, cb) {
     });
   } catch (err) {
     // Just record entries
-    var filename = DOC_BASEDIR+"/"+collection+"/"+docId+"/index.json";
+    var filename = IO.LIBRARY_BASEDIR+"/"+collection+"/"+docId+"/index.json";
     var inputData = JSON.parse(fs.readFileSync(filename, 'utf8'));
     cb(null, inputData);
   }

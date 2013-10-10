@@ -8,6 +8,7 @@ var _ = require("underscore");
 
 var IO = require("./src/io");
 
+IO.LIBRARY_BASEDIR = process.argv[2] || process.cwd();
 
 // Useful general purpose helpers
 // --------
@@ -64,7 +65,7 @@ app.use('/src', express.static(__dirname+'/src'));
 app.use('/data', express.static(__dirname+'/data'));
 app.use('/config', express.static(__dirname+'/config'));
 app.use('/images', express.static(__dirname+'/images'));
-app.use('/docs', express.static(process.cwd()));
+app.use('/docs', express.static(IO.LIBRARY_BASEDIR));
 
 app.get("/scripts*",
   function(req, res, next) {
