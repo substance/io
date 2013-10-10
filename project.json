@@ -91,6 +91,11 @@
       "branch": "master"
     },
     {
+      "repository": "https://github.com/substance/test.git",
+      "folder": "node_modules/substance-test",
+      "branch": "master"
+    },
+    {
       "repository": "https://github.com/substance/util.git",
       "folder": "node_modules/substance-util",
       "branch": "master"
@@ -104,8 +109,7 @@
   "node_modules": {
     "underscore": "1.5.x",
     "express": "3.3.x",
-    "mocha": "1.12.x",
-    "substance-test": "0.2.x"
+    "mocha": "1.12.x"
   },
   "npm": {
     "engines": {
