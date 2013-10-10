@@ -17,7 +17,7 @@
       "creator": "",
       "title": "Substance.io relaunches with a new backend, IO",
       "abstract": "",
-      "published_on": "2013-10-09T21:56:48.005Z",
+      "published_on": "2013-10-10T07:47:39.336Z",
       "meta": {}
     },
     "content": {
@@ -125,7 +125,7 @@
       "type": "text",
       "id": "text_10",
       "source_id": null,
-      "content": "A platform is a platform only if there applications built on top of it. We happy that there's a production-ready Substance app out there. And there's more to come."
+      "content": "A platform is only a platform if applications built on top of it. We are happy that there's a production-ready Substance app out there. And there are more to come."
     },
     "header_3": {
       "type": "heading",
@@ -158,7 +158,7 @@
       "type": "text",
       "id": "text_12",
       "source_id": null,
-      "content": "We're teaming up with the guys behind FidusWriter. They already have a working solution for editing scientific documents within the browser. Version 2.0 will integrate Substance compontents. We're excited for"
+      "content": "We're teaming up with the guys behind Fidus Writer. They already have a working solution for editing scientific documents in the browser. Together we'll be building version 2.0, using the Substance technology stack, allowing incremental updates, versioning and replication for collaborative workflows."
     },
     "strong_1": {
       "type": "strong",
@@ -283,7 +283,7 @@
       ],
       "range": [
         38,
-        49
+        50
       ],
       "url": "http://fiduswriter.org/"
     },
