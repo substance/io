@@ -17,7 +17,7 @@
       "creator": "",
       "title": "Substance Tutorial",
       "abstract": "",
-      "published_on": "2013-10-10T07:47:39.357Z",
+      "published_on": "2013-10-10T09:36:03.554Z",
       "meta": {}
     },
     "content": {
@@ -127,7 +127,7 @@
       "type": "text",
       "id": "text_1",
       "source_id": null,
-      "content": "Welcome to the official Substance Tutorial. You'll learn:"
+      "content": "Welcome to the Substance Tutorial. You'll learn:"
     },
     "text_2": {
       "type": "text",
