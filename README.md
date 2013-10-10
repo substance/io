@@ -13,12 +13,13 @@ Substance.IO comes as a ready-to-use NPM module:
 
     $ sudo npm install -g substance-io
 
-To view a document library (such as [Substance Documents](https://github.com/substance/docs)) you run the Substance.IO server by calling
+To view a document library (such as [Substance Documents](https://github.com/substance/docs))
+call:
 
+    $ cd /path/to/library
     $ io
 
-in the library folder.
-Or alternatively you can point to that folder using
+Or alternatively you can point to that folder using:
 
     $ io <path-to-library-folder>
 
