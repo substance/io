@@ -18,6 +18,8 @@ var IO = function() {
 
 };
 
+//var DOC_BASEDIR = process.cwd() + "/docs";
+var DOC_BASEDIR = process.cwd();
 
 // From a document repository, extracts a library.json file
 // --------------------
@@ -32,9 +34,6 @@ IO.extractLibrary = function() {
       }
     }
   };
-
-  //var DOC_BASEDIR = process.cwd() + "/docs";
-  var DOC_BASEDIR = process.cwd();
 
   var collections = fs.readdirSync(DOC_BASEDIR);
 
