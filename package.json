@@ -27,10 +27,17 @@
     "substance-commander": "0.1.0",
     "substance-chronicle": "0.2.0",
     "substance-application": "0.1.0",
+    "substance-converter": "0.1.0",
+    "substance-nodes": "0.1.0",
+    "substance-article": "0.1.0",
+    "substance-library": "0.1.0",
     "lens-article": "0.1.0",
     "lens-reader": "0.1.0",
     "lens-outline": "0.1.0",
     "lens-converter": "0.1.0"
+  },
+  "bin": {
+    "io": "./server.js"
   },
   "version": "0.1.0",
   "engines": {

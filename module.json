@@ -22,10 +22,15 @@
     "substance-commander": "",
     "substance-chronicle": "",
     "substance-application": "",
+    "substance-converter": "",
+    "substance-nodes": "",
+    "substance-article": "",
+    "substance-library": "",
     "lens-article": "",
     "lens-reader": "",
     "lens-outline": "",
     "lens-converter": ""
   },
+  "bin" : { "io" : "./server.js" },
   "version": "0.1.0"
 }
