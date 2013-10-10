@@ -1,5 +1,5 @@
 {
-  "name": "io",
+  "name": "substance-io",
   "description": "A minimal publishing system based on Pandoc, Substance and eLife Lens. It powers substance.io.",
   "url": "http://github.com/substance/io",
   "keywords": [
