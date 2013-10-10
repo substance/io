@@ -2,23 +2,28 @@
 
 A minimal publishing solution based on Pandoc Markdown and Substance.
 
-## Install
-
-It's fairly easy to install and run io locally.
+## Installation
 
 ### Prerequisites
 
 - Node.js >=0.10.x
 - Pandoc >= 1.12.02 (for Markdown cross-compiling)
 
-### Fresh install
+### Install
 
-First install the Substance Screwdriver command line utility. It's just a little helper that makes dealing with our many modules easier.
+Substance.IO comes as a ready-to-use NPM module:
+
+    $ sudo npm install -g substance-io
+
+
+### Development Environment
+
+For development we use a setup based on our Screwdriver command line utility. It's just a little helper that makes dealing with our many modules easier.
 
     $ git clone https://github.com/substance/screwdriver.git
     $ cd screwdriver
     $ sudo python setup.py install
-    
+
 Clone the io repo.
 
     $ git clone https://github.com/substance/io.git
@@ -30,15 +35,19 @@ Run the update command, which pulls in all the sub-modules and dependencies.
 
 Finally start the server and point your browser to `http://localhost:5000`.
 
-    $ substance
+    $ substance <path-to-library-folder>
+
 
 ## Managing collections and documents
 
-Documents live under the `docs` directory and are organized in collections using a simple folder structure:
+Documents are managed by convention in a directory structure having folders for collections
+and subfolders for documents. For example:
 
-    docs/substance                    # collection folder
-    docs/substance/index.json         # collection metadata
-    docs/substance/about              # document folder
-    docs/substance/about/index.json   # document metadata 
-    docs/substance/about/content.md   # source markdown
-    
+    mylibrary/substance                    # collection folder
+    mylibrary/substance/index.json         # collection metadata
+    mylibrary/substance/about              # document folder
+    mylibrary/substance/about/index.json   # document metadata
+    mylibrary/substance/about/content.md   # source markdown
+
+
+This would define a library with one collection with id `substance` having one document with id `about`.
