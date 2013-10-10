@@ -56,15 +56,15 @@ app.get("/",
   }
 );
 
-app.use('/lib', express.static('lib'));
-app.use('/lib/substance', express.static('node_modules'));
-app.use('/node_modules', express.static('node_modules'));
-app.use('/styles', express.static('styles'));
-app.use('/src', express.static('src'));
-app.use('/data', express.static('data'));
-app.use('/config', express.static('config'));
-app.use('/images', express.static('images'));
-app.use('/docs', express.static('docs'));
+app.use('/lib', express.static(__dirname+'/lib'));
+app.use('/lib/substance', express.static(__dirname+'/node_modules'));
+app.use('/node_modules', express.static(__dirname+'/node_modules'));
+app.use('/styles', express.static(__dirname+'/styles'));
+app.use('/src', express.static(__dirname+'/src'));
+app.use('/data', express.static(__dirname+'/data'));
+app.use('/config', express.static(__dirname+'/config'));
+app.use('/images', express.static(__dirname+'/images'));
+app.use('/docs', express.static(process.cwd()));
 
 app.get("/scripts*",
   function(req, res, next) {
