@@ -109,7 +109,8 @@
   "node_modules": {
     "underscore": "1.5.x",
     "express": "3.3.x",
-    "mocha": "1.12.x"
+    "mocha": "1.12.x",
+    "substance-store": "0.1.x"
   },
   "npm": {
     "engines": {
@@ -144,7 +145,7 @@
     "styles/nodes/lens-caption.css": "node_modules/lens-article/nodes/caption/caption.css",
     "styles/nodes/lens-person.css": "node_modules/lens-article/nodes/person/person.css",
     "styles/nodes/lens-publication_info.css": "node_modules/lens-article/nodes/publication_info/publication_info.css",
-    
+
     "styles/library.css": "node_modules/substance-library/library.css",
     "styles/toc.css": "node_modules/substance-toc/toc.css",
     "styles/reader.css": "node_modules/lens-reader/reader.css",
