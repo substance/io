@@ -104,6 +104,7 @@
   "node_modules": {
     "underscore": "1.5.x",
     "express": "3.3.x",
+    "substance-store": "0.1.x",
     "mocha": "1.12.x"
   },
   "npm": {
