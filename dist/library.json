@@ -54,12 +54,12 @@
     "substance": {
       "id": "substance",
       "name": "Substance",
-      "description": "All Substance-related articles. Learn more about the Substance platform and find information on how to get started with development.",
+      "description": "Learn more about the Substance platform and find information on how to get started with development.",
       "image": "http://substance-assets.s3.amazonaws.com/7c/4436e919d5804906218a033b83cf63/substance-network.png",
       "updated_at": "2013-10-31",
       "type": "collection",
       "records": [
-        "about",
+        "article",
         "manual",
         "publish",
         "tutorial"
@@ -74,6 +74,16 @@
       ],
       "title": "Substance - Towards open digital publishing",
       "published_on": "2013-09-25"
+    },
+    "article": {
+      "id": "article",
+      "url": "docs/substance/article/content.json",
+      "authors": [
+        "Michael Aufreiter",
+        "Oliver Buchtala"
+      ],
+      "title": "Anatomy of a Substance Article",
+      "published_on": "2013-10-05"
     },
     "manual": {
       "id": "manual",

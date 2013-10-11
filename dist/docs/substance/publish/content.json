@@ -17,7 +17,7 @@
       "creator": "",
       "title": "Publish an article on Substance.io",
       "abstract": "",
-      "published_on": "2013-10-10T22:42:18.163Z",
+      "published_on": "2013-10-11T09:37:07.439Z",
       "meta": {}
     },
     "content": {
@@ -75,7 +75,7 @@
       "type": "text",
       "id": "text_2",
       "source_id": null,
-      "content": "Substance.io is powered by our minimal publishing system, IO. It lets you write articles in Markdown and define figures, tables etc. in a simple JSON syntax. All that input is compiled into a full-fledged Substance Article including the main content, meta information like the title and authors and figures you have specified. It works similarly to Jekyll, a static site generator written in Ruby. Compiled IO document repositories can be hosted on any webserver. It's just a bunch of static HTML + JSON files."
+      "content": "Substance.io is powered by our minimal publishing system, IO. It lets you write articles in Markdown and define figures, tables etc. in a simple JSON syntax. All that input is compiled into a full-fledged Substance Article including the main content, meta information like the title, authors and figures you have specified. It works similarly to Jekyll, a static site generator written in Ruby. Compiled IO document repositories can be hosted on any webserver. It's just a bunch of static HTML + JSON files."
     },
     "header_1": {
       "type": "heading",
@@ -112,7 +112,7 @@
       "type": "text",
       "id": "text_5",
       "source_id": null,
-      "content": "Run IO."
+      "content": "Run the io command line tool."
     },
     "codeblock_3": {
       "type": "codeblock",
@@ -198,7 +198,7 @@
       "type": "text",
       "id": "text_13",
       "source_id": null,
-      "content": "Each document lives in a folder within the collection. Let's create a folder docs/javascript/inheritance. Every document requires to have an index.json containing meta-information as well as a content.md which has the document's main content."
+      "content": "Each document lives in a folder within the collection. Let's create a folder docs/javascript/inheritance. Every document requires to have an index.json containing meta-information as well as a content.md which has the document's main text."
     },
     "text_14": {
       "type": "text",
@@ -271,7 +271,7 @@
       "type": "text",
       "id": "text_20",
       "source_id": null,
-      "content": "Soon you'll be able to manage citations as well."
+      "content": "Soon you'll be able to manage citations as well, including the ability to reference fragments of existing Substance Documents."
     },
     "header_5": {
       "type": "heading",
@@ -319,8 +319,8 @@
         "content"
       ],
       "range": [
-        349,
-        355
+        346,
+        352
       ],
       "url": "http://jekyllrb.com/"
     },
@@ -332,8 +332,8 @@
         "content"
       ],
       "range": [
-        492,
-        503
+        489,
+        500
       ],
       "url": "https://github.com/substance/io/tree/master/dist"
     },
@@ -367,6 +367,18 @@
       "type": "code",
       "id": "code_1",
       "path": [
+        "text_5",
+        "content"
+      ],
+      "range": [
+        8,
+        10
+      ]
+    },
+    "code_2": {
+      "type": "code",
+      "id": "code_2",
+      "path": [
         "text_6",
         "content"
       ],
@@ -375,9 +387,9 @@
         47
       ]
     },
-    "code_2": {
+    "code_3": {
       "type": "code",
-      "id": "code_2",
+      "id": "code_3",
       "path": [
         "text_7",
         "content"
@@ -387,9 +399,21 @@
         29
       ]
     },
-    "code_3": {
+    "strong_1": {
+      "type": "strong",
+      "id": "strong_1",
+      "path": [
+        "text_10",
+        "content"
+      ],
+      "range": [
+        27,
+        37
+      ]
+    },
+    "code_4": {
       "type": "code",
-      "id": "code_3",
+      "id": "code_4",
       "path": [
         "text_10",
         "content"
@@ -399,9 +423,9 @@
         74
       ]
     },
-    "code_4": {
+    "code_5": {
       "type": "code",
-      "id": "code_4",
+      "id": "code_5",
       "path": [
         "text_11",
         "content"
@@ -411,9 +435,9 @@
         102
       ]
     },
-    "code_5": {
+    "code_6": {
       "type": "code",
-      "id": "code_5",
+      "id": "code_6",
       "path": [
         "text_12",
         "content"
@@ -421,18 +445,6 @@
       "range": [
         26,
         56
-      ]
-    },
-    "code_6": {
-      "type": "code",
-      "id": "code_6",
-      "path": [
-        "text_13",
-        "content"
-      ],
-      "range": [
-        77,
-        104
       ]
     },
     "code_7": {
@@ -443,8 +455,8 @@
         "content"
       ],
       "range": [
-        141,
-        151
+        77,
+        104
       ]
     },
     "code_8": {
@@ -455,13 +467,25 @@
         "content"
       ],
       "range": [
-        193,
-        203
+        141,
+        151
       ]
     },
     "code_9": {
       "type": "code",
       "id": "code_9",
+      "path": [
+        "text_13",
+        "content"
+      ],
+      "range": [
+        193,
+        203
+      ]
+    },
+    "code_10": {
+      "type": "code",
+      "id": "code_10",
       "path": [
         "text_15",
         "content"
@@ -471,9 +495,9 @@
         23
       ]
     },
-    "code_10": {
+    "code_11": {
       "type": "code",
-      "id": "code_10",
+      "id": "code_11",
       "path": [
         "text_16",
         "content"
@@ -483,9 +507,9 @@
         90
       ]
     },
-    "code_11": {
+    "code_12": {
       "type": "code",
-      "id": "code_11",
+      "id": "code_12",
       "path": [
         "text_18",
         "content"

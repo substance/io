@@ -17,7 +17,7 @@
       "creator": "",
       "title": "Substance Tutorial",
       "abstract": "",
-      "published_on": "2013-10-10T22:42:18.234Z",
+      "published_on": "2013-10-11T09:37:07.469Z",
       "meta": {}
     },
     "content": {
@@ -33,55 +33,51 @@
         "list_2",
         "text_10",
         "codeblock_1",
-        "text_11",
-        "codeblock_2",
-        "text_12",
-        "codeblock_3",
         "header_2",
-        "text_13",
+        "text_11",
         "header_3",
+        "text_12",
+        "codeblock_2",
+        "text_13",
         "text_14",
-        "codeblock_4",
-        "text_15",
-        "text_16",
         "header_4",
+        "text_15",
+        "codeblock_3",
+        "text_16",
+        "codeblock_4",
         "text_17",
-        "codeblock_5",
-        "text_18",
-        "codeblock_6",
-        "text_19",
         "header_5",
-        "text_20",
+        "text_18",
         "header_6",
+        "text_19",
+        "codeblock_5",
+        "text_20",
+        "codeblock_6",
         "text_21",
-        "codeblock_7",
-        "text_22",
-        "codeblock_8",
-        "text_23",
         "header_7",
-        "text_24",
-        "codeblock_9",
+        "text_22",
+        "codeblock_7",
         "header_8",
-        "text_25",
-        "text_26",
+        "text_23",
+        "text_24",
         "header_9",
+        "text_25",
+        "codeblock_8",
+        "text_26",
+        "codeblock_9",
+        "header_10",
         "text_27",
         "codeblock_10",
         "text_28",
         "codeblock_11",
-        "header_10",
         "text_29",
         "codeblock_12",
         "text_30",
         "codeblock_13",
         "text_31",
-        "codeblock_14",
         "text_32",
-        "codeblock_15",
-        "text_33",
-        "text_34",
-        "codeblock_16",
-        "text_35"
+        "codeblock_14",
+        "text_33"
       ]
     },
     "text_1": {
@@ -155,7 +151,7 @@
       "type": "text",
       "id": "text_9",
       "source_id": null,
-      "content": "Pandoc >= 1.12.x"
+      "content": "Pandoc >= 1.12.0.2"
     },
     "list_2": {
       "type": "list",
@@ -179,30 +175,6 @@
       "source_id": "",
       "content": "$ git clone https://github.com/substance/tutorial"
     },
-    "text_11": {
-      "type": "text",
-      "id": "text_11",
-      "source_id": null,
-      "content": "Throughout our tutorial we are using the Substance Screwdriver for managing dependencies. The tutorial always runs against the latest stable dev versions. Please note that for all official releases we also provide NPM packages."
-    },
-    "codeblock_2": {
-      "type": "codeblock",
-      "id": "codeblock_2",
-      "source_id": "",
-      "content": "$ git clone https://github.com/substance/screwdriver.git\n$ cd screwdriver\n$ sudo python setup.py install"
-    },
-    "text_12": {
-      "type": "text",
-      "id": "text_12",
-      "source_id": null,
-      "content": "Now you should be able to run the substance program from the command line."
-    },
-    "codeblock_3": {
-      "type": "codeblock",
-      "id": "codeblock_3",
-      "source_id": "",
-      "content": "$ substance --help"
-    },
     "header_2": {
       "type": "heading",
       "id": "header_2",
@@ -210,11 +182,11 @@
       "content": "Turn a Markdown file into a Substance Article",
       "level": 1
     },
-    "text_13": {
+    "text_11": {
       "type": "text",
-      "id": "text_13",
+      "id": "text_11",
       "source_id": null,
-      "content": "Here comes the first lesson. Let's suppose we have a markdown document lorem_ipsum.md that we'd like to turn into a Substance.Article. Substance ships with its own converter module, which makes use of Pandoc, a universal document conversion tool. Let's create a little node program that takes a Markdown file as an input, turns it into a Substance Article and stores the resulting JSON on disk."
+      "content": "Here comes the first lesson. Let's suppose we have a markdown document lorem_ipsum.md that we'd like to turn into a Substance.Article. Substance ships with its own converter module, which makes use of Pandoc, a universal document conversion tool. Let's create a little node program that takes a Markdown file as an input, turns it into a Substance Article and stores the resulting JSON in a new file."
     },
     "header_3": {
       "type": "heading",
@@ -223,29 +195,29 @@
       "content": "Setup",
       "level": 2
     },
+    "text_12": {
+      "type": "text",
+      "id": "text_12",
+      "source_id": null,
+      "content": "With your console navigate to the first lesson."
+    },
+    "codeblock_2": {
+      "type": "codeblock",
+      "id": "codeblock_2",
+      "source_id": "",
+      "content": "$ cd 001-convert-md-to-substance"
+    },
+    "text_13": {
+      "type": "text",
+      "id": "text_13",
+      "source_id": null,
+      "content": "Pull-in dependencies using NPM."
+    },
     "text_14": {
       "type": "text",
       "id": "text_14",
       "source_id": null,
-      "content": "With your console navigate to the first lesson."
-    },
-    "codeblock_4": {
-      "type": "codeblock",
-      "id": "codeblock_4",
-      "source_id": "",
-      "content": "$ cd 001-convert-md-to-substance"
-    },
-    "text_15": {
-      "type": "text",
-      "id": "text_15",
-      "source_id": null,
-      "content": "Pull-in dependencies using the Substance Screwdriver."
-    },
-    "text_16": {
-      "type": "text",
-      "id": "text_16",
-      "source_id": null,
-      "content": "$ substance --update"
+      "content": "$ npm install"
     },
     "header_4": {
       "type": "heading",
@@ -254,35 +226,35 @@
       "content": "Procedure",
       "level": 2
     },
+    "text_15": {
+      "type": "text",
+      "id": "text_15",
+      "source_id": null,
+      "content": "Now take a glance at the convert.js file. That's all you need for a simple conversion tool, by just delegating the hard work to the Substance.Converter, and of course Pandoc."
+    },
+    "codeblock_3": {
+      "type": "codeblock",
+      "id": "codeblock_3",
+      "source_id": "",
+      "content": "var fs = require('fs');\nvar Converter = require(\"substance-converter\");\n\n// Parse command line arguments\n// -----------\n\nvar inputFile = process.argv[2];\nvar outputFile = process.argv[3];\n\n// Read markdown input\n// -----------\n\nvar inputDoc = fs.readFileSync(inputFile, \"utf8\");\n\n// Do the converstion\n// -----------\n\nvar converter = new Converter();\n\nconverter.convert(inputDoc, 'markdown', 'substance', function(err, doc) {\n  if (err) {\n    return console.error(err);\n  }\n  fs.writeFileSync(outputFile, JSON.stringify(doc, null, '  '));\n});"
+    },
+    "text_16": {
+      "type": "text",
+      "id": "text_16",
+      "source_id": null,
+      "content": "Call your node program, to finally perform the conversion."
+    },
+    "codeblock_4": {
+      "type": "codeblock",
+      "id": "codeblock_4",
+      "source_id": "",
+      "content": "$ node convert.js lorem_ipsum.md lorem_ipsum.json"
+    },
     "text_17": {
       "type": "text",
       "id": "text_17",
       "source_id": null,
-      "content": "Now take a glance at the convert.js utility. That's all you need for a simple conversion tool, by just delegating the hard work to the Substance.Converter, and of course Pandoc."
-    },
-    "codeblock_5": {
-      "type": "codeblock",
-      "id": "codeblock_5",
-      "source_id": "",
-      "content": "var fs = require('fs');\nvar Converter = require(\"substance-converter\");\n\n// Parse command line arguments\n// -----------\n\nvar inputFile = process.argv[2];\nvar outputFile = process.argv[3];\n\n// Read markdown input\n// -----------\n\nvar inputDoc = fs.readFileSync(inputFile, \"utf8\");\n\n// Do the converstion\n// -----------\n\nvar converter = new Converter();\n\nconverter.convert(inputDoc, 'markdown', 'substance', function(err, doc) {\n  if (err) {\n    return console.error(err);\n  }\n  fs.writeFileSync(outputFile, JSON.stringify(doc, null, '  '));\n});"
-    },
-    "text_18": {
-      "type": "text",
-      "id": "text_18",
-      "source_id": null,
-      "content": "Call your node program, to finally perform the conversion."
-    },
-    "codeblock_6": {
-      "type": "codeblock",
-      "id": "codeblock_6",
-      "source_id": "",
-      "content": "$ node convert.js lorem_ipsum.md lorem_ipsum.json"
-    },
-    "text_19": {
-      "type": "text",
-      "id": "text_19",
-      "source_id": null,
-      "content": "Great. Now try the same with your very own Markdown document. If you don't get to convert your markdown file, please let us know in the issue tracker."
+      "content": "Great. Now do the same with your very own Markdown document. If you don't get to convert your markdown file, please let us know in the issue tracker."
     },
     "header_5": {
       "type": "heading",
@@ -291,9 +263,9 @@
       "content": "Present your article",
       "level": 1
     },
-    "text_20": {
+    "text_18": {
       "type": "text",
-      "id": "text_20",
+      "id": "text_18",
       "source_id": null,
       "content": "In collaboration with eLife, we have developed an interactive reader for scientific documents which is based on the Substance Document Model, eLife Lens. In this lesson we'll be displaying your freshly generated Substance Article using a customized build of eLife Lens, the Substance.Reader."
     },
@@ -304,33 +276,33 @@
       "content": "Setup",
       "level": 2
     },
-    "text_21": {
+    "text_19": {
       "type": "text",
-      "id": "text_21",
+      "id": "text_19",
       "source_id": null,
       "content": "Navigate to lesson 2."
     },
-    "codeblock_7": {
+    "codeblock_5": {
       "type": "codeblock",
-      "id": "codeblock_7",
+      "id": "codeblock_5",
       "source_id": "",
       "content": "$ cd 002-display-document"
     },
-    "text_22": {
+    "text_20": {
       "type": "text",
-      "id": "text_22",
+      "id": "text_20",
       "source_id": null,
       "content": "The folder contains a stable build of the Substance.Reader. Since the document is loaded via AJAX, you just need to serve the folder through a webserver. The probably easiest way to do this is starting Python's SimpleHTTPServer, that ships with most operating systems."
     },
-    "codeblock_8": {
+    "codeblock_6": {
       "type": "codeblock",
-      "id": "codeblock_8",
+      "id": "codeblock_6",
       "source_id": "",
       "content": "$ python -m SimpleHTTPServer"
     },
-    "text_23": {
+    "text_21": {
       "type": "text",
-      "id": "text_23",
+      "id": "text_21",
       "source_id": null,
       "content": "Open your browser and navigate to http://localhost:8000. You should see a default document (Figure 1)."
     },
@@ -341,15 +313,15 @@
       "content": "Procedure",
       "level": 2
     },
-    "text_24": {
+    "text_22": {
       "type": "text",
-      "id": "text_24",
+      "id": "text_22",
       "source_id": null,
       "content": "Now store a copy of your Substance document in the data folder (e.g. data/mydoc.json. You also need to adjust index.html so it points to your document like so:"
     },
-    "codeblock_9": {
+    "codeblock_7": {
       "type": "codeblock",
-      "id": "codeblock_9",
+      "id": "codeblock_7",
       "source_id": "",
       "content": "var app = new Substance({\n  // Endpoint must have CORS enabled, or file is served from the same domain as the app\n  document_url: \"http://example.com/path/to/any-substance-doc.json\"\n});"
     },
@@ -360,15 +332,15 @@
       "content": "Create a customized renderer",
       "level": 1
     },
-    "text_25": {
+    "text_23": {
       "type": "text",
-      "id": "text_25",
+      "id": "text_23",
       "source_id": null,
       "content": "Displaying the document in the official Substance.Reader is great, but what if you wanted to present your article in a more customized fashion?"
     },
-    "text_26": {
+    "text_24": {
       "type": "text",
-      "id": "text_26",
+      "id": "text_24",
       "source_id": null,
       "content": "You don't have to write it from scratch. You can utilize Substance.Surface which powers our reader and editor."
     },
@@ -379,27 +351,27 @@
       "content": "Setup",
       "level": 2
     },
-    "text_27": {
+    "text_25": {
       "type": "text",
-      "id": "text_27",
+      "id": "text_25",
       "source_id": null,
       "content": "Navigate to lesson 3."
     },
-    "codeblock_10": {
+    "codeblock_8": {
       "type": "codeblock",
-      "id": "codeblock_10",
+      "id": "codeblock_8",
       "source_id": "",
       "content": "$ cd 003-customized-renderer"
     },
-    "text_28": {
+    "text_26": {
       "type": "text",
-      "id": "text_28",
+      "id": "text_26",
       "source_id": null,
       "content": "Again start our little Python server."
     },
-    "codeblock_11": {
+    "codeblock_9": {
       "type": "codeblock",
-      "id": "codeblock_11",
+      "id": "codeblock_9",
       "source_id": "",
       "content": "$ python -m SimpleHTTPServer"
     },
@@ -410,75 +382,75 @@
       "content": "Procedure",
       "level": 2
     },
+    "text_27": {
+      "type": "text",
+      "id": "text_27",
+      "source_id": null,
+      "content": "Using the Substance Surface is really easy. The first thing to do is constructing a Substance.Article based on our JSON input."
+    },
+    "codeblock_10": {
+      "type": "codeblock",
+      "id": "codeblock_10",
+      "source_id": "",
+      "content": "var doc = Substance.Article.fromSnapshot(loremIpsumDoc);"
+    },
+    "text_28": {
+      "type": "text",
+      "id": "text_28",
+      "source_id": null,
+      "content": "A Substance document stores multiple views on its content (Figure 2). In our case we're interested in the content view. Therefore we create a Document.Controller instance that we need to paramatrize the Surface."
+    },
+    "codeblock_11": {
+      "type": "codeblock",
+      "id": "codeblock_11",
+      "source_id": "",
+      "content": "var docCtrl = new Substance.Document.Controller(doc, {\n  view: \"content\"\n});"
+    },
     "text_29": {
       "type": "text",
       "id": "text_29",
       "source_id": null,
-      "content": "Using the surface is really easy. The first thing to do is constructing a Substance.Article based on our JSON input."
+      "content": "Now we are ready to create the Substance.Surface instance."
     },
     "codeblock_12": {
       "type": "codeblock",
       "id": "codeblock_12",
       "source_id": "",
-      "content": "var doc = Substance.Article.fromSnapshot(loremIpsumDoc);"
+      "content": "var surface = new Substance.Surface(docCtrl, {\n  editable: false\n});"
     },
     "text_30": {
       "type": "text",
       "id": "text_30",
       "source_id": null,
-      "content": "A Substance document stores multiple views on its content (Figure 2). In our case we're interested in the content view. Therefore we create a Document.Controller instance that we need to paramatrize the Surface."
+      "content": "Let's wait until the DOM is ready and then render the document and attach it to the body element."
     },
     "codeblock_13": {
       "type": "codeblock",
       "id": "codeblock_13",
       "source_id": "",
-      "content": "var docCtrl = new Substance.Document.Controller(doc, {\n  view: \"content\"\n});"
+      "content": "$(function() {\n  $('body').append(surface.render().el);\n});"
     },
     "text_31": {
       "type": "text",
       "id": "text_31",
       "source_id": null,
-      "content": "Now we are ready to create the Substance.Surface instance."
-    },
-    "codeblock_14": {
-      "type": "codeblock",
-      "id": "codeblock_14",
-      "source_id": "",
-      "content": "var surface = new Substance.Surface(docCtrl, {\n  editable: false\n});"
+      "content": "The markup that is produced by the Surface using the Substance.Article definition is pretty straight forward (Figure 3)."
     },
     "text_32": {
       "type": "text",
       "id": "text_32",
       "source_id": null,
-      "content": "Let's wait until the DOM is ready and then render the document and attach it to the body element."
+      "content": "You can easiliy come up with your very own CSS styles. For instance let's add some styles for headings."
     },
-    "codeblock_15": {
+    "codeblock_14": {
       "type": "codeblock",
-      "id": "codeblock_15",
+      "id": "codeblock_14",
       "source_id": "",
-      "content": "$(function() {\n  $('body').append(surface.render().el);\n});"
+      "content": ".surface.content .content-node.heading {\n  font-weight: bold;\n  color: #0089D3;\n}\n\n.surface.content .content-node.heading.level-1 {\n  font-size: 25px;\n}"
     },
     "text_33": {
       "type": "text",
       "id": "text_33",
-      "source_id": null,
-      "content": "The markup that is produced by the Surface using the Substance.Article definition is pretty straight forward (Figure 3)."
-    },
-    "text_34": {
-      "type": "text",
-      "id": "text_34",
-      "source_id": null,
-      "content": "You can easiliy come up with your very own CSS styles. For instance let's add some styles for headings."
-    },
-    "codeblock_16": {
-      "type": "codeblock",
-      "id": "codeblock_16",
-      "source_id": "",
-      "content": ".surface.content .content-node.heading {\n  font-weight: bold;\n  color: #0089D3;\n}\n\n.surface.content .content-node.heading.level-1 {\n  font-size: 25px;\n}"
-    },
-    "text_35": {
-      "type": "text",
-      "id": "text_35",
       "source_id": null,
       "content": "A more complete functioning codebsae is located in the index.html file and article.css."
     },
@@ -572,6 +544,18 @@
       ],
       "url": "https://github.com/substance/tutorial"
     },
+    "code_1": {
+      "type": "code",
+      "id": "code_1",
+      "path": [
+        "text_11",
+        "content"
+      ],
+      "range": [
+        71,
+        85
+      ]
+    },
     "link_10": {
       "type": "link",
       "id": "link_10",
@@ -580,10 +564,10 @@
         "content"
       ],
       "range": [
-        41,
-        62
+        116,
+        133
       ],
-      "url": "http://github.com/substance/screwdriver"
+      "url": "http://github.com/substance/article"
     },
     "link_11": {
       "type": "link",
@@ -593,66 +577,16 @@
         "content"
       ],
       "range": [
-        214,
-        217
-      ],
-      "url": "http://npmjs.org/"
-    },
-    "code_1": {
-      "type": "code",
-      "id": "code_1",
-      "path": [
-        "text_12",
-        "content"
-      ],
-      "range": [
-        34,
-        43
-      ]
-    },
-    "code_2": {
-      "type": "code",
-      "id": "code_2",
-      "path": [
-        "text_13",
-        "content"
-      ],
-      "range": [
-        71,
-        85
-      ]
-    },
-    "link_12": {
-      "type": "link",
-      "id": "link_12",
-      "path": [
-        "text_13",
-        "content"
-      ],
-      "range": [
-        116,
-        133
-      ],
-      "url": "http://github.com/substance/article"
-    },
-    "link_13": {
-      "type": "link",
-      "id": "link_13",
-      "path": [
-        "text_13",
-        "content"
-      ],
-      "range": [
         164,
         173
       ],
       "url": "http://github.com/substance/converter"
     },
-    "code_3": {
+    "code_2": {
       "type": "code",
-      "id": "code_3",
+      "id": "code_2",
       "path": [
-        "text_17",
+        "text_15",
         "content"
       ],
       "range": [
@@ -660,24 +594,24 @@
         35
       ]
     },
-    "link_14": {
+    "link_12": {
       "type": "link",
-      "id": "link_14",
+      "id": "link_12",
       "path": [
-        "text_19",
+        "text_17",
         "content"
       ],
       "range": [
-        136,
-        149
+        135,
+        148
       ],
       "url": "https://github.com/substance/converter/issues"
     },
-    "link_15": {
+    "link_13": {
       "type": "link",
-      "id": "link_15",
+      "id": "link_13",
       "path": [
-        "text_20",
+        "text_18",
         "content"
       ],
       "range": [
@@ -686,11 +620,11 @@
       ],
       "url": "http://elifesciences.org"
     },
-    "link_16": {
+    "link_14": {
       "type": "link",
-      "id": "link_16",
+      "id": "link_14",
       "path": [
-        "text_20",
+        "text_18",
         "content"
       ],
       "range": [
@@ -699,11 +633,36 @@
       ],
       "url": "http://lens.substance.io"
     },
+    "link_15": {
+      "type": "link",
+      "id": "link_15",
+      "path": [
+        "text_18",
+        "content"
+      ],
+      "range": [
+        274,
+        290
+      ],
+      "url": "http://github.com/substance/reader"
+    },
+    "code_3": {
+      "type": "code",
+      "id": "code_3",
+      "path": [
+        "text_20",
+        "content"
+      ],
+      "range": [
+        42,
+        58
+      ]
+    },
     "code_4": {
       "type": "code",
       "id": "code_4",
       "path": [
-        "text_23",
+        "text_21",
         "content"
       ],
       "range": [
@@ -715,7 +674,7 @@
       "type": "code",
       "id": "code_5",
       "path": [
-        "text_24",
+        "text_22",
         "content"
       ],
       "range": [
@@ -727,7 +686,7 @@
       "type": "code",
       "id": "code_6",
       "path": [
-        "text_24",
+        "text_22",
         "content"
       ],
       "range": [
@@ -735,11 +694,11 @@
         120
       ]
     },
-    "link_18": {
+    "link_17": {
       "type": "link",
-      "id": "link_18",
+      "id": "link_17",
       "path": [
-        "text_26",
+        "text_24",
         "content"
       ],
       "range": [
@@ -752,19 +711,19 @@
       "type": "code",
       "id": "code_7",
       "path": [
-        "text_29",
+        "text_27",
         "content"
       ],
       "range": [
-        74,
-        91
+        84,
+        101
       ]
     },
     "code_8": {
       "type": "code",
       "id": "code_8",
       "path": [
-        "text_30",
+        "text_28",
         "content"
       ],
       "range": [
@@ -776,7 +735,7 @@
       "type": "code",
       "id": "code_9",
       "path": [
-        "text_30",
+        "text_28",
         "content"
       ],
       "range": [
@@ -788,7 +747,7 @@
       "type": "code",
       "id": "code_10",
       "path": [
-        "text_30",
+        "text_28",
         "content"
       ],
       "range": [
@@ -800,7 +759,7 @@
       "type": "code",
       "id": "code_11",
       "path": [
-        "text_33",
+        "text_31",
         "content"
       ],
       "range": [
@@ -812,7 +771,7 @@
       "type": "code",
       "id": "code_12",
       "path": [
-        "text_35",
+        "text_33",
         "content"
       ],
       "range": [
@@ -824,7 +783,7 @@
       "type": "code",
       "id": "code_13",
       "path": [
-        "text_35",
+        "text_33",
         "content"
       ],
       "range": [
@@ -991,7 +950,7 @@
       "type": "figure_reference",
       "id": "figure_reference_1",
       "path": [
-        "text_23",
+        "text_21",
         "content"
       ],
       "range": [
@@ -1004,7 +963,7 @@
       "type": "figure_reference",
       "id": "figure_reference_2",
       "path": [
-        "text_30",
+        "text_28",
         "content"
       ],
       "range": [
@@ -1017,7 +976,7 @@
       "type": "figure_reference",
       "id": "figure_reference_3",
       "path": [
-        "text_33",
+        "text_31",
         "content"
       ],
       "range": [
