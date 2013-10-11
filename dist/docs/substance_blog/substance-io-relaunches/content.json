@@ -17,7 +17,7 @@
       "creator": "",
       "title": "Substance.io relaunches today powered by the all new Substance 0.5.0",
       "abstract": "",
-      "published_on": "2013-10-11T09:50:03.309Z",
+      "published_on": "2013-10-11T09:57:56.288Z",
       "meta": {}
     },
     "content": {
@@ -123,7 +123,7 @@
       "type": "text",
       "id": "text_10",
       "source_id": null,
-      "content": "Please have a look at the official Manual to learn more about the individual modules. For a general introduction see here."
+      "content": "All modules are available via NPM. Please have a look at the official Manual to learn more about the individual modules. The easiest way to get started is taking the Tutorial."
     },
     "text_11": {
       "type": "text",
@@ -367,8 +367,8 @@
         "content"
       ],
       "range": [
-        35,
-        41
+        70,
+        76
       ],
       "url": "#substance/manual"
     },
@@ -380,10 +380,10 @@
         "content"
       ],
       "range": [
-        117,
-        121
+        166,
+        174
       ],
-      "url": "#about"
+      "url": "#substance/tutorial"
     },
     "link_10": {
       "type": "link",
