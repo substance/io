@@ -3,114 +3,108 @@
     {
       "repository": "https://github.com/substance/application.git",
       "folder": "node_modules/substance-application",
-      "branch": "master"
+      "branch": "0.2.x"
     },
     {
       "repository": "https://github.com/substance/chronicle.git",
       "folder": "node_modules/substance-chronicle",
-      "branch": "master"
-    },
-    {
-      "repository": "https://github.com/substance/docs.git",
-      "folder": "docs",
-      "branch": "master"
+      "branch": "0.3.x"
     },
     {
       "repository": "https://github.com/substance/commander.git",
       "folder": "node_modules/substance-commander",
-      "branch": "master"
+      "branch": "0.2.x"
     },
     {
       "repository": "https://github.com/michael/data.git",
       "folder": "node_modules/substance-data",
-      "branch": "master"
+      "branch": "0.9.x"
     },
     {
       "repository": "https://github.com/substance/document.git",
       "folder": "node_modules/substance-document",
-      "branch": "master"
+      "branch": "0.6.x"
     },
     {
       "repository": "https://github.com/elifesciences/lens-reader.git",
       "folder": "node_modules/lens-reader",
-      "branch": "master"
+      "branch": "0.2.x"
     },
     {
       "repository": "https://github.com/substance/article.git",
       "folder": "node_modules/substance-article",
-      "branch": "master"
+      "branch": "0.2.x"
     },
     {
       "repository": "https://github.com/elifesciences/lens-article.git",
       "folder": "node_modules/lens-article",
-      "branch": "master"
+      "branch": "0.2.x"
     },
     {
       "repository": "https://github.com/substance/nodes.git",
       "folder": "node_modules/substance-nodes",
-      "branch": "master"
+      "branch": "0.2.x"
     },
     {
       "repository": "https://github.com/elifesciences/lens-outline.git",
       "folder": "node_modules/lens-outline",
-      "branch": "master"
+      "branch": "0.2.x"
     },
     {
       "repository": "https://github.com/substance/library.git",
       "folder": "node_modules/substance-library",
-      "branch": "master"
+      "branch": "0.2.x"
     },
     {
       "repository": "https://github.com/substance/toc.git",
       "folder": "node_modules/substance-toc",
-      "branch": "master"
+      "branch": "0.2.x"
     },
     {
       "repository": "https://github.com/substance/converter.git",
       "folder": "node_modules/substance-converter",
-      "branch": "master"
+      "branch": "0.2.x"
     },
     {
       "repository": "https://github.com/elifesciences/lens-converter.git",
       "folder": "node_modules/lens-converter",
-      "branch": "master"
+      "branch": "0.2.x"
     },
     {
       "repository": "https://github.com/substance/operator.git",
       "folder": "node_modules/substance-operator",
-      "branch": "master"
+      "branch": "0.3.x"
     },
     {
       "repository": "https://github.com/substance/regexp.git",
       "folder": "node_modules/substance-regexp",
-      "branch": "master"
+      "branch": "0.2.x"
     },
     {
       "repository": "https://github.com/substance/surface.git",
       "folder": "node_modules/substance-surface",
-      "branch": "master"
+      "branch": "0.4.x"
     },
     {
       "repository": "https://github.com/substance/test.git",
       "folder": "node_modules/substance-test",
-      "branch": "master"
+      "branch": "0.3.x"
     },
     {
       "repository": "https://github.com/substance/util.git",
       "folder": "node_modules/substance-util",
-      "branch": "master"
+      "branch": "0.3.x"
     },
     {
       "repository": "https://github.com/substance/io.git",
       "folder": ".",
-      "branch": "master"
+      "branch": "0.2.x"
     }
   ],
   "node_modules": {
     "underscore": "1.5.x",
     "express": "3.3.x",
-    "mocha": "1.12.x",
-    "substance-store": "0.1.x"
+    "mocha": "1.12.x"
   },
   "npm": {
     "engines": {
