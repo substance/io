@@ -96,7 +96,7 @@ function generateCollections(cb) {
 
 cleanup();
 
-// Generate libarry
+// Generate library
 // -------------
 
 generateLibrary();

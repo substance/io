@@ -135,7 +135,6 @@ Outline
 .lens-outline.figures .node.highlighted {
   opacity: 0.7;
   background: rgba(145, 187, 4, 1);
-  /*border: 1px solid rgba(145, 187, 4, 1);*/
 }
 
 /* Blueish highlighted nodes (citations) */
@@ -148,7 +147,6 @@ Outline
 .lens-outline.figures .node.selected {
   opacity: 1;
   background: rgba(145, 187, 4, 1);
-  /*border: 1px solid rgba(145, 187, 4, 1);*/
 }
 
 /* Blueish highlighted nodes (citations) */
@@ -325,11 +323,12 @@ Outline
 }
 
 .content-node.codeblock > .content {
-  font-family: 'Source Code Pro';
+  font-family: 'Source Code Pro', 'Menlo', monospace;
   font-size: 14px;
   color: #777;
   min-height: 28px;
 }
+
 .content-node.collaborator {
   /*padding-right: 60px;*/
   

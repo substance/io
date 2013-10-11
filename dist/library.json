@@ -59,6 +59,7 @@
       "updated_at": "2013-10-31",
       "type": "collection",
       "records": [
+        "about",
         "article",
         "manual",
         "publish",
