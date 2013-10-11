@@ -17,7 +17,6 @@ var SubstanceView = function(controller) {
   // Handle state transitions
   // --------
   
-  // this.listenTo(this.controller, 'context-changed', this.onContextChanged);
   this.listenTo(this.controller, 'state-changed', this.onStateChanged);
 };
 
@@ -45,18 +44,6 @@ SubstanceView.Prototype = function() {
   // ==========================================================================
   //
 
-  // this.onContextChanged = function(context) {
-  //   if (context === "reader") {
-  //     this.openReader();
-  //   } else if (context === "library") {
-  //     this.openLibrary();
-  //   } else {
-  //     console.log("Unknown application state: " + context);
-  //   }
-
-  //   this.updateMenu();
-  // };
-
   this.updateMenu = function() {
     var hash = window.location.hash;
 
@@ -65,10 +52,10 @@ SubstanceView.Prototype = function() {
       this.$('.toggle-view.about').addClass('active')
     } else if (hash.match(/manual/)) {
       this.$('.toggle-view.manual').addClass('active');
-    } else if (hash.match(/tutorial/)) {
-      this.$('.toggle-view.tutorial').addClass('active');
     } else if (hash.match(/blog/)) {
       this.$('.toggle-view.blog').addClass('active');
+    } else if (hash.match(/substance/)) {
+      this.$('.toggle-view.docs').addClass('active');
     } else {
       this.$('.toggle-view.explore').addClass('active');
     }

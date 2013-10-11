@@ -185,12 +185,34 @@ SubstanceController.Prototype = function() {
       document: documentId,
     };
 
-    // if (collectionId === "lens" && documentId === "lens_article") {
-    //   return this.openLensArticle(state);
-    // }
+    if (collectionId === "substance" && documentId === "article") {
+      return this.openArticle(state);
+    }
 
     // Ensure the library is loaded
     this.loadLibrary(this.config.library_url, _open.bind(this, state, documentId));
+  };
+
+
+ this.openArticle = function(state) {
+    var that = this;
+    var doc = Article.describe();
+    this.reader = new ReaderController(doc, state);
+
+    // Trigger URL Fragment update on every state change
+    that.reader.on('state-changed', function() {
+      that.updatePath(that.reader.state);
+    });
+
+    this.modifyState({
+      context: 'reader'
+    });
+
+    // Lens Controller state
+    this.state = {
+      collection: "substance",
+      document: "article"
+    };
   };
 
 
