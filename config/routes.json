@@ -60,6 +60,6 @@
   {
     "route": "",
     "name": "library",
-    "command": "openAbout"
+    "command": "openLibrary"
   }
 ]

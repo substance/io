@@ -40,7 +40,7 @@
   "bin": {
     "io": "./server.js"
   },
-  "version": "0.1.0",
+  "version": "0.0.edge",
   "engines": {
     "node": ">=0.8.x",
     "npm": ">=1.1.x"

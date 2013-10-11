@@ -37,28 +37,6 @@ SubstanceView.Prototype = function() {
     } else {
       console.log("Unknown application state: " + context);
     }
-    this.updateMenu();
-  };
-
-  // Session Event handlers
-  // ==========================================================================
-  //
-
-  this.updateMenu = function() {
-    var hash = window.location.hash;
-
-    this.$('.toggle-view').removeClass('active');
-    if (hash.match(/about/)) {
-      this.$('.toggle-view.about').addClass('active')
-    } else if (hash.match(/manual/)) {
-      this.$('.toggle-view.manual').addClass('active');
-    } else if (hash.match(/blog/)) {
-      this.$('.toggle-view.blog').addClass('active');
-    } else if (hash.match(/substance/)) {
-      this.$('.toggle-view.docs').addClass('active');
-    } else {
-      this.$('.toggle-view.explore').addClass('active');
-    }
   };
 
   // Open Library
