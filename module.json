@@ -33,5 +33,5 @@
     "lens-converter": ""
   },
   "bin" : { "io" : "./server.js" },
-  "version": "0.0.edge"
+  "version": "0.0.0"
 }
