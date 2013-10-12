@@ -19,6 +19,12 @@ var IO = function() {
 };
 
 IO.LIBRARY_BASEDIR = process.cwd();
+IO.IGNORE = {
+  ".DS_Store": true,
+  "index.json": true,
+  ".git": true,
+  "README.md": true
+};
 
 // From a document repository, extracts a library.json file
 // --------------------
@@ -59,7 +65,7 @@ IO.extractLibrary = function() {
 
     var documents = fs.readdirSync(IO.LIBRARY_BASEDIR+ "/"+c);
     _.each(documents, function(d) {
-      if (d === ".DS_Store" || d === "index.json") return;
+      if (IO.IGNORE[d]) return;
 
       // TODO: Read index.json for meta information
       var meta = JSON.parse(fs.readFileSync(IO.LIBRARY_BASEDIR+ "/"+c+"/"+d+"/index.json", "utf8"));
