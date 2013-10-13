@@ -9,7 +9,7 @@ var LibraryController = Library.Controller;
 var CollectionController = Library.Collection.Controller;
 var LensArticle = require("lens-article");
 var Article = require("substance-article");
-var ReaderController = require("lens-reader").Controller;
+var ReaderController = require("substance-reader").Controller;
 var Converter = require("lens-converter");
 
 // Substance.Controller

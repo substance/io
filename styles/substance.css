@@ -15,7 +15,7 @@ body {
 html,body {
   height:100%;
   /*background: #F5F5F5;*/
-  background: #F0F1EB;
+  /*background: #F0F1EB;*/
   -webkit-font-smoothing: antialiased;
 }
 
@@ -28,7 +28,7 @@ General Layout
   /*margin: 0 auto;*/
   max-width: 1400px; /* 988px / 16px = 61.75em */
   height: 100%;
-  margin-left: 120px;
+  margin-left: 40px;
 }
 
 #container .browser-not-supported {
@@ -278,22 +278,15 @@ a.testsuite {
 
 /* Article Overrides */
 
-#container .article .context-toggles {
+/*#container .article .context-toggles {
   background: #F0F1EB;
-}
+}*/
 
-
-#container .content-node.cover {
-  background: #4A4A4A;
-}
 
 #container .article .resources .info .content-node.active .resource-header {
   background: #4A4A4A;
 }
 
-#container .lens-outline .node.cover {
-  background: #4A4A4A;
-}
 
 .lens-outline .node, .lens-outline .node.header {
   background: #7D8165;
