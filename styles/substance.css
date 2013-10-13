@@ -25,10 +25,10 @@ General Layout
 
 #container {
   position: relative;
-  /*margin: 0 auto;*/
+  margin: 0 auto;
   max-width: 1400px; /* 988px / 16px = 61.75em */
   height: 100%;
-  margin-left: 40px;
+  /*margin-left: 40px;*/
 }
 
 #container .browser-not-supported {
