@@ -11,11 +11,6 @@
       "branch": "master"
     },
     {
-      "repository": "https://github.com/substance/docs.git",
-      "folder": "docs",
-      "branch": "master"
-    },
-    {
       "repository": "https://github.com/substance/commander.git",
       "folder": "node_modules/substance-commander",
       "branch": "master"
