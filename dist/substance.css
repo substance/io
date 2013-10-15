@@ -453,16 +453,6 @@ Outline
   color: rgba(0,0,0, 0.7);
 }
 
-/* Description Node
--------------------------------------------------------------------------------*/
-
-.content-node.description .content .topic {
-  line-height: 40px;
-  font-family: 'Montserrat';
-  font-weight: bold;
-  margin-bottom: 12px;
-}
-
 .lens-article .content-node.cover {
   /*background: #5c6570;*/
   color: rgba(0,0,0,0.8);
@@ -924,6 +914,136 @@ TOC
 
 
 
+/* Focus Toggles
+-------------------------------------------------------------------------------*/
+
+.document .content-node .focus {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  width: 40px;
+  color: #888;
+  border-top: 1px solid #eee;
+}
+
+.document .content-node .focus i {
+  padding-top: 15px;
+  display: block;
+  font-size: 12px;
+  text-align: center;
+}
+
+.document .content-node .focus .focus-mode {
+  width: 40px;
+  height: 70px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  position: relative;
+}
+
+
+.document .content-node .focus-mode.figure:hover, .article.figures .document .content-node.active .focus-mode.figure {
+  color: rgba(145, 187, 4, 1.0);
+}
+
+.document .content-node .focus-mode.citation:hover, .article.citations .document .content-node.active .focus-mode.citation {
+  color: rgba(11, 157, 217, 1);
+}
+
+.document .content-node .focus-mode.node:hover, .article .content-node.active .focus-mode.node {
+  color: black;
+}
+
+/* Override anchor toggle in figures mode */
+.article.figures .content-node.active .focus-mode.node {
+  color: rgba(145, 187, 4, 1.0);
+}
+
+/* Override anchor toggle in citations mode */
+.article.citations .content-node.active .focus-mode.node {
+  color: rgba(11, 157, 217, 1);
+}
+
+.article.figure .content-node.active .focus-mode.figure {
+  color: rgba(145, 187, 4, 1.0);
+}
+
+.article.citation .content-node.active .focus-mode.citation {
+  color: rgba(11, 157, 217, 1);
+}
+
+.document .content-node .focus .arrow {
+  display: none;
+}
+
+
+/* The stripe which marks the focussed node
+-------------------------------------------------------------------------------*/
+
+.document .content-node.active .focus .stripe {
+  display: block;
+  opacity: 1;
+}
+
+.document .content-node .focus .stripe {
+  opacity: 0;
+  position: absolute;
+  right: -3px;
+  width: 3px;
+  top: 0px;
+  bottom: 0px;
+  background: black;
+}
+
+
+.document .content-node .focus .arrow {
+  position: absolute;
+  top: 30px;
+  right: -13px;
+  width: 0; 
+  height: 0; 
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid black;
+}
+
+.article.figures .content-node.active .focus .focus-mode .arrow {
+  border-left: 10px solid rgba(145, 187, 4, 1.0);
+  display: block;
+}
+
+.article.citations .content-node.active .focus .focus-mode .arrow {
+  border-left: 10px solid rgba(11, 157, 217, 1);
+  display: block;
+}
+
+.article.figures .content-node.active .focus .stripe {
+  background: rgba(145, 187, 4, 1.0);
+  opacity: 1;
+}
+
+.article.citations .content-node.active .focus .stripe {
+  background: rgba(11, 157, 217, 1);
+}
+
+.article.citation .content-node.active .focus.anchor .stripe {
+  background: black;
+}
+
+.document .content-node:hover .focus .stripe {
+}
+
+.document .content-node .focus:hover {
+}
+
+.content-node.active .focus {
+  opacity: 1.0;
+}
+
+
 /* Main content panel 
 ======================================================================= */
 
@@ -935,8 +1055,7 @@ TOC
   float: left;
   overflow: hidden;
   height: 100%;
-  width: 50%;
-  border-right: 1px solid #ddd;
+  width: 55%;
 }
 
 .article .document .surface.content {
@@ -954,9 +1073,9 @@ TOC
 
 .article .document .surface.content .nodes {
   min-height: 100%;
-  padding-left: 40px;
+  padding-left: 60px;
   padding-right: 0px;
-  /*margin-right: 15px;*/
+  margin-right: 15px;
   background: #FFFFFF;
 }
 
@@ -980,28 +1099,28 @@ TOC
 
 /* Switcher */
 .article .context-toggles {
-
-  /*background: #F5F5F5;*/
+  background: #F5F5F5;
   overflow: hidden;
-  /*height: 60px;*/
-  width: 40px;
+  height: 60px;
   position: absolute;
-  /*right: 20px;*/
-  left: -18px;
-  top: 30px;
+  right: 20px;
+  left: 0px;
+  top: 0px;
   z-index: 3000;
-  background: #fff;
   padding: 10px 0px;
 }
 
+.article.focus-mode .context-toggles {
+  opacity: 0.5
+}
 
 .article .context-toggles .context-toggle {
   cursor: pointer;
-  /*float: left;*/
+  float: left;
   padding: 0 10px;
   line-height: 40px;
-  font-size: 18px;
-  color: #aaa;
+  font-size: 14px;
+  color: #777;
   font-family: 'Avenir LT W01 85 Heavy', 'Montserrat', 'Source Sans Pro';
 }
 
@@ -1010,7 +1129,7 @@ TOC
 }
 
 .article .context-toggles .context-toggle span {
-  display: none;
+
 }
 
 .article .context-toggles .context-toggle:hover {
@@ -1043,48 +1162,34 @@ TOC
 .article .resources {
   float: right;
   line-height: 20px;
-  width: 50%;
+  width: 44%;
   font-size: 14px;
   height: 100%;
-  padding-left: 50px;
-  padding-right: 50px;
   position: relative;
-  /*overflow: auto;*/
+  overflow: auto;
 }
 
 .article .resources .surface {
   padding-top: 60px;
 }
 
-.article .nodes {
-  padding-left: 50px;
-  padding-right: 50px;
-}
-
-
 .article .resources .nodes > .content-node {
   color: #333;
   position: relative;
-  /*background: rgba(0,0,0,0.01);*/
-  background: #fff;
-  border: 1px solid #ddd;
-  border-top: none;
+  background: rgba(0,0,0,0.05);
   margin-bottom: 30px;
   margin-right: 20px;
   padding: 0px;
 }
 
 .article .resources .content-node .resource-header:hover {
-  /*background: rgba(0,0,0,0.05);*/
+  background: rgba(0,0,0,0.05);
 }
 
 /* Clickable header */
 .article .resources .content-node .resource-header {
   min-height: 80px;
   position: relative;
-  border-bottom: 2px solid #eee;
-  border-top: 1px solid #eee;
-  background: rgba(0,0,0,0.01);
 }
 
 /* Shared styles for selected and mouseover states
@@ -1092,52 +1197,77 @@ TOC
 
 /* Active resource */
 .article .resources .content-node.active .resource-header .name {
-  /*color: #fff;*/
+  color: #fff;
 }
 
 /* active figure */
-.article .resources .figures .content-node.active {
-  /*border-color: rgba(145, 187, 4, 1);*/
-  
-}
-
 .article .resources .figures .content-node.active .resource-header {
-  border-color: rgba(145, 187, 4, 1);
+  background: rgba(145, 187, 4, 1);
+  color: #fff;
 }
-
-.article .resources .figures .content-node.active .resource-header a {
-  color: rgba(145, 187, 4, 1);
-}
-
 
 /* active citation */
-
-.article .resources .citations .content-node.active {
-  /*border-color: rgba(11, 157, 217, 1);*/
-}
-
 .article .resources .citations .content-node.active .resource-header {
-  border-color: rgba(11, 157, 217, 1);
-}
-
-.article .resources .citations .content-node.active .resource-header a {
-  color: rgba(11, 157, 217, 1);
+  background: rgba(11, 157, 217, 1);
+  color: #fff;
 }
 
 /* active person */
-.article .resources .info .content-node.active {
-  /*border-color: #5c6570;*/
-}
-
 .article .resources .info .content-node.active .resource-header {
-  border-color: #5c6570;
+  background: #5c6570;
+  color: #fff;
 }
 
-.article .resources .info .content-node.active .resource-header a {
-  color: #5c6570;
+.article .resources .content-node .resource-header .reference-count {
+  display: none;
+  opacity: 0.6;
 }
 
 
+.article .resources .content-node .type {
+  display: none;
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  height: 35px;
+  width: 120px;
+  text-align: center;
+  background: rgba(0,0,0,0.05);
+  font-size: 12px;
+  padding: 0 15px;
+  line-height: 35px;
+  font-weight: bold;
+}
+
+.article .resources .content-node .type i {
+  padding-right: 10px;
+}
+
+.article .resources .content-node.publication.active .type {
+  color: white;
+}
+
+.article .resources .content-node.active .type {
+  color: white;
+}
+
+.article .resources .number {
+  font-size: 11px;
+  position: absolute;
+  text-align: center;
+  color: #fff;
+  left: 25px;
+  top: 25px;
+  font-weight: bold;
+  width: 24px;
+  line-height: 24px;
+  border-radius: 12px;
+  background: rgba(0,0,0, 0.3);
+}
+
+.article .resources .publication.active .number {
+  background: rgba(11, 157, 217, 1);
+}
 
 
 /* Figures View
@@ -1186,9 +1316,8 @@ TOC
   position: absolute;
   top: 0px;
   bottom: 0px;
-  left: 50px;
-  right: 50px;
-
+  left: 0px;
+  right: 0px;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   padding-top: 60px;
@@ -1272,7 +1401,7 @@ TOC
 }
 
 .article .resources .content-node.active .resource-header .toggle-fullscreen:hover {
-  /*color: rgba(255,255,255, 1);*/
+  color: rgba(255,255,255, 1);
 }
 
 
@@ -1291,7 +1420,6 @@ TOC
   z-index: 100000;
   margin-bottom: 0px;
   margin-right: 0px;
-  border: 1px solid transparent;
 }
 
 #container .article .content-node.fullscreen .icon-resize-small {
@@ -1431,7 +1559,7 @@ span.annotation.formula_reference, span.publication_reference {
 
 .content-node .figure_reference.active { background: rgba(145, 187, 4, 0.7); }
 .content-node .citation_reference.active { background: rgba(11, 157, 217, 0.6); }
-.content-node .person_reference.active { background-color: rgba(0,0,0, 0.8); color: white; }
+.content-node .person_reference.active { background-color: rgba(0,0,0, 0.4); color: white; }
 
 /* Cross Reference */
 .content-node .cross_reference:hover {
@@ -1442,12 +1570,14 @@ span.annotation.formula_reference, span.publication_reference {
 /* Reader-specific overrides for content nodes
 ======================================================================= */
 
+
 /* For the main content area 
 ----------------------------------------------------------------------- */
 
+
 .surface.content .nodes > .content-node {
-  padding-top: 10px;
-  padding-bottom: 15px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   padding-left: 40px;
   padding-right: 50px;
   word-wrap: break-word;
@@ -1461,9 +1591,7 @@ span.annotation.formula_reference, span.publication_reference {
 
 
 /* Optimizations for smaller screen sizes */
-
-
-/*@media (max-width: 70.5em) {
+@media (max-width: 70.5em) {
   .article .document .surface.content .nodes {
     padding-left: 40px;
   }
@@ -1489,19 +1617,15 @@ span.annotation.formula_reference, span.publication_reference {
     padding-right: 30px;
     word-wrap: break-word;
   }
-}*/
+}
 
 
 /* Hide focus toggles for cover
 ----------------------------------------------------------------------- */
 
-/*.surface.content .nodes > .content-node.cover .focus {
+.surface.content .nodes > .content-node.cover .focus {
   display: none;
 }
-
-.surface.content .nodes > .content-node .focus {
-  display: none;
-}*/
 
 /* For the resources panel
 ----------------------------------------------------------------------- */
@@ -1534,7 +1658,7 @@ body {
 html,body {
   height:100%;
   /*background: #F5F5F5;*/
-  /*background: #F0F1EB;*/
+  background: #F0F1EB;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -1544,10 +1668,10 @@ General Layout
 
 #container {
   position: relative;
-  margin: 0 auto;
+  /*margin: 0 auto;*/
   max-width: 1400px; /* 988px / 16px = 61.75em */
   height: 100%;
-  /*margin-left: 40px;*/
+  margin-left: 120px;
 }
 
 #container .browser-not-supported {
@@ -1797,15 +1921,22 @@ a.testsuite {
 
 /* Article Overrides */
 
-/*#container .article .context-toggles {
+#container .article .context-toggles {
   background: #F0F1EB;
-}*/
+}
 
+
+#container .content-node.cover {
+  background: #4A4A4A;
+}
 
 #container .article .resources .info .content-node.active .resource-header {
   background: #4A4A4A;
 }
 
+#container .lens-outline .node.cover {
+  background: #4A4A4A;
+}
 
 .lens-outline .node, .lens-outline .node.header {
   background: #7D8165;
