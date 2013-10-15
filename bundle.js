@@ -10,8 +10,8 @@ var util = require("substance-util");
 var exec = require('child_process').exec;
 
 // Source dir (optional)
-IO.LIBRARY_BASEDIR = process.argv[2]; // || process.cwd();
-var TARGET_DIR = process.argv[3]; // || process.cwd() + "/dist";
+IO.LIBRARY_BASEDIR = process.argv[2];
+var TARGET_DIR = process.argv[3];
 
 if (!TARGET_DIR) {
   console.log('usage: io-bundle document_dir target_dir');
@@ -34,16 +34,20 @@ deleteFolderRecursive = function(path) {
   }
 };
 
+
 // Make clean
 // --------------
 
 function cleanup() {
   // fs.unlink(TARGET_DIR);
   // deleteFolderRecursive(TARGET_DIR);
-  // fs.mkdirSync(TARGET_DIR);
+
+  if (!fs.existsSync(TARGET_DIR)) {
+    fs.mkdirSync(TARGET_DIR);  
+  }
 
   console.log('clearing library.json and docs folder ...');
-  fs.unlink(TARGET_DIR + "/library.json");
+  // fs.unlink(TARGET_DIR + "/library.json");
   deleteFolderRecursive(TARGET_DIR + "/docs");
 }
 
@@ -95,12 +99,7 @@ function generateCollection(cid, cb) {
 function generateCollections(cb) {
   // Create docs folder
   fs.mkdirSync(TARGET_DIR + "/docs");
-
   var collections = library.nodes.library.collections;
-  
-  // _.each(collections, function(cid) {
-  //   generateCollection(cid, cb);
-  // });
   
   var funcs = _.map(collections, function(cid) {
     return function(cb) {
@@ -110,30 +109,17 @@ function generateCollections(cb) {
 
   // Run all collection generators sequentially
   util.async.sequential(funcs, cb);
-
-  // cb(null);
 }
-
-
-
-
-
-// function __pandocAvailable(cb) {
-//   var test = spawn('pandoc', ['--help']);
-//   test.on('error', function() {
-//     console.error('Pandoc not found');
-//     cb('Pandoc not found');
-//   });
-//   test.on('exit', function() { cb(null); });
-//   test.stdin.end();
-// }
 
 
 
 function run(command, cb) {
   console.log('running... '+ command);
   exec(command, function (error, stdout, stderr) {
-    if (error) return cb(err);
+    if (error) {
+      console.error(error);
+      return cb(error);
+    }
     if (stderr) {
       console.error(stderr);
     }
@@ -144,12 +130,13 @@ function run(command, cb) {
   });
 }
 
+
+// Make clean
+// -------------
+
+cleanup();
+
 run("cp -r " + __dirname + "/dist/* " + TARGET_DIR, function() {
-
-  // Make clean
-  // -------------
-
-  cleanup();
 
   // Generate library
   // -------------
