@@ -59,7 +59,7 @@ Outline
   background: #fff;
   position: absolute;
   left: 0px;
-  width:40px;
+  width:60px;
   top: 0px;
   bottom: 0px;
 }
@@ -103,7 +103,7 @@ Outline
 
 .lens-outline .node {
   margin: 0 5px;
-  width: 30px;
+  width: 50px;
   background: rgba(0,0,0, 0.4);
   opacity: 0.1;
   cursor: pointer;
@@ -213,11 +213,8 @@ Outline
 .content-node.heading .content {
   font-family: 'Montserrat';
   font-weight: bold;
-  line-height: 40px;
-}
-
-.content-node.heading.level-1 .content {
   font-size: 24px;
+  line-height: 40px;
 }
 
 .content-node.heading.level-2 .content {
@@ -227,7 +224,6 @@ Outline
 .content-node.heading.level-3 .content {
   font-size: 17px;
 }
-
 /* List Node
 -------------------------------------------------------------------------------*/
 
@@ -321,6 +317,7 @@ Outline
 
 .content-node.codeblock > .content {
   border: 1px dashed #ddd;
+  margin-bottom: 20px;
   line-height: 20px;
   padding: 10px 10px;
 }
@@ -424,7 +421,9 @@ Outline
   width: 100%;
 }
 .substance-article .content-node.cover {
+  background: #5c6570;
   margin-bottom: 50px;
+  color: white;
 }
 
 .substance-article .content-node.cover .content {
@@ -436,10 +435,11 @@ Outline
   line-height: 1.3em;
   margin-bottom: 50px;
   font-size: 40px;
+  color: rgba(255,255,255, 0.9);
 }
 
 .substance-article .content-node.cover .content .authors {
-  color: rgba(0,0,0, 0.7);
+  color: rgba(255,255,255, 0.7);
   overflow: auto;
 }
 
@@ -450,12 +450,12 @@ Outline
   font-size: 20px;
   margin-right: 10px;
   margin-bottom: 8px;
-  color: rgba(0,0,0, 0.7);
+  color: rgba(255,255,255, 0.7);
 }
 
 .lens-article .content-node.cover {
-  /*background: #5c6570;*/
-  color: rgba(0,0,0,0.8);
+  background: #5c6570;
+  color: white;
 }
 
 .lens-article .content-node.cover .content {
@@ -470,7 +470,7 @@ Outline
 
 .lens-article .content-node.cover .content .authors {
   padding-top: 30px;
-  /*color: rgba(255,255,255, 0.7);*/
+  color: rgba(255,255,255, 0.7);
   overflow: auto;
 }
 
@@ -482,7 +482,7 @@ Outline
   font-size: 20px;
   margin-right: 10px;
   margin-bottom: 8px;
-  /*color: rgba(255,255,255, 0.7);*/
+  color: rgba(255,255,255, 0.7);
 }
 .content-node.supplement > .content {
   padding: 10px 20px;
@@ -871,22 +871,22 @@ TOC
 }
 
 .resource-view.toc .heading-ref.level-2 {
-  padding-left: 20px;
+  padding-left: 30px;
   font-size: 13px;
 }
 
 .resource-view.toc .heading-ref.level-3 {
-  padding-left: 40px;
+  padding-left: 60px;
   font-size: 13px;
 }
 
 .resource-view.toc .heading-ref.level-4 {
-  padding-left: 60px;
+  padding-left: 80px;
   font-size: 12px;
 }
 
 .resource-view.toc .heading-ref.level-5 {
-  padding-left: 80px;
+  padding-left: 100px;
   font-size: 12px;
 }
 
