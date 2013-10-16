@@ -39,7 +39,8 @@
     "lens-converter": "git+https://github.com/elifesciences/lens-converter.git#0.2.x"
   },
   "bin": {
-    "io": "./server.js"
+    "io": "./server.js",
+    "io-bundle": "./bundle.js"
   },
   "version": "0.0.0",
   "engines": {
