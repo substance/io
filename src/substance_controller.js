@@ -12,6 +12,9 @@ var Article = require("substance-article");
 var ReaderController = require("substance-reader").Controller;
 var Converter = require("lens-converter");
 
+
+
+
 // Substance.Controller
 // -----------------
 //
@@ -31,6 +34,8 @@ var SubstanceController = function(config) {
 
 SubstanceController.Prototype = function() {
 
+  var that = this;
+
   // Initial view creation
   // ===================================
 
@@ -39,7 +44,6 @@ SubstanceController.Prototype = function() {
     this.view = view;
     return view;
   };
-
 
   // Loaders
   // --------
@@ -93,16 +97,20 @@ SubstanceController.Prototype = function() {
 
   var _open = function(state, documentId) {
 
-
     var that = this;
-
     var _onDocumentLoad = function(err, doc) {
       if (err) {
         console.log(err.stack);
         throw err;
       }
 
-      that.reader = new ReaderController(doc, state);
+      that.reader = new ReaderController(doc, state, {
+        // This needs better names indeed
+        collection: {
+          name: that.__library.get(that.state.collection).name,
+          url: "#"+that.state.collection
+        }
+      });
 
       // Trigger URL Fragment update on every state change
       that.reader.on('state-changed', function() {
@@ -122,47 +130,39 @@ SubstanceController.Prototype = function() {
     // prefering option2 as it is simpler to achieve...
 
     var record = this.__library.get(documentId);
-    var match = _LOCALSTORE_MATCHER.exec(record.url);
 
-    // if (match) {
-    //   var docId = match[1];
+    $.get(record.url)
+    .done(function(data) {
+        var doc, err;
 
-    //   var docData = JSON.parse(localStorage.getItem("localdoc"));
-    //   var doc = LensArticle.fromSnapshot(docData, {});
-    //   _onDocumentLoad(null, doc);
-    // } else {
-      $.get(record.url)
-      .done(function(data) {
-          var doc, err;
+        // Determine type of resource
+        var xml = $.isXMLDoc(data);
 
-          // Determine type of resource
-          var xml = $.isXMLDoc(data);
+        // Process XML file
+        if(xml) {
+          var importer = new Converter.Importer();
+          doc = importer.import(data);
 
-          // Process XML file
-          if(xml) {
-            var importer = new Converter.Importer();
-            doc = importer.import(data);
+          // Hotpatch the doc id, so it conforms to the id specified in the library file
+          doc.id = documentId;
 
-            // Hotpatch the doc id, so it conforms to the id specified in the library file
-            doc.id = documentId;
-            console.log('ON THE FLY CONVERTED DOC', doc.toJSON());
+          console.log('ON THE FLY CONVERTED DOC', doc.toJSON());
 
-          // Process JSON file
+        // Process JSON file
+        } else {
+          if(typeof data == 'string') data = $.parseJSON(data);
+          if (data.schema && data.schema[0] === "lens-article") {
+            doc = LensArticle.fromSnapshot(data);
           } else {
-            if(typeof data == 'string') data = $.parseJSON(data);
-            if (data.schema && data.schema[0] === "lens-article") {
-              doc = LensArticle.fromSnapshot(data);
-            } else {
-            doc = Article.fromSnapshot(data);
-            }
-            
+          doc = Article.fromSnapshot(data);
           }
-          _onDocumentLoad(err, doc);  
-        })
-      .fail(function(err) {
-        console.error(err);
-      });
-    // }
+          
+        }
+        _onDocumentLoad(err, doc);  
+      })
+    .fail(function(err) {
+      console.error(err);
+    });
   };
 
   this.openAbout = function() {
@@ -179,7 +179,7 @@ SubstanceController.Prototype = function() {
       fullscreen: !!fullscreen,
     };
 
-    // Lens Controller state
+    // Substance Controller state
     this.state = {
       collection: collectionId,
       document: documentId,
@@ -208,7 +208,7 @@ SubstanceController.Prototype = function() {
       context: 'reader'
     });
 
-    // Lens Controller state
+    // Substance Controller state
     this.state = {
       collection: "substance",
       document: "article"
