@@ -311,24 +311,3 @@ body.reader #main {
   line-height: 50px;
   font-size: 12px;
 }
-
-/*
-Media queries
---------------------------------------- */
-
-@media (max-width: 1155px) {
-  .resource-types .resource-type span {
-    display: none;
-  }
-}
-
-/* Responsive design */
-/*@media (max-width: 50.5em) {
-  #document .document {
-    width: 100%;
-  }
-
-  #document .resources {
-    display: none;
-  }
-}*/
