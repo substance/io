@@ -735,11 +735,11 @@ Person
   overflow: auto;
   font-size: 14px;
   background: white;
-
-  position: absolute;
+  margin: 0px auto;
+/*  position: absolute;
   left: 0px;
   top: 0px;
-  bottom: 0px;
+  bottom: 0px;*/
   max-width: 700px;
 }
 
@@ -786,20 +786,41 @@ Person
 
 .collection-view {
    background: white;
-   position: absolute;
+   /* position: absolute ;
    overflow: auto;
    left: 0px;
-   top: 0px;
-   bottom: 0px;
-   width: 700px;
+   top: 0px;*/
+   /*bottom: 0px;*/
+   height: 100%;
+   /*overflow: auto;*/
+   max-width: 700px;
+   margin: 0px auto;
    padding-top: 30px;
 }
 
+
+.collection-view .back-nav {
+  position: fixed;
+  top: 0;
+  text-align: center;
+  left: 50%;
+  z-index: 500;
+  padding: 10px 0px;
+  /*width: 200px;*/
+  width: 650px;
+  margin-left: -325px;
+  margin-right: -325px;
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  /*margin-top: -100px;*/
+  /*margin-left: -250px;*/
+}
 
 
 /* Collection metadata */
 
 .collection-view .collection {
+
   position: relative;
   display: block;
   padding: 40px;
@@ -807,7 +828,7 @@ Person
   margin-left: 30px;
   margin-right: 20px;
   margin-bottom: 20px;
-  border-bottom: 2px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 
 .collection-view .collection .teaser {
@@ -922,11 +943,8 @@ TOC
   background: white;
 }
 
-
-
 /* Main content panel 
 ======================================================================= */
-
 
 .article .document {
   line-height: 28.5px;
@@ -960,47 +978,88 @@ TOC
   background: #FFFFFF;
 }
 
-.article .document .surface.content::-webkit-scrollbar {
-  width: 2px;
-  height: 2px; 
-}
 
-.article .document .surface.content::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0);
-}
+/* Back Navigation 
+=======================================================================*/
 
-.article .document .scrollbar-mask {
-  position: absolute;
-  right: 0px;
-}
 
 
 /* Context Toggles 
-=======================================================================
+=======================================================================*/
 
 /* Switcher */
-.article .context-toggles {
 
-  /*background: #F5F5F5;*/
+.article .medial-strip {
   overflow: hidden;
-  /*height: 60px;*/
   width: 40px;
   position: absolute;
-  /*right: 20px;*/
   left: -18px;
-  top: 30px;
-  z-index: 3000;
+  top: 0px;
+  bottom: 0px;
   background: #fff;
-  padding: 10px 0px;
+  z-index: 3000;
+}
+
+.article .back-nav {
+  display: block;
+  overflow: hidden;
+  width: 40px;
+  position: absolute;
+  top: 20px;
+  z-index: 5000;
+  /*left: -20px;*/
+  /*top: 10px;*/
+  font-size: 22px;
+
+  /*z-index: 3000;*/
+  background: #fff;
+  /*padding: 10px 0px;*/
+  color: #aaa;
+  padding: 10px 10px;
 }
 
 
+.article .back-nav:hover {
+  color: #333;
+}
+
+
+.article .medial-strip .separator-line {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 20px;
+  width: 1px;
+  background: #ddd;
+  z-index: 4000;
+}
+
+.article .context-toggles {
+  position: absolute;
+  top: 100px;
+  left: 0px;
+  right: 0px;
+  
+  background: #fff;
+  z-index: 5000;
+  /*border-right: 1px solid #ddd;*/
+  
+  /*padding: 10px 0px;*/
+
+  /*padding-top: 100px;*/
+}
+
+
+
 .article .context-toggles .context-toggle {
+  /*background: #fff;*/
   cursor: pointer;
+  display: block;
   /*float: left;*/
+  z-index: 5000;
   padding: 0 10px;
   line-height: 40px;
-  font-size: 18px;
+  font-size: 22px;
   color: #aaa;
   font-family: 'Avenir LT W01 85 Heavy', 'Montserrat', 'Source Sans Pro';
 }
@@ -1070,7 +1129,6 @@ TOC
   border: 1px solid #ddd;
   border-top: none;
   margin-bottom: 30px;
-  margin-right: 20px;
   padding: 0px;
 }
 
@@ -1449,7 +1507,7 @@ span.annotation.formula_reference, span.publication_reference {
   padding-top: 10px;
   padding-bottom: 15px;
   padding-left: 40px;
-  padding-right: 50px;
+  padding-right: 40px;
   word-wrap: break-word;
 }
 
@@ -1460,36 +1518,6 @@ span.annotation.formula_reference, span.publication_reference {
 }
 
 
-/* Optimizations for smaller screen sizes */
-
-
-/*@media (max-width: 70.5em) {
-  .article .document .surface.content .nodes {
-    padding-left: 40px;
-  }
-
-  .article .resources {
-    width: 30%;
-  }
-
-  .article .document {
-    width: 68%;
-  }
-
-  .lens-outline {
-    width: 40px;
-  }
-
-  .lens-outline .node {
-    width: 30px;
-  }
-
-  .surface.content .nodes > .content-node {
-    padding-left: 20px;
-    padding-right: 30px;
-    word-wrap: break-word;
-  }
-}*/
 
 
 /* Hide focus toggles for cover
@@ -1517,6 +1545,130 @@ span.annotation.formula_reference, span.publication_reference {
   padding: 20px 0;
 }
 
+
+/* Responsiveness */
+/* ---------------------------------------*/
+
+
+@media (max-width: 70.5em) {
+
+  /* body.reader {
+    overflow: auto;
+    height: auto;
+  }
+
+  body.reader #container {
+    overflow: auto;
+    height: auto;
+  }
+
+  body.reader #main {
+    height: auto;
+  }*/
+
+  .surface.content .nodes > .content-node {
+    padding-top: 10px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    word-wrap: break-word;
+  }
+
+  .article .document .surface.content .nodes {
+    padding-left: 40px;
+  }
+
+  .article .document {
+    /*width: 100%;*/
+    width: auto;
+    height: auto;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 50px;
+    /* font-size: 24px;
+    line-height: 30px; */
+    z-index: 100;
+  }
+
+  .article.toc .document {
+    z-index: 200;
+  }
+
+  #container .article .resources {
+    background: #fff;
+    position: absolute;
+    width: auto;
+    height: auto;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 50px;
+
+    z-index: 100;
+  }
+
+  .article .document .surface.content .nodes {
+    padding-left: 0;
+  }
+
+  #container .article .resources .resource-view {
+    display: none;
+  }
+
+  #container .article.figures .resources .resource-view.figures {
+    display: block;
+    z-index: 200;
+  }
+
+  #container .article.info .resources .resource-view.info {
+    display: block;
+    z-index: 200;
+  }
+
+  #container .article.citations .resources .resource-view.citations {
+    display: block;
+    z-index: 200;
+  }
+
+  .article .resources .medial-strip {
+    background: #efefef;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 0px;
+    bottom: auto;
+    left: 0px;
+    right: 0px;
+    height: 50px;
+    width: auto;
+  }
+
+  .article .resources .medial-strip .context-toggles {
+    line-height: 50px;
+    background: #f6f6f6;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+    padding: 5px 20px;
+  }
+
+  .article .resources .medial-strip .context-toggles .context-toggle {
+    float: left;
+  }
+
+  .article .resources .medial-strip .back-nav {
+    display: none;
+  }
+
+  .article .lens-outline {
+    display: none;
+  }
+}
+
+
 /*
   Typography / Basics
 ---------------------------------------------*/
@@ -1528,14 +1680,18 @@ span.annotation.formula_reference, span.publication_reference {
 body {
   padding: 0;
   margin: 0;
-  overflow: hidden;
 }
 
-html,body {
+html {
   height:100%;
   /*background: #F5F5F5;*/
   /*background: #F0F1EB;*/
   -webkit-font-smoothing: antialiased;
+}
+
+body.reader {
+  height: 100%;
+  overflow: hidden;
 }
 
 /*
@@ -1546,11 +1702,17 @@ General Layout
   position: relative;
   margin: 0 auto;
   max-width: 1400px; /* 988px / 16px = 61.75em */
-  height: 100%;
+  
   /*margin-left: 40px;*/
 }
 
-#container .browser-not-supported {
+/* In reader view */
+body.reader #container {
+  height: 100%;
+}
+
+
+/*#container .browser-not-supported {
   text-align: center;
   padding-top: 200px;
   width: 500px;
@@ -1578,25 +1740,9 @@ General Layout
 #container .browser-not-supported a:hover {
   background: #000;
 }
+*/
 
 
-#container .import-teaser {
-  position: absolute;
-  top: 50px;
-  bottom: 50px;
-  left: 50px;
-  right: 50px;
-  background: green;
-  display: none;
-}
-
-#container.tease-import .import-teaser {
-  display: block;
-}
-
-#container.tease-import #main {
-  display: none;
-}
 
 body, textarea, p, input {
   font-family: 'Source Sans Pro', Helvetica, Arial, Verdana, sans-serif;
@@ -1819,10 +1965,12 @@ a.testsuite {
    --------------------------------------- */
 
 #main {
-  height: 100%;
   position: relative;
 }
 
+body.reader #main {
+  height: 100%;
+}
 
 #container .loading {
   font-family: 'Avenir LT W01 85 Heavy', 'Montserrat', 'Source Sans Pro';
@@ -1834,25 +1982,3 @@ a.testsuite {
   line-height: 50px;
   font-size: 12px;
 }
-
-
-/*
-Media queries
---------------------------------------- */
-
-@media (max-width: 1155px) {
-  .resource-types .resource-type span {
-    display: none;
-  }
-}
-
-/* Responsive design */
-/*@media (max-width: 50.5em) {
-  #document .document {
-    width: 100%;
-  }
-
-  #document .resources {
-    display: none;
-  }
-}*/
