@@ -53,11 +53,15 @@ function cleanup() {
 
 var library;
 
+
+var completeLibrary;
+
 // Generate library file
 // --------------
 
 function generateLibrary() {
   library = IO.extractLibrary();
+  completeLibrary = IO.extractLibrary(true);
   console.log('writing "TARGET_DIR/library.json"');
   fs.writeFileSync(TARGET_DIR + "/library.json", JSON.stringify(library, null, '  '));
 }
@@ -67,7 +71,7 @@ function generateLibrary() {
 // --------------
 
 function generateCollection(cid, cb) {
-  var collection = library.nodes[cid];
+  var collection = completeLibrary.nodes[cid];
   console.log('Generating collection: ', cid);
 
   fs.mkdirSync(TARGET_DIR + "/docs/"+cid);
@@ -99,7 +103,7 @@ function generateCollection(cid, cb) {
 function generateCollections(cb) {
   // Create docs folder
   fs.mkdirSync(TARGET_DIR + "/docs");
-  var collections = library.nodes.library.collections;
+  var collections = completeLibrary.nodes.library.collections;
   
   var funcs = _.map(collections, function(cid) {
     return function(cb) {

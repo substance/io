@@ -30,7 +30,7 @@ IO.IGNORE = {
 // --------------------
 //
 
-IO.extractLibrary = function() {
+IO.extractLibrary = function(all) {
   var library = {
     "nodes": {
       "library": {
@@ -78,7 +78,7 @@ IO.extractLibrary = function() {
         "published_on": meta.published_on
       };
 
-      if (meta.published) {
+      if (meta.published || all) {
         library.nodes[c].records.push(d);
       }
     });
