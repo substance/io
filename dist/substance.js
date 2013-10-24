@@ -14792,19 +14792,28 @@ CollectionView.Prototype = function() {
     // Collection metadata
     // ----------
 
-
-    this.el.appendChild($$('a.back-nav', {
-      'href': '#',
-      'title': 'Go back',
-      'html': '<i class=" icon-chevron-up"></i>'
-    }));
-
+    // this.el.appendChild($$('a.back-nav', {
+    //   'href': '#',
+    //   'title': 'Go back',
+    //   'html': '<i class=" icon-chevron-up"></i>'
+    // }));
 
     this.el.appendChild($$('.collection', {
       children: [
-        $$('.name', {text: collection.name}),
-        $$('.description', {text: collection.description}),
-        $$('img.teaser', {src: collection.image})
+        $$('.inner', {
+          children: [
+            $$('.path', {
+              children: [
+                $$('a.back', {href: '#', text: "Substance"}),
+                $$('span.sep', {html: "&middot;"}),
+                $$('span.name', {text: collection.name}),
+              ]
+            }),
+            $$('.description', {text: collection.description}),
+            $$('img.teaser', {src: collection.image}),
+
+          ]
+        })
       ]
     }));
 
@@ -15118,7 +15127,6 @@ LibraryView.Prototype = function() {
         return $$('div', {
           id: "collection_"+c.id,
           class: "collection",
-          
           children: [
             $$('a.name', {href: "#"+c.id, text: c.name}),
             $$('.description', {text: c.description}),
@@ -15128,6 +15136,26 @@ LibraryView.Prototype = function() {
         });
       })
     });
+
+    var children = [];
+    children.push($$('div.title', {text: "Substance"}));
+    children.push($$('div.description', {text: "Towards open digital publishing."}));
+
+    children.push(
+      $$('.links', {
+        children: [
+          $$('a.learn-more', {href: "#substance/about", text: "Learn more"})
+        ]
+      })
+    );
+
+    var teaser = $$('div.library-info', {
+      children: [$$('div.inner', {
+        children: children
+      })]
+    });
+
+    this.el.appendChild(teaser);
 
     this.el.appendChild(collectionToggles);
     return this;
@@ -19630,15 +19658,14 @@ var Renderer = function(reader) {
   var docView = $$('.document');
   docView.appendChild(reader.contentView.render().el);
 
-
-
   // Prepare context toggles
   // --------
 
   var children = [];
 
 
-  if (reader.tocView && reader.tocView.headings.length > 2) {
+  //  && reader.tocView.headings.length > 2
+  if (reader.tocView) {
     children.push($$('a.context-toggle.toc', {
       'href': '#',
       'sbs-click': 'switchContext(toc)',
