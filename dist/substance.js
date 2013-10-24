@@ -16392,7 +16392,7 @@ var HeadingView = function(node) {
 
   this.$el.addClass('heading');
   this.$el.addClass('level-'+this.node.level);
-
+  this.$el.attr('title', "Click to set anchor. Great for sharing!");
 };
 
 HeadingView.Prototype = function() {};
@@ -20022,12 +20022,16 @@ var ReaderView = function(readerCtrl) {
   this.$el.on('click', '.annotation.person_reference', _.bind(this.togglePersonReference, this));
   this.$el.on('click', '.annotation.cross_reference', _.bind(this.followCrossReference, this));
 
+  this.$el.on('click', '.document .content-node.heading', _.bind(this.setAnchor, this));
   this.outline.$el.on('click', '.node', _.bind(this._jumpToNode, this));
-
 };
 
 
 ReaderView.Prototype = function() {
+
+  this.setAnchor = function(e) {
+    this.toggleNode('toc', $(e.currentTarget).attr('id'));
+  };
 
   // Toggles on and off the zoom
   // --------
@@ -23657,7 +23661,10 @@ SubstanceView.prototype = new SubstanceView.Prototype();
 module.exports = SubstanceView;
 
 },{"substance-application":58,"substance-util":167,"underscore":172}],176:[function(require,module,exports){
-// nothing to see here... no file methods for the browser
+
+// not implemented
+// The reason for having an empty file and not throwing is to allow
+// untraditional implementation of this module.
 
 },{}]},{},[1])
 ;

@@ -28,11 +28,11 @@ General Layout
 #container {
   position: relative;
   margin: 0 auto;
-  max-width: 1400px; /* 988px / 16px = 61.75em */
 }
 
 /* In reader view */
 body.reader #container {
+  max-width: 1400px; /* 988px / 16px = 61.75em */
   height: 100%;
 }
 
@@ -135,100 +135,14 @@ p:last-child { padding-bottom: 0; }
 }
 
 
-/* Main Menu Bar
--------------------------------------------------------------------------------*/
 
-#menu {
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  bottom: 0px;
-  width: 120px;
-  padding: 20px;
-}
-
-#menu .site-title {
-  display: none;
-  color: rgba(0,0,0,0.8);
-  font-family: 'Avenir LT W01 85 Heavy', 'Montserrat', 'Source Sans Pro';
-  font-size: 22px;
-}
-
-#menu .site-subtitle {
-  display: none;
-  color: rgba(0,0,0,0.5);
-  font-size: 14px;
-}
-
-#menu .views {
-  /*padding-top: 50px;*/
-  /*text-align: right;*/
-}
-
-#menu .views a.toggle-view {
-  border: none;
-  display: block;
-  color: rgba(0,0,0, 0.4);
-  line-height: 40px;
-  font-family: 'Avenir LT W01 85 Heavy', 'Montserrat', 'Source Sans Pro';
-  font-size: 14px;
-  /*text-align: center;*/
-}
-
-
-#menu .views a.toggle-view.active {
-  color: rgba(0,0,0, 1);
-}
-
-#menu .views a.toggle-view:hover {
-  color: rgba(0,0,0, 0.8);
-  /*background: rgba(0,0,0, 0.3);*/
-  /*color: #fff;*/
-}
-
-#menu .actions {
-  position: absolute;
-  bottom: 0px;
-  width: 60px;
-}
-
-#menu .actions a.action {
-  border: none;
-  display: block;
-  height: 40px;
-  line-height: 40px;
-  color: rgba(255,255,255, 0.5);
-  /*text-align: center;*/
-}
-
-#menu .actions a.action:hover {
-  background: rgba(0,0,0, 0.3);
-  color: #fff;
-}
-
-#help {
-  padding-top: 50px;
-  text-align: center;
-}
 
 /* Article Overrides */
-
-/*#container .article .context-toggles {
-  background: #F0F1EB;
-}*/
-
-
 #container .article .resources .info .content-node.active .resource-header {
   background: #4A4A4A;
 }
 
-/*.lens-outline .node, .lens-outline .node.header {
-  background: #7D8165;
-}*/
 
-/*.lens-outline .node:hover {
-  opacity: 0.2;
-}*/
 
 /* main
    --------------------------------------- */
