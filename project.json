@@ -150,12 +150,12 @@
     "styles/library.css": "node_modules/substance-library/library.css",
     "styles/toc.css": "node_modules/substance-toc/toc.css",
     "styles/reader.css": "node_modules/substance-reader/reader.css",
-    "styles/substance.css":  "styles/substance.css",
-    "styles/print.css":  "styles/print.css"
+    "styles/substance.css":  "styles/substance.css"
   },
   "assets": {
     "lib/jquery-2.0.3.min.map": "lib/jquery-2.0.3.min.map",
     "lib/jquery-2.0.3.min.js": "lib/jquery-2.0.3.min.js",
+    "styles/print.css":  "styles/print.css",
     "styles/font-awesome.css": "styles/font-awesome.css",
     "styles/fonts": "styles/fonts"
   },
