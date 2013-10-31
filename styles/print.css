@@ -37,6 +37,15 @@ img {
   text-align: center;
 }
 
+
+.annotation.emphasis {
+  font-style: italic;
+}
+
+.annotation.strong {
+  font-weight: bold;
+}
+
 .content-node.heading.level-1 {
   font-size: 25px;
 }
