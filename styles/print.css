@@ -19,7 +19,7 @@ body {
 }
 
 .cover .title {
-  font-size: 60px;
+  font-size: 40px;
   font-weight: bold;
 }
 
@@ -55,6 +55,7 @@ img {
 
 .content-node.heading.level-1 {
   font-size: 25px;
+  font-weight: bold;
 }
 
 .content-node.heading.level-2 {

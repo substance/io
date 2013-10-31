@@ -5,10 +5,17 @@
 /* General style */
 
 body {
+  /*font-family: Times;*/
   font-family: 'Source Sans Pro', Helvetica, Arial, Verdana, sans-serif;
   color: #000;
   -webkit-font-smoothing: antialiased;
-  font-size: 1em;
+  /*margin: 50px;*/
+  font-size: 10pt;
+}
+
+@page {
+  /*size:8.5in 11in;*/
+  margin: 0.7cm;
 }
 
 .cover .title {
@@ -16,8 +23,39 @@ body {
   font-weight: bold;
 }
 
+
+.cover .authors {
+  font-size: 20px;
+  padding: 10px 0;
+}
+
+
+a {
+  color: #1B6685;
+}
+
+.content-node.figure {
+  text-align: center;
+}
+
+img {
+  /*display: none;*/
+  width: 70%;
+  text-align: center;
+}
+
+
+.annotation.emphasis {
+  font-style: italic;
+}
+
+.annotation.strong {
+  font-weight: bold;
+}
+
 .content-node.heading.level-1 {
   font-size: 25px;
+  font-weight: bold;
 }
 
 .content-node.heading.level-2 {
@@ -25,7 +63,7 @@ body {
   font-weight: bold;
 }
 
-.content-node.heading.level-2 {
+.content-node.heading.level-3 {
   font-weight: bold;
 }
 
@@ -64,6 +102,6 @@ body {
 .content-node.codeblock > .content {
   font-family: 'Source Code Pro';
   background: #eee;
-  font-size: 14px;
+  /*font-size: 14px;*/
   min-height: 28px;
 }
