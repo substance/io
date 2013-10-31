@@ -19,9 +19,16 @@ body {
 }
 
 .cover .title {
-  font-size: 40px;
+  font-size: 60px;
   font-weight: bold;
 }
+
+
+.cover .authors {
+  font-size: 20px;
+  padding: 10px 0;
+}
+
 
 a {
   color: #1B6685;
