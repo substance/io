@@ -13,8 +13,6 @@ var ReaderController = require("substance-reader").Controller;
 var Converter = require("lens-converter");
 
 
-
-
 // Substance.Controller
 // -----------------
 //
@@ -53,7 +51,6 @@ SubstanceController.Prototype = function() {
     if (this.__library) return cb(null);
 
     $.getJSON(url, function(data) {
-
       that.__library = new Library({
         seed: data
       });
@@ -145,18 +142,16 @@ SubstanceController.Prototype = function() {
 
           // Hotpatch the doc id, so it conforms to the id specified in the library file
           doc.id = documentId;
-
           console.log('ON THE FLY CONVERTED DOC', doc.toJSON());
 
-        // Process JSON file
+          // Process JSON file
         } else {
           if(typeof data == 'string') data = $.parseJSON(data);
           if (data.schema && data.schema[0] === "lens-article") {
             doc = LensArticle.fromSnapshot(data);
           } else {
-          doc = Article.fromSnapshot(data);
+            doc = Article.fromSnapshot(data);
           }
-          
         }
         _onDocumentLoad(err, doc);  
       })
@@ -171,6 +166,8 @@ SubstanceController.Prototype = function() {
   };
 
   this.openReader = function(collectionId, documentId, context, node, resource, fullscreen) {
+    console.log('Controller#openReader');
+
     // The article view state
     var state = {
       context: context || "toc",
@@ -179,18 +176,29 @@ SubstanceController.Prototype = function() {
       fullscreen: !!fullscreen,
     };
 
+    var prevDocument = this.state.document;
+
     // Substance Controller state
     this.state = {
       collection: collectionId,
       document: documentId,
     };
 
-    if (collectionId === "substance" && documentId === "article") {
-      return this.openArticle(state);
-    }
+    // If state change happens within a document context,
+    // just trigger a state update
+    // TODO: This implementation is rather hacky, we need a better solution for maintaining
+    // the current app state.
 
-    // Ensure the library is loaded
-    this.loadLibrary(this.config.library_url, _open.bind(this, state, documentId));
+    if (documentId === prevDocument) {
+      this.reader.modifyState(state);
+      // HACK: monkey patch alert
+      if (state.resource) this.reader.view.jumpToResource(state.resource);
+    } else {
+      if (collectionId === "substance" && documentId === "article") {
+        return this.openArticle(state);
+      }
+      this.loadLibrary(this.config.library_url, _open.bind(this, state, documentId));
+    }
   };
 
 
@@ -259,12 +267,6 @@ SubstanceController.Prototype = function() {
 
   this.openSubmission = function() {
     console.log('NOT YET IMPLEMENTED');
-    // var state = {
-    //   context: 'submission'
-    // };
-
-    // this.submission = new SubmissionController(state);
-    // this.modifyState(state);
   };
 
 
@@ -293,7 +295,6 @@ SubstanceController.Prototype = function() {
     }
     return result;
   };
-
 };
 
 

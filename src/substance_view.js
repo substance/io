@@ -57,10 +57,6 @@ SubstanceView.Prototype = function() {
   //
 
   this.openReader = function() {
-    // Application controller has a editor controller ready
-    // -> pass it to the editor view
-    // var view = new EditorView(this.controller.editor.view);
-
     var view = this.controller.reader.createView();
     this.replaceMainView('reader', view);
 
