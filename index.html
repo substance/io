@@ -56,6 +56,7 @@
 
       var app = new Substance();
 
+      // Not used at the very moment
       window.ScrollFix = function(elem) {
         // Variables to track inputs
         var startY, startTopScroll;
@@ -79,6 +80,17 @@
           }
         }, false);
       };
+
+      function isIOSDevice() {
+        var iPadAgent = navigator.userAgent.match(/iPad/i) != null;
+        var iPodAgent = navigator.userAgent.match(/iPhone/i) != null;
+        return iPadAgent || iPodAgent;
+      }
+
+      function isIphone() {
+        var iPhoneAgent = navigator.userAgent.match(/iPhone/i) != null;
+        return iPhoneAgent;
+      }
 
       function isMobile() {
         var iPadAgent = navigator.userAgent.match(/iPad/i) != null;
@@ -105,6 +117,14 @@
 
         if (isTouchDevice()) {
           $('#container').addClass('touchable');
+        }
+
+        if (isIOSDevice()) {
+          $('#container').addClass('ios');
+        }
+
+        if (isIphone()) {
+          $('#container').addClass('iphone');
         }
 
       });
