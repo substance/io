@@ -94,11 +94,11 @@ Outline
   right: 0px;
   height: 80px;
   z-index: 2000;
-  background-color: rgba(0,0,0, 0.1);
+  background-color: rgba(0,0,0, 0.2);
 }
 
 .lens-outline .visible-area:hover {
-  background-color: rgba(0,0,0, 0.15); 
+  background-color: rgba(0,0,0, 0.25); 
 }
 
 .lens-outline .node {
@@ -957,6 +957,19 @@ TOC
   color: rgba(0,0,0,1.0);
 }
 
+/* Fix weird behavior
+-------------------------------------------------------------------------------*/
+
+/*
+When using event delegation if the parent element has a click handler, when
+the user touches anything inside this element, the whole region will gray 
+out (on iOS 5.1), or flicker (on iOS 6). */
+
+* {
+  -webkit-tap-highlight-color:transparent;
+}
+
+
 /* Article
 -------------------------------------------------------------------------------*/
 
@@ -1006,7 +1019,6 @@ TOC
   min-height: 100%;
   padding-left: 40px;
   padding-right: 0px;
-  /*margin-right: 15px;*/
   background: #FFFFFF;
 }
 
@@ -1074,17 +1086,10 @@ TOC
   
   background: #fff;
   z-index: 5000;
-  /*border-right: 1px solid #ddd;*/
-  
-  /*padding: 10px 0px;*/
-
-  /*padding-top: 100px;*/
 }
 
 
-
 .article .context-toggles .context-toggle {
-  /*background: #fff;*/
   cursor: pointer;
   display: block;
   /*float: left;*/
@@ -1110,12 +1115,24 @@ TOC
 
 /*Active states depend on the global reader context */
 
+/*.article .context-toggles .context-toggle.figures:hover {
+  color: rgba(145, 187, 4, 1);
+}
+
+.article .context-toggles .context-toggle.citations:hover {
+  color: rgba(11, 157, 217, 1);
+}
+*/
+
+
 .article.figures .context-toggles .context-toggle.figures {
-  color: #111;
+  /*color: rgba(145, 187, 4, 1);*/
+  color: #111; 
 }
 
 .article.citations .context-toggles .context-toggle.citations {
-  color: #111;
+  /*color: rgba(11, 157, 217, 1);*/
+  color: #111; 
 }
 
 .article.toc .context-toggles .context-toggle.toc {
@@ -1576,8 +1593,6 @@ span.annotation.formula_reference, span.publication_reference {
   padding: 20px 0;
 }
 
-
-
 .article .document .surface.content::-webkit-scrollbar {
   width: 2px;
   height: 2px; 
@@ -1596,8 +1611,48 @@ span.annotation.formula_reference, span.publication_reference {
 /* Responsiveness */
 /* ---------------------------------------*/
 
+
+/*@media all and (orientation:portrait) {
+
+}*/
+
+#container.touchable .toggle-fullscreen {
+  /* Hide document outline for touch devices */
+  display: none;
+}
+
+#container.touchable .article .document .surface.content {
+  right: 20px;
+}
+
+/*#container.touchable .article .document .surface.content .nodes {
+  padding-left: 0px;
+}*/
+
+/*#container.touchable .lens-outline {
+  background: transparent;
+  left: auto;
+  right: 30px;
+  width: 12px;
+  overflow: hidden;
+}*/
+
+
+/* Only hide for IOS devices because of scrolling issues! */
+#container.touchable.ios .lens-outline .visible-area {
+  display: none;
+}
+
+#container.touchable .lens-outline .node:hover {
+  opacity: 0.15;
+}
+
+#container.touchable .lens-outline .arrow {
+  display: none;
+}
+
 /* Smaller screens */
-@media (max-width: 70.5em) {
+/*@media (max-width: 70.5em) {
   .article .document {
     width: 55%;
   }
@@ -1605,10 +1660,10 @@ span.annotation.formula_reference, span.publication_reference {
   .article .resources {
     width: 45%;
   }
+}*/
 
-}
 
-/* Mobile */
+/* Mobile (iPad Portrait, iPhone) */
 @media (max-width: 50.5em) {
 
   /* body.reader {
@@ -1624,6 +1679,11 @@ span.annotation.formula_reference, span.publication_reference {
   body.reader #main {
     height: auto;
   }*/
+
+  /* Reset back */
+  #container.touchable .article .document .surface.content {
+    right: 0px;
+  }
 
   .surface.content .nodes > .content-node {
     padding-top: 10px;
@@ -1644,8 +1704,8 @@ span.annotation.formula_reference, span.publication_reference {
     position: absolute;
     left: 0px;
     right: 0px;
-    bottom: 0px;
-    top: 50px;
+    bottom: 50px;
+    top: 0px;
     /* font-size: 24px;
     line-height: 30px; */
     z-index: 100;
@@ -1662,13 +1722,14 @@ span.annotation.formula_reference, span.publication_reference {
     height: auto;
     left: 0px;
     right: 0px;
-    bottom: 0px;
-    top: 50px;
+    bottom: 50px;
+    top: 0px;
 
     padding-left: 20px;
     padding-right: 20px;
 
     z-index: 100;
+    word-wrap: break-word;
   }
 
   #container .article .resources .nodes {
@@ -1699,11 +1760,11 @@ span.annotation.formula_reference, span.publication_reference {
   }
 
   .article .resources .medial-strip {
-    background: #efefef;
-    border-bottom: 1px solid #ddd;
+    background: #252525;
+    /*border-bottom: 1px solid #ddd;*/
     position: fixed;
-    top: 0px;
-    bottom: auto;
+    top: auto;
+    bottom: 0px;
     left: 0px;
     right: 0px;
     height: 50px;
@@ -1711,18 +1772,58 @@ span.annotation.formula_reference, span.publication_reference {
   }
 
   .article .resources .medial-strip .context-toggles {
-    line-height: 50px;
+    background: #252525;
+    /*line-height: 80px;*/
     position: absolute;
     left: 0px;
     right: 0px;
     bottom: 0px;
     top: 0px;
-    padding: 5px 20px;
+    /*padding: 5px 20px;*/
   }
 
   .article .resources .medial-strip .context-toggles .context-toggle {
     float: left;
+    height: 50px;
+    width: 80px;
+    padding-top: 8px;
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    line-height: 17px;
+    /*background: green;*/
   }
+
+  .article .resources .medial-strip .context-toggles .context-toggle span {
+    display: block;
+    font-size: 11px;
+  }
+
+  .article.figures .context-toggles .context-toggle.figures {
+    /*color: rgba(145, 187, 4, 1);*/
+    color: white;
+    background: #000;
+  }
+
+  .article.citations .context-toggles .context-toggle.citations {
+    /*color: rgba(11, 157, 217, 1);*/
+    color: white;
+    background: #000;
+  }
+
+  .article.toc .context-toggles .context-toggle.toc {
+    color: white;
+    background: #000;
+  }
+
+  .article.info .context-toggles .context-toggle.info {
+    color: white;
+    background: #000;
+  }
+
+
+
+
+
 
   .article .resources .medial-strip .back-nav {
     display: none;
@@ -1755,6 +1856,11 @@ html {
 body.reader {
   height: 100%;
   overflow: hidden;
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
 }
 
 /*

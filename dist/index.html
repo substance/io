@@ -56,10 +56,78 @@
 
       var app = new Substance();
 
+      // Not used at the very moment
+      window.ScrollFix = function(elem) {
+        // Variables to track inputs
+        var startY, startTopScroll;
+        
+        elem = elem || document.querySelector(elem);
+        
+        // If there is no element, then do nothing
+        if(!elem) return;
+
+        // Handle the start of interactions
+        elem.addEventListener('touchstart', function(event) {
+          startY = event.touches[0].pageY;
+          startTopScroll = elem.scrollTop;
+          
+          if (startTopScroll <= 0) {
+            elem.scrollTop = 1;
+          }
+
+          if (startTopScroll + elem.offsetHeight >= elem.scrollHeight) {
+            elem.scrollTop = elem.scrollHeight - elem.offsetHeight - 1;
+          }
+        }, false);
+      };
+
+      function isIOSDevice() {
+        var iPadAgent = navigator.userAgent.match(/iPad/i) != null;
+        var iPodAgent = navigator.userAgent.match(/iPhone/i) != null;
+        return iPadAgent || iPodAgent;
+      }
+
+      function isIphone() {
+        var iPhoneAgent = navigator.userAgent.match(/iPhone/i) != null;
+        return iPhoneAgent;
+      }
+
+      function isMobile() {
+        var iPadAgent = navigator.userAgent.match(/iPad/i) != null;
+        var iPodAgent = navigator.userAgent.match(/iPhone/i) != null;
+        var AndroidAgent = navigator.userAgent.match(/Android/i) != null;
+        var webOSAgent = navigator.userAgent.match(/webOS/i) != null;
+
+        return iPadAgent || iPodAgent || AndroidAgent || webOSAgent;
+      }
+
+      function isTouchDevice() {
+        return 'ontouchstart' in document.documentElement;
+      }
+
       $(function() {
         app.start();
-      });
 
+        // Prevent no bounce for context toggles
+        // This makes the main content panel flickery WHY??
+        // 
+        // $('body').delegate('.context-toggles','touchmove',function(e) {
+        //   e.preventDefault();
+        // });
+
+        if (isTouchDevice()) {
+          $('#container').addClass('touchable');
+        }
+
+        if (isIOSDevice()) {
+          $('#container').addClass('ios');
+        }
+
+        if (isIphone()) {
+          $('#container').addClass('iphone');
+        }
+
+      });
     </script>
   </head>
   <body>
