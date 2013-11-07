@@ -68,7 +68,7 @@
     {
       "repository": "https://github.com/substance/converter.git",
       "folder": "node_modules/substance-converter",
-      "branch": "0.2.x"
+      "branch": "pandoc_1_12_1"
     },
     {
       "repository": "https://github.com/elifesciences/lens-converter.git",
@@ -103,7 +103,7 @@
     {
       "repository": "https://github.com/substance/io.git",
       "folder": ".",
-      "branch": "0.2.x"
+      "branch": "pandoc_1_12_1"
     }
   ],
   "node_modules": {
