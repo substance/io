@@ -3,7 +3,7 @@
     {
       "repository": "https://github.com/substance/application.git",
       "folder": "node_modules/substance-application",
-      "branch": "0.2.x"
+      "branch": "appstates"
     },
     {
       "repository": "https://github.com/substance/chronicle.git",
@@ -33,7 +33,7 @@
     {
       "repository": "https://github.com/substance/reader.git",
       "folder": "node_modules/substance-reader",
-      "branch": "0.1.x"
+      "branch": "appstates"
     },
     {
       "repository": "https://github.com/substance/article.git",
@@ -58,7 +58,7 @@
     {
       "repository": "https://github.com/substance/library.git",
       "folder": "node_modules/substance-library",
-      "branch": "0.2.x"
+      "branch": "appstates"
     },
     {
       "repository": "https://github.com/substance/toc.git",
@@ -103,7 +103,7 @@
     {
       "repository": "https://github.com/substance/io.git",
       "folder": ".",
-      "branch": "0.2.x"
+      "branch": "appstates"
     }
   ],
   "node_modules": {
@@ -166,4 +166,3 @@
     "index": "./index.html"
   }
 }
-
