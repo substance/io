@@ -32,7 +32,68 @@ var SubstanceController = function(config) {
 
 SubstanceController.Prototype = function() {
 
-  var that = this;
+  var __super__ = Controller.prototype;
+
+  // Aplication state handling
+  // -------
+
+  // Helper function that dispatches
+  this.__switchTo = function(newState, args) {
+    switch (newState) {
+    case "library":
+      this.openLibrary();
+      break;
+    case "collection":
+      this.openCollection(args["collectionId"]);
+      break;
+    case "reader":
+      this.openReader(args);
+      break;
+    };
+    this.trigger('state-changed', newState);
+  };
+
+  this.initialize = function(newState, args) {
+    var self = this;
+
+    this.loadLibrary(this.config.library_url, function(error) {
+      this.__switchTo(newState, args);
+    });
+  };
+
+  this.dispose = function() {
+    __super__.dispose.call(this);
+  };
+
+  this.transitions = _.({}, __super__.transitions);
+
+  this.transitions["library"] = function(newState, args) {
+    // reflexive transition
+    if (newState === "library") {
+      return;
+    }
+
+    this.libraryController.dispose();
+    this.__switchTo(newState, args);
+  };
+
+  this.transitions["collection"] = function(newState, args) {
+    // reflexive transition: do nothing if the right collection is already open
+    if (newState === "collection" && this.collectionId === args["collectionId"]) {
+      return;
+    }
+
+    this.collectionController.dispose();
+    this.__switchTo(newState, args);
+  };
+
+  this.transitions["reader"] = function(newState, args) {
+    if (newState === "reader" && this.documentId === args["documentId"]) {
+      return;
+    }
+
+    this.readerController.dispose();
+  };
 
   // Initial view creation
   // ===================================
@@ -60,7 +121,7 @@ SubstanceController.Prototype = function() {
 
   // Update Hash fragment
   // --------
-  // 
+  //
 
   this.updatePath = function(state) {
     var path = [this.state.collection, this.state.document];
@@ -153,7 +214,7 @@ SubstanceController.Prototype = function() {
             doc = Article.fromSnapshot(data);
           }
         }
-        _onDocumentLoad(err, doc);  
+        _onDocumentLoad(err, doc);
       })
     .fail(function(err) {
       console.error(err);
