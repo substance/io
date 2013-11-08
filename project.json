@@ -26,8 +26,8 @@
       "branch": "master"
     },
     {
-      "repository": "https://github.com/elifesciences/lens-reader.git",
-      "folder": "node_modules/lens-reader",
+      "repository": "https://github.com/substance/reader.git",
+      "folder": "node_modules/substance-reader",
       "branch": "master"
     },
     {
@@ -113,7 +113,7 @@
       "npm": ">=1.1.x"
     }
   },
-  "styles": {
+"styles": {
     "styles/surface.css": "node_modules/substance-surface/styles/surface.css",
     "styles/lens-outline.css": "node_modules/lens-outline/outline.css",
 
@@ -129,6 +129,7 @@
     "styles/nodes/table.css": "node_modules/substance-article/nodes/table/table.css",
     "styles/nodes/figure.css": "node_modules/substance-article/nodes/figure/figure.css",
     "styles/nodes/cover.css": "node_modules/substance-article/nodes/cover/cover.css",
+    "styles/nodes/description.css": "node_modules/substance-article/nodes/description.css",
 
     "styles/nodes/lens-cover.css": "node_modules/lens-article/nodes/cover/cover.css",
     "styles/nodes/lens-supplement.css": "node_modules/lens-article/nodes/supplement/supplement.css",
@@ -143,11 +144,13 @@
 
     "styles/library.css": "node_modules/substance-library/library.css",
     "styles/toc.css": "node_modules/substance-toc/toc.css",
-    "styles/reader.css": "node_modules/lens-reader/reader.css",
+    "styles/reader.css": "node_modules/substance-reader/reader.css",
     "styles/substance.css":  "styles/substance.css"
   },
   "assets": {
+    "lib/jquery-2.0.3.min.map": "lib/jquery-2.0.3.min.map",
     "lib/jquery-2.0.3.min.js": "lib/jquery-2.0.3.min.js",
+    "styles/print.css":  "styles/print.css",
     "styles/font-awesome.css": "styles/font-awesome.css",
     "styles/fonts": "styles/fonts"
   },
