@@ -1,4 +1,4 @@
 {
   "env": "development",
-  "library_url": "/library.json"
+  "library_url": "library.json"
 }

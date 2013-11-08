@@ -8,6 +8,7 @@ var util = require("substance-util");
 var html = util.html;
 var DEFAULT_CONFIG = require("../config/config.json");
 
+
 // The Substance Application
 // ========
 //
@@ -21,11 +22,10 @@ var Substance = function(config) {
 };
 
 Substance.Article = require("substance-article");
-Substance.Reader = require("lens-reader");
+Substance.Reader = require("substance-reader");
 Substance.Outline = require("lens-outline");
 
 Substance.Prototype = function() {
-
   // Start listening to routes
   // --------
 
@@ -34,8 +34,6 @@ Substance.Prototype = function() {
     this.$el.html(this.view.render().el);
   };
 };
-
-
 
 Substance.Prototype.prototype = Application.prototype;
 Substance.prototype = new Substance.Prototype();
@@ -52,6 +50,5 @@ Substance.Chronicle = require("substance-chronicle");
 Substance.Data = require("substance-data");
 Substance.RegExp = require("substance-regexp");
 Substance.Surface = require("substance-surface");
-
 
 module.exports = Substance;

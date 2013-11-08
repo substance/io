@@ -6,6 +6,12 @@
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='styles/font-awesome.css' rel='stylesheet' type='text/css'/>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link href="styles/print.css" rel="stylesheet" type="text/css" media="print"/>
+
     #####styles#####
 
     <!-- Templates -->
@@ -13,25 +19,9 @@
       <div class="browser-not-supported" style="display: none;">
         <h1>Substance</h1>
         <p>
-          Lens is in its early days and has not yet been tested against the browser that you are using.
-          It might break on your system. If it does, let us know, we are very interested in finding
-          out where it works well, and where it doesn not.
+          Substance does not support the browser you are using.
         </p>
         <a href="#" class="hide-browser-warning">Okay</a>
-      </div>
-
-      <div id="menu">
-        <div class="site-title">Substance</div>
-        <div class="site-subtitle">Open publishing</div>
-        <div class="views">
-          <a href="#explore" class="toggle-view explore" title="Explore">Explore</a>
-          <a href="#substance" class="toggle-view docs" title="Documentation">Docs</a>
-          <a href="#substance_blog" class="toggle-view blog">Blog</a>
-          <a href="#substance/about" class="toggle-view about">About</a>
-        </div>
-
-        <div class="actions">
-        </div>
       </div>
 
       <div class="loading" style="display: none;"></div>
@@ -66,10 +56,78 @@
 
       var app = new Substance();
 
+      // Not used at the very moment
+      window.ScrollFix = function(elem) {
+        // Variables to track inputs
+        var startY, startTopScroll;
+        
+        elem = elem || document.querySelector(elem);
+        
+        // If there is no element, then do nothing
+        if(!elem) return;
+
+        // Handle the start of interactions
+        elem.addEventListener('touchstart', function(event) {
+          startY = event.touches[0].pageY;
+          startTopScroll = elem.scrollTop;
+          
+          if (startTopScroll <= 0) {
+            elem.scrollTop = 1;
+          }
+
+          if (startTopScroll + elem.offsetHeight >= elem.scrollHeight) {
+            elem.scrollTop = elem.scrollHeight - elem.offsetHeight - 1;
+          }
+        }, false);
+      };
+
+      function isIOSDevice() {
+        var iPadAgent = navigator.userAgent.match(/iPad/i) != null;
+        var iPodAgent = navigator.userAgent.match(/iPhone/i) != null;
+        return iPadAgent || iPodAgent;
+      }
+
+      function isIphone() {
+        var iPhoneAgent = navigator.userAgent.match(/iPhone/i) != null;
+        return iPhoneAgent;
+      }
+
+      function isMobile() {
+        var iPadAgent = navigator.userAgent.match(/iPad/i) != null;
+        var iPodAgent = navigator.userAgent.match(/iPhone/i) != null;
+        var AndroidAgent = navigator.userAgent.match(/Android/i) != null;
+        var webOSAgent = navigator.userAgent.match(/webOS/i) != null;
+
+        return iPadAgent || iPodAgent || AndroidAgent || webOSAgent;
+      }
+
+      function isTouchDevice() {
+        return 'ontouchstart' in document.documentElement;
+      }
+
       $(function() {
         app.start();
-      });
 
+        // Prevent no bounce for context toggles
+        // This makes the main content panel flickery WHY??
+        // 
+        // $('body').delegate('.context-toggles','touchmove',function(e) {
+        //   e.preventDefault();
+        // });
+
+        if (isTouchDevice()) {
+          $('#container').addClass('touchable');
+        }
+
+        if (isIOSDevice()) {
+          $('#container').addClass('ios');
+        }
+
+        if (isIphone()) {
+          $('#container').addClass('iphone');
+        }
+
+      });
     </script>
   </head>
   <body>

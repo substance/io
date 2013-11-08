@@ -9,14 +9,21 @@
 body {
   padding: 0;
   margin: 0;
-  overflow: hidden;
 }
 
-html,body {
+html {
   height:100%;
-  /*background: #F5F5F5;*/
-  background: #F0F1EB;
   -webkit-font-smoothing: antialiased;
+}
+
+body.reader {
+  height: 100%;
+  overflow: hidden;
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
 }
 
 /*
@@ -25,13 +32,17 @@ General Layout
 
 #container {
   position: relative;
-  /*margin: 0 auto;*/
-  max-width: 1400px; /* 988px / 16px = 61.75em */
-  height: 100%;
-  margin-left: 120px;
+  margin: 0 auto;
 }
 
-#container .browser-not-supported {
+/* In reader view */
+body.reader #container {
+  max-width: 1400px; /* 988px / 16px = 61.75em */
+  height: 100%;
+}
+
+
+/*#container .browser-not-supported {
   text-align: center;
   padding-top: 200px;
   width: 500px;
@@ -59,25 +70,9 @@ General Layout
 #container .browser-not-supported a:hover {
   background: #000;
 }
+*/
 
 
-#container .import-teaser {
-  position: absolute;
-  top: 50px;
-  bottom: 50px;
-  left: 50px;
-  right: 50px;
-  background: green;
-  display: none;
-}
-
-#container.tease-import .import-teaser {
-  display: block;
-}
-
-#container.tease-import #main {
-  display: none;
-}
 
 body, textarea, p, input {
   font-family: 'Source Sans Pro', Helvetica, Arial, Verdana, sans-serif;
@@ -144,173 +139,26 @@ p:last-child { padding-bottom: 0; }
   -moz-box-sizing: border-box;
 }
 
-/*
-Layout 
---------------------------------------- */
-
-/*a.home {
-  position: absolute;
-  left: 0px;
-  top: 20px;
-  opacity: 0.7;
-}
-
-a.home img {
-  padding-left: 10px;
-  display: block;
-}
-
-a.home .go-back {
-  position: absolute;
-  left: -60px;
-  top: 5px;
-  display: none;
-  opacity: 0;
-  padding-top: 10px;
-  color: #777;
-  font-size: 12px;
-  font-family: 'Avenir LT W01 85 Heavy', 'Montserrat', 'Source Sans Pro';
-  text-transform: uppercase;
-}*/
-
-/*a.home:hover .go-back {
-  opacity: 1;
-}
-
-a.home:hover {
-  opacity: 1;
-}
-
-a.testsuite {
-  position: absolute;
-  left: 10px;
-  top: 80px;
-  font-size: 20px;
-  background: #eee;
-  display: block;
-  width: 40px;
-  height: 40px;
-  text-align: center;
-  line-height: 40px;
-  opacity: 0.7;
-}*/
 
 
-/* Main Menu Bar
--------------------------------------------------------------------------------*/
-
-#menu {
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  bottom: 0px;
-  width: 120px;
-  /*border-right: 1px solid rgba(0,0,0,0.05);*/
-
-  padding: 20px;
-  /*background: #fff;*/
-}
-
-#menu .site-title {
-  display: none;
-  color: rgba(0,0,0,0.8);
-  font-family: 'Avenir LT W01 85 Heavy', 'Montserrat', 'Source Sans Pro';
-  font-size: 22px;
-}
-
-#menu .site-subtitle {
-  display: none;
-  color: rgba(0,0,0,0.5);
-  font-size: 14px;
-}
-
-#menu .views {
-  /*padding-top: 50px;*/
-  /*text-align: right;*/
-}
-
-#menu .views a.toggle-view {
-
-  border: none;
-  display: block;
-  color: rgba(0,0,0, 0.4);
-  line-height: 40px;
-  font-family: 'Avenir LT W01 85 Heavy', 'Montserrat', 'Source Sans Pro';
-  font-size: 14px;
-  /*text-align: center;*/
-}
-
-
-#menu .views a.toggle-view.active {
-  color: rgba(0,0,0, 1);
-}
-
-#menu .views a.toggle-view:hover {
-  color: rgba(0,0,0, 0.8);
-  /*background: rgba(0,0,0, 0.3);*/
-  /*color: #fff;*/
-}
-
-#menu .actions {
-  position: absolute;
-  bottom: 0px;
-  width: 60px;
-}
-
-#menu .actions a.action {
-  border: none;
-  display: block;
-  height: 40px;
-  line-height: 40px;
-  color: rgba(255,255,255, 0.5);
-  /*text-align: center;*/
-}
-
-#menu .actions a.action:hover {
-  background: rgba(0,0,0, 0.3);
-  color: #fff;
-}
-
-#help {
-  padding-top: 50px;
-  text-align: center;
-}
 
 /* Article Overrides */
-
-#container .article .context-toggles {
-  background: #F0F1EB;
-}
-
-
-#container .content-node.cover {
-  background: #4A4A4A;
-}
-
 #container .article .resources .info .content-node.active .resource-header {
   background: #4A4A4A;
 }
 
-#container .lens-outline .node.cover {
-  background: #4A4A4A;
-}
 
-.lens-outline .node, .lens-outline .node.header {
-  background: #7D8165;
-}
-
-.lens-outline .node:hover {
-  opacity: 0.2;
-}
 
 /* main
    --------------------------------------- */
 
 #main {
-  height: 100%;
   position: relative;
 }
 
+body.reader #main {
+  height: 100%;
+}
 
 #container .loading {
   font-family: 'Avenir LT W01 85 Heavy', 'Montserrat', 'Source Sans Pro';
@@ -322,25 +170,3 @@ a.testsuite {
   line-height: 50px;
   font-size: 12px;
 }
-
-
-/*
-Media queries
---------------------------------------- */
-
-@media (max-width: 1155px) {
-  .resource-types .resource-type span {
-    display: none;
-  }
-}
-
-/* Responsive design */
-/*@media (max-width: 50.5em) {
-  #document .document {
-    width: 100%;
-  }
-
-  #document .resources {
-    display: none;
-  }
-}*/

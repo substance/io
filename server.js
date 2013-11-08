@@ -47,7 +47,7 @@ app.get("/",
     }).join('\n');
 
     var styleTags = _.map(config.styles, function(path, alias) {
-      return ['<link href="', path, '" rel="stylesheet" type="text/css"/>'].join('');
+      return ['<link href="', path, '" rel="stylesheet" type="text/css" media="screen"/>'].join('');
     }).join("\n");
 
     var result = template.replace('#####scripts#####', scriptsTags);
