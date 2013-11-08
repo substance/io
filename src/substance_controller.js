@@ -7,11 +7,8 @@ var SubstanceView = require("./substance_view");
 var Library = require("substance-library");
 var LibraryController = Library.Controller;
 var CollectionController = Library.Collection.Controller;
-var LensArticle = require("lens-article");
-var Article = require("substance-article");
 var ReaderController = require("substance-reader").Controller;
-var Converter = require("lens-converter");
-
+var DocumentLoader = require("./document_loader");
 
 // Substance.Controller
 // -----------------
@@ -20,52 +17,80 @@ var Converter = require("lens-converter");
 
 var SubstanceController = function(config) {
   Controller.call(this);
-
   this.config = config;
+  this.documentLoader = new DocumentLoader();
 
-  // Main controls
-  this.on('open:reader', this.openReader);
-  this.on('open:library', this.openLibrary);
-  this.on('open:login', this.openLogin);
+  // Library instance
+  // --------
+  // will be loaded by initialize
+  this.library = null;
+
+  // State: 'library'
+  // --------
+  //
+  var libraryCtrl = null;
+
+  // State: 'collection'
+  // --------
+  //
+  var collectionCtrl = null;
+  var collectionId = null;
+
+  // State: 'reader'
+  // --------
+  //
+  var readerCtrl = null;
+  // var collectionId = null // shared with 'collection'
+  var docId = null;
+  var document = null;
 };
 
-
 SubstanceController.Prototype = function() {
+
+  // TODO:
+  // - transfer the current state to the `Meditation on App States`
+  //    - state `START` ~ initialize / dispose
+  // - Describe how the application would use this to switch states
+  //    - hierarchical state object
+  //    - dispatching to controller hierarchy
+  // - Make States more convenient
+  //    - name + attributes + childControllers
+  //    - dispose method
+  // - we should not trigger state changes here.
+  //   instead this should be done in the general Controller implementation,
+  //   and delivered to the app for communication/firing events.
 
   var __super__ = Controller.prototype;
 
   // Aplication state handling
   // -------
 
-  // Helper function that dispatches
-  this.__switchTo = function(newState, args) {
-    switch (newState) {
-    case "library":
-      this.openLibrary();
-      break;
-    case "collection":
-      this.openCollection(args["collectionId"]);
-      break;
-    case "reader":
-      this.openReader(args);
-      break;
-    };
-    this.trigger('state-changed', newState);
-  };
+  // Note: every Controller needs its own transition map
+  this.transitions = _.({}, __super__.transitions);
+
+  // Transition from inital state to a specific state
+  // ----
 
   this.initialize = function(newState, args) {
     var self = this;
-
     this.loadLibrary(this.config.library_url, function(error) {
+      if (error) {
+        console.error(error);
+        return;
+      }
       this.__switchTo(newState, args);
     });
   };
+
+  // Transition from a specific state to the inital state (or something 'clean')
+  // ----
 
   this.dispose = function() {
     __super__.dispose.call(this);
   };
 
-  this.transitions = _.({}, __super__.transitions);
+  // Transition from 'library' state
+  // ----
 
   this.transitions["library"] = function(newState, args) {
     // reflexive transition
@@ -73,9 +98,13 @@ SubstanceController.Prototype = function() {
       return;
     }
 
-    this.libraryController.dispose();
+    this.libraryCtrl.dispose();
+    this.libraryCtrl = null;
     this.__switchTo(newState, args);
   };
+
+  // Transition from 'collection' state
+  // ----
 
   this.transitions["collection"] = function(newState, args) {
     // reflexive transition: do nothing if the right collection is already open
@@ -83,16 +112,79 @@ SubstanceController.Prototype = function() {
       return;
     }
 
-    this.collectionController.dispose();
+    this.collectionCtrl.dispose();
+    this.collectionCtrl = null;
+    this.collectionId = null;
     this.__switchTo(newState, args);
   };
+
+  // Transition from 'reader' state
+  // ----
 
   this.transitions["reader"] = function(newState, args) {
     if (newState === "reader" && this.documentId === args["documentId"]) {
       return;
     }
 
-    this.readerController.dispose();
+    this.readerCtrl.dispose();
+    this.readerCtrl = null;
+    this.collectionId = null;
+    this.documentId = null;
+    this.document = null;
+    this.__switchTo(newState, args);
+  };
+
+  // Helper function that dispatches the state switch
+  // TODO: that could be done via convention, e.g., `open<Statename>(args)`
+  this.__switchTo = function(newState, args) {
+    switch (newState) {
+    case "library":
+      this.openLibrary(args);
+      break;
+    case "collection":
+      this.openCollection(args);
+      break;
+    case "reader":
+      this.openReader(args);
+      break;
+    };
+  };
+
+
+  this.openReader = function(args) {
+    var self = this;
+
+    var docId = args["documentId"];
+    var record = this.library.get(docId);
+
+    this.documentLoader.load(docId, url, function(error, doc) {
+      if (error) {
+        console.error(error);
+        return;
+      }
+      self.collectionId = args["collectionId"];
+      self.documentId = args["documentId"];
+      self.document = doc;
+      self.readerCtrl = new ReaderController(doc);
+      self.children["reader"] = self.readerCtrl;
+      self.state = "reader";
+      self.trigger('state-changed', "reader");
+    });
+  };
+
+  this.openLibrary = function() {
+    this.libraryCtrl = new LibraryController(this.library);
+    this.children["library"] = this.libraryCtrl;
+    this.state = "library";
+    this.trigger('state-changed', "library");
+  };
+
+  this.openCollection = function(args) {
+    this.collectionId = args["collectionId"];
+    this.collectionCtrl = new CollectionController(this.library.getCollection(this.collectionId));
+    this.children["collection"] = this.collectionCtrl;
+    this.state = "collection";
+    this.trigger('state-changed', "collection");
   };
 
   // Initial view creation
@@ -146,215 +238,6 @@ SubstanceController.Prototype = function() {
       trigger: false,
       replace: false
     });
-  };
-
-  // Transitions
-  // ===================================
-
-  var _LOCALSTORE_MATCHER = new RegExp("^localstore://(.*)");
-
-  var _open = function(state, documentId) {
-
-    var that = this;
-    var _onDocumentLoad = function(err, doc) {
-      if (err) {
-        console.log(err.stack);
-        throw err;
-      }
-
-      that.reader = new ReaderController(doc, state, {
-        // This needs better names indeed
-        collection: {
-          name: that.__library.get(that.state.collection).name,
-          url: "#"+that.state.collection
-        }
-      });
-
-      // Trigger URL Fragment update on every state change
-      that.reader.on('state-changed', function() {
-        that.updatePath(that.reader.state);
-      });
-
-      that.modifyState({
-        context: 'reader'
-      });
-    };
-
-    // HACK: for activating the NLM importer ATM it is not possible
-    // to leave the loading to the library as it needs the Lens Converter for that.
-    // Options:
-    //  - provide the library with a document loader which would be constructed here
-    //  - do the loading here
-    // prefering option2 as it is simpler to achieve...
-
-    var record = this.__library.get(documentId);
-
-    $.get(record.url)
-    .done(function(data) {
-        var doc, err;
-
-        // Determine type of resource
-        var xml = $.isXMLDoc(data);
-
-        // Process XML file
-        if(xml) {
-          var importer = new Converter.Importer();
-          doc = importer.import(data);
-
-          // Hotpatch the doc id, so it conforms to the id specified in the library file
-          doc.id = documentId;
-          console.log('ON THE FLY CONVERTED DOC', doc.toJSON());
-
-          // Process JSON file
-        } else {
-          if(typeof data == 'string') data = $.parseJSON(data);
-          if (data.schema && data.schema[0] === "lens-article") {
-            doc = LensArticle.fromSnapshot(data);
-          } else {
-            doc = Article.fromSnapshot(data);
-          }
-        }
-        _onDocumentLoad(err, doc);
-      })
-    .fail(function(err) {
-      console.error(err);
-    });
-  };
-
-  this.openAbout = function() {
-    this.openReader("substance", "about", "toc");
-    app.router.navigate('substance/about', false);
-  };
-
-  this.openReader = function(collectionId, documentId, context, node, resource, fullscreen) {
-    console.log('Controller#openReader');
-
-    // The article view state
-    var state = {
-      context: context || "toc",
-      node: node,
-      resource: resource,
-      fullscreen: !!fullscreen,
-    };
-
-    var prevDocument = this.state.document;
-
-    // Substance Controller state
-    this.state = {
-      collection: collectionId,
-      document: documentId,
-    };
-
-    // If state change happens within a document context,
-    // just trigger a state update
-    // TODO: This implementation is rather hacky, we need a better solution for maintaining
-    // the current app state.
-
-    if (documentId === prevDocument) {
-      this.reader.modifyState(state);
-      // HACK: monkey patch alert
-      if (state.resource) this.reader.view.jumpToResource(state.resource);
-    } else {
-      if (collectionId === "substance" && documentId === "article") {
-        return this.openArticle(state);
-      }
-      this.loadLibrary(this.config.library_url, _open.bind(this, state, documentId));
-    }
-  };
-
-
- this.openArticle = function(state) {
-    var that = this;
-    var doc = Article.describe();
-    this.reader = new ReaderController(doc, state);
-
-    // Trigger URL Fragment update on every state change
-    that.reader.on('state-changed', function() {
-      that.updatePath(that.reader.state);
-    });
-
-    this.modifyState({
-      context: 'reader'
-    });
-
-    // Substance Controller state
-    this.state = {
-      collection: "substance",
-      document: "article"
-    };
-  };
-
-
-  // Open Library
-  // --------
-
-  this.openLibrary = function(collectionId) {
-    var that = this;
-
-    function open() {
-      // Defaults to lens collection
-      var state = {
-        context: 'library'
-        // collection: collectionId || that.__library.collections[0].id
-      };
-
-      that.library = new LibraryController(that.__library, state);
-      that.modifyState(state);
-    }
-
-    // Ensure the library is loaded
-    this.loadLibrary(this.config.library_url, open);
-  };
-
-
-  this.openCollection = function(collectionId) {
-    var that = this;
-
-    function open() {
-      // Defaults to lens collection
-      var state = {
-        context: 'collection',
-        collection: collectionId
-      };
-
-      that.collection = new CollectionController(that.__library.getCollection(collectionId), state);
-      that.modifyState(state);
-    }
-
-    // Ensure the library is loaded
-    this.loadLibrary(this.config.library_url, open);
-  };
-
-
-  this.openSubmission = function() {
-    console.log('NOT YET IMPLEMENTED');
-  };
-
-
-  // Provides an array of (context, controller) tuples that describe the
-  // current state of responsibilities
-  // --------
-  //
-  // E.g., when a document is opened:
-  //    ["application", "document"]
-  // with controllers taking responisbility:
-  //    [this, this.document]
-  //
-  // The child controller (e.g., document) should itself be allowed to have sub-controllers.
-  // For sake of prototyping this is implemented manually right now.
-  // TODO: discuss naming
-
-  this.getActiveControllers = function() {
-    var result = [ ["sandbox", this] ];
-
-    var context = this.state.context;
-
-    if (context === "article") {
-      result = result.concat(this.article.getActiveControllers());
-    } else if (context === "library") {
-      result = result.concat(["library", this.library]);
-    }
-    return result;
   };
 };
 
