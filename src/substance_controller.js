@@ -31,17 +31,15 @@ SubstanceController.Prototype = function() {
   // Aplication state handling
   // -------
 
-  this.transitions = {};
-
   // Transition from inital state to a specific state
   // ----
 
-  this.initialize = function(newState, args, cb) {
+  this.initialize = function(newState, cb) {
     var self = this;
     this.loadLibrary(this.config.library_url, function(error, library) {
       if (error) return cb(error);
       self.library = library;
-      self.openState(newState, args, cb);
+      cb(null);
     });
   };
 
@@ -53,68 +51,50 @@ SubstanceController.Prototype = function() {
     this.view.dispose();
   };
 
-  // Transition from 'library' state
+  // Transition to a specific state
   // ----
 
-  this.transitions["library"] = function(newState, args, cb) {
-    // reflexive transition
-    if (newState === "library") {
-      console.log("no state change needed");
-      return cb(null);
-    }
-    this.childController.dispose();
-    this.openState(newState, args, cb);
-  };
+  this.transition = function(newState, cb) {
 
-  // Transition from 'collection' state
-  // ----
-
-  this.transitions["collection"] = function(newState, args, cb) {
-    // reflexive transition: do nothing if the right collection is already open
-    if (newState === "collection" && this.state.data["collectionId"] === args["collectionId"]) {
-      console.log("no state change needed");
-      return cb(null);
-    }
-    this.childController.dispose();
-    this.openState(newState, args, cb);
-  };
-
-  // Transition from 'reader' state
-  // ----
-
-  this.transitions["reader"] = function(newState, args, cb) {
-    if (newState === "reader" && this.state.data["documentId"] === args["documentId"]) {
-      console.log("no state change needed");
-      return cb(null);
-    }
-    this.childController.dispose();
-    this.openState(newState, args, cb);
-  };
-
-  // Helper function that dispatches the state switch
-  // TODO: that could be done via convention, e.g., `open<Statename>(args)`
-  this.openState = function(newState, args, cb) {
-    var self = this;
-
-    function _after(err) {
-      if (err) return cb(err);
-      self.view.onStateChanged();
-      cb(null);
+    // handle reflexiv transitions
+    if (newState.name === this.state.name) {
+      var skipTransition;
+      switch (state.name) {
+      case "library":
+        skipTransition = true;
+      case "collection":
+        skipTransition = (this.state.data["collectionId"] === newState.data["collectionId"]);
+        break;
+      case "reader":
+        skipTransition = (this.state.data["collectionId"] === newState.data["collectionId"] &&
+                          this.state.data["documentId"] === newState.data["documentId"]);
+        break;
+      }
+      if (skipTransition) return cb(null, skipTransition);
     }
 
-    switch (newState) {
+    if (this.childController) {
+      this.childController.dispose();
+      this.childController = null;
+    }
+
+    switch (newState.name) {
     case "library":
       this.openLibrary();
-      _after();
-      break;
+      return cb(null);
     case "collection":
-      this.openCollection(args);
-      _after();
-      break;
+      this.openCollection(newState.data);
+      return cb(null);
     case "reader":
-      this.openReader(args, _after);
+      this.openReader(newState.data, cb);
       break;
+    default:
+      throw new Error("Illegal application state "+newState);
     }
+  };
+
+  this.afterTransition = function() {
+    this.view.onStateChanged();
   };
 
   this.openReader = function(args, cb) {
@@ -125,28 +105,17 @@ SubstanceController.Prototype = function() {
 
     this.documentLoader.load(docId, url, function(error, doc) {
       if (error) return cb(error);
-
       self.childController = new ReaderController(doc);
-      self.setState("reader", {
-        "collectionId": args["collectionId"],
-        "documentId": args["documentId"],
-        "document": doc
-      });
-
       cb(null);
     });
   };
 
   this.openLibrary = function() {
     this.childController = new LibraryController(this.library);
-    this.setState("library");
   };
 
   this.openCollection = function(args) {
     this.childController = new CollectionController(this.library.getCollection(args["collectionId"]));
-    this.setState("collection", {
-      "collectionId": args["collectionId"]
-    });
   };
 
   // Initial view creation
@@ -163,7 +132,6 @@ SubstanceController.Prototype = function() {
   this.loadLibrary = function(url, cb) {
     var that = this;
     if (this.__library) return cb(null);
-
     $.getJSON(url, function(data) {
       var library = new Library({
         seed: data
