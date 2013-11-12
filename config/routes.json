@@ -54,7 +54,7 @@
   },
   {
     "route": "",
-    "name": "library",
-    "command": "openLibrary"
+    "name": "state",
+    "command": "openState"
   }
 ]

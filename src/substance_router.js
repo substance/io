@@ -23,6 +23,17 @@ SubstanceRouter.Prototype = function() {
     Router.history.start();
   };
 
+  this.openState = function() {
+    // If no state is specified via query string
+    // open the library view
+    if (window.location.search === "") {
+      this.openLibrary();
+    } else {
+      var state = this.app.extractStateFromURL(window.location.search);
+      this.app.switchState(state);
+    }
+  };
+
   this.openLibrary = function() {
     var data = [];
 
