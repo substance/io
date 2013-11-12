@@ -27,7 +27,6 @@ Substance.Outline = require("lens-outline");
 Substance.Prototype = function() {
   // Start listening to routes
   // --------
-
   this.render = function() {
     this.view = this.controller.createView();
     this.$el.html(this.view.render().el);
@@ -37,6 +36,33 @@ Substance.Prototype = function() {
 Substance.Prototype.prototype = Application.prototype;
 Substance.prototype = new Substance.Prototype();
 Substance.prototype.constructor = Substance;
+
+// For purpose of Trying, some application state
+Substance.state1 = function() {
+  var state = [{state: "library"}];
+  this.switchState(state);
+};
+
+Substance.state2 = function() {
+  var state = [{state: "collection", data: {collectionId: "substance"}}];
+  this.switchState(state);
+};
+
+Substance.state3 = function() {
+  var state = [
+    {state: "reader", data: {collectionId: "substance", documentId: "about"}},
+    {state: "panel", data: {viewId: "content"}},
+  ];
+  this.switchState(state);
+};
+
+Substance.state4 = function() {
+  var state = [
+    {state: "reader", data: {collectionId: "substance", documentId: "about"}},
+    {state: "resource", data: {nodeId: "header_2"}},
+  ];
+  this.switchState(state);
+};
 
 
 Substance.util = require("substance-util");
