@@ -19,7 +19,7 @@
   },
   {
     "route": ":collection/:document/:context/:node",
-    "name": "document-node", 
+    "name": "document-node",
     "command": "openReader"
   },
   {
@@ -28,7 +28,7 @@
     "command": "openReader"
   },
   {
-    "route": ":collection/:document", 
+    "route": ":collection/:document",
     "name": "document",
     "command": "openReader"
   },
@@ -51,11 +51,6 @@
     "route": "explore",
     "name": "explore",
     "command": "openLibrary"
-  },
-  {
-    "route": "submit",
-    "name": "submit",
-    "command": "openSubmission"
   },
   {
     "route": "",
