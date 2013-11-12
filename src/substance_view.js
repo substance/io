@@ -25,7 +25,7 @@ SubstanceView.Prototype = function() {
   this.onStateChanged = function() {
     var state = this.controller.state;
 
-    switch (state.name) {
+    switch (state.id) {
     case "library":
       this.openLibrary();
       break;
@@ -36,7 +36,7 @@ SubstanceView.Prototype = function() {
       this.openReader();
       break;
     default:
-      console.error("Illegal application state", state.name);
+      console.error("Illegal application state", state.id);
     }
   };
 

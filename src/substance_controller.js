@@ -57,17 +57,17 @@ SubstanceController.Prototype = function() {
   this.transition = function(newState, cb) {
 
     // handle reflexiv transitions
-    if (newState.name === this.state.name) {
+    if (newState.id === this.state.id) {
       var skipTransition;
-      switch (state.name) {
+      switch (state.id) {
       case "library":
         skipTransition = true;
       case "collection":
-        skipTransition = (this.state.data["collectionId"] === newState.data["collectionId"]);
+        skipTransition = (this.state["collectionId"] === newState["collectionId"]);
         break;
       case "reader":
-        skipTransition = (this.state.data["collectionId"] === newState.data["collectionId"] &&
-                          this.state.data["documentId"] === newState.data["documentId"]);
+        skipTransition = (this.state["collectionId"] === newState["collectionId"] &&
+                          this.state["documentId"] === newState["documentId"]);
         break;
       }
       if (skipTransition) return cb(null, skipTransition);
@@ -78,15 +78,15 @@ SubstanceController.Prototype = function() {
       this.childController = null;
     }
 
-    switch (newState.name) {
+    switch (newState.id) {
     case "library":
       this.openLibrary();
       return cb(null);
     case "collection":
-      this.openCollection(newState.data);
+      this.openCollection(newState);
       return cb(null);
     case "reader":
-      this.openReader(newState.data, cb);
+      this.openReader(newState, cb);
       break;
     default:
       throw new Error("Illegal application state "+newState);
@@ -103,7 +103,7 @@ SubstanceController.Prototype = function() {
     var docId = args["documentId"];
     var record = this.library.get(docId);
 
-    this.documentLoader.load(docId, url, function(error, doc) {
+    this.documentLoader.load(docId, record.url, function(error, doc) {
       if (error) return cb(error);
       self.childController = new ReaderController(doc);
       cb(null);

@@ -44,6 +44,6 @@ DocumentLoader.Prototype = function() {
 
 };
 
-DocumentLoader.__prototype__ = new DocumentLoader.Prototype();
+DocumentLoader.prototype = new DocumentLoader.Prototype();
 
 module.exports = DocumentLoader;

@@ -26,7 +26,7 @@ SubstanceRouter.Prototype = function() {
   this.openLibrary = function() {
     var data = [];
 
-    data.push({state: "library"});
+    data.push({id: "library"});
 
     this.app.switchState(data);
   };
@@ -34,7 +34,7 @@ SubstanceRouter.Prototype = function() {
   this.openCollection = function(collectionId) {
     var data = [];
 
-    data.push({state: "collection", data: {collectionId: collectionId}});
+    data.push({id: "collection", collectionId: collectionId});
 
     this.app.switchState(data);
   };
@@ -42,7 +42,7 @@ SubstanceRouter.Prototype = function() {
   this.openReader = function(collectionId, documentId) {
     var data = [];
 
-    data.push({state: "reader", data: {collectionId: collectionId, documentId: documentId}});
+    data.push({id: "reader", collectionId: collectionId, documentId: documentId});
 
     // TODO: add data to specify the ReaderController state
 
