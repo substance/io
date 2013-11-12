@@ -16,8 +16,7 @@ var SubstanceView = function(controller) {
 
   // Handle state transitions
   // --------
-  
-  this.listenTo(this.controller, 'state-changed', this.onStateChanged);
+  //this.listenTo(this.controller, 'state-changed', this.onStateChanged);
 };
 
 
@@ -26,16 +25,18 @@ SubstanceView.Prototype = function() {
   this.onStateChanged = function() {
     var state = this.controller.state;
 
-    if (state.context === "reader") {
-      this.openReader();
-    } else if (state.context === "library") {
+    switch (state.name) {
+    case "library":
       this.openLibrary();
-    } else if (state.context === "submission") {
-      this.openSubmission();
-    } else if (state.context === "collection") {
+      break;
+    case "collection":
       this.openCollection();
-    } else {
-      console.log("Unknown application state: " + context);
+      break;
+    case "reader":
+      this.openReader();
+      break;
+    default:
+      console.error("Illegal application state", state.name);
     }
   };
 
@@ -47,7 +48,7 @@ SubstanceView.Prototype = function() {
     // Application controller has a editor controller ready
     // -> pass it to the editor view
     // var view = new EditorView(this.controller.editor.view);
-    var view = this.controller.library.createView();
+    var view = this.controller.childController.createView();
     this.replaceMainView('library', view);
   };
 
@@ -57,7 +58,7 @@ SubstanceView.Prototype = function() {
   //
 
   this.openReader = function() {
-    var view = this.controller.reader.createView();
+    var view = this.controller.childController.createView();
     this.replaceMainView('reader', view);
 
     // Update browser title
@@ -69,7 +70,7 @@ SubstanceView.Prototype = function() {
   //
 
   this.openSubmission = function() {
-    var view = this.controller.submission.createView();
+    var view = this.controller.childController.createView();
     this.replaceMainView('submission', view);
   };
 
@@ -78,7 +79,7 @@ SubstanceView.Prototype = function() {
   //
 
   this.openCollection = function() {
-    var view = this.controller.collection.createView();
+    var view = this.controller.childController.createView();
     this.replaceMainView('collection', view);
   };
 
