@@ -20,29 +20,8 @@ var SubstanceController = function(config) {
   this.config = config;
   this.documentLoader = new DocumentLoader();
 
-  // Library instance
-  // --------
-  // will be loaded by initialize
+  // Library instance will be loaded by initialize
   this.library = null;
-
-  // State: 'library'
-  // --------
-  //
-  var libraryCtrl = null;
-
-  // State: 'collection'
-  // --------
-  //
-  var collectionCtrl = null;
-  var collectionId = null;
-
-  // State: 'reader'
-  // --------
-  //
-  var readerCtrl = null;
-  // var collectionId = null // shared with 'collection'
-  var docId = null;
-  var document = null;
 };
 
 SubstanceController.Prototype = function() {
@@ -65,8 +44,7 @@ SubstanceController.Prototype = function() {
   // Aplication state handling
   // -------
 
-  // Note: every Controller needs its own transition map
-  this.transitions = _.({}, __super__.transitions);
+  this.transitions = {};
 
   // Transition from inital state to a specific state
   // ----
@@ -78,7 +56,7 @@ SubstanceController.Prototype = function() {
         console.error(error);
         return;
       }
-      this.__switchTo(newState, args);
+      self.openState(newState, args);
     });
   };
 
@@ -87,6 +65,7 @@ SubstanceController.Prototype = function() {
 
   this.dispose = function() {
     __super__.dispose.call(this);
+    this.view.dispose();
   };
 
   // Transition from 'library' state
@@ -98,9 +77,8 @@ SubstanceController.Prototype = function() {
       return;
     }
 
-    this.libraryCtrl.dispose();
-    this.libraryCtrl = null;
-    this.__switchTo(newState, args);
+    this.dispose();
+    this.openState(newState, args);
   };
 
   // Transition from 'collection' state
@@ -108,35 +86,29 @@ SubstanceController.Prototype = function() {
 
   this.transitions["collection"] = function(newState, args) {
     // reflexive transition: do nothing if the right collection is already open
-    if (newState === "collection" && this.collectionId === args["collectionId"]) {
+    if (newState === "collection" && this.state.data["collectionId"] === args["collectionId"]) {
       return;
     }
 
-    this.collectionCtrl.dispose();
-    this.collectionCtrl = null;
-    this.collectionId = null;
-    this.__switchTo(newState, args);
+    this.dispose();
+    this.openState(newState, args);
   };
 
   // Transition from 'reader' state
   // ----
 
   this.transitions["reader"] = function(newState, args) {
-    if (newState === "reader" && this.documentId === args["documentId"]) {
+    if (newState === "reader" && this.state.data["documentId"] === args["documentId"]) {
       return;
     }
 
-    this.readerCtrl.dispose();
-    this.readerCtrl = null;
-    this.collectionId = null;
-    this.documentId = null;
-    this.document = null;
-    this.__switchTo(newState, args);
+    this.dispose();
+    this.openState(newState, args);
   };
 
   // Helper function that dispatches the state switch
   // TODO: that could be done via convention, e.g., `open<Statename>(args)`
-  this.__switchTo = function(newState, args) {
+  this.openState = function(newState, args) {
     switch (newState) {
     case "library":
       this.openLibrary(args);
@@ -150,7 +122,6 @@ SubstanceController.Prototype = function() {
     };
   };
 
-
   this.openReader = function(args) {
     var self = this;
 
@@ -162,38 +133,33 @@ SubstanceController.Prototype = function() {
         console.error(error);
         return;
       }
-      self.collectionId = args["collectionId"];
-      self.documentId = args["documentId"];
-      self.document = doc;
-      self.readerCtrl = new ReaderController(doc);
-      self.children["reader"] = self.readerCtrl;
-      self.state = "reader";
-      self.trigger('state-changed', "reader");
+      self.childController = new ReaderController(doc);
+      self.setState("reader", {
+        "collectionId": args["collectionId"],
+        "documentId": args["documentId"],
+        "document": doc
+      });
     });
   };
 
   this.openLibrary = function() {
-    this.libraryCtrl = new LibraryController(this.library);
-    this.children["library"] = this.libraryCtrl;
-    this.state = "library";
-    this.trigger('state-changed', "library");
+    this.childController = new LibraryController(this.library);
+    this.setState("library");
   };
 
   this.openCollection = function(args) {
-    this.collectionId = args["collectionId"];
-    this.collectionCtrl = new CollectionController(this.library.getCollection(this.collectionId));
-    this.children["collection"] = this.collectionCtrl;
-    this.state = "collection";
-    this.trigger('state-changed', "collection");
+    this.childController = new CollectionController(this.library.getCollection(this.collectionId));
+    this.setState("collection", {
+      "collectionId": args["collectionId"]
+    });
   };
 
   // Initial view creation
   // ===================================
 
   this.createView = function() {
-    var view = new SubstanceView(this);
-    this.view = view;
-    return view;
+    if (!this.view) this.view = new SubstanceView(this);
+    return this.view;
   };
 
   // Loaders
@@ -240,7 +206,6 @@ SubstanceController.Prototype = function() {
     });
   };
 };
-
 
 // Exports
 // --------
