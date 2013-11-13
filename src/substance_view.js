@@ -58,11 +58,12 @@ SubstanceView.Prototype = function() {
   //
 
   this.openReader = function() {
-    var view = this.controller.childController.createView();
+    var readerCtrl = this.controller.childController;
+    var view = readerCtrl.createView();
     this.replaceMainView('reader', view);
 
     // Update browser title
-    document.title = this.controller.reader.__document.title;
+    document.title = readerCtrl.document.title;
   };
 
   // Open the reader view
