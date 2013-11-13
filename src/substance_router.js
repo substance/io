@@ -35,31 +35,24 @@ SubstanceRouter.Prototype = function() {
   };
 
   this.openLibrary = function() {
-    var data = [];
-
-    data.push({id: "library"});
-
-    this.app.switchState(data);
+    var state = [];
+    state.push({id: "library"});
+    this.app.switchState(state);
   };
 
   this.openCollection = function(collectionId) {
-    var data = [];
-
-    data.push({id: "collection", collectionId: collectionId});
-
-    this.app.switchState(data);
+    var state = [];
+    state.push({id: "collection", collectionId: collectionId});
+    this.app.switchState(state);
   };
 
   this.openReader = function(collectionId, documentId) {
-    var data = [];
-
-    data.push({id: "reader", collectionId: collectionId, documentId: documentId});
-
-    // TODO: add data to specify the ReaderController state
-
-    this.app.switchState(data);
+    var state = [];
+    state.push({id: "reader", collectionId: collectionId, documentId: documentId});
+    // TODO: if we do not know the context, we should not set it...
+    state.push({id: "context", contextId: "toc"});
+    this.app.switchState(state);
   };
-
 };
 
 SubstanceRouter.Prototype.prototype = Router.prototype;
