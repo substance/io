@@ -101,11 +101,21 @@ SubstanceController.Prototype = function() {
     var self = this;
 
     var docId = args["documentId"];
+    var collectionId = args["collectionId"];
     var record = this.library.get(docId);
 
     this.documentLoader.load(docId, record.url, function(error, doc) {
       if (error) return cb(error);
-      self.childController = new ReaderController(doc);
+      var options = {
+        back: function() {
+          console.log("Calling back handler");
+          self.switchState({
+            id: "collection",
+            collectionId: collectionId
+          });
+        }
+      }
+      self.childController = new ReaderController(doc, options);
       cb(null);
     });
   };
