@@ -48,7 +48,9 @@ SubstanceController.Prototype = function() {
 
   this.dispose = function() {
     __super__.dispose.call(this);
+
     this.view.dispose();
+    this.view = null;
   };
 
   // Transition to a specific state
@@ -59,7 +61,7 @@ SubstanceController.Prototype = function() {
     // handle reflexiv transitions
     if (newState.id === this.state.id) {
       var skipTransition;
-      switch (state.id) {
+      switch (this.state.id) {
       case "library":
         skipTransition = true;
       case "collection":
@@ -89,12 +91,12 @@ SubstanceController.Prototype = function() {
       this.openReader(newState, cb);
       break;
     default:
-      throw new Error("Illegal application state "+newState);
+      throw new Error("Illegal application state " + newState);
     }
   };
 
   this.afterTransition = function() {
-    this.view.onStateChanged();
+    if (this.view) this.view.onStateChanged();
   };
 
   this.openReader = function(args, cb) {
