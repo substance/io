@@ -23,7 +23,7 @@
     {
       "repository": "https://github.com/substance/document.git",
       "folder": "node_modules/substance-document",
-      "branch": "0.6.x"
+      "branch": "appstates"
     },
     {
       "repository": "https://github.com/elifesciences/lens-reader.git",
@@ -63,12 +63,12 @@
     {
       "repository": "https://github.com/substance/toc.git",
       "folder": "node_modules/substance-toc",
-      "branch": "0.2.x"
+      "branch": "appstates"
     },
     {
       "repository": "https://github.com/substance/converter.git",
       "folder": "node_modules/substance-converter",
-      "branch": "0.2.x"
+      "branch": "pandoc_1_12_1"
     },
     {
       "repository": "https://github.com/elifesciences/lens-converter.git",
