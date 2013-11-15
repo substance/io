@@ -49,8 +49,7 @@ SubstanceView.Prototype = function() {
     var view = libraryCtrl.createView();
     this.replaceMainView('library', view);
 
-    // Update browser title
-    document.title = "Library: " + this.controller.library.name;
+    this.updateTitle("Library: " + this.controller.library.name);
   };
 
 
@@ -63,8 +62,7 @@ SubstanceView.Prototype = function() {
     var view = readerCtrl.createView();
     this.replaceMainView('reader', view);
 
-    // Update browser title
-    document.title = readerCtrl.document.title;
+    this.updateTitle(readerCtrl.document.title);
   };
 
   // Open the reader view
@@ -85,8 +83,7 @@ SubstanceView.Prototype = function() {
     var view = collectionCtrl.createView();
     this.replaceMainView('collection', view);
 
-    // Update browser title
-    document.title = "Collection: " + collectionCtrl.collection.name;
+    this.updateTitle("Collection: " + collectionCtrl.collection.name);
   };
 
 
