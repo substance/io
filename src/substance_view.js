@@ -45,11 +45,12 @@ SubstanceView.Prototype = function() {
   //
 
   this.openLibrary = function() {
-    // Application controller has a editor controller ready
-    // -> pass it to the editor view
-    // var view = new EditorView(this.controller.editor.view);
-    var view = this.controller.childController.createView();
+    var libraryCtrl = this.controller.childController;
+    var view = libraryCtrl.createView();
     this.replaceMainView('library', view);
+
+    // Update browser title
+    document.title = "Library: " + this.controller.library.name;
   };
 
 
@@ -80,8 +81,12 @@ SubstanceView.Prototype = function() {
   //
 
   this.openCollection = function() {
-    var view = this.controller.childController.createView();
+    var collectionCtrl = this.controller.childController;
+    var view = collectionCtrl.createView();
     this.replaceMainView('collection', view);
+
+    // Update browser title
+    document.title = "Collection: " + collectionCtrl.collection.name;
   };
 
 
