@@ -15,6 +15,9 @@ var SubstanceRouter = function(app, routes) {
       this.route(route.route, route.name, _.bind(this[route.command], this));
     }
   }, this);
+
+  this.route(/^state=.*$/, "state", _.bind(this.openState, this));
+
 };
 
 SubstanceRouter.Prototype = function() {
@@ -23,27 +26,27 @@ SubstanceRouter.Prototype = function() {
     Router.history.start();
   };
 
+  var DEFAULT_OPTIONS = {
+    updateRoute: false,
+    replace: false
+  }
+
   this.openState = function() {
-    // If no state is specified via query string
-    // open the library view
-    if (window.location.search === "") {
-      this.openLibrary();
-    } else {
-      var state = this.app.extractStateFromURL(window.location.search);
-      this.app.switchState(state);
-    }
+    var fragment = Router.history.getFragment();
+    var state = this.app.stateFromFragment(fragment);
+    this.app.switchState(state, DEFAULT_OPTIONS);
   };
 
   this.openLibrary = function() {
     var state = [];
     state.push({id: "library"});
-    this.app.switchState(state);
+    this.app.switchState(state, DEFAULT_OPTIONS);
   };
 
   this.openCollection = function(collectionId) {
     var state = [];
     state.push({id: "collection", collectionId: collectionId});
-    this.app.switchState(state);
+    this.app.switchState(state, DEFAULT_OPTIONS);
   };
 
   this.openReader = function(collectionId, documentId) {
@@ -51,7 +54,11 @@ SubstanceRouter.Prototype = function() {
     state.push({id: "reader", collectionId: collectionId, documentId: documentId});
     // TODO: if we do not know the context, we should not set it...
     state.push({id: "context", contextId: "toc"});
-    this.app.switchState(state);
+    this.app.switchState(state, DEFAULT_OPTIONS);
+  };
+
+  this.navigate = function(route, options) {
+    Router.history.navigate(route, options);
   };
 };
 
