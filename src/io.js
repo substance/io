@@ -35,7 +35,7 @@ IO.extractLibrary = function(all) {
     "nodes": {
       "library": {
         "collections": [],
-        "name": "Your documents"
+        "name": "Substance"
       }
     }
   };
