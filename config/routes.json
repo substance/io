@@ -4,12 +4,7 @@
 [
   {
     "route": ":collection/:document/:context/:node/:resource/:fullscreen",
-    "name": "document-resource",
-    "command": "openReader"
-  },
-  {
-    "route": ":collection/:document/:context/:node/:resource",
-    "name": "document-resource",
+    "name": "document-resource-fullscreen",
     "command": "openReader"
   },
   {
@@ -38,11 +33,6 @@
     "command": "openCollection"
   },
   {
-    "route": "collections/:collection",
-    "name": "collection",
-    "command": "openCollection"
-  },
-  {
     "route": "about",
     "name": "about",
     "command": "openAbout"
@@ -54,7 +44,7 @@
   },
   {
     "route": "",
-    "name": "state",
-    "command": "openState"
+    "name": "explore",
+    "command": "openLibrary"
   }
 ]
