@@ -36,6 +36,7 @@ SubstanceController.Prototype = function() {
 
   this.initialize = function(newState, cb) {
     var self = this;
+    // console.log("SubstanceController.initialize()", newState);
     this.loadLibrary(this.config.library_url, function(error, library) {
       if (error) return cb(error);
       self.library = library;
@@ -48,6 +49,7 @@ SubstanceController.Prototype = function() {
 
   this.dispose = function() {
     __super__.dispose.call(this);
+    // console.log("SubstanceController.dispose()");
 
     this.view.dispose();
     this.view = null;
@@ -72,22 +74,29 @@ SubstanceController.Prototype = function() {
                           this.state["documentId"] === newState["documentId"]);
         break;
       }
-      if (skipTransition) return cb(null, skipTransition);
+      if (skipTransition) {
+        // console.log("SubstanceController.transition(): reflexive transition", this.state, newState);
+        return cb(null, skipTransition);
+      }
     }
 
     if (this.childController) {
+      // console.log("SubstanceController.transition(): disposing childController.");
       this.childController.dispose();
       this.childController = null;
     }
 
     switch (newState.id) {
     case "library":
+      // console.log("SubstanceController.transition(): open library state.");
       this.openLibrary();
       return cb(null);
     case "collection":
+      // console.log("SubstanceController.transition(): open collection state.");
       this.openCollection(newState);
       return cb(null);
     case "reader":
+      // console.log("SubstanceController.transition(): open reader state.");
       this.openReader(newState, cb);
       break;
     default:
@@ -96,7 +105,12 @@ SubstanceController.Prototype = function() {
   };
 
   this.afterTransition = function() {
-    if (this.view) this.view.onStateChanged();
+    if (this.view) {
+      // console.log("SubstanceController.afterTransition(): Updating view.");
+      this.view.onStateChanged();
+    } else {
+      // console.log("SubstanceController.afterTransition(): No view given.");
+    }
   };
 
   this.openReader = function(args, cb) {
@@ -110,7 +124,7 @@ SubstanceController.Prototype = function() {
       if (error) return cb(error);
       var options = {
         back: function() {
-          console.log("Calling back handler");
+          // console.log("Calling back handler");
           self.switchState({
             id: "collection",
             collectionId: collectionId
