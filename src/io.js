@@ -121,6 +121,7 @@ IO.compileDocument = function(collection, docId, cb) {
       var output = doc.toJSON();
       output.id = docId;
       output.nodes.document.guid = docId;
+      output.nodes.document.published_on = meta.published_on;
 
       cb(null, output);
     });
