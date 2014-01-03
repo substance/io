@@ -8,7 +8,7 @@
     {
       "repository": "https://github.com/substance/chronicle.git",
       "folder": "node_modules/substance-chronicle",
-      "branch": "0.3.x"
+      "branch": "0.2.x"
     },
     {
       "repository": "https://github.com/substance/commander.git",
@@ -18,7 +18,7 @@
     {
       "repository": "https://github.com/michael/data.git",
       "folder": "node_modules/substance-data",
-      "branch": "0.9.x"
+      "branch": "0.8.x"
     },
     {
       "repository": "https://github.com/substance/document.git",
@@ -73,7 +73,7 @@
     {
       "repository": "https://github.com/substance/operator.git",
       "folder": "node_modules/substance-operator",
-      "branch": "0.3.x"
+      "branch": "0.2.x"
     },
     {
       "repository": "https://github.com/substance/regexp.git",
