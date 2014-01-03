@@ -4,6 +4,8 @@ var _ = require("underscore");
 var util = require('substance-util');
 var html = util.html;
 var View = require("substance-application").View;
+var $$ = require("substance-application").$$;
+
 
 // Substance.View Constructor
 // ==========================================================================
@@ -18,6 +20,7 @@ var SubstanceView = function(controller) {
   // --------
   
   this.listenTo(this.controller, 'state-changed', this.onStateChanged);
+  this.listenTo(this.controller, 'loading:started', this.startLoading);
 };
 
 
@@ -39,6 +42,16 @@ SubstanceView.Prototype = function() {
     }
   };
 
+  this.startLoading = function(msg) {
+    if (!msg) msg = "Loading article";
+    $('.spinner-wrapper .message').html(msg);
+    $('body').addClass('loading');
+  };
+
+  this.stopLoading = function() {
+    $('body').removeClass('loading');
+  };
+
   // Open Library
   // ----------
   //
@@ -57,8 +70,17 @@ SubstanceView.Prototype = function() {
   //
 
   this.openReader = function() {
+    var that = this;
     var view = this.controller.reader.createView();
     this.replaceMainView('reader', view);
+
+    that.startLoading("Typesetting");
+    this.$('#main').css({opacity: 0});
+
+    _.delay(function() {
+      that.stopLoading();
+      that.$('#main').css({opacity: 1});
+    }, 1000);
 
     // Update browser title
     document.title = this.controller.reader.__document.title;
@@ -100,7 +122,30 @@ SubstanceView.Prototype = function() {
   };
 
   this.render = function() {
-    this.$el.html(html.tpl('lens', this.controller.session));
+    this.el.innerHTML = "";
+
+    // Browser not supported dialogue
+    // ------------
+
+    this.el.appendChild($$('.browser-not-supported', {
+      text: "Sorry, your browser is not supported.",
+      style: "display: none;"
+    }));
+
+    // Spinner
+    // ------------  
+
+    this.el.appendChild($$('.spinner-wrapper', {
+      children: [
+        $$('.spinner'),
+        $$('.message', {html: 'Loading article'})
+      ]
+    }));
+
+    // Main container
+    // ------------
+
+    this.el.appendChild($$('#main'));
     return this;
   };
 
