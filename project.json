@@ -139,7 +139,6 @@
     "styles/nodes/lens-table.css": "node_modules/lens-article/nodes/table/table.css",
     "styles/nodes/lens-video.css": "node_modules/lens-article/nodes/video/video.css",
     "styles/nodes/lens-caption.css": "node_modules/lens-article/nodes/caption/caption.css",
-    "styles/nodes/lens-person.css": "node_modules/lens-article/nodes/person/person.css",
     "styles/nodes/lens-publication_info.css": "node_modules/lens-article/nodes/publication_info/publication_info.css",
 
     "styles/library.css": "node_modules/substance-library/library.css",
