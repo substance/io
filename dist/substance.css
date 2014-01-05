@@ -446,25 +446,34 @@ Outline
 .substance-article .content-node.cover .title {
   font-family: 'Avenir LT W01 85 Heavy', 'Montserrat', 'Source Sans Pro';
   line-height: 1.3em;
-  margin-bottom: 50px;
   font-size: 40px;
 }
 
 .substance-article .content-node.cover .content .authors {
-  color: rgba(0,0,0, 0.7);
+  padding-top: 30px;
+  color: #1B6685;
   overflow: auto;
 }
 
-.substance-article .content-node.cover .authors .text {
+/* One para per author */
+.substance-article .content-node.cover .authors .collaborator_reference {
   float: left;
   padding: 0px;
   margin: 0px;
   font-size: 20px;
   margin-right: 10px;
   margin-bottom: 8px;
-  color: rgba(0,0,0, 0.7);
 }
 
+.substance-article .content-node.cover .authors .collaborator_reference:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+
+.substance-article .content-node.cover .authors .collaborator_reference.active {
+  background-color: #5c6570;
+  color: white;
+}
 /* Description Node
 -------------------------------------------------------------------------------*/
 
@@ -1569,7 +1578,12 @@ span.annotation.formula_reference, span.publication_reference {
   cursor: pointer;
 }
 
-.content-node .contributor_reference {
+.content-node .contributor_reference, .content-node .collaborator_reference {
+  padding: 2px 1px;
+  cursor: pointer;
+}
+
+.content-node .contributor_reference, .content-node .collaborator_reference {
   padding: 2px 1px;
   cursor: pointer;
 }
