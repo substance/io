@@ -142,7 +142,6 @@ SubstanceController.Prototype = function() {
 
           // Hotpatch the doc id, so it conforms to the id specified in the library file
           doc.id = documentId;
-          console.log('ON THE FLY CONVERTED DOC', doc.toJSON());
 
           // Process JSON file
         } else {
@@ -166,7 +165,6 @@ SubstanceController.Prototype = function() {
   };
 
   this.openReader = function(collectionId, documentId, context, node, resource, fullscreen) {
-    console.log('Controller#openReader');
 
     // The article view state
     var state = {
