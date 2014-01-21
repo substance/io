@@ -7,10 +7,10 @@ var SubstanceView = require("./substance_view");
 var Library = require("substance-library");
 var LibraryController = Library.Controller;
 var CollectionController = Library.Collection.Controller;
-var LensArticle = require("lens-article");
+// var LensArticle = require("lens-article");
 var Article = require("substance-article");
 var ReaderController = require("substance-reader").Controller;
-var Converter = require("lens-converter");
+// var Converter = require("lens-converter");
 
 
 // Substance.Controller
@@ -133,26 +133,29 @@ SubstanceController.Prototype = function() {
         var doc, err;
 
         // Determine type of resource
-        var xml = $.isXMLDoc(data);
+        // var xml = $.isXMLDoc(data);
 
-        // Process XML file
-        if(xml) {
-          var importer = new Converter.Importer();
-          doc = importer.import(data);
+        // // Process XML file
+        // if(xml) {
+        //   var importer = new Converter.Importer();
+        //   doc = importer.import(data);
 
-          // Hotpatch the doc id, so it conforms to the id specified in the library file
-          doc.id = documentId;
-          console.log('ON THE FLY CONVERTED DOC', doc.toJSON());
+        //   // Hotpatch the doc id, so it conforms to the id specified in the library file
+        //   doc.id = documentId;
+        //   console.log('ON THE FLY CONVERTED DOC', doc.toJSON());
 
-          // Process JSON file
-        } else {
-          if(typeof data == 'string') data = $.parseJSON(data);
-          if (data.schema && data.schema[0] === "lens-article") {
-            doc = LensArticle.fromSnapshot(data);
-          } else {
-            doc = Article.fromSnapshot(data);
-          }
-        }
+        //   // Process JSON file
+        // } else {
+        if(typeof data == 'string') data = $.parseJSON(data);
+
+        doc = Article.fromSnapshot(data);
+        
+        // if (data.schema && data.schema[0] === "lens-article") {
+        //   doc = LensArticle.fromSnapshot(data);
+        // } else {
+          
+        // }
+        // }
         _onDocumentLoad(err, doc);  
       })
     .fail(function(err) {

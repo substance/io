@@ -94,8 +94,10 @@ IO.extractLibrary = function(all) {
 IO.compileDocument = function(collection, docId, cb) {
 
   try {
-    var filename = IO.LIBRARY_BASEDIR+"/"+collection+"/"+docId+"/content.md";
-    var inputData = fs.readFileSync(filename, 'utf8');
+
+    // Read Metadata
+    // --------
+    // 
 
     var metaFile = IO.LIBRARY_BASEDIR+"/"+collection+"/"+docId+"/index.json";
     var meta = null;
@@ -105,27 +107,46 @@ IO.compileDocument = function(collection, docId, cb) {
       meta = JSON.parse(metaData);
     }
 
-    var resourcesFile = IO.LIBRARY_BASEDIR+"/"+collection+"/"+docId+"/resources.json";
-    var resources = null;
+    var filename = IO.LIBRARY_BASEDIR+"/"+collection+"/"+docId+"/content.md";
+    var inputData = fs.readFileSync(filename, 'utf8');
+    
+    // Check if input is native
+    // --------
+    // 
 
-    if (fs.existsSync(resourcesFile)) {
-      var resourcesData = fs.readFileSync(resourcesFile, 'utf8');
-      resources = JSON.parse(resourcesData);
-    };
+    var jsonFile = IO.LIBRARY_BASEDIR+"/"+collection+"/"+docId+"/content.json";
 
-    converter.convert(inputData, 'markdown', 'substance', function(err, doc) {
-      if (err) return cb(err);
+    if (fs.existsSync(jsonFile)) {
+      var rawDoc = fs.readFileSync(jsonFile, 'utf8');
+      var doc = JSON.parse(rawDoc);
+      cb(null, doc);
 
-      extendArticle(doc, resources, meta);
+    } else {
+      console.log('Converting from Markdown...');
+      var resourcesFile = IO.LIBRARY_BASEDIR+"/"+collection+"/"+docId+"/resources.json";
+      var resources = null;
 
-      var output = doc.toJSON();
-      output.id = docId;
-      output.nodes.document.guid = docId;
-      output.nodes.document.published_on = meta.published_on;
+      if (fs.existsSync(resourcesFile)) {
+        var resourcesData = fs.readFileSync(resourcesFile, 'utf8');
+        resources = JSON.parse(resourcesData);
+      };
 
-      cb(null, output);
-    });
+      converter.convert(inputData, 'markdown', 'substance', function(err, doc) {
+        if (err) return cb(err);
+
+        extendArticle(doc, resources, meta);
+
+        var output = doc.toJSON();
+        output.id = docId;
+        output.nodes.document.guid = docId;
+        output.nodes.document.published_on = meta.published_on;
+
+        cb(null, output);
+      });
+    }
+
   } catch (err) {
+    console.log('ERROR CATCHED', err);
     // Just record entries
     var filename = IO.LIBRARY_BASEDIR+"/"+collection+"/"+docId+"/index.json";
     var inputData = JSON.parse(fs.readFileSync(filename, 'utf8'));

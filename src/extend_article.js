@@ -4,6 +4,7 @@ var Figure = require("substance-nodes/src/figure/figure");
 var Table = require("substance-nodes/src/table/table");
 var Index = require("substance-data").Graph.Index;
 
+
 function loadResources(article, resources) {
   var nodes;
   var resourceMap = {};
@@ -137,6 +138,7 @@ function loadMeta(article, meta) {
 
   // return resourceMap;
 }
+
 
 var extendArticle = function(article, resources, meta) {
   // create views for figures/tables and citations
