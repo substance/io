@@ -7,11 +7,9 @@ var SubstanceView = require("./substance_view");
 var Library = require("substance-library");
 var LibraryController = Library.Controller;
 var CollectionController = Library.Collection.Controller;
-// var LensArticle = require("lens-article");
 var Article = require("substance-article");
 var ReaderController = require("substance-reader").Controller;
-// var Converter = require("lens-converter");
-
+var DocumentLoader = require("./document_loader");
 
 // Substance.Controller
 // -----------------
@@ -22,17 +20,95 @@ var SubstanceController = function(config) {
   Controller.call(this);
 
   this.config = config;
+  this.documentLoader = new DocumentLoader();
 
-  // Main controls
-  this.on('open:reader', this.openReader);
-  this.on('open:library', this.openLibrary);
-  this.on('open:login', this.openLogin);
+  // Library instance will be loaded by initialize
+  this.library = null;
 };
 
 
 SubstanceController.Prototype = function() {
+  var __super__ = Controller.prototype;
 
   var that = this;
+
+  // Aplication state handling
+  // -------
+
+  // Transition from inital state to a specific state
+  // ----
+
+  this.initialize = function(newState, cb) {
+    var self = this;
+    this.loadLibrary(this.config.library_url, function(error, library) {
+      if (error) return cb(error);
+      self.library = library;
+      cb(null);
+    });
+  };
+
+
+  // Transition to a specific state
+  // ----
+
+  this.transition = function(newState, cb) {
+
+    // handle reflexiv transitions
+    if (newState.id === this.state.id) {
+      var skipTransition;
+      switch (this.state.id) {
+      case "library":
+        skipTransition = true;
+        break;
+      case "collection":
+        skipTransition = (this.state["collectionId"] === newState["collectionId"]);
+        break;
+      case "reader":
+        skipTransition = (this.state["collectionId"] === newState["collectionId"] &&
+                          this.state["documentId"] === newState["documentId"]);
+        break;
+      case "testcenter":
+        skipTransition = true;
+        break;
+      }
+      if (skipTransition) {
+        return cb(null, skipTransition);
+      }
+    }
+
+    if (this.childController) {
+      this.childController.dispose();
+      this.childController = null;
+    }
+
+    // HACK: Test center does not fit into the current
+
+    switch (newState.id) {
+    case "library":
+      this.openLibrary();
+      
+      return cb(null);
+    case "collection":
+      this.openCollection(newState);
+      return cb(null);
+    case "reader":
+      this.openReader(newState, cb);
+      break;
+    case "testcenter":
+      this.openTestCenter(newState);
+      return cb(null);
+    default:
+      throw new Error("Illegal application state " + newState);
+    }
+  };
+
+
+  this.afterTransition = function() {
+    if (this.view) {
+      this.view.transition(this.state);
+    }
+  };
+
 
   // Initial view creation
   // ===================================
@@ -43,49 +119,6 @@ SubstanceController.Prototype = function() {
     return view;
   };
 
-  // Loaders
-  // --------
-
-  this.loadLibrary = function(url, cb) {
-    var that = this;
-    if (this.__library) return cb(null);
-
-    $.getJSON(url, function(data) {
-      that.__library = new Library({
-        seed: data
-      });
-      cb(null);
-    }).error(cb);
-  };
-
-  // Update Hash fragment
-  // --------
-  // 
-
-  this.updatePath = function(state) {
-    var path = [this.state.collection, this.state.document];
-
-    path.push(state.context);
-
-    if (state.node) {
-      path.push(state.node);
-    } else {
-      path.push('all');
-    }
-
-    if (state.resource) {
-      path.push(state.resource);
-    }
-
-    if (state.fullscreen) {
-      path.push('fullscreen');
-    }
-
-    window.app.router.navigate(path.join('/'), {
-      trigger: false,
-      replace: false
-    });
-  };
 
   // Transitions
   // ===================================
@@ -143,48 +176,41 @@ SubstanceController.Prototype = function() {
     });
   };
 
-  this.openAbout = function() {
-    this.openReader("substance", "about", "toc");
-    app.router.navigate('substance/about', false);
+
+  this.openReader = function(args, cb) {
+    var docId = args["documentId"];
+
+    var self = this;
+    var collectionId = args["collectionId"];
+    var record = this.library.get(docId);
+    this.documentLoader.load(docId, record.url, function(err, doc) {
+      if (err) return cb(err);
+      self.__openReader(doc, collectionId, cb);
+    });
   };
 
-  this.openReader = function(collectionId, documentId, context, node, resource, fullscreen) {
+  this.__openReader = function(doc, collectionId, cb) {
+    var self = this;
+    var options = {
+      back: function() {
+        // update the library record
+        var libRecord = self.library.get(doc.id);
 
-    // The article view state
-    var state = {
-      context: context || "toc",
-      node: node,
-      resource: resource,
-      fullscreen: !!fullscreen,
-    };
-
-    var prevDocument = this.state.document;
-
-    // Substance Controller state
-    this.state = {
-      collection: collectionId,
-      document: documentId,
-    };
-
-    // If state change happens within a document context,
-    // just trigger a state update
-    // TODO: This implementation is rather hacky, we need a better solution for maintaining
-    // the current app state.
-
-    if (documentId === prevDocument) {
-      this.reader.modifyState(state);
-      // HACK: monkey patch alert
-      if (state.resource) this.reader.view.jumpToResource(state.resource);
-    } else {
-      if (collectionId === "substance" && documentId === "article") {
-        return this.openArticle(state);
+        self.switchState({
+          id: "collection",
+          collectionId: collectionId
+        });
       }
-      this.loadLibrary(this.config.library_url, _open.bind(this, state, documentId));
-    }
+    };
+
+    self.childController = new ReaderController(doc, options);
+    cb(null);
   };
 
 
- this.openArticle = function(state) {
+  // Obsolete?
+  // 
+  this.openArticle = function(state) {
     var that = this;
     var doc = Article.describe();
     this.reader = new ReaderController(doc, state);
@@ -206,79 +232,48 @@ SubstanceController.Prototype = function() {
   };
 
 
-  // Open Library
+  this.openLibrary = function() {
+    this.childController = new LibraryController(this.library);
+  };
+
+
+  this.openCollection = function(args) {
+    var collection = this.library.getCollection(args["collectionId"]);
+    this.childController = new CollectionController(collection, {
+      "import": this.importDocument.bind(this),
+      "delete": this.deleteDocument.bind(this)
+    });
+  };
+
+  // Loaders
   // --------
 
-  this.openLibrary = function(collectionId) {
+  this.loadLibrary = function(url, cb) {
     var that = this;
-
-    function open() {
-      // Defaults to lens collection
-      var state = {
-        context: 'library'
-        // collection: collectionId || that.__library.collections[0].id
-      };
-
-      that.library = new LibraryController(that.__library, state);
-      that.modifyState(state);
-    }
-
-    // Ensure the library is loaded
-    this.loadLibrary(this.config.library_url, open);
+    $.getJSON(url, function(data) {
+      var library = new Library({
+        seed: data
+      });
+      cb(null, library);
+    }).error(cb);
   };
 
-
-  this.openCollection = function(collectionId) {
-    var that = this;
-
-    function open() {
-      // Defaults to lens collection
-      var state = {
-        context: 'collection',
-        collection: collectionId
-      };
-
-      that.collection = new CollectionController(that.__library.getCollection(collectionId), state);
-      that.modifyState(state);
-    }
-
-    // Ensure the library is loaded
-    this.loadLibrary(this.config.library_url, open);
+  this.importDocument = function(collectionId, docData, cb) {
+    var self = this;
+    this.library.__backend__.seedDocument(collectionId, docData, function(error) {
+      if (error) return cb(error);
+      var state = [];
+      state.push({id: "reader", collectionId: collectionId, documentId: docData.id});
+      state.push({id: "main", contextId: "toc"});
+      self.switchState(state, {updateRoute: true, replace: true}, cb);
+    });
   };
 
-
-  this.openSubmission = function() {
-    console.log('NOT YET IMPLEMENTED');
+  this.deleteDocument = function(collectionId, docId, cb) {
+    this.library.__backend__.deleteDocument(collectionId, docId, cb);
   };
 
-
-  // Provides an array of (context, controller) tuples that describe the
-  // current state of responsibilities
-  // --------
-  //
-  // E.g., when a document is opened:
-  //    ["application", "document"]
-  // with controllers taking responisbility:
-  //    [this, this.document]
-  //
-  // The child controller (e.g., document) should itself be allowed to have sub-controllers.
-  // For sake of prototyping this is implemented manually right now.
-  // TODO: discuss naming
-
-  this.getActiveControllers = function() {
-    var result = [ ["sandbox", this] ];
-
-    var context = this.state.context;
-
-    if (context === "article") {
-      result = result.concat(this.article.getActiveControllers());
-    } else if (context === "library") {
-      result = result.concat(["library", this.library]);
-    }
-    return result;
-  };
 };
-
 
 // Exports
 // --------

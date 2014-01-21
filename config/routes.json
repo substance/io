@@ -43,19 +43,9 @@
     "command": "openCollection"
   },
   {
-    "route": "about",
-    "name": "about",
-    "command": "openAbout"
-  },
-  {
     "route": "explore",
     "name": "explore",
     "command": "openLibrary"
-  },
-  {
-    "route": "submit",
-    "name": "submit",
-    "command": "openSubmission"
   },
   {
     "route": "",

@@ -19,28 +19,12 @@ var SubstanceView = function(controller) {
   // Handle state transitions
   // --------
   
-  this.listenTo(this.controller, 'state-changed', this.onStateChanged);
   this.listenTo(this.controller, 'loading:started', this.startLoading);
 };
 
 
 SubstanceView.Prototype = function() {
 
-  this.onStateChanged = function() {
-    var state = this.controller.state;
-
-    if (state.context === "reader") {
-      this.openReader();
-    } else if (state.context === "library") {
-      this.openLibrary();
-    } else if (state.context === "submission") {
-      this.openSubmission();
-    } else if (state.context === "collection") {
-      this.openCollection();
-    } else {
-      console.log("Unknown application state: " + context);
-    }
-  };
 
   this.startLoading = function(msg) {
     if (!msg) msg = "Loading article";
@@ -52,17 +36,41 @@ SubstanceView.Prototype = function() {
     $('body').removeClass('loading');
   };
 
+  // Main state transition
+  // ----------
+  //
+
+  this.transition = function(state) {
+    var state = this.controller.state;
+
+    switch (state.id) {
+    case "library":
+      this.openLibrary();
+      break;
+    case "collection":
+      this.openCollection();
+      break;
+    case "reader":
+      this.openReader();
+      break;
+    default:
+      console.error("Illegal application state", state.id);
+    }
+  };
+
   // Open Library
   // ----------
   //
 
   this.openLibrary = function() {
-    // Application controller has a editor controller ready
-    // -> pass it to the editor view
-    // var view = new EditorView(this.controller.editor.view);
-    var view = this.controller.library.createView();
+    var libraryCtrl = this.controller.childController;
+    var view = libraryCtrl.view;
     this.replaceMainView('library', view);
+
+    this.updateTitle("Library: " + this.controller.library.name);
   };
+
+
 
 
   // Open the reader view
@@ -70,29 +78,19 @@ SubstanceView.Prototype = function() {
   //
 
   this.openReader = function() {
-    var that = this;
-    var view = this.controller.reader.createView();
+    var readerCtrl = this.controller.childController;
+    var view = readerCtrl.view;
     this.replaceMainView('reader', view);
 
-    that.startLoading("Typesetting");
-    this.$('#main').css({opacity: 0});
+  //   that.startLoading("Typesetting");
+  //   this.$('#main').css({opacity: 0});
 
-    _.delay(function() {
-      that.stopLoading();
-      that.$('#main').css({opacity: 1});
-    }, 1000);
+  //   _.delay(function() {
+  //     that.stopLoading();
+  //     that.$('#main').css({opacity: 1});
+  //   }, 1000);
 
-    // Update browser title
-    document.title = this.controller.reader.__document.title;
-  };
-
-  // Open the reader view
-  // ----------
-  //
-
-  this.openSubmission = function() {
-    var view = this.controller.submission.createView();
-    this.replaceMainView('submission', view);
+    this.updateTitle(readerCtrl.document.title);
   };
 
   // Open collection view
@@ -100,8 +98,11 @@ SubstanceView.Prototype = function() {
   //
 
   this.openCollection = function() {
-    var view = this.controller.collection.createView();
+    var collectionCtrl = this.controller.childController;
+    var view = collectionCtrl.view;
     this.replaceMainView('collection', view);
+
+    this.updateTitle("Collection: " + collectionCtrl.collection.name);
   };
 
 
@@ -112,13 +113,8 @@ SubstanceView.Prototype = function() {
   this.replaceMainView = function(name, view) {
     $('body').removeClass().addClass('current-view '+name);
 
-    // if (this.mainView && this.mainView !== view) {
-    //   console.log('disposing it..');
-    //   this.mainView.dispose();
-    // }
-
     this.mainView = view;
-    this.$('#main').html(view.render().el);
+    this.$('#main').html(view.el);
   };
 
   this.render = function() {

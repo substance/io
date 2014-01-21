@@ -3,7 +3,7 @@
     {
       "repository": "https://github.com/substance/application.git",
       "folder": "node_modules/substance-application",
-      "branch": "0.2.x"
+      "branch": "appstates"
     },
     {
       "repository": "https://github.com/substance/chronicle.git",
@@ -112,14 +112,12 @@
     "styles/nodes/heading.css": "node_modules/substance-article/nodes/heading/heading.css",
     "styles/nodes/list.css": "node_modules/substance-article/nodes/list/list.css",
     "styles/nodes/image.css": "node_modules/substance-article/nodes/image/image.css",
-    "styles/nodes/formula.css": "node_modules/substance-article/nodes/formula/formula.css",
     "styles/nodes/codeblock.css": "node_modules/substance-article/nodes/codeblock/codeblock.css",
-    "styles/nodes/collaborator.css": "node_modules/substance-article/nodes/collaborator/collaborator.css",
+    "styles/nodes/contributor.css": "node_modules/substance-article/nodes/contributor/contributor.css",
 
     "styles/nodes/table.css": "node_modules/substance-article/nodes/table/table.css",
     "styles/nodes/figure.css": "node_modules/substance-article/nodes/figure/figure.css",
     "styles/nodes/cover.css": "node_modules/substance-article/nodes/cover/cover.css",
-    "styles/nodes/description.css": "node_modules/substance-article/nodes/description.css",
 
     "styles/library.css": "node_modules/substance-library/library.css",
     "styles/toc.css": "node_modules/substance-toc/toc.css",
