@@ -131,31 +131,11 @@ SubstanceController.Prototype = function() {
     $.get(record.url)
     .done(function(data) {
         var doc, err;
-
-        // Determine type of resource
-        // var xml = $.isXMLDoc(data);
-
-        // // Process XML file
-        // if(xml) {
-        //   var importer = new Converter.Importer();
-        //   doc = importer.import(data);
-
-        //   // Hotpatch the doc id, so it conforms to the id specified in the library file
-        //   doc.id = documentId;
-        //   console.log('ON THE FLY CONVERTED DOC', doc.toJSON());
-
-        //   // Process JSON file
-        // } else {
-        if(typeof data == 'string') data = $.parseJSON(data);
-
-        doc = Article.fromSnapshot(data);
         
-        // if (data.schema && data.schema[0] === "lens-article") {
-        //   doc = LensArticle.fromSnapshot(data);
-        // } else {
-          
-        // }
-        // }
+        // Determine type of resource
+        if(typeof data == 'string') data = $.parseJSON(data);
+        doc = Article.fromSnapshot(data);
+
         _onDocumentLoad(err, doc);  
       })
     .fail(function(err) {
@@ -169,7 +149,6 @@ SubstanceController.Prototype = function() {
   };
 
   this.openReader = function(collectionId, documentId, context, node, resource, fullscreen) {
-    console.log('Controller#openReader');
 
     // The article view state
     var state = {
