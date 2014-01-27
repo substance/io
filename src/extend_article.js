@@ -87,35 +87,13 @@ function replaceReferencedLinks(article, resourceMap) {
   });
 }
 
+
 var addCoverNode = function(article, meta) {
   var coverNode = {
     id: "cover",
     type: "cover",
-    authors: [],
     image: meta["cover_image"]
   };
-
-  // HACK: we link the authors in the cover node to the collaborator card
-  // via an artificial person_reference
-  // TODO: rethink
-  var collaboratorsIndex = new Index(article, {types: ["collaborator"]});
-  var collaborators = collaboratorsIndex.get();
-  var idx = 0;
-  _.each(collaborators, function(collaborator) {
-    if (collaborator.role !== "author") {
-      return;
-    }
-    idx++;
-    var personRefNode = {
-      id: "collaborator_reference_"+idx,
-      type: "person_reference",
-      path: ["cover", "authors", ""+idx],
-      range: [0, collaborator.name.length],
-      target: collaborator.id
-    };
-    article.create(personRefNode);
-    coverNode.authors.push(personRefNode.id);
-  });
 
   article.create(coverNode);
   article.show("content", coverNode.id, 0);
@@ -123,53 +101,31 @@ var addCoverNode = function(article, meta) {
 
 function loadMeta(article, meta) {
   // Set document title
-  article.title = meta.title;
+  article.setTitle(meta.title);
 
-  // var resourceMap = {};
-  // collaborators
+  // Contributors
   var idcount = 0;
-  _.each(meta.collaborators, function(c) {
-    c.id = "collaborator_" + (++idcount);
-    c.type = "collaborator";
 
+  var authors = [];
+  // TODO: Change to contributor
+  _.each(meta.collaborators, function(c) {
+    c.id = "contributor_" + (++idcount);
+    c.type = "contributor";
+    authors.push(c.id);
     article.create(c);
     article.show("info", c.id);
   });
 
-  // return resourceMap;
+  article.setAuthors(authors);
 }
 
-
 var extendArticle = function(article, resources, meta) {
-  // create views for figures/tables and citations
-  article.create({
-    id: "figures",
-    type: "view",
-    nodes: []
-  });
-
-  article.create({
-    id: "info",
-    type: "view",
-    nodes: []
-  });
-
-  // article.create({
-  //   id: "citations",
-  //   type: "view",
-  //   nodes: []
-  // });
-
-  article.nodes.document.views.push("figures");
-  // article.nodes.document.views.push("citations");
-  article.nodes.document.views.push("info");
+  addCoverNode(article, meta);
 
   if (meta) {
     // enhance article with meta information, such as collaborator, title, publish-date etc.
     loadMeta(article, meta);
   }
-
-  addCoverNode(article, meta);
 
   if (resources) {
     // create nodes for the given resources
