@@ -99,7 +99,7 @@ var addCoverNode = function(article, meta) {
   article.show("content", coverNode.id, 0);
 };
 
-function loadMeta(article, meta) {
+function loadMeta(article, meta, docId) {
   // Set document title
   article.setTitle(meta.title);
 
@@ -107,8 +107,7 @@ function loadMeta(article, meta) {
   var idcount = 0;
 
   var authors = [];
-  // TODO: Change to contributor
-  _.each(meta.collaborators, function(c) {
+  _.each(meta.contributors, function(c) {
     c.id = "contributor_" + (++idcount);
     c.type = "contributor";
     authors.push(c.id);
@@ -116,15 +115,20 @@ function loadMeta(article, meta) {
     article.show("info", c.id);
   });
 
+  // Set some article level properties
+  // -----------
+
+  article.setId(docId);
+  article.setPublishedOn(meta.published_on);
   article.setAuthors(authors);
 }
 
-var extendArticle = function(article, resources, meta) {
+var extendArticle = function(article, resources, meta, docId) {
   addCoverNode(article, meta);
 
   if (meta) {
-    // enhance article with meta information, such as collaborator, title, publish-date etc.
-    loadMeta(article, meta);
+    // enhance article with meta information, such as authors, title, publish-date etc.
+    loadMeta(article, meta, docId);
   }
 
   if (resources) {

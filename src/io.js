@@ -73,7 +73,7 @@ IO.extractLibrary = function(all) {
       library.nodes[d] = {
         "id": d,
         "url": meta.url ? meta.url : "docs/"+c+"/"+d+"/content.json",
-        "authors": _.pluck(meta.collaborators, 'name'),
+        "authors": _.pluck(meta.contributors, 'name'),
         "title": meta.title,
         "published_on": meta.published_on
       };
@@ -107,22 +107,27 @@ IO.compileDocument = function(collection, docId, cb) {
       meta = JSON.parse(metaData);
     }
 
-    var filename = IO.LIBRARY_BASEDIR+"/"+collection+"/"+docId+"/content.md";
-    var inputData = fs.readFileSync(filename, 'utf8');
-    
+
     // Check if input is native
     // --------
     // 
 
     var jsonFile = IO.LIBRARY_BASEDIR+"/"+collection+"/"+docId+"/content.json";
 
+  
     if (fs.existsSync(jsonFile)) {
       var rawDoc = fs.readFileSync(jsonFile, 'utf8');
       var doc = JSON.parse(rawDoc);
+
+      // Update title
+      doc.nodes.document.title = meta.title;
       cb(null, doc);
 
     } else {
       console.log('Converting from Markdown...');
+      var filename = IO.LIBRARY_BASEDIR+"/"+collection+"/"+docId+"/content.md";
+      var inputData = fs.readFileSync(filename, 'utf8');
+
       var resourcesFile = IO.LIBRARY_BASEDIR+"/"+collection+"/"+docId+"/resources.json";
       var resources = null;
 
@@ -134,14 +139,9 @@ IO.compileDocument = function(collection, docId, cb) {
       converter.convert(inputData, 'markdown', 'substance', function(err, doc) {
         if (err) return cb(err);
 
-        extendArticle(doc, resources, meta);
+        extendArticle(doc, resources, meta, docId);
 
-        var output = doc.toJSON();
-        output.id = docId;
-        output.nodes.document.guid = docId;
-        output.nodes.document.published_on = meta.published_on;
-
-        cb(null, output);
+        cb(null, doc.toJSON());
       });
     }
 
