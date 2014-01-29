@@ -59,14 +59,13 @@ Outline
   background: #fff;
   position: absolute;
   left: 0px;
-  width:50px;
+  width:30px;
   top: 0px;
   bottom: 0px;
 }
 
 .lens-outline .node.cover {
-  /*background: #5c6570;*/
-  /*opacity: 1;*/
+
 }
 
 .lens-outline .node .arrow {
@@ -106,20 +105,12 @@ Outline
 }
 
 .lens-outline .node {
-  margin: 0 5px;
-  width: 40px;
+  margin: 0px 0px;
+  width: 30px;
   background: rgba(0,0,0, 0.4);
   opacity: 0.15;
   cursor: pointer;
 }
-
-.lens-outline .node:hover {
-  /*opacity: 0.4;*/
-}
-
-/*.lens-outline .node.highlighted:hover {
-  opacity: 1.0;
-}*/
 
 .lens-outline .text {
 }
@@ -127,7 +118,6 @@ Outline
 .lens-outline .heading {
   background: rgba(0,0,0, 0.5);
 }
-
 
 .lens-outline .node.selected {
   opacity: 1.0;
@@ -151,6 +141,17 @@ Outline
   opacity: 0.7;
   background: rgba(11, 157, 217, 1);
 }
+
+.lens-outline.remarks .node.highlighted {
+  opacity: 0.7;
+  background: rgba(46,199,161, 1);
+}
+
+.lens-outline.errors .node.highlighted {
+  opacity: 0.7;
+  background: rgba(228, 67, 34, 1);  
+}
+
 
 .lens-outline.figures .node.selected {
   opacity: 1;
@@ -191,10 +192,6 @@ Outline
   width: auto;
 }
 
-.content-node.paragraph .content-node.text.heading {
-  display:block;
-}
-
 .content-node.paragraph .content-node.text div {
   display:inline;
   width: auto;
@@ -202,7 +199,7 @@ Outline
 
 .content-node.paragraph .content-node.image div img {
   display:inline;
-  width: 100%;
+  width: auto;
 }
 
 .content-node.paragraph .content-node.formula.inline {
@@ -217,27 +214,31 @@ Outline
 }
 
 .content-node.heading .content {
-  min-height: 40px;
+  /*min-height: 40px;*/
 }
 
 .content-node.heading { }
 
 .content-node.heading .content {
-  font-family: 'Montserrat';
-  font-weight: bold;
+  color: #1f1f1f;
+  font-weight: 600;
   line-height: 40px;
 }
 
 .content-node.heading.level-1 .content {
-  font-size: 24px;
-}
-
-.content-node.heading.level-2 .content {
   font-size: 20px;
 }
 
+.content-node.heading.level-2 .content {
+  font-size: 18px;
+}
+
 .content-node.heading.level-3 .content {
-  font-size: 17px;
+  font-size: 16px;
+}
+
+.content-node.heading.level-4 .content {
+  font-size: 15px;
 }
 
 /* List Node
@@ -248,13 +249,30 @@ Outline
   padding-top: 0px;
 }
 
-.content-node .listitem {
+.content-node .list-item {
   padding: 2px 0px;
   padding-left: 20px;
   position: relative;
 }
 
-.content-node .listitem .bullet {
+.content-node .list-item .bullet {
+  position: absolute;
+  left: 0px;
+  top: 15px;
+  width: 4px;
+  height: 4px;
+  background: #bbb;
+}
+
+/*p:before {
+  content:"Read this: ";
+}*/
+
+
+
+
+
+/*.content-node .listitem .bullet {
   position: absolute;
   left: 0px;
   top: 14px;
@@ -265,9 +283,9 @@ Outline
 
 .content-node.list .content {
   min-height: 30px;
-}
+}*/
 
-.content-node.list { }
+/*.content-node.list { }
 
 .content-node.list .content {
 
@@ -279,7 +297,7 @@ Outline
 
 .content-node.list.level-3 .content {
   font-size: 17px;
-}
+}*/
 /* Image Node
 -------------------------------------------------------------------------------*/
 
@@ -306,28 +324,6 @@ Outline
 .content-node.image div img {
   width: 100%;
 }
-.document .content-node.formula {
-  padding: 30px 60px;
-  padding-left: 100px;
-  min-height: 80px;
-  text-align: center;
-}
-
-.document .content-node.formula .label {
-  position: absolute;
-  right: 50px;
-  top: 0px;
-  bottom: 0px;
-  line-height: 90px;
-}
-
-/* TODO: This must be smarter */
-.document .content-node .MathJax_Display {
-  margin: 0;
-  padding: 20px;
-  overflow: auto;
-}
-
 /* Codeblock Node
 -------------------------------------------------------------------------------*/
 
@@ -338,41 +334,43 @@ Outline
 }
 
 .content-node.codeblock > .content {
-  font-family: 'Source Code Pro', 'Menlo', monospace;
-  font-size: 14px;
+  font-family: 'Monaco', 'Source Code Pro', 'Menlo', monospace;
+  font-size: 12px;
   color: #777;
   min-height: 28px;
 }
 
-.content-node.collaborator {
-  /*padding-right: 60px;*/
+.content-node.contributor {
   
-
 }
 
-.content-node.collaborator .content {
+/* Displayed as card header */
+.content-node.contributor .name {
+  position: relative;
+}
+
+
+.content-node.contributor .content {
   overflow: auto;
 }
 
-.content-node.collaborator .image {
-  /*background: blue;*/
+.content-node.contributor .image {
   width: 200px;
   padding-right: 20px;
-  /*height: 200px;*/
   float: left;
 }
 
-.content-node.collaborator .label {
+.content-node.contributor .label {
+  font-size: 14px;
   padding-top: 20px;
   color: rgba(0,0,0,0.6);
 }
 
-.content-node.collaborator .organization {
+.content-node.contributor .organization {
   font-size: 18px;
-  
 }
 
-.content-node.collaborator .image img {
+.content-node.contributor .image img {
   width: 100%;
 }
 
@@ -435,356 +433,154 @@ Outline
 .substance-article .content-node.figure div .image-wrapper img {
   width: 100%;
 }
+
+.substance-article .content-node.figure .label {
+  position: relative;
+}
 .substance-article .content-node.cover {
-  margin-bottom: 50px;
 }
 
 .substance-article .content-node.cover .content {
   background: none;
 }
 
+
+.substance-article .content-node.cover .published-on {
+  
+}
+
 .substance-article .content-node.cover .title {
-  font-family: 'Avenir LT W01 85 Heavy', 'Montserrat', 'Source Sans Pro';
+  /*padding-top: 20px;*/
+  white-space: pre-wrap;
   line-height: 1.3em;
+  margin-bottom: 20px;
   font-size: 40px;
+  font-weight: 600;
+  color: #1F1F1F;
 }
 
 .substance-article .content-node.cover .content .authors {
-  padding-top: 30px;
-  color: #1B6685;
+  color: rgba(0,0,0, 0.7);
   overflow: auto;
 }
 
-/* One para per author */
-.substance-article .content-node.cover .authors .collaborator_reference {
-  float: left;
-  padding: 0px;
-  margin: 0px;
-  font-size: 20px;
-  margin-right: 10px;
-  margin-bottom: 8px;
-}
-
-.substance-article .content-node.cover .authors .collaborator_reference:hover {
-  background: rgba(0,0,0,0.05);
-}
-
-
-.substance-article .content-node.cover .authors .collaborator_reference.active {
-  background-color: #5c6570;
-  color: white;
-}
-/* Description Node
--------------------------------------------------------------------------------*/
-
-.content-node.description .content .topic {
-  line-height: 40px;
-  font-family: 'Montserrat';
-  font-weight: bold;
-  margin-bottom: 12px;
-}
-
-.lens-article .content-node.cover {
-  color: rgba(0,0,0,0.8);
-}
-
-.lens-article .content-node.cover .breadcrumbs {
-  font-size: 14px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-
-  /* Prevent from nasty scrollbars that appear when eLife logo is shown */
-  overflow: hidden;
-}
-
-.lens-article .content-node.cover .breadcrumbs a {
-  margin-right: 20px;
+.substance-article .content-node.cover .content .authors .toggle-author {
   display: block;
   float: left;
-  line-height: 40px;
-  height: 40px;
-}
-
-.lens-article .content-node.cover .content {
-  background: none;
-}
-
-.lens-article .content-node.cover .title {
-  font-family: 'Avenir LT W01 85 Heavy', 'Montserrat', 'Source Sans Pro';
-  line-height: 1.3em;
-  font-size: 40px;
-}
-
-.lens-article .content-node.cover .published-on {
-  margin-top: 50px;
-  margin-bottom: 20px;
-  color: #666;
-}
-
-.lens-article .content-node.cover .doi {
-  margin-top: 30px;
-  margin-bottom: 20px;
-  color: #666;
-  font-size: 14px;
-}
-
-.lens-article .content-node.cover .content .authors {
-  padding-top: 30px;
-  color: #1B6685;
-  overflow: auto;
-}
-
-/* One para per author */
-.lens-article .content-node.cover .authors .text {
-  float: left;
-  padding: 0px;
-  margin: 0px;
-  font-size: 20px;
+  padding: 0 2px;
+  line-height: 20px;
   margin-right: 10px;
   margin-bottom: 8px;
 }
-
-.lens-article .content-node.cover .authors .text.plain {
-  color: #777;
-  padding-left: 1px;
+.content-node .code {
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+  background: #f5f5f5;
+  font-size: 13px;
+  padding: 2px 3px;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
-.content-node.supplement > .content {
-  padding: 10px 20px;
-}
+/* Cross Reference */
 
-.content-node.supplement .content .file {
-  padding: 20px 0;
-  font-weight: bold;
-  font-size: 16px;
-}
-/*
-Box 
---------------------------------------- */
-
-.content-node.box > .content {
-  padding: 20px;
+.content-node .cross_reference {
+  background: rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 }
 
-.surface.content .content-node.box {
-  /*margin-left: 60px;*/
-/*  padding-left: 100px;
-  padding-right: 60px;*/
-
-  /*padding: 0px;*/
-  /*background: #ccc;*/
+.content-node .cross_reference:hover {
+  background-color: rgba(0, 0, 0, 0.10);
 }
 
-.document .content-node.box .content-node.paragraph {
-  /*padding: 0px;*/
-  /*padding: 20px 60px 20px 100px;*/
+span.emphasis, em {
+  font-style: italic;
+}
+.content-node .figure_reference {
+  padding: 1px 0px;
+  border-bottom: 1px solid rgba(145, 187, 4, 0.8);
+  /*border: 1px solid transparent;*/
+  color: rgba(145, 187, 4, 1);
 }
 
-.surface.content .content-node.box {
-  /*background: #ccc;*/
+
+
+
+.content-node .figure_reference:hover { 
+  /*border-style: solid;*/
+  /*border: 1px dotted rgba(145, 187, 4, 0.8);*/
+  /*background: rgba(145, 187, 4, 0.1);*/
+  border-color: rgba(171, 217, 17, 1);
+  color: rgba(171, 217, 17, 1);
 }
 
-.surface.content .content-node.box > .content {
-  border: 1px dotted #ddd;
+.content-node .figure_reference.active {
+  color: white;
+  background: rgba(145, 187, 4, 1);
+  border-color: transparent;
+}
+/* Issue Reference */
+.content-node .idea {
+  background: rgba(150,190,15, 0.3);
+  /*color: rgba(28,163,219, 1);*/
 }
 
-.surface.content .content-node.box .content {
-  background: #fbfbfb;
-}
-/*
-Citations 
---------------------------------------- */
-
-.lens-article .content-node.citation .content .authors {
-  font-size: 17px;
+.content-node .idea:hover {
+  background: rgba(150,190,15, 0.3); 
 }
 
-.lens-article .content-node.citation .content .source {
-  color: #777;
-  padding-top: 20px;
+.content-node .idea.active { 
+  color: white;
+  background: rgba(150,190,15, 1);
 }
 
-/* Figure Node
--------------------------------------------------------------------------------*/
 
-.content-node.figure { 
+.content-node .remark_reference {
+  background: rgba(46,199,161, 0.2);
+  color: #496F65;
 }
 
-.content-node.figure div.image-wrapper {
-  text-align: center;
-  padding-bottom: 20px;
+.content-node .remark_reference:hover {
+  background: rgba(46,199,161, 0.3); 
 }
 
-.content-node.figure div .image-wrapper img {
-  width: 100%;
+.content-node .remark_reference.active { 
+  color: white;
+  background: rgba(46,199,161, 1);
 }
-/* Table */ 
-
-.lens-article .content-node.table > .content {
-  padding: 20px;
-}
-
-.lens-article .content-node.table .table-wrapper {
-  width: 100%;
-  overflow: auto;
+.content-node .error_reference {
+  color: #925346;
+  background: rgba(228, 67, 34, 0.17);
 }
 
-.lens-article .content-node.table .caption {
-  padding-top: 20px; 
+.content-node .error_reference:hover {
+  background: rgba(228, 67, 34, 0.25); 
 }
 
-.lens-article .content-node.table table {
-  position: relative;
-  border-collapse: collapse;
-  border-spacing: 0;
-  margin-bottom: 20px;
-  margin: 0 auto;
+.content-node .error_reference.active { 
+  color: white;
+  background: rgba(228, 67, 34, 1);
 }
+/* Link annotation */
+.content-node .link { color: #1B6685; }
+.content-node .link:hover, .content-node .link.active { color: rgba(11, 157, 217, 1); }
 
-.lens-article .content-node.table thead tr {
-  background: #eee;
+
+span.strong, strong {
+  font-weight: 600;
+  color: #1f1f1f;
 }
-
-.lens-article .content-node.table thead td {
-  font-weight: bold;
-}
-
-/* Table sub tags */
-.lens-article .content-node.table table sub {
+span.subscript, sub {
   vertical-align: baseline;
   position: relative;
   top: 0.4em;
-  font-size: 11px;
-}
-
-.lens-article .content-node.table table td {
-  padding: 5px;
   font-size: 12px;
-  border: 1px solid lightgrey;
 }
-
-.lens-article .content-node.table .footers {
-  padding: 0 20px;
-  padding-top: 10px;
+span.superscript, sup {
+  vertical-align: baseline;
+  position: relative;
+  top: -0.4em;
   font-size: 12px;
-  background: #fff;
-}
-.resources .content-node.video .video-wrapper {
-  background: black;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.resources .content-node.video .content video {
-  background: #000;
-  padding: 10px;
-  max-width: 100%;
-  max-height: 500px;
-}
-
-/* Fullscreen overrides */
-
-.resources .content-node.video.fullscreen .content .video-wrapper {
-  background: black;
-
-  padding: 50px 0;
-  text-align: center;
-  
-}
-.lens-article .content-node.caption .caption-title {
-  font-weight: bold;
-  font-size: 16px;
-}
-
-.lens-article .content-node.caption > .content > .content-node.paragraph {
-  padding-bottom: 20px;
-}
-/* Publication Info */
-
-.lens-article .content-node.publication-info {
-  /*padding: 30px 0;*/
-  /*background: rgba(0,0,0,0.1);*/
-  font-size: 17px;
-  color: #333;
-}
-
-.article .resources .nodes > .content-node.publication-info > .content {
-  border-top: 1px solid #ddd;
-}
-
-.lens-article .content-node.publication-info table {
-  padding: 10px 0;
-  border: none;
-  width: 100%;
-}
-
-.lens-article .content-node.publication-info .label {
-  margin-top: 10px;
-  font-size: 13px;
-  color: #666;
-}
-
-.lens-article .content-node.publication-info .label.links {
-  padding-right: 30px;
-}
-
-.lens-article .content-node.publication-info .links {
-  overflow: auto;
-}
-
-.lens-article .content-node.publication-info .links .link {
-  margin-top: 10px;
-  padding: 10px;
-  float: left;
-  display: block;
-  margin-right: 10px;
-  background: #fff;
-  border-radius: 5px;
-}
-
-.lens-article .content-node.publication-info table.dates {
-  background: #fff;
-  margin-top: 30px;
-}
-
-.lens-article .content-node.publication-info table.dates .value {
-  font-style: normal;
-
-}
-
-.lens-article .content-node.publication-info table.dates td {  
-  border: none;
-  padding-right: 30px;
-  padding-bottom: 10px;
-  /*text-align: center;*/
-  /*font-size: 13px;*/
-  width: 33%;
-}
-
-.lens-article .content-node.publication-info table.categorization td {
-  vertical-align: top;
-  border: none;
-  /*font-size*/: 13px;
-  padding-right: 30px;
-  width: 50%;
-}
-
-.lens-article .content-node.publication-info .value {
-  /*font-weight: bold;*/
-  font-style: italic;
-  /*font-size: 15px;*/
-  /*margin-top: 10px;*/
-  
 }
 
 
-
-.lens-article .content-node.publication-info a.value {
-  font-style: normal;
-}
-
-.lens-article .content-node.publication-info .links {
-  padding-right: 30px;
-}
 /* Library View
 ======================================= */
 
@@ -809,14 +605,14 @@ Citations
 }
 
 .library-view .library-info .title {
-  font-family: 'Avenir LT W01 85 Heavy', 'Montserrat', 'Source Sans Pro';
-  font-size: 30px;
+  font-weight: 600;
+  font-size: 25px;
   padding: 20px 0;
 }
 
 .library-view .library-info .description {
-  font-size: 20px;
-  color: rgba(255,255,255,0.6); 
+  /*font-size: 20px;*/
+  color: rgba(255,255,255,0.6);
   padding-bottom: 20px;
 }
 
@@ -839,7 +635,7 @@ Citations
 .library-view .collections {
   padding: 20px;
   overflow: auto;
-  font-size: 14px;
+  /*font-size: 14px;*/
   background: white;
   margin: 0px auto;
   max-width: 700px;
@@ -863,8 +659,8 @@ Citations
 }
 
 .library-view .collection .name {
-  font-family: 'Avenir LT W01 85 Heavy', 'Montserrat', 'Source Sans Pro';
-  font-size: 26px;
+  font-weight: 600;
+  font-size: 20px;
 }
 
 .library-view .collection .description {
@@ -872,11 +668,11 @@ Citations
   padding: 10px 0;
   margin-right: 100px;
   max-width: 700px;
-  font-size: 18px;
+  /*font-size: 18px;*/
 }
 
 .library-view .collection .count {
-  font-size: 16px;
+  /*font-size: 16px;*/
   font-style: italic;
   color: rgba(0,0,0, 0.5);
 }
@@ -921,11 +717,15 @@ Citations
 }
 
 .collection-view .collection .path {
-  font-family: 'Avenir LT W01 85 Heavy', 'Montserrat', 'Source Sans Pro';
-  font-size: 26px;
+  font-weight: 600;
+  font-size: 25px;
 }
 
-.collection-view .collection .sep { 
+.collection-view .collection .path a {
+  font-weight: 600;
+}
+
+.collection-view .collection .sep {
   padding: 0px 10px;
 }
 
@@ -933,7 +733,7 @@ Citations
   color: rgba(0,0,0, 0.6);
   padding: 10px 0;
   margin-right: 120px;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 /* Records stuff */
@@ -945,27 +745,40 @@ Citations
 }
 
 .collection-view .record {
+  position: relative;
   display: block;
   background: white;
   padding: 20px 20px;
 }
 
 .collection-view .record a.title {
-  font-family: 'Avenir LT W01 85 Heavy', 'Montserrat', 'Source Sans Pro';
-  font-size: 22px;
+  font-weight: 600;
+  font-size: 18px;
   line-height: 30px;
 }
 
 .collection-view .record .date {
-  font-size: 16px;
+  /*font-size: 16px;*/
   color: #777;
   font-style: italic;
 }
 
 .collection-view .record .authors {
   color: #555;
-  font-size: 18px;
+  /*font-size: 18px;*/
   padding: 5px 0;
+}
+
+/* HACKY'DI'HACK: needs a designer */
+.collection-view .record .controls {
+  position:absolute;
+  top: 1em;
+  right: 0px;
+  opacity: 0.1;
+}
+
+.collection-view .record:hover .controls {
+  opacity: 0.8;
 }
 
 /*
@@ -976,11 +789,11 @@ TOC
 .resource-view.toc .heading-ref {
   cursor: pointer;
   display: block;
-  color: rgba(0,0,0,0.7);
-  font-size: 17px;
+  color: rgba(0,0,0,0.5);
+  font-size: 16px;
   padding: 4px 10px;
   line-height: 20px;
-  font-family: 'Avenir LT W01 85 Heavy', 'Montserrat', 'Source Sans Pro';
+  font-weight: 600;
   margin-right: 10px;
   border: 1px solid transparent;
 }
@@ -993,22 +806,22 @@ TOC
 
 .resource-view.toc .heading-ref.level-2 {
   padding-left: 20px;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .resource-view.toc .heading-ref.level-3 {
   padding-left: 40px;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .resource-view.toc .heading-ref.level-4 {
   padding-left: 60px;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .resource-view.toc .heading-ref.level-5 {
   padding-left: 80px;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .resource-view.toc .heading-ref:hover {
@@ -1035,11 +848,11 @@ out (on iOS 5.1), or flicker (on iOS 6). */
   height: 100%;
 }
 
+
 /* Surface specific styles */
 .content-node {
 
 }
-
 
 .hidden {
   display: none;
@@ -1055,7 +868,7 @@ out (on iOS 5.1), or flicker (on iOS 6). */
 
 .article .document {
   line-height: 28.5px;
-  font-size: 18px;
+  /*font-size: 16px;*/
   position: relative;
   float: left;
   overflow: hidden;
@@ -1095,7 +908,7 @@ out (on iOS 5.1), or flicker (on iOS 6). */
 
 /* Switcher */
 
-.article .medial-strip {
+/*.article .medial-strip {
   overflow: hidden;
   width: 40px;
   position: absolute;
@@ -1106,7 +919,18 @@ out (on iOS 5.1), or flicker (on iOS 6). */
   bottom: 0px;
   background: #fff;
   z-index: 3000;
+}*/
+
+.article .medial-strip {
+  width: 40px;
+  position: absolute;
+  left: -18px;
+  top: 0px;
+  bottom: 0px;
+  background: #fff;
+  z-index: 3000;
 }
+
 
 .article .back-nav {
   display: block;
@@ -1156,7 +980,6 @@ out (on iOS 5.1), or flicker (on iOS 6). */
   line-height: 40px;
   font-size: 22px;
   color: #aaa;
-  font-family: 'Avenir LT W01 85 Heavy', 'Montserrat', 'Source Sans Pro';
 }
 
 .article .context-toggles .context-toggle i {
@@ -1204,6 +1027,9 @@ out (on iOS 5.1), or flicker (on iOS 6). */
 /* Resources Panel 
 ======================================================================= */
 
+.article .delete-resource {
+  display: none;
+}
 
 .article .resources {
   float: right;
@@ -1217,9 +1043,9 @@ out (on iOS 5.1), or flicker (on iOS 6). */
   /*overflow: auto;*/
 }
 
-.article .resources .surface {
-  /*padding-top: 20px;*/
-}
+/*.article .resources .surface {
+  padding-top: 80px;
+}*/
 
 .article .nodes {
   padding-left: 50px;
@@ -1235,18 +1061,12 @@ out (on iOS 5.1), or flicker (on iOS 6). */
   color: #505050;
   position: relative;
   background: #fff;
-/*  margin-bottom: 30px;
-  margin-top: 30px;*/
 
   padding: 0px;
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
-.article .resources .nodes > .content-node > .content {
-  border: 1px solid #ddd;
-  border-top: none;
-}
 
 .article .resources .content-node .resource-header:hover {
   background: rgba(0,0,0,0.15);
@@ -1330,6 +1150,10 @@ out (on iOS 5.1), or flicker (on iOS 6). */
   display: block;
 }
 
+.substance-article .content-node .toggle-resource {
+  cursor: pointer;
+}
+
 /* Citations View
 ----------------------------------------------------------------------- */
 
@@ -1389,30 +1213,6 @@ out (on iOS 5.1), or flicker (on iOS 6). */
 
 .article.info .resources .resource-view.info {
   display: block;
-}
-
-
-/* Consistent Resource Header for figures captions and person cards 
------------------------------------------------------------------------ */
-
-.article .resources .resource-header .name {
-  display: block;
-  min-height: 80px;
-  
-  color: #444;
-  font-family: 'Avenir LT W01 85 Medium', 'Montserrat', 'Source Sans Pro';
-  font-size: 16px;
-  line-height: 21px;
-  padding: 10px 20px;
-}
-
-
-.article .resources .content-node .reference-count {
-  font-size: 13px;
-  position: absolute;
-  right: 20px;
-  top: 40px;
-  text-align: right;
 }
 
 
@@ -1480,11 +1280,8 @@ out (on iOS 5.1), or flicker (on iOS 6). */
   bottom: 0px;
   left: 0px;
   right: 0px;
-
   overflow: auto;
 }
-
-
 
 /* Info panel overrides 
 ----------------------------------------------------------------------- */
@@ -1494,127 +1291,20 @@ out (on iOS 5.1), or flicker (on iOS 6). */
   padding: 20px;
 }
 
-
 /* Annotations 
 ----------------------------------------------------------------------- */
 
 .article span.annotation {
-  -webkit-transition-property: background, color;
-  -moz-transition-property: background, color;
-  transition-property: background, color;
-
-  -webkit-transition-duration: 0.1s;
-  -moz-transition-duration: 0.1s;
-  transition-duration: 0.1s;
 }
-
-span.annotation.formula_reference, span.publication_reference {
-  padding-left: 3px; padding-right: 3px;
-}
-
-.article span.emphasis, .article em {
-  font-style: italic;
-}
-
-.article span.superscript, .article span.subscript, .article sup, .article sub {
-  vertical-align: baseline;
-  position: relative;
-  top: -0.4em;
-  font-size: 12px;
-}
-
-.article span.subscript, .article sub {
-  top: 0.4em;
-}
-
-.article span.strong, .article strong {
-  font-weight: bold;
-}
-
-.article span.underline {
-  text-decoration: underline;
-}
-
-
-.content-node .idea { background-color: rgba(102, 182, 32, 0.3); }
-.content-node .question { background-color: rgba(16, 167, 222, 0.3); }
-.content-node .error { background-color: rgba(237, 96, 48, 0.3); }
-
-.content-node .link { color: #1B6685; font-weight: bold; }
-.content-node .link:hover, .content-node .link.active { color: rgba(11, 157, 217, 1); }
-
-/* Inline Code Annotations */
-
-.content-node .code {
-  font-family: Consolas, "Liberation Mono", Courier, monospace;
-  background: #eee;
-  font-size: 13px;
-  padding: 2px 3px;
-  -webkit-font-smoothing: subpixel-antialiased;
-}
-
-/* Highlighted states */
-
-.content-node .idea.highlight { background-color: rgba(102, 182, 32, 0.6); }
-.content-node .question.highlight { background-color: rgba(16, 167, 222, 0.6);}
-.content-node .error.highlight { background-color: rgba(237, 96, 48, 0.6); }
-
-/* Selected states */
-.content-node .content span.selected { background: rgba(0,0,0,0.08); }
-.content-node .content .idea.selected { background-color: rgba(102, 182, 32, 0.4); }
-.content-node .content .question.selected { background-color: rgba(16, 167, 222, 0.4);}
-.content-node .content .error.selected { background-color: rgba(237, 96, 48, 0.4); }
-
-/* Em, Strong, Link */
-.content-node .emphasis { font-style: italic; }
-.content-node .strong { font-weight: bold; }
-
 
 /* Figure Reference */
-.content-node .figure_reference {
-  background: rgba(145, 187, 4, 0.15);
-  border-bottom: 1px solid rgba(145, 187, 4, 0.8);
-  color: #495A11;
-  cursor: pointer;
+
+.content-node .figure_reference { 
+  padding: 0 2px;
+  cursor: pointer; 
 }
-
-.content-node .contributor_reference, .content-node .collaborator_reference {
-  padding: 2px 1px;
-  cursor: pointer;
-}
-
-.content-node .contributor_reference, .content-node .collaborator_reference {
-  padding: 2px 1px;
-  cursor: pointer;
-}
-
-.content-node .citation_reference { 
-  background: rgba(11, 157, 217, 0.075);
-  color: #1B6685;
-  border-bottom: 1px solid rgba(11, 157, 217, 0.4);
-  cursor: pointer;
-}
-
-.content-node .cross_reference {
-  background: rgba(0, 0, 0, 0.05);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-  cursor: pointer;
-}
-
-/* Hover states */
-.content-node .figure_reference:hover { background-color: rgba(145, 187, 4, 0.35); }
-.content-node .citation_reference:hover { background-color: rgba(11, 157, 217, 0.30); }
-.content-node .contributor_reference:hover { background-color: rgba(0,0,0, 0.05); }
-
-.content-node .figure_reference.active { background: rgba(145, 187, 4, 0.7); }
-.content-node .citation_reference.active { background: rgba(11, 157, 217, 0.6); }
-.content-node .contributor_reference.active { background-color: #5c6570; color: white; }
-
-/* Cross Reference */
-.content-node .cross_reference:hover {
-  background-color: rgba(0, 0, 0, 0.10);
-}
-
+.content-node .citation_reference { cursor: pointer; }
+.content-node .cross_reference { cursor: pointer; }
 
 /* Reader-specific overrides for content nodes
 ======================================================================= */
@@ -1625,15 +1315,19 @@ span.annotation.formula_reference, span.publication_reference {
 .surface.content .nodes > .content-node {
   padding-top: 10px;
   padding-bottom: 15px;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding-left: 30px;
+  padding-right: 50px;
   word-wrap: break-word;
 }
 
 /* Some extra cover spacing */
 .surface.content .nodes > .content-node.cover {
   padding-top: 20px;
-  padding-bottom: 60px;
+}
+
+.substance-article .content-node.cover .content .authors .toggle-author.active {
+  background: rgba(0,0,0,0.7);
+  color: rgba(255,255,255, 1);
 }
 
 
@@ -1641,20 +1335,55 @@ span.annotation.formula_reference, span.publication_reference {
 /* For the resources panel
 ----------------------------------------------------------------------- */
 
+.content-node {
 
-.resources .content-node.image div img {
-  width: auto;
 }
 
-.resources .content-node.paragraph .content-node.image div img {
-  width: auto;
+/* Wraps all resource details */
+.resources .content-node .resource-body {
+  padding: 20px;
+  overflow: auto;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
 }
 
 /* padding for the content */
 .resources .nodes > .content-node > .content {
-  padding: 20px;
-
+  /*padding: 20px;*/
 }
+
+/* Contributor View*/
+
+.resources .content-node.contributor .name .content {
+  background: rgba(0,0,0,0.1);
+  padding: 20px;
+  font-weight: 600;
+  /*font-size: 16px;*/
+}
+
+/* Active Style */
+
+.resources .content-node.contributor.active .name .content {
+  background: rgba(0,0,0,0.7);
+  color: white;
+}
+
+/* Figure View */
+
+.resources .content-node.figure .label .content {
+  background: rgba(0,0,0,0.1);
+  padding: 20px;
+  font-weight: 600;
+  /*font-size: 16px;*/
+}
+
+.content-node.figure.active .label .content,
+.focus-panel .content-node.figure .label .content {
+  background: rgba(145, 187, 4, 1);
+  color: white;
+}
+
 
 /* For the resources panel */
 .resources .info .nodes > .content-node.paragraph > .content > .content-node {
@@ -1663,7 +1392,7 @@ span.annotation.formula_reference, span.publication_reference {
 
 .article .document .surface.content::-webkit-scrollbar {
   width: 2px;
-  height: 2px; 
+  height: 2px;
 }
 
 .article .document .surface.content::-webkit-scrollbar-thumb {
@@ -1687,12 +1416,6 @@ span.annotation.formula_reference, span.publication_reference {
 }
 
 
-.article .document .content-node.heading {
-  cursor: pointer;
-}
-
-
-
 /* Resources Outline */
 /* ---------------------------------------*/
 
@@ -1709,14 +1432,8 @@ span.annotation.formula_reference, span.publication_reference {
   right: 5px;
 }
 
-.resources .lens-outline .node {
-  width: 20px;
-}
-
-
 /* Responsiveness */
 /* ---------------------------------------*/
-
 
 
 /* Hide fullscreen toggle for small screens */
@@ -1746,8 +1463,33 @@ span.annotation.formula_reference, span.publication_reference {
   display: none;
 }
 
+.surface.content .nodes .content-node.heading {
+  padding-bottom: 0px;
+}
+
+.surface.content .nodes .content-node.heading.level-1 {
+  /*padding-top: 20px;*/
+}
+
+
+
+@media (max-width: 1100px) {
+  .article .content-node.cover .title {
+    font-size: 28px;
+  }
+
+  .surface.content .nodes > .content-node {
+    padding-left: 15px;
+    padding-right: 15px;
+    word-wrap: break-word;
+  }
+}
+
+
 /* Mobile (iPad Portrait, iPhone) */
 @media (max-width: 850px) {
+
+
 
   .content-node.heading .top {
     display: block;
@@ -1756,15 +1498,6 @@ span.annotation.formula_reference, span.publication_reference {
     top: 5px;
     padding: 10px;
   }
-
-  .article .content-node.cover .title {
-    font-size: 24px;
-  }
-
-  .article .content-node.cover .authors .text {
-    font-size: 16px;
-  }
-
 
   html body.reader {
     height: auto;
@@ -1799,7 +1532,10 @@ span.annotation.formula_reference, span.publication_reference {
     height: auto;
     position: relative;
     z-index: 100;
+    padding-top: 80px;
+    border-right: none;
   }
+
 
   .article .document .surface.content {
     position: absolute;
@@ -1828,6 +1564,10 @@ span.annotation.formula_reference, span.publication_reference {
 
     z-index: 300;
     word-wrap: break-word;
+  }
+
+  #container .article .resources .surface {
+    padding-top: 80px;
   }
 
   #container .article .resources .nodes {
@@ -1867,19 +1607,18 @@ span.annotation.formula_reference, span.publication_reference {
 
   .article .medial-strip {
     background: #252525;
-    position: relative;
-    top: auto;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
     bottom: auto;
-    left: auto;
-    right: auto;
     margin-left: 0px;
     height: 60px;
     width: auto;
   }
 
   .article .medial-strip .context-toggles {
-    background: #252525;
-
+    background: #151515;
     position: absolute;
     left: 0px;
     right: 0px;
@@ -1889,39 +1628,37 @@ span.annotation.formula_reference, span.publication_reference {
 
   .article .medial-strip .context-toggles .context-toggle {
     float: left;
-    height: 70px;
-    width: 80px;
-    padding-top: 10px;
+    width: 70px;
+    padding: 0px 5px;
+    padding-top: 7px;
     text-align: center;
-    line-height: 17px;
+    line-height: 24px;
+    color: rgba(255,255,255, 0.3);
   }
 
   .article .medial-strip .context-toggles .context-toggle:hover {
-    color: white;
+    color: rgba(255,255,255,0.8);
   }
 
   .article .medial-strip .context-toggles .context-toggle span {
     display: block;
-    font-size: 11px;
-  }
-
-  .article.figures .context-toggles .context-toggle.figures {
-    color: rgba(0,0,0,1);
-    background: white;
-  }
-
-  .article.citations .context-toggles .context-toggle.citations {
-    color: rgba(0,0,0,1);
-    background: white;
+    font-size: 13px;
   }
 
   .article.toc .context-toggles .context-toggle.toc {
-    background: white;
+    color: rgba(255,255,255,1);
+  }
+
+  .article.figures .context-toggles .context-toggle.figures {
+    color: rgba(255,255,255,1);
+  }
+
+  .article.citations .context-toggles .context-toggle.citations {
+    color: rgba(255,255,255,1);
   }
 
   .article.info .context-toggles .context-toggle.info {
-    color: rgba(0,0,0,1);
-    background: white;
+    color: rgba(255,255,255,1);
   }
 
   .article .medial-strip .back-nav {
@@ -1931,9 +1668,7 @@ span.annotation.formula_reference, span.publication_reference {
   .article .lens-outline {
     display: none;
   }
-
 }
-
 
 /*
   Typography / Basics
@@ -1978,52 +1713,17 @@ body.reader #container {
   height: 100%;
 }
 
-
-/*#container .browser-not-supported {
-  text-align: center;
-  padding-top: 200px;
-  width: 500px;
-  margin: 0 auto;
-  font-size: 20px;
-  line-height: 30px;
-}
-
-#container .browser-not-supported h1 {
-  font-family: 'Avenir LT W01 85 Heavy', 'Montserrat', 'Source Sans Pro';
-  font-size: 30px;
-}
-
-#container .browser-not-supported p {
-  padding: 30px 0;
-}
-
-#container .browser-not-supported a {
-  background: #444;
-  padding: 2px 10px;
-  color: #fff;
-  font-family: 'Avenir LT W01 85 Heavy', 'Montserrat', 'Source Sans Pro';
-}
-
-#container .browser-not-supported a:hover {
-  background: #000;
-}
-*/
-
-
-
 body, textarea, p, input {
-  font-family: 'Source Sans Pro', Helvetica, Arial, Verdana, sans-serif;
-  color: #505050;
+  font-family: 'Open Sans', 'Source Sans Pro', Helvetica, Arial, Verdana, sans-serif;
+  /*color: #505050;*/
+  font-size: 15px;
+  color: rgba(0,0,0,0.75);
 }
 
 a {
   color: #1B6685;
   font-weight: normal;
   text-decoration: none;
-  -moz-transition: background-color 100ms linear, color 100ms linear, opacity 100ms linear;
-  -o-transition: background-color 100ms linear, color 100ms linear, opacity 100ms linear;
-  -webkit-transition: background-color 100ms linear, color 100ms linear, opacity 100ms linear;
-  transition: background-color 100ms linear, color 100ms linear, opacity 100ms linear;
 }
 
 a:hover {

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:mml="http://www.w3.org/1998/Math/MathML">
   <head>
-    <title>Substance - Towards open digital publishing</title>
-    <link href='styles/fonts/open-sans/open-sans.css' rel='stylesheet' type='text/css'/>
-    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <title>Substance - Towards open digital publishing</title>    
+    <link href='styles/fonts/source-sans-pro/source-sans-pro.css' rel='stylesheet' type='text/css'/>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    
     <link href='styles/font-awesome.css' rel='stylesheet' type='text/css'/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -14,17 +15,7 @@
 
     <link href='substance.css' rel='stylesheet' type='text/css'/>
 
-
     <script src="lib/jquery-2.0.3.min.js"></script>
-
-    <!-- MathJax -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        "HTML-CSS": { linebreaks: { automatic: true } },
-               SVG: { linebreaks: { automatic: true } }
-      });
-    </script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
     <script src='substance.js'></script>
 
@@ -39,31 +30,6 @@
       // Injects itself into body
 
       var app = new Substance();
-
-      // Not used at the very moment
-      window.ScrollFix = function(elem) {
-        // Variables to track inputs
-        var startY, startTopScroll;
-        
-        elem = elem || document.querySelector(elem);
-        
-        // If there is no element, then do nothing
-        if(!elem) return;
-
-        // Handle the start of interactions
-        elem.addEventListener('touchstart', function(event) {
-          startY = event.touches[0].pageY;
-          startTopScroll = elem.scrollTop;
-          
-          if (startTopScroll <= 0) {
-            elem.scrollTop = 1;
-          }
-
-          if (startTopScroll + elem.offsetHeight >= elem.scrollHeight) {
-            elem.scrollTop = elem.scrollHeight - elem.offsetHeight - 1;
-          }
-        }, false);
-      };
 
       function isIOSDevice() {
         var iPadAgent = navigator.userAgent.match(/iPad/i) != null;
@@ -91,13 +57,6 @@
 
       $(function() {
         app.start();
-
-        // Prevent no bounce for context toggles
-        // This makes the main content panel flickery WHY??
-        // 
-        // $('body').delegate('.context-toggles','touchmove',function(e) {
-        //   e.preventDefault();
-        // });
 
         if (isTouchDevice()) {
           $('#container').addClass('touchable');
