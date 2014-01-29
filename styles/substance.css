@@ -41,39 +41,6 @@ body.reader #container {
   height: 100%;
 }
 
-
-/*#container .browser-not-supported {
-  text-align: center;
-  padding-top: 200px;
-  width: 500px;
-  margin: 0 auto;
-  font-size: 20px;
-  line-height: 30px;
-}
-
-#container .browser-not-supported h1 {
-  font-family: 'Avenir LT W01 85 Heavy', 'Montserrat', 'Source Sans Pro';
-  font-size: 30px;
-}
-
-#container .browser-not-supported p {
-  padding: 30px 0;
-}
-
-#container .browser-not-supported a {
-  background: #444;
-  padding: 2px 10px;
-  color: #fff;
-  font-family: 'Avenir LT W01 85 Heavy', 'Montserrat', 'Source Sans Pro';
-}
-
-#container .browser-not-supported a:hover {
-  background: #000;
-}
-*/
-
-
-
 body, textarea, p, input {
   font-family: 'Source Sans Pro', Helvetica, Arial, Verdana, sans-serif;
   color: #505050;
