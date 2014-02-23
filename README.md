@@ -1,3 +1,5 @@
+This project is deprecated.
+
 # Substance IO
 
 A minimal publishing solution based on Pandoc Markdown and Substance.
