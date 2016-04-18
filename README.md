@@ -1,15 +1,24 @@
-This project is deprecated.
+**This project is deprecated**.
+
+[substance]: https://github.com/substance/substance
 
 # Substance IO
 
 A minimal publishing solution based on Pandoc Markdown and Substance.
+
+## Development Status
+
+Development of [substance.io](http://substance.io)
+has been delegated to [another repository][substance].
+
+This repository is deprecated.
 
 ## Prerequisites
 
 - Node.js >=0.10.x
 - Pandoc >= 1.12.02 (for Markdown cross-compiling)
 
-## Install
+## Install (Deprecated)
 
 Substance.IO comes as a ready-to-use NPM module:
 
